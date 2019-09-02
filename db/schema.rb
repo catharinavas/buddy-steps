@@ -10,14 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_02_200759) do
+ActiveRecord::Schema.define(version: 2019_09_02_205723) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
-    t.string "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -88,16 +87,23 @@ ActiveRecord::Schema.define(version: 2019_09_02_200759) do
     t.index ["goal_id"], name: "index_milestones_on_goal_id"
   end
 
+  create_table "publication_types", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "publications", force: :cascade do |t|
     t.string "title"
     t.string "content"
-    t.string "publication_type"
     t.bigint "user_id"
     t.bigint "community_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "is_private", default: false
+    t.bigint "publication_type_id"
     t.index ["community_id"], name: "index_publications_on_community_id"
+    t.index ["publication_type_id"], name: "index_publications_on_publication_type_id"
     t.index ["user_id"], name: "index_publications_on_user_id"
   end
 
@@ -136,6 +142,7 @@ ActiveRecord::Schema.define(version: 2019_09_02_200759) do
   add_foreign_key "messages", "goals"
   add_foreign_key "milestones", "goals"
   add_foreign_key "publications", "communities"
+  add_foreign_key "publications", "publication_types"
   add_foreign_key "publications", "users"
   add_foreign_key "user_feelings", "feelings"
   add_foreign_key "user_feelings", "users"
