@@ -107,7 +107,7 @@ ActiveRecord::Schema.define(version: 2019_09_02_200759) do
     t.date "feeling_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "intensity"
+    t.integer "intensity", default: 3
     t.index ["feeling_id"], name: "index_user_feelings_on_feeling_id"
     t.index ["user_id"], name: "index_user_feelings_on_user_id"
   end
