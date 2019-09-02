@@ -66,3 +66,7 @@
 .link-grey:hover {
   @apply text-gray-700;
 }
+
+.btn-options {
+  @apply flex-1 p-2 text-base text-gray-700 text-center bg-orange-400 px-4 py-2 m-2 w-1/4 rounded;
+}
