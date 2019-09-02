@@ -8,7 +8,6 @@ class CreateGoals < ActiveRecord::Migration[5.2]
       t.references :user, foreign_key: true
       t.references :category, foreign_key: true
       t.boolean :complete, default: false
-      t.string :buddy
 
       t.timestamps
     end
