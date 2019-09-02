@@ -1,25 +1,5 @@
 @import "tailwindcss/base";
 
-/**
- * This injects Tailwind's base styles, which is a combination of
- * Normalize.css and some additional base styles.
- *
- * You can see the styles here:
- * https://github.com/tailwindcss/tailwindcss/blob/master/css/preflight.css
- *
- * If using `postcss-import`, use this import instead:
-  @tailwind preflight;
-@import "tailwindcss/preflight";
- *
- */
-
-/**
- * This injects any component classes registered by plugins.
- *
- * If using `postcss-import`, use this import instead:
-@tailwind components;
- *
- */
 @import "tailwindcss/components";
 
 /**
@@ -38,14 +18,6 @@
  * @import "components/forms";
  */
 
-/**
- * This injects all of Tailwind's utility classes, generated based on your
- * config file.
- *
- * If using `postcss-import`, use this import instead:
-@tailwind utilities;
- *
- */
 @import "tailwindcss/utilities";
 
 /**
@@ -62,3 +34,35 @@
  * @import "utilities/background-patterns";
  * @import "utilities/skew-transforms";
  */
+
+@import "tailwindcss/screens";
+
+.input {
+  @apply appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight;
+}
+
+.input:focus {
+  @apply outline-none bg-white border-gray-500;
+}
+
+.label {
+  @apply block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2;
+}
+
+.select {
+  @apply appearance-none py-3 px-4 pr-8 block w-full bg-gray-200 border border-gray-200 text-gray-700
+   rounded leading-tight;
+   -webkit-appearance: none;
+}
+
+.select:focus {
+  @apply outline-none bg-white border-gray-500;
+}
+
+.link-grey {
+  @apply text-gray-600 underline;
+}
+
+.link-grey:hover {
+  @apply text-gray-700;
+}
