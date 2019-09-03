@@ -7,4 +7,14 @@ const menuToggle = () => {
   })
 }
 
+const dropdownToggle = () => {
+  const avatarIcon = document.getElementById('avatar-icon');
+  const dropdownList = document.getElementById('dropdown-list');
+
+  avatarIcon.addEventListener('click', () => {
+    dropdownList.classList.toggle('hidden');
+  })
+}
+
 export { menuToggle };
+export { dropdownToggle };
