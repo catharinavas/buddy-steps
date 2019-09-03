@@ -70,11 +70,12 @@ ActiveRecord::Schema.define(version: 2019_09_02_205723) do
 
   create_table "messages", force: :cascade do |t|
     t.string "content"
-    t.date "user"
+    t.bigint "user_id"
     t.bigint "goal_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["goal_id"], name: "index_messages_on_goal_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
   create_table "milestones", force: :cascade do |t|
@@ -140,6 +141,7 @@ ActiveRecord::Schema.define(version: 2019_09_02_205723) do
   add_foreign_key "goals", "categories"
   add_foreign_key "goals", "users"
   add_foreign_key "messages", "goals"
+  add_foreign_key "messages", "users"
   add_foreign_key "milestones", "goals"
   add_foreign_key "publications", "communities"
   add_foreign_key "publications", "publication_types"

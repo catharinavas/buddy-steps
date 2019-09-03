@@ -23,6 +23,46 @@ stroke = Community.create!(name: 'Stroke')
 depression = Community.create!(name: 'Depression')
 amputation = Community.create!(name: 'Amputation')
 
+puts "Creating Lucas"
+user = User.new(
+    first_name: 'Lucas',
+    last_name: 'Sandeville',
+    email: 'lucas@nextstep.com',
+    password: 'senha123'
+  )
+  user.communities << Community.all.sample
+  user.save!
+
+puts "Creating Daniela"
+user = User.new(
+    first_name: 'Daniela',
+    last_name: 'Ichikawa',
+    email: 'daniela@nextstep.com',
+    password: 'senha123'
+  )
+  user.communities << Community.all.sample
+  user.save!
+
+puts "Creating Catharina"
+user = User.new(
+    first_name: 'Catharina',
+    last_name: 'Vasconcelos',
+    email: 'catharina@nextstep.com',
+    password: 'senha123'
+  )
+  user.communities << Community.all.sample
+  user.save!
+
+puts "Creating Hugo"
+user = User.new(
+    first_name: 'Hugo',
+    last_name: 'Branquinho',
+    email: 'hugo@nextstep.com',
+    password: 'senha123'
+  )
+  user.communities << Community.all.sample
+  user.save!
+
 puts 'creating Users'
 40.times do
   user = User.new(
@@ -45,12 +85,12 @@ financial_category = Category.create!(name: 'Financial')
 puts 'creating Goals, Messages and Milestones'
 User.all.each do |user|
   rand(1..3).times do
-    possible_budies = User.all.where.not(id: user)
+    possible_budies = User.where.not(id: user)
     goal = Goal.new(
       title: Faker::Company.bs,
       description: Faker::Quote.famous_last_words,
-      start_date: DateTime.now,
-      deadline: (DateTime.now + rand(5..10).days),
+      start_date: Date.today,
+      deadline: (Date.today + rand(5..10).days),
       # start_date: Date.new(2019,9,rand(1..30)),
       # deadline: Date.new(2020,rand(1..6),rand(1..28)),
       category: Category.all.sample,
@@ -66,8 +106,8 @@ User.all.each do |user|
 
     5.times do
       Milestone.create!(
-        description: Faker::TvShows::RuPaul,
-        deadline: Date.new(2019,rand(10..12),rand(1..30)),
+        description: Faker::TvShows::RuPaul.quote,
+        deadline: (Date.today + rand(5..10).days),
         complete: [true, false, false].sample,
         goal: goal
       )
@@ -83,11 +123,11 @@ happinnes = Feeling.create!(name: 'Happinnes')
 
 puts 'creating Feelings for the users'
 User.all.each do |user|
-  day = 20
+  day = 1
   Feeling.all.each do |feeling|
     10.times do
       UserFeeling.create!(
-        feeling_date: DateTime.now,
+        feeling_date: (Date.today + day.days),
         # feeling_date: DateTime.now,
         user: user,
         feeling: feeling,
@@ -107,7 +147,8 @@ pleasures = PublicationType.create!(name: 'Pleasures')
 
 puts 'creating Publications and Claps in each community'
 Community.all.each do |community|
-  members = User.joins(:community_users).where(community_users:{community: community})
+  # members = User.joins(:community_users).where(community_users:{community: community})
+  members = community.users
 
   unless community.users == []
     12.times do
@@ -139,7 +180,7 @@ User.all.each do |user|
       title: Faker::TvShows::TwinPeaks.quote,
       content: Faker::Lorem.paragraph(sentence_count: 4),
       publication_type: [frustrations, pleasures].sample,
-      is_private: false,
+      is_private: true,
       user: user
     )
     rand(1..3) do

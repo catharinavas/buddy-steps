@@ -1,35 +1,91 @@
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
-  <%= link_to "#", class: "navbar-brand" do %>
-    <%= image_tag "https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/logo.png" %>
-    <% end %>
+<div class="font-sans w-full m-0 bg-white shadow h-67">
 
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+    <div class="hidden sm:inline-block absolute bg-purple-600 h-1 my-0 p-0 w-full"></div>
 
+    <div class="mx-3 px-4 justify-between">
+      <div class="flex items-center justify-between py-4">
 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <% if user_signed_in? %>
-        <li class="nav-item active">
-          <%= link_to "Home", "#", class: "nav-link" %>
-        </li>
-        <li class="nav-item">
-          <%= link_to "Messages", "#", class: "nav-link" %>
-        </li>
-        <li class="nav-item dropdown">
-          <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-            <%= link_to "Action", "#", class: "dropdown-item" %>
-            <%= link_to "Another action", "#", class: "dropdown-item" %>
-            <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+        <!-- SMALL SCREEN MENU ICON -->
+        <div id="menu-icon" class="sm:hidden cursor-pointer text-gray-700 text-lg font-semibold px-2 py-1 rounded-lg hover:text-purple-500 hover:border-purple-500">
+          <i class="fas fa-bars"></i>
+        </div>
+
+        <!-- LOGO -->
+        <div class="inline text-xl align-middle">
+          <i class="fas fa-walking mx-2 text-purple-600"></i>
+          <span class="text-purple-600 font-bold">NEXT STEP</span>
+        </div>
+
+        <!-- LARGE SCREEN TABS -->
+        <div class="hidden sm:flex sm:items-center">
+          <%= link_to "Dashboard", "#",
+          class:"text-gray-700 text-sm font-semibold hover:text-purple-600 mr-4" %>
+          <%= link_to "Diary", "#",
+          class:"text-gray-700 text-sm font-semibold hover:text-purple-600 mr-4" %>
+          <%= link_to "Community", "#",
+          class:"text-gray-700 text-sm font-semibold hover:text-purple-600 mr-4" %>
+          <%= link_to "Other", "#",
+          class:"text-gray-700 text-sm font-semibold hover:text-purple-600 mr-4" %>
+        </div>
+
+        <!-- LARGE SCREEN BUTTONS -->
+        <% if !current_user %>
+          <div class="hidden sm:flex sm:items-center">
+            <%= link_to "Sign in", new_user_session_path,
+            class:"text-gray-700 border-gray-600 text-sm font-semibold hover:text-white hover:bg-gray-600 mr-4 border-2 px-4 py-2 rounded-full transition-soft" %>
+            <%= link_to "Sign up", new_user_registration_path,
+            class:"text-white bg-blue-600 text-sm font-semibold border-2 border-blue-600 px-4 py-2 rounded-full hover:bg-blue-500 hover:border-blue-500 transition-soft" %>
           </div>
-        </li>
-      <% else %>
-        <li class="nav-item">
-          <%= link_to "Login", new_user_session_path, class: "nav-link" %>
-        </li>
-      <% end %>
-    </ul>
+        <% end %>
+
+        <!-- AVATAR -->
+        <div id="avatar-icon" class="sm:hidden cursor-pointer px-2 py-1 rounded-lg">
+          <% if current_user %>
+            <%= image_tag "icons/avatar.png", class:"h-8 w-8"%>
+          <% end %>
+        </div>
+      </div>
+
+    <!-- SMALL SCREEN MENU LIST -->
+    <div id="menu-list" class="block hidden sm:hidden bg-white border-t-2 border-gray-200 py-2 transition-soft">
+
+      <!-- SMALL SCREEN TABS -->
+      <div class="flex flex-col">
+        <%= link_to "Dashboard", "#",
+        class:"text-gray-800 text-sm font-semibold hover:text-purple-600 mb-1" %>
+        <%= link_to "Diary", "#",
+        class:"text-gray-800 text-sm font-semibold hover:text-purple-600 mb-1" %>
+        <%= link_to "Community", "#",
+        class:"text-gray-800 text-sm font-semibold hover:text-purple-600 mb-1" %>
+        <%= link_to "Other", "#",
+        class:"text-gray-800 text-sm font-semibold hover:text-purple-600 mb-1" %>
+
+        <!-- SMALL SCREEN BUTTONS -->
+        <% if !current_user %>
+          <div class="flex justify-between items-center border-t-2 border-gray-200 pt-2">
+            <%= link_to "Sign in", new_user_session_path,
+            class:"text-gray-700 border-gray-600 text-sm font-semibold hover:text-white hover:bg-gray-600 mr-4 border-2 px-3 py-1 rounded-full transition-soft" %>
+            <%= link_to "Sign up", new_user_registration_path,
+            class:"text-white bg-blue-600 text-sm font-semibold border-2 border-blue-600 px-3 py-1 rounded-full hover:bg-blue-500 hover:border-blue-500 transition-soft" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
   </div>
+</div>
+
+<!-- DROPDOWN FROM AVATAR -->
+<div id="dropdown-list" class="hidden absolute rounded bg-gray-100 shadow-md right-0 w-48 text-right pr-5">
+  <ul>
+    <li>
+      <%= link_to "Other", "#",
+    class:"text-sm text-gray-800 font-semibold px-3 py-1 block hover:bg-gray-200 cursor-pointer pt-2" %></li>
+    <li>
+      <%= link_to "Other", "#",
+    class:"text-sm text-gray-800 font-semibold px-3 py-1 block hover:bg-gray-200 cursor-pointer" %></li>
+    <hr class="border-gray-200 w-11/12 m-auto">
+    <li>
+      <%= link_to "Sign out", destroy_user_session_path,
+    class:"text-sm text-gray-600 px-3 py-1 block hover:bg-gray-200 cursor-pointer pb-2" %></li>
+  </ul>
 </div>
