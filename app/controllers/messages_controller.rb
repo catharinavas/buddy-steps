@@ -2,7 +2,7 @@ class MessagesController < ApplicationController
   def create
     @message = Message.new(message_params)
     @goal_chat = Goal.find(params[:goal_id])
-    @message.goal_chat = @goal_chat
+    @message.goal_id = @goal_chat.id
     @message.user = current_user
     if @message.save
       respond_to do |format|

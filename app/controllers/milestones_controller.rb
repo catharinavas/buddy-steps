@@ -1,19 +1,22 @@
 class MilestonesController < ApplicationController
   def index
-    @goal = Goal.find(params[:goal_id])
+    @goal = Goal.find(params[:id])
     @milestones = @goal.milestones
   end
 
   def new
+    @goal = Goal.find(params[:goal_id])
     @milestone = Milestone.new
   end
 
   def create
+    @goal = Goal.find(params[:goal_id])
     @milestone = Milestone.new(milestone_params)
+    @milestone.goal_id = @goal.id
     if @milestone.save
-      redirect_to goal_path(goal)
+      redirect_to goal_path(@goal)
     else
-      render '/milestones/new'
+      render '/goals/show'
     end
   end
 
@@ -30,9 +33,16 @@ class MilestonesController < ApplicationController
     end
   end
 
-  def delete
+  def destroy
     @milestone = Milestone.find(params[:id])
-    @consultation.destroy
-    redirect_to goal_path(goal)
+    @milestone.destroy
+    redirect_to goal_path
   end
+
+  private
+
+  def milestone_params
+    params.require(:milestone).permit(:description, :deadline)
+  end
+
 end
