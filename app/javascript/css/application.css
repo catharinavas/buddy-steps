@@ -66,3 +66,7 @@
 .link-grey:hover {
   @apply text-gray-700;
 }
+
+.transition-soft {
+  transition: 0.3s ease;
+}
