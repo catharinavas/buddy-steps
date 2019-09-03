@@ -1,0 +1,6 @@
+<% @news.each do |new| %>
+  <div>
+    <h2 class="text-1xl text-green-500"><%= new.title %></h2>
+    <h2><%= new.publication_type.name %></h2>
+  </div>
+<% end %>

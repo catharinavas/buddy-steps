@@ -1,0 +1,6 @@
+<% @celebrations.each do |cel| %>
+  <div>
+    <h2 class="text-1xl text-green-500"><%= cel.title %></h2>
+    <h2><%= cel.publication_type.name %></h2>
+  </div>
+<% end %>
