@@ -1,6 +1,25 @@
-<% @news.each do |new| %>
-  <div>
-    <h2 class="text-1xl text-green-500"><%= new.title %></h2>
-    <h2><%= new.publication_type.name %></h2>
-  </div>
-<% end %>
+<div class=" mx-auto p-16 sm:p-24 lg:p-48 bg-gray-200">
+
+  <% @news.each do |notice| %>
+
+    <div class="relative rounded-lg block md:flex items-center bg-gray-100 shadow-xl mt-2" style="min-height: 19rem;">
+      <div class="relative w-full md:w-2/5 h-full overflow-hidden rounded-t-lg md:rounded-t-none md:rounded-l-lg" style="min-height: 19rem;">
+        <img class="absolute inset-0 w-full h-full object-cover object-center" src="http://lorempixel.com/400/300/nightlife" alt="">
+      </div>
+      <div class="w-full md:w-3/5 h-full flex items-center bg-gray-100 rounded-lg">
+        <div class="p-12 md:pr-24 md:pl-16 md:py-12">
+          <h1><%= notice.title %></h1>
+          <p class="text-gray-600"><%= notice.content %></p>
+          <a class="flex items-baseline mt-3 text-indigo-600 hover:text-indigo-900 focus:text-indigo-900" href="">
+            <span>Learn more about our users</span>
+            <span class="text-xs ml-1">&#x279c;</span>
+          </a>
+        </div>
+        <svg class="hidden md:block absolute inset-y-0 h-full w-24 fill-current text-gray-100 -ml-12" viewBox="0 0 100 100" preserveAspectRatio="none">
+          <polygon points="50,0 100,0 50,100 0,100" />
+        </svg>
+      </div>
+    </div>
+
+  <% end %>
+</div>
