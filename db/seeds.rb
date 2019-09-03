@@ -45,7 +45,7 @@ financial_category = Category.create!(name: 'Financial')
 puts 'creating Goals, Messages and Milestones'
 User.all.each do |user|
   rand(1..3).times do
-    possible_budies = User.all.where.not(id: user)
+    possible_budies = User.where.not(id: user)
     goal = Goal.new(
       title: Faker::Company.bs,
       description: Faker::Quote.famous_last_words,
@@ -107,7 +107,8 @@ pleasures = PublicationType.create!(name: 'Pleasures')
 
 puts 'creating Publications and Claps in each community'
 Community.all.each do |community|
-  members = User.joins(:community_users).where(community_users:{community: community})
+  # members = User.joins(:community_users).where(community_users:{community: community})
+  members = community.users
 
   unless community.users == []
     12.times do
@@ -139,7 +140,7 @@ User.all.each do |user|
       title: Faker::TvShows::TwinPeaks.quote,
       content: Faker::Lorem.paragraph(sentence_count: 4),
       publication_type: [frustrations, pleasures].sample,
-      is_private: false,
+      is_private: true,
       user: user
     )
     rand(1..3) do
