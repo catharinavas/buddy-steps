@@ -55,8 +55,8 @@ ActiveRecord::Schema.define(version: 2019_09_02_205723) do
   create_table "goals", force: :cascade do |t|
     t.string "title"
     t.string "description"
-    t.date "start_date"
-    t.date "deadline"
+    t.datetime "start_date"
+    t.datetime "deadline"
     t.bigint "user_id"
     t.bigint "category_id"
     t.boolean "complete", default: false
@@ -70,7 +70,7 @@ ActiveRecord::Schema.define(version: 2019_09_02_205723) do
 
   create_table "messages", force: :cascade do |t|
     t.string "content"
-    t.date "user"
+    t.datetime "user"
     t.bigint "goal_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -79,7 +79,7 @@ ActiveRecord::Schema.define(version: 2019_09_02_205723) do
 
   create_table "milestones", force: :cascade do |t|
     t.string "description"
-    t.date "deadline"
+    t.datetime "deadline"
     t.bigint "goal_id"
     t.boolean "complete", default: false
     t.datetime "created_at", null: false
@@ -110,7 +110,7 @@ ActiveRecord::Schema.define(version: 2019_09_02_205723) do
   create_table "user_feelings", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "feeling_id"
-    t.date "feeling_date"
+    t.datetime "feeling_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "intensity", default: 3

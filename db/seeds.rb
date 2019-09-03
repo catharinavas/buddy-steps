@@ -31,8 +31,7 @@ puts 'creating Users'
     email:Faker::Internet.email,
     password: 'senha123'
   )
-
-  user.communities = [Community.all.sample]
+  user.communities << Community.all.sample
   user.save!
 end
 
@@ -50,10 +49,10 @@ User.all.each do |user|
     goal = Goal.new(
       title: Faker::Company.bs,
       description: Faker::Quote.famous_last_words,
-      # start_date: DateTime.now,
-      # deadline: (DateTime.now + rand(5..10).days),
-      start_date: Date.new(2019,9,rand(1..30)),
-      deadline: Date.new(2020,rand(1..6),rand(1..28)),
+      start_date: DateTime.now,
+      deadline: (DateTime.now + rand(5..10).days),
+      # start_date: Date.new(2019,9,rand(1..30)),
+      # deadline: Date.new(2020,rand(1..6),rand(1..28)),
       category: Category.all.sample,
       complete: false,
       buddy: possible_budies.sample
@@ -88,7 +87,7 @@ User.all.each do |user|
   Feeling.all.each do |feeling|
     10.times do
       UserFeeling.create!(
-        feeling_date: Date.new(2019,8,day),
+        feeling_date: DateTime.now,
         # feeling_date: DateTime.now,
         user: user,
         feeling: feeling,
@@ -108,23 +107,27 @@ pleasures = PublicationType.create!(name: 'Pleasures')
 
 puts 'creating Publications and Claps in each community'
 Community.all.each do |community|
-  members = Community.users
-  12.times do
-    publication = Publication.create!(
-      title: Faker::TvShows::TwinPeaks.quote,
-      content: Faker::Lorem.paragraph(sentence_count: 4),
-      publication_type: [news, questions, celebrations].sample,
-      is_private: false,
-      user: members.sample
-    )
-    author = publication.user
+  members = User.joins(:community_users).where(community_users:{community: community})
 
-    rand(1..3) do
-      possible_clappers = members.delete(author)
-      clapper = possible_clappers.sample
+  unless community.users == []
+    12.times do
+      publication = Publication.create!(
+        title: Faker::TvShows::TwinPeaks.quote,
+        content: Faker::Lorem.paragraph(sentence_count: 4),
+        publication_type: [news, questions, celebrations].sample,
+        is_private: false,
+        community: community,
+        user: members.sample
+      )
+      author = publication.user
 
-      Clap.create!(publication: publication, user: clapper.sample)
-      possible_clappers.delete!(clapper)
+      rand(1..3) do
+        possible_clappers = User.where.not(id: author)
+        clapper = possible_clappers.sample
+
+        Clap.create!(publication: publication, user: clapper.sample)
+        possible_clappers.delete!(clapper)
+      end
     end
   end
 end

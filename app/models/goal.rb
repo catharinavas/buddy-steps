@@ -6,7 +6,7 @@ class Goal < ApplicationRecord
   has_many :milestones, dependent: :destroy
 
 
-  validates :title, presence: true, uniqueness: true
+  validates :title, presence: true
   validates :description, presence: true
   validates :start_date, presence: true
   validates :deadline, presence: true
