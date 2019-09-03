@@ -1,5 +1,6 @@
 import '../css/application.css';
-import { menuToggle, dropdownToggle } from '../components/navbar.js';
+import { menuToggle, dropdownToggle, closeMenu } from '../components/navbar.js';
 
 menuToggle();
 dropdownToggle();
+closeMenu();
