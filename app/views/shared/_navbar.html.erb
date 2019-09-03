@@ -31,15 +31,15 @@
         <!-- LARGE SCREEN BUTTONS -->
         <% if !current_user %>
           <div class="hidden sm:flex sm:items-center">
-            <%= link_to "Sign in", "#",
+            <%= link_to "Sign in", new_user_session_path,
             class:"text-gray-700 border-gray-600 text-sm font-semibold hover:text-white hover:bg-gray-600 mr-4 border-2 px-4 py-2 rounded-full transition-soft" %>
-            <%= link_to "Sign up", "#",
+            <%= link_to "Sign up", new_user_registration_path,
             class:"text-white bg-blue-600 text-sm font-semibold border-2 border-blue-600 px-4 py-2 rounded-full hover:bg-blue-500 hover:border-blue-500 transition-soft" %>
           </div>
         <% end %>
 
         <!-- AVATAR -->
-        <div class="sm:hidden cursor-pointer px-2 py-1 rounded-lg">
+        <div id="avatar-icon" class="sm:hidden cursor-pointer px-2 py-1 rounded-lg">
           <% if current_user %>
             <%= image_tag "icons/avatar.png", class:"h-8 w-8"%>
           <% end %>
@@ -63,14 +63,29 @@
         <!-- SMALL SCREEN BUTTONS -->
         <% if !current_user %>
           <div class="flex justify-between items-center border-t-2 border-gray-200 pt-2">
-            <%= link_to "Sign in", "#",
+            <%= link_to "Sign in", new_user_session_path,
             class:"text-gray-700 border-gray-600 text-sm font-semibold hover:text-white hover:bg-gray-600 mr-4 border-2 px-3 py-1 rounded-full transition-soft" %>
-            <%= link_to "Sign up", "#",
+            <%= link_to "Sign up", new_user_registration_path,
             class:"text-white bg-blue-600 text-sm font-semibold border-2 border-blue-600 px-3 py-1 rounded-full hover:bg-blue-500 hover:border-blue-500 transition-soft" %>
           </div>
         <% end %>
       </div>
     </div>
+  </div>
+</div>
 
-    </div>
+<!-- DROPDOWN FROM AVATAR -->
+<div id="dropdown-list" class="hidden absolute rounded bg-white shadow-md right-0 w-48">
+  <ul>
+    <li>
+      <%= link_to "Other", "#",
+    class:"text-sm text-gray-800 font-semibold px-3 py-1 block hover:bg-gray-100 cursor-pointer pt-2" %></li>
+    <li>
+      <%= link_to "Other", "#",
+    class:"text-sm text-gray-800 font-semibold px-3 py-1 block hover:bg-gray-100 cursor-pointer" %></li>
+    <hr class="border-gray-200 w-11/12 m-auto">
+    <li>
+      <%= link_to "Sign out", destroy_user_session_path,
+    class:"text-sm text-gray-800 font-semibold px-3 py-1 block hover:bg-gray-100 cursor-pointer pb-2" %></li>
+  </ul>
 </div>
