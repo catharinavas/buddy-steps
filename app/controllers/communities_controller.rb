@@ -6,4 +6,8 @@ class CommunitiesController < ApplicationController
       community.publications.each { |pub| @all_publications << pub }
     end
   end
+
+  def show
+    @community = Community.find(params[:id])
+  end
 end
