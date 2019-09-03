@@ -1,8 +1,13 @@
 Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   # routes to community
   resources :communities, only: :show
+
+  # USERS
+  get "dashboard", to: "users#dashboard"
+
+  # USER_FEELINGS
+  resources :user_feelings, only: %i[new create edit update show]
 end

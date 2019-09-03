@@ -2,7 +2,7 @@
 
     <div class="hidden sm:inline-block absolute bg-purple-600 h-1 my-0 p-0 w-full"></div>
 
-    <div class="mx-3 mb-3 px-4 justify-between">
+    <div class="mx-3 px-4 justify-between">
       <div class="flex items-center justify-between py-4">
 
         <!-- SMALL SCREEN MENU ICON -->
@@ -75,17 +75,17 @@
 </div>
 
 <!-- DROPDOWN FROM AVATAR -->
-<div id="dropdown-list" class="hidden absolute rounded bg-white shadow-md right-0 w-48">
+<div id="dropdown-list" class="hidden absolute rounded bg-gray-100 shadow-md right-0 w-48 text-right pr-5">
   <ul>
     <li>
       <%= link_to "Other", "#",
-    class:"text-sm text-gray-800 font-semibold px-3 py-1 block hover:bg-gray-100 cursor-pointer pt-2" %></li>
+    class:"text-sm text-gray-800 font-semibold px-3 py-1 block hover:bg-gray-200 cursor-pointer pt-2" %></li>
     <li>
       <%= link_to "Other", "#",
-    class:"text-sm text-gray-800 font-semibold px-3 py-1 block hover:bg-gray-100 cursor-pointer" %></li>
+    class:"text-sm text-gray-800 font-semibold px-3 py-1 block hover:bg-gray-200 cursor-pointer" %></li>
     <hr class="border-gray-200 w-11/12 m-auto">
     <li>
       <%= link_to "Sign out", destroy_user_session_path,
-    class:"text-sm text-gray-800 font-semibold px-3 py-1 block hover:bg-gray-100 cursor-pointer pb-2" %></li>
+    class:"text-sm text-gray-600 px-3 py-1 block hover:bg-gray-200 cursor-pointer pb-2" %></li>
   </ul>
 </div>
