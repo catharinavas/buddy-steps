@@ -1,25 +1,36 @@
-<div class=" mx-auto p-16 sm:p-24 lg:p-48 bg-gray-200">
+<div class="mx-auto p-0 sm:p-24 lg:p-48 bg-gray-200">
 
   <% @news.each do |notice| %>
 
+    <!-- image publication -->
     <div class="relative rounded-lg block md:flex items-center bg-gray-100 shadow-xl mt-2" style="min-height: 19rem;">
       <div class="relative w-full md:w-2/5 h-full overflow-hidden rounded-t-lg md:rounded-t-none md:rounded-l-lg" style="min-height: 19rem;">
         <img class="absolute inset-0 w-full h-full object-cover object-center" src="http://lorempixel.com/400/300/nightlife" alt="">
       </div>
-      <div class="w-full md:w-3/5 h-full flex items-center bg-gray-100 rounded-lg">
-        <div class="p-12 md:pr-24 md:pl-16 md:py-12">
-          <h1><%= notice.title %></h1>
-          <p class="text-gray-600"><%= notice.content %></p>
-          <a class="flex items-baseline mt-3 text-indigo-600 hover:text-indigo-900 focus:text-indigo-900" href="">
-            <span>Learn more about our users</span>
-            <span class="text-xs ml-1">&#x279c;</span>
-          </a>
+
+
+      <!-- user avatar -->
+      <div class="relative w-full md:w-3/5 h-full flex items-center bg-gray-100 rounded-lg"  style="min-height: 19rem;">
+        <div class="absolute top-0 left-0 w-12 h-12 lg:w-16 lg:h-16 xm:mr-2 mt- sm:mr-8 inline-block mb-6 rounded-full bg-gray-300 xm:ml-2 xm:mt-2 sm:ml-8 sm:mt-3 line-height-username1" style="margin-top: 4px;">
+            <img class="rounded-full float-left w-12 h-12 lg:w-16 lg:h-16" src="https://randomuser.me/api/portraits/women/34.jpg">
         </div>
-        <svg class="hidden md:block absolute inset-y-0 h-full w-24 fill-current text-gray-100 -ml-12" viewBox="0 0 100 100" preserveAspectRatio="none">
-          <polygon points="50,0 100,0 50,100 0,100" />
-        </svg>
+
+        <!-- type of publicaiton -->
+        <% if notice.publication_type.id == 1 %>
+          <img src="https://image.flaticon.com/icons/svg/126/126115.svg" class="absolute top-0 right-0 w-12 h-12 lg:w-16 lg:h-16 xm:mr-2 xm:mt-2 sm:mr-8 sm:mt-3" style="margin-top: 4px;"  alt="">
+        <% else %>
+          <img src="https://image.flaticon.com/icons/svg/906/906794.svg" class="absolute top-0 right-0 w-12 h-12 lg:w-16 lg:h-16 xm:mr-2 xm:mt-2 sm:mr-8 sm:mt-3" style="margin-top: 4px;"  alt="">
+        <% end %>
+
+        <!-- Publication infos -->
+        <div class="p-12 md:pr-24 md:pl-16 md:py-12">
+          <h1 class="mb-2"><%= notice.title %></h1>
+          <p class="text-gray-600"><%= notice.content %></p>
+        </div>
+
       </div>
     </div>
 
   <% end %>
 </div>
+
