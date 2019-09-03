@@ -1,2 +1,11 @@
-<h1>Goals#show</h1>
-<p>Find me in app/views/goals/show.html.erb</p>
+<h1><%= @goal.title %></h1>
+<h2><%= @goal.description %></h2>
+
+<h3><%= @goal.start_date %></h3>
+<h3><%= @goal.deadline %></h3>
+
+<% render '/milestones' %>
+
+<% render 'chat' %>
+
+
