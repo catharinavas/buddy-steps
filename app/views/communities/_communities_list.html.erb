@@ -1,7 +1,11 @@
-<div class="communities-list">
+<div class="communities-list m-10">
   <% communities.each do |community| %>
-    <div class="card">
-      <p><%= community.name %></p>
+    <div class="w-full h-32 md:h-48 shadow rounded-lg border border-gray-200 flex items-center justify-center bg-cover" style="background-image: linear-gradient(rgba(38, 21, 66, 0.5),rgba(38, 21, 66, 0.5)), url('https://images.unsplash.com/photo-1454875392665-2ac2c85e8d3e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=333&q=80');">
+      <!-- <div class="mb-5 pb-5 h-64 w-full rounded-t-lg" > -->
+        <!-- <div style="background-image: url('https://images.unsplash.com/photo-1454875392665-2ac2c85e8d3e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=333&q=80')" class="h-64 w-full"></div> -->
+        <!-- <img src="https://images.unsplash.com/photo-1454875392665-2ac2c85e8d3e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=333&q=80" alt="old woman with crossed hands" class="w-"> -->
+      <!-- </div> -->
+      <p class="text-white font-bold text-xl"><%= community.name %></p>
     </div>
   <% end %>
 </div>

@@ -1,7 +1,18 @@
-<div class="publications-list">
-  <% all_publications.each do |pub| %>
-    <div class="notification">
-      <p><%= pub %></p>
+<div class="publications-list m-10">
+  <% all_publications.each do |publication| %>
+    <div class="flex flex-col md:flex-row items-center mb-10 py-5 w-full shadow rounded-lg border border-gray-200">
+      <div class="flex md:flex-col items-center w-1/6 flex-shrink-0 mx-1">
+        <img src="https://image.flaticon.com/icons/svg/126/126115.svg" alt="newspaper icon" class="mt-8 mb-12 md:my-0 w-12">
+        <a href="#" class="hidden md:block text-center"><%= publication.community.name %></a>
+      </div>
+      <div class="flex flex-col md:w-5/6 mx-8">
+        <h2 class="font-bold mb-3 mt-5 md:mt-0 text-lg text-left"><%= publication.title %></h2>
+        <p class="text-gray-600 mb-5 text-left"><%= publication.content %></p>
+        <div class="flex justify-between items-end">
+          <p class="text-blue-300 text-sm">Published by  <a href="#" class="text-blue-300 italic underline"><%= publication.user.first_name %></a>  on <%= publication.created_at.strftime('%d/%m/%Y at %I:%M') %></p>
+          <p class="text-blue-300 text-sm flex-shrink-0"><%= publication.claps.count %> <a href="#"><i class="text-xl fas fa-sign-language"></i></a></p>
+        </div>
+      </div>
     </div>
   <% end %>
 </div>
