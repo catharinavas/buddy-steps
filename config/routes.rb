@@ -3,8 +3,8 @@ Rails.application.routes.draw do
   root to: 'pages#home'
 
   # USERS
-  get "dashboard", to: "users#dashboard"
+  get "/dashboard/:id", to: "users#dashboard"
 
   # USER_FEELINGS
-  resources :user_feelings, only: %i[new create edit update show]
+  resources :user_feelings, only: %i[new create edit update]
 end
