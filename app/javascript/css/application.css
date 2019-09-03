@@ -70,3 +70,7 @@
 .transition-soft {
   transition: 0.3s ease;
 }
+
+.body {
+  @apply h-screen pt-3 bg-gray-100;
+}
