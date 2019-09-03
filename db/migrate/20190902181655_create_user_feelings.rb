@@ -3,7 +3,7 @@ class CreateUserFeelings < ActiveRecord::Migration[5.2]
     create_table :user_feelings do |t|
       t.references :user, foreign_key: true
       t.references :feeling, foreign_key: true
-      t.datetime :feeling_date
+      t.date :feeling_date
 
       t.timestamps
     end

@@ -55,8 +55,8 @@ ActiveRecord::Schema.define(version: 2019_09_02_205723) do
   create_table "goals", force: :cascade do |t|
     t.string "title"
     t.string "description"
-    t.datetime "start_date"
-    t.datetime "deadline"
+    t.date "start_date"
+    t.date "deadline"
     t.bigint "user_id"
     t.bigint "category_id"
     t.boolean "complete", default: false
@@ -70,16 +70,17 @@ ActiveRecord::Schema.define(version: 2019_09_02_205723) do
 
   create_table "messages", force: :cascade do |t|
     t.string "content"
-    t.datetime "user"
+    t.bigint "user_id"
     t.bigint "goal_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["goal_id"], name: "index_messages_on_goal_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
   create_table "milestones", force: :cascade do |t|
     t.string "description"
-    t.datetime "deadline"
+    t.date "deadline"
     t.bigint "goal_id"
     t.boolean "complete", default: false
     t.datetime "created_at", null: false
@@ -110,7 +111,7 @@ ActiveRecord::Schema.define(version: 2019_09_02_205723) do
   create_table "user_feelings", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "feeling_id"
-    t.datetime "feeling_date"
+    t.date "feeling_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "intensity", default: 3
@@ -140,6 +141,7 @@ ActiveRecord::Schema.define(version: 2019_09_02_205723) do
   add_foreign_key "goals", "categories"
   add_foreign_key "goals", "users"
   add_foreign_key "messages", "goals"
+  add_foreign_key "messages", "users"
   add_foreign_key "milestones", "goals"
   add_foreign_key "publications", "communities"
   add_foreign_key "publications", "publication_types"
