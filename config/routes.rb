@@ -2,6 +2,9 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
 
+  # routes to community
+  resources :communities, only: :show
+
   # USERS
   get "/dashboard/:id", to: "users#dashboard"
 
