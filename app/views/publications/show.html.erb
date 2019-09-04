@@ -1,3 +1,30 @@
-<h1><%= @publication.title %></h1>
-<p><%= @publication.content %></p>
-<p>Posted in <%= @publication.community.name %></p>
+<div class="md:w-1/2 md:mx-auto mt-1 md:my-12 md:flex p-10 bg-white shadow md:rounded-lg border border-gray-200">
+  <div class="">
+    <h1 class="text-2xl font-bold"><%= @publication.title %></h1>
+    <hr class="mt-4 mb-2">
+    <div class="flex justify-between items-center pb-3 md:pb-0 mb-10">
+      <p class="text-blue-300 text-sm">
+        <%= @publication.publication_type.name %>
+        posted by
+        <%= link_to "#{@publication.user.first_name}", dashboard_path(@publication.user),
+          class: "italic underline"  %>
+        in
+        <%= link_to "#{@publication.community.name}", community_path(@publication.community),
+          class: "italic underline" %>,
+        on
+        <%= @publication.created_at.strftime('%d/%m/%Y at %I:%M') %>
+      </p>
+    </div>
+
+    <div class="publication-content text-gray-600">
+      <%= simple_format(@publication.content) %>
+    </div>
+
+    <p class="text-blue-300 text-sm text-right flex-shrink-0 ml-5 mt-16">
+      <%= link_to new_publication_clap_path(@publication), remote: true,class: "border p-3 border-blue-300 rounded-full" do%>
+        <span id="clap-count" data-clapID="<%= @publication.id %>"><%= @publication.claps.count %></span>
+        <i class="text-xl fas fa-sign-language text-blue-300"></i>
+      <% end %>
+    </p>
+  </div>
+</div>
