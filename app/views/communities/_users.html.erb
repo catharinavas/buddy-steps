@@ -5,7 +5,8 @@
       <!-- Column Content -->
 
       <%= user.first_name %>
-
+      <%= cl_image_tag user.photo, width: 150, height: 150, crop: :thumb, gravity: :face) %>
+      <%= cl_image_tag user.photo, height: 300, width: 400, crop: :fill %>
 
     <!-- end of users -->
     </div>
