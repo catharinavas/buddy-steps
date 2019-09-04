@@ -18,8 +18,12 @@
 
         <!-- LARGE SCREEN TABS -->
         <div class="hidden sm:flex sm:items-center">
-          <h1><%= link_to "Dashboard", dashboard_path(current_user),
-          class:"text-gray-700 text-sm font-semibold hover:text-purple-600 mr-4" %></h1>
+
+          <% unless current_user.nil? %>
+            <h1><%= link_to "Dashboard", dashboard_path(current_user),
+              class:"text-gray-700 text-sm font-semibold hover:text-purple-600 mr-4" %></h1>
+          <% end %>
+
           <h1><%= link_to "Diary", "#",
           class:"text-gray-700 text-sm font-semibold hover:text-purple-600 mr-4" %></h1>
           <h1><%= link_to "Community", "#",
@@ -51,8 +55,12 @@
 
       <!-- SMALL SCREEN TABS -->
       <div class="flex flex-col">
-        <h1><%= link_to "Dashboard", dashboard_path(current_user),
-        class:"text-gray-800 text-sm font-semibold hover:text-purple-600 mb-1" %></h1>
+
+        <% unless current_user.nil? %>
+          <h1><%= link_to "Dashboard", dashboard_path(current_user),
+            class:"text-gray-800 text-sm font-semibold hover:text-purple-600 mb-1" %></h1>
+        <% end %>
+
         <h1><%= link_to "Diary", "#",
         class:"text-gray-800 text-sm font-semibold hover:text-purple-600 mb-1" %></h1>
         <h1><%= link_to "Community", "#",
