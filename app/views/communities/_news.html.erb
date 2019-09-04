@@ -3,7 +3,7 @@
   <% @news.each do |publication| %>
     <div class="flex flex-col md:flex-row items-center mb-10 pt-5 w-full shadow rounded-lg border border-gray-200">
       <div class="flex md:flex-col items-center w-1/6 flex-shrink-0 mx-1">
-        <% if publication.publication_type.id == 1 %>
+        <% if publication.publication_type.id == @type1[0].id %>
         <img src="https://image.flaticon.com/icons/svg/126/126115.svg" alt="newspaper icon" class="mt-8 mb-12 md:my-0 w-12">
         <% else %>
         <img src="https://image.flaticon.com/icons/svg/906/906794.svg" alt="newspaper icon" class="mt-8 mb-12 md:my-0 w-12">
