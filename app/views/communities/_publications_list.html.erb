@@ -14,7 +14,7 @@
         <div class="flex justify-between items-center pb-3 md:pb-0">
           <p class="text-blue-300 text-sm">
             Posted by
-            <%= link_to "#{publication.user.first_name}", user_path(publication.user),
+            <%= link_to "#{publication.user.first_name}", dashboard_path(publication.user),
               class: "italic underline"  %>
             in
             <%= link_to "#{publication.community.name}", community_path(publication.community),

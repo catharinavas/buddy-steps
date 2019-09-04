@@ -39,7 +39,7 @@
         <% end %>
 
         <!-- AVATAR -->
-        <div id="avatar-icon" class="sm:hidden cursor-pointer px-2 py-1 rounded-lg">
+        <div id="avatar-icon" class="cursor-pointer px-2 py-1 rounded-lg">
           <% if current_user %>
             <%= image_tag "icons/avatar.png", class:"h-8 w-8"%>
           <% end %>
@@ -85,7 +85,7 @@
     class:"text-sm text-gray-800 font-semibold px-3 py-1 block hover:bg-gray-200 cursor-pointer" %></li>
     <hr class="border-gray-200 w-11/12 m-auto">
     <li>
-      <%= link_to "Sign out", destroy_user_session_path,
+      <%= link_to "Sign out", destroy_user_session_path, method: :delete,
     class:"text-sm text-gray-600 px-3 py-1 block hover:bg-gray-200 cursor-pointer pb-2" %></li>
   </ul>
 </div>
