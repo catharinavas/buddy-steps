@@ -1,6 +1,6 @@
 <div class="font-sans w-full m-0 bg-white shadow h-67">
 
-    <div class="hidden sm:inline-block absolute bg-purple-600 h-1 my-0 p-0 w-full"></div>
+    <div class="hidden sm:inline-block absolute bg-purple-900 h-1 my-0 p-0 w-full"></div>
 
     <div class="mx-3 px-4 justify-between">
       <div class="flex items-center justify-between py-4">
@@ -12,13 +12,13 @@
 
         <!-- LOGO -->
         <div class="inline text-xl align-middle">
-          <%= fa_icon "walking", class: "mx-2 text-purple-600" %>
-          <span class="text-purple-600 font-bold">NEXT STEP</span>
+          <%= fa_icon "walking", class: "mx-2 text-purple-900" %>
+          <span class="text-purple-900 font-bold">NEXT STEP</span>
         </div>
 
         <!-- LARGE SCREEN TABS -->
         <div class="hidden sm:flex sm:items-center">
-          <h1><%= link_to "Dashboard", "#",
+          <h1><%= link_to "Dashboard", dashboard_path(current_user),
           class:"text-gray-700 text-sm font-semibold hover:text-purple-600 mr-4" %></h1>
           <h1><%= link_to "Diary", "#",
           class:"text-gray-700 text-sm font-semibold hover:text-purple-600 mr-4" %></h1>
@@ -51,7 +51,7 @@
 
       <!-- SMALL SCREEN TABS -->
       <div class="flex flex-col">
-        <h1><%= link_to "Dashboard", "#",
+        <h1><%= link_to "Dashboard", dashboard_path(current_user),
         class:"text-gray-800 text-sm font-semibold hover:text-purple-600 mb-1" %></h1>
         <h1><%= link_to "Diary", "#",
         class:"text-gray-800 text-sm font-semibold hover:text-purple-600 mb-1" %></h1>

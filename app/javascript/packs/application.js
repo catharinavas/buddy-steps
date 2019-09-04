@@ -9,6 +9,8 @@ import { readToggle } from '../components/read_toggle.js';
 //publications index;
 readToggle();
 
+import { cardsGoals } from '../components/dashboard';
+
 menuToggle();
 dropdownToggle();
 closeMenu();
@@ -18,3 +20,5 @@ showPublications();
 addMilestone();
 chat();
 modal();
+
+cardsGoals();
