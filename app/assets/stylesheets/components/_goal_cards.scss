@@ -1,0 +1,14 @@
+.scroll {
+  -webkit-overflow-scrolling: touch;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.scroll-card {
+  flex: 0 0 auto;
+}
+
+.rounded-2xl {
+  border-radius: 1.5rem;
+}

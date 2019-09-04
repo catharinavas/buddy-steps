@@ -4,6 +4,9 @@ class UsersController < ApplicationController
   def dashboard
     @user = User.find(params[:id])
     @moods = UserFeeling.where(user: params[:id])
+    # GOALS DATA
+    @goals = Goal.where(user: params[:id])
+
   end
   
   def show
