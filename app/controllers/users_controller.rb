@@ -2,6 +2,9 @@ class UsersController < ApplicationController
   def dashboard
     # MOOD GRAPH DATA
     @moods = UserFeeling.where(user: params[:id])
+    # GOALS DATA
+    @goals = Goal.where(user: params[:id])
+
   end
 
   private
