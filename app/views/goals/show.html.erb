@@ -1,11 +1,12 @@
-<h1><%= @goal.title %></h1>
-<h2><%= @goal.description %></h2>
+<div class="container px-4">
+  <h1 class="text-purple-900 text-2xl my-1"> Goal: <%= @goal.title.capitalize %></h1>
+  <h2 class="text-gray-900 text-lg my-1">Description: <%= @goal.description %></h2>
 
-<h3><%= @goal.start_date %></h3>
-<h3><%= @goal.deadline %></h3>
+  <p class="text-gray-900 text-base my-1">Days since goal started: <%= (@goal.start_date - Date.today).to_i %></p>
+  <p class="text-gray-900 text-base my-1">Deadline: <%= @goal.deadline %></p>
 
-<%= render 'milestones' %>
+  <%= render 'milestones' %>
 
-<%= render 'chat' %>
-
+  <%= render 'chat' %>
+</div>
 

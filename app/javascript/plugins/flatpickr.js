@@ -5,7 +5,6 @@ import "flatpickr/dist/flatpickr.min.css" // Note this is important!
 
 
 flatpickr(".datepicker", {
-          enableTime: true,
           altInput: true,
           minDate: new Date()
           })

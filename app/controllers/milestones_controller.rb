@@ -22,12 +22,16 @@ class MilestonesController < ApplicationController
 
   def edit
     @milestone = Milestone.find(params[:id])
+    respond_to do |format|
+      format.js
+    end
   end
 
   def update
+    @goal = Goal.find(params[:goal_id])
     @milestone = Milestone.find(params[:id])
-    if @milestone.update(milestone_params)
-      redirect_to @goal
+    if @milestone.update!(milestone_params)
+      redirect_to goal_path(@goal)
     else
       render 'edit'
     end

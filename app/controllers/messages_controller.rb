@@ -11,7 +11,7 @@ class MessagesController < ApplicationController
       end
     else
       respond_to do |format|
-        format.html { render "goal/show" }
+        format.html { render "goals/show" }
         format.js
       end
     end
