@@ -6,13 +6,16 @@ function refreshForm(innerHTML) {
 
 function addMilestone(milestoneHTML) {
   const milestones = document.getElementById('milestones');
-  milestones.insertAdjacentHTML('beforeend', milestoneHTML);
+  milestones.insertAdjacentHTML('afterbegin', milestoneHTML);
   console.log(milestones);
 }
+
+var banana = document.getElementById('add-milestone');
+banana.classList.add('hidden');
 
 <% if @milestone.errors.any? %>
   refreshForm('<%= j render "milestones/new_form", goal: @goal, milestone: @milestone %>');
 <% else %>
-  addMilestone('<%= j render "goals/milestones", milestone: @milestone %>');
+  addMilestone('<%= j render "milestones/milestone", milestone: @milestone %>');
   refreshForm('<%= j render "milestones/new_form", goal: @goal, milestone: Milestone.new %>');
 <% end %>
