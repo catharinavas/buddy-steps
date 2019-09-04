@@ -105,7 +105,7 @@ ActiveRecord::Schema.define(version: 2019_09_04_200849) do
 
   create_table "publications", force: :cascade do |t|
     t.string "title"
-    t.string "content"
+    t.text "content"
     t.bigint "user_id"
     t.bigint "community_id"
     t.datetime "created_at", null: false

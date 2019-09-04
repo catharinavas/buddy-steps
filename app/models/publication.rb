@@ -4,9 +4,7 @@ class Publication < ApplicationRecord
   belongs_to :publication_type
   has_many :claps
 
-
   validates :title, presence: true
   validates :content, presence: true
   validates :publication_type_id, presence: true
-
 end

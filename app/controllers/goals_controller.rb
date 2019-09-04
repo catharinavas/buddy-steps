@@ -6,11 +6,21 @@ class GoalsController < ApplicationController
     @milestone = Milestone.new
   end
 
-  def new
-    @goal = Goal.new
+  def create
+    @goal = Goal.new()
+    @goal.buddy = buddy_assign
     milestones = []
     @goal.milestones = milestones
     @milestone = Milestone.new
+    @goal.start_date = Date.today
+
+
+
+
+
+
+
+
   end
 
   def buddy_assign
