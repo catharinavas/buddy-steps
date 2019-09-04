@@ -17,8 +17,8 @@
   <%= simple_form_for @publication, url: publications_path do |f| %>
     <%= f.input :title %>
     <%= f.input :content %>
-    <%= f.association :publication_type %>
-    <%= f.input :community_id, :as => :hidden, :input_html => { :value => @community.id } %>
+    <%= f.association :publication_type, collection: @type1 %>
+    <%= f.association :community, :as => :hidden, :input_html => { :value => @community.id } %>
     <%= f.button :submit, as: " " %>
   <% end %>
 
