@@ -8,7 +8,6 @@ const modal = () => {
   }
 
   const overlay = document.querySelector('.modal-overlay');
-  console.log(overlay)
   if(overlay){
     overlay.addEventListener('click', toggleModal)
   }

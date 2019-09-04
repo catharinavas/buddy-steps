@@ -1,13 +1,11 @@
 function refreshForm(innerHTML) {
   const newMilestone = document.getElementById('new_milestone');
   newMilestone.innerHTML = innerHTML;
-  console.log(newMilestone.innerHTML);
 }
 
 function addMilestone(milestoneHTML) {
   const milestones = document.getElementById('milestones');
   milestones.insertAdjacentHTML('afterbegin', milestoneHTML);
-  console.log(milestones);
 }
 
 var banana = document.getElementById('add-milestone');

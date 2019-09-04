@@ -11,6 +11,7 @@ class CommunitiesController < ApplicationController
   end
 
   def show
+    @publication = Publication.new
     @users = @community.users
     @type1 = PublicationType.where(name: ['News', 'Questions'])
     @type2 = PublicationType.where(name: 'Celebrations')
