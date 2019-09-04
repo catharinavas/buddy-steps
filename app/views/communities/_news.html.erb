@@ -1,36 +1,40 @@
-<div class="mx-auto p-0 sm:p-24 lg:p-48 bg-gray-200">
 
-  <% @news.each do |notice| %>
-
-    <!-- image publication -->
-    <div class="relative rounded-lg block md:flex items-center bg-gray-100 shadow-xl mt-2" style="min-height: 19rem;">
-      <div class="relative w-full md:w-2/5 h-full overflow-hidden rounded-t-lg md:rounded-t-none md:rounded-l-lg" style="min-height: 19rem;">
-        <img class="absolute inset-0 w-full h-full object-cover object-center" src="http://lorempixel.com/400/300/nightlife" alt="">
-      </div>
-
-
-      <!-- user avatar -->
-      <div class="relative w-full md:w-3/5 h-full flex items-center bg-gray-100 rounded-lg"  style="min-height: 19rem;">
-        <div class="absolute top-0 left-0 w-12 h-12 lg:w-16 lg:h-16 xm:mr-2 mt- sm:mr-8 inline-block mb-6 rounded-full bg-gray-300 xm:ml-2 xm:mt-2 sm:ml-8 sm:mt-3 line-height-username1" style="margin-top: 4px;">
-            <img class="rounded-full float-left w-12 h-12 lg:w-16 lg:h-16" src="https://randomuser.me/api/portraits/women/34.jpg">
-        </div>
-
-        <!-- type of publicaiton -->
-        <% if notice.publication_type.id == 1 %>
-          <img src="https://image.flaticon.com/icons/svg/126/126115.svg" class="absolute top-0 right-0 w-12 h-12 lg:w-16 lg:h-16 xm:mr-2 xm:mt-2 sm:mr-8 sm:mt-3" style="margin-top: 4px;"  alt="">
+<div class="publications-list m-5 md:m-10">
+  <% @news.each do |publication| %>
+    <div class="flex flex-col md:flex-row items-center mb-10 pt-5 w-full shadow rounded-lg border border-gray-200">
+      <div class="flex md:flex-col items-center w-1/6 flex-shrink-0 mx-1">
+        <% if publication.publication_type.id == @type1[0].id %>
+        <img src="https://image.flaticon.com/icons/svg/126/126115.svg" alt="newspaper icon" class="mt-8 mb-12 md:my-0 w-12">
         <% else %>
-          <img src="https://image.flaticon.com/icons/svg/906/906794.svg" class="absolute top-0 right-0 w-12 h-12 lg:w-16 lg:h-16 xm:mr-2 xm:mt-2 sm:mr-8 sm:mt-3" style="margin-top: 4px;"  alt="">
+        <img src="https://image.flaticon.com/icons/svg/906/906794.svg" alt="newspaper icon" class="mt-8 mb-12 md:my-0 w-12">
         <% end %>
-
-        <!-- Publication infos -->
-        <div class="p-12 md:pr-24 md:pl-16 md:py-12">
-          <h1 class="mb-2"><%= notice.title %></h1>
-          <p class="text-gray-600"><%= notice.content %></p>
+      </div>
+      <div class="flex flex-col md:w-5/6 p-8 md:pl-0">
+        <!-- <a href="#"> -->
+        <%= link_to publication_path(publication) do %>
+          <h2 class="font-bold mb-2 mt-5 md:mt-0 text-lg text-left"><%= publication.title %></h2>
+          <p class="text-gray-600 mb-16 md:mb-8 text-left"><%= publication.content %></p>
+        <!-- </a> -->
+        <% end %>
+        <div class="flex justify-between items-center pb-3 md:pb-0">
+          <p class="text-blue-300 text-sm">
+            Posted by
+            <%= link_to "#{publication.user.first_name}", dashboard_path(publication.user),
+              class: "italic underline"  %>
+            in
+            <%= link_to "#{publication.community.name}", community_path(publication.community),
+              class: "italic underline" %>,
+            on
+            <%= publication.created_at.strftime('%d/%m/%Y at %I:%M') %>
+          </p>
+          <p class="text-blue-300 text-sm flex-shrink-0 ml-5">
+            <%= link_to new_publication_clap_path(publication), remote: true,class: "border p-3 border-blue-300 rounded-full" do%>
+              <span id="clap-count" data-publication="<%= publication.id %>"><%= publication.claps.count %></span>
+              <i class="text-xl fas fa-sign-language text-blue-300"></i>
+            <% end %>
+          </p>
         </div>
-
       </div>
     </div>
-
   <% end %>
 </div>
-

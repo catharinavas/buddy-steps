@@ -12,8 +12,10 @@ class CommunitiesController < ApplicationController
 
   def show
     @users = @community.users
-    @news = Publication.where(community: 1, publication_type: [1, 2])
-    @celebrations = Publication.where(community: 1, publication_type: 3)
+    @type1 = PublicationType.where(name: ['News', 'Questions'])
+    @type2 = PublicationType.where(name: 'Celebrations')
+    @news = Publication.where(community: params[:id], publication_type: [@type1[0].id, @type1[1].id])
+    @celebrations = Publication.where(community: params[:id], publication_type: @type2[0].id)
   end
 
   private

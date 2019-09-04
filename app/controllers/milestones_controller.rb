@@ -13,10 +13,17 @@ class MilestonesController < ApplicationController
     @goal = Goal.find(params[:goal_id])
     @milestone = Milestone.new(milestone_params)
     @milestone.goal_id = @goal.id
+    @milestones = @goal.milestones
     if @milestone.save
-      redirect_to goal_path(@goal)
+      respond_to do |format|
+        format.html { redirect_to goal_path(@goal) }
+        format.js
+      end
     else
-      render '/goals/show'
+      respond_to do |format|
+        format.html { render '/goals/show' }
+        format.js
+      end
     end
   end
 

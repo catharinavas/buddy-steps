@@ -10,6 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
 ActiveRecord::Schema.define(version: 2019_09_04_160452) do
 
   # These are extensions that must be enabled in order to support this database
@@ -63,6 +64,7 @@ ActiveRecord::Schema.define(version: 2019_09_04_160452) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "buddy_id"
+    t.boolean "confirmed_buddy", default: false
     t.index ["buddy_id"], name: "index_goals_on_buddy_id"
     t.index ["category_id"], name: "index_goals_on_category_id"
     t.index ["user_id"], name: "index_goals_on_user_id"
@@ -130,6 +132,8 @@ ActiveRecord::Schema.define(version: 2019_09_04_160452) do
     t.string "first_name"
     t.string "last_name"
     t.string "address"
+    t.string "photo"
+    t.string "city"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
