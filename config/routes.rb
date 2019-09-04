@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     member do
       get 'buddy_assign'
       get 'confirm_buddy'
+      get 'cancel_buddy'
     end
   end
 
