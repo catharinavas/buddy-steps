@@ -1,0 +1,84 @@
+
+<div class="container md:flex flex-row md:m-10">
+  <h1 class="text-purple-800 text-xl my-2">Milestones for this goal</h1>
+  <a id="add-icon" class="text-purple-800 text-xl my-2" href="#"><%= fa_icon "plus-circle" %></a>
+  <div id="add-milestone" class="hidden transition-soft transition-delay">
+    <% if current_user.id == @goal.user_id %>
+      <h3>Add a new milestone</h3>
+      <%= simple_form_for [@goal, @milestone] do |f| %>
+        <%= f.input :description %>
+        <%= f.input :deadline, as: :string, required: false, input_html: {class: "datepicker"} %>
+        <%= f.button :submit %>
+      <% end %>
+    <% end %>
+  </div>
+</div>
+  <table class="table-auto">
+    <tbody>
+      <thead class="text-gray-900 text-xs my-1">
+        <th>Milestone</th>
+        <th>Due date</th>
+        <th></th>
+      </thead>
+      <% @milestones.each do |milestone| %>
+        <tr class="text-gray-900 text-xs Smy-1">
+          <td>
+            <style>
+            .custom-label input:checked + svg {
+                display: block !important;
+            }
+            </style>
+            <label class="custom-label flex">
+                  <div class="bg-white shadow w-4 h-4 p-1 flex justify-center items-center mr-2">
+                    <input type="checkbox" class="hidden">
+                    <svg class="hidden w-4 h-4 text-green-600 pointer-events-none" viewBox="0 0 172 172"><g fill="none" stroke-width="none" stroke-miterlimit="10" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode:normal"><path d="M0 172V0h172v172z"/><path d="M145.433 37.933L64.5 118.8658 33.7337 88.0996l-10.134 10.1341L64.5 139.1341l91.067-91.067z" fill="currentColor" stroke-width="1"/></g></svg>
+                  </div>
+                  <span class="select-none"><%= milestone.description %></span>
+            </label>
+          </td>
+          <td class="whitespace-no-wrap"><%= milestone.deadline.strftime("%d %b") %></td>
+          <td class="text-gray-500 hover:text-gray-900 whitespace-no-wrap">
+            <% if current_user.id == milestone.goal.user_id %>
+              <%= fa_icon "edit", class: "modal-open" %>
+              <div class="modal opacity-0 pointer-events-none fixed w-full h-full top-0 left-0 flex items-center justify-center">
+                <div class="modal-overlay absolute w-full h-full bg-gray-900 opacity-50"></div>
+
+                <div class="modal-container bg-white w-11/12 md:max-w-md mx-auto rounded shadow-lg z-50 overflow-y-auto">
+
+                  <div class="modal-close absolute top-0 right-0 cursor-pointer flex flex-col items-center mt-4 mr-4 text-white text-sm z-50">
+                    <svg class="fill-current text-white" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18">
+                      <path d="M14.53 4.53l-1.06-1.06L9 7.94 4.53 3.47 3.47 4.53 7.94 9l-4.47 4.47 1.06 1.06L9 10.06l4.47 4.47 1.06-1.06L10.06 9z"></path>
+                    </svg>
+                    <span class="text-sm">(Esc)</span>
+                  </div>
+
+                  <!-- Add margin if you want to see some of the overlay behind the modal-->
+                  <div class="modal-content py-4 text-left px-6">
+                    <!--Title-->
+                    <div class="flex justify-between items-center pb-3">
+                      <p class="text-2xl font-bold">Simple Modal!</p>
+                      <div class="modal-close cursor-pointer z-50">
+                        <svg class="fill-current text-black" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18">
+                          <path d="M14.53 4.53l-1.06-1.06L9 7.94 4.53 3.47 3.47 4.53 7.94 9l-4.47 4.47 1.06 1.06L9 10.06l4.47 4.47 1.06-1.06L10.06 9z"></path>
+                        </svg>
+                      </div>
+                    </div>
+
+                    <!--Body-->
+                    <%= render 'form', goal: @goal, milestone: milestone %>
+                    <!--Footer-->
+                    <div class="flex justify-end pt-2">
+                      <button class="px-4 bg-transparent p-3 rounded-lg text-indigo-500 hover:bg-gray-100 hover:text-indigo-400 mr-2">Action</button>
+                      <button class="modal-close px-4 bg-indigo-500 p-3 rounded-lg text-white hover:bg-indigo-400">Close</button>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
