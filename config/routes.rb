@@ -5,6 +5,10 @@ Rails.application.routes.draw do
   resources :goals, only: %i[show] do
     resources :milestones, only: %i[index new create update]
     resources :messages, only: %i[new create index]
+    member do
+      get 'buddy_assign'
+      get 'confirm_buddy'
+    end
   end
 
   resources :milestones, only: %i[edit destroy]
@@ -24,7 +28,5 @@ Rails.application.routes.draw do
   # USER_FEELINGS
   resources :user_feelings, only: %i[new create edit update show]
 
-  # GOALS
-  resources :goal, only: %i[show]
 
 end
