@@ -28,7 +28,8 @@ user = User.new(
     first_name: 'Lucas',
     last_name: 'Sandeville',
     email: 'lucas@nextstep.com',
-    password: 'senha123'
+    password: 'senha123',
+    city: 'São Paulo'
   )
   url = "https://avatars1.githubusercontent.com/u/29074669?s=400&v=4"
   user.remote_photo_url = url
@@ -41,7 +42,8 @@ user = User.new(
     first_name: 'Daniela',
     last_name: 'Ichikawa',
     email: 'daniela@nextstep.com',
-    password: 'senha123'
+    password: 'senha123',
+    city: 'São Paulo'
   )
   url = "https://avatars3.githubusercontent.com/u/52746846?s=400&v=4"
   user.remote_photo_url = url
@@ -55,6 +57,7 @@ user = User.new(
     last_name: 'Vasconcelos',
     email: 'catharina@nextstep.com',
     password: 'senha123',
+    city: 'São Paulo'
   )
   url = "https://avatars3.githubusercontent.com/u/17905364?s=400&v=4"
   user.remote_photo_url = url
@@ -67,7 +70,8 @@ user = User.new(
     first_name: 'Hugo',
     last_name: 'Branquinho',
     email: 'hugo@nextstep.com',
-    password: 'senha123'
+    password: 'senha123',
+    city: 'São Paulo'
   )
   url = "https://avatars0.githubusercontent.com/u/52136198?s=460&v=4"
   user.remote_photo_url = url
@@ -85,7 +89,8 @@ puts 'creating Users'
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
     email:Faker::Internet.email,
-    password: 'senha123'
+    password: 'senha123',
+    city: Faker::Address.city
   )
 
   user.communities << Community.all.sample
