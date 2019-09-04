@@ -9,7 +9,9 @@ class UsersController < ApplicationController
     @my_goals = Goal.where(user: params[:id])
     @buddies_goals = Goal.where(buddy_id: current_user)
 
-
+    # MODAL NEW GOAL
+    @goal = Goal.new
+    @milestone = Milestone.new
   end
 
   def show
