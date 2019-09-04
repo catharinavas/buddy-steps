@@ -1,0 +1,20 @@
+var increaseClaps = (dataset, claps) => {
+  console.log(dataset);
+  const clapCount = document.querySelector(`[data-publication='${dataset}']`);
+  clapCount.innerText = claps;
+}
+
+var decreaseClaps = (dataset, claps) => {
+  const clapCount = document.querySelector(`[data-publication='${dataset}']`);
+    clapCount.innerText = claps;
+}
+
+
+
+<% if @clap.nil? %>
+  <% Clap.create!(user: current_user, publication: @publication) %>
+  increaseClaps(<%= @publication.id %>, <%= @publication.claps.count %>)
+<% else %>
+  <% @clap.destroy %>
+  decreaseClaps(<%= @publication.id %>, <%= @publication.claps.count %>)
+<% end %>
