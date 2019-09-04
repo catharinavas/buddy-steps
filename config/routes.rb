@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   resources :communities, only: :show
 
   # USERS
-  get "/dashboard/:id", to: "users#dashboard"
+  get "/dashboard/:id", to: "users#dashboard", as: 'dashboard'
 
   # USER_FEELINGS
   resources :user_feelings, only: %i[new create edit update]
