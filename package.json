@@ -2,7 +2,9 @@
   "name": "next_step",
   "private": true,
   "dependencies": {
+    "@rails/actioncable": "^6.0.0",
     "@rails/webpacker": "^4.0.7",
+    "flatpickr": "^4.6.2",
     "jquery": "^3.4.1",
     "popper.js": "^1.15.0"
   },
