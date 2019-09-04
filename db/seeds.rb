@@ -10,7 +10,7 @@ require 'faker'
 puts 'clearing database'
 
 Community.destroy_all #also destroys publications and community_users
-User.destroy_all #also destroys goals, user_feelings, claps, messages and milestones
+User.destroy_all #also destroys comments, goals, notifications, user_feelings, claps, messages and milestones
 Category.destroy_all
 Feeling.destroy_all
 PublicationType.destroy_all
@@ -171,7 +171,7 @@ celebration = PublicationType.create!(name: 'Celebration')
 frustration = PublicationType.create!(name: 'Frustration')
 pleasure = PublicationType.create!(name: 'Pleasure')
 
-puts 'creating Publications and Claps in each community'
+puts 'creating Publications, Comments and Claps in each community'
 Community.all.each do |community|
   # members = User.joins(:community_users).where(community_users:{community: community})
   members = community.users
@@ -198,11 +198,12 @@ Community.all.each do |community|
       author = publication.user
 
       rand(1..3) do
-        possible_clappers = User.where.not(id: author)
-        clapper = possible_clappers.sample
-
-        Clap.create!(publication: publication, user: clapper.sample)
-        possible_clappers.delete!(clapper)
+        members = community.users
+        # possible_clappers = User.where.not(id: author)
+        # clapper = possible_clappers.sample
+        Clap.create!(publication: Publication.last, user: members.sample)
+        # possible_clappers.delete!(clapper)
+        Comment.create!(publication: Publication.last, user: members.sample)
       end
     end
   end
