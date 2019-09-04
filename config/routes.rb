@@ -19,8 +19,8 @@ Rails.application.routes.draw do
   end
 
   # USERS
-  get "dashboard", to: "users#dashboard"
+  get "/dashboard/:id", to: "users#dashboard", as: 'dashboard'
 
   # USER_FEELINGS
-  resources :user_feelings, only: %i[new create edit update show]
+  resources :user_feelings, only: %i[new create edit update]
 end
