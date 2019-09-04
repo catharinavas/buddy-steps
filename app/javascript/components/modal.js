@@ -1,4 +1,3 @@
-
 const modal = () => {
   var openmodal = document.querySelectorAll('.modal-open')
   for (var i = 0; i < openmodal.length; i++) {
