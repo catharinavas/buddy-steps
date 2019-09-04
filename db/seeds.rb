@@ -166,10 +166,10 @@ end
 
 puts 'creating PublicationTypes'
 news = PublicationType.create!(name: 'News')
-questions = PublicationType.create!(name: 'Questions')
-celebrations = PublicationType.create!(name: 'Celebrations')
-frustrations = PublicationType.create!(name: 'Frustrations')
-pleasures = PublicationType.create!(name: 'Pleasures')
+question = PublicationType.create!(name: 'Question')
+celebration = PublicationType.create!(name: 'Celebration')
+frustration = PublicationType.create!(name: 'Frustration')
+pleasure = PublicationType.create!(name: 'Pleasure')
 
 puts 'creating Publications and Claps in each community'
 Community.all.each do |community|
@@ -190,7 +190,7 @@ Community.all.each do |community|
       publication = Publication.create!(
         title: Faker::TvShows::TwinPeaks.quote,
         content: text,
-        publication_type: [news, questions, celebrations].sample,
+        publication_type: [news, question, celebration].sample,
         is_private: false,
         community: community,
         user: members.sample
@@ -214,7 +214,7 @@ User.all.each do |user|
     publication = Publication.create!(
       title: Faker::TvShows::TwinPeaks.quote,
       content: Faker::Lorem.paragraph(sentence_count: 4),
-      publication_type: [frustrations, pleasures].sample,
+      publication_type: [frustration, pleasure].sample,
       is_private: true,
       user: user
     )
