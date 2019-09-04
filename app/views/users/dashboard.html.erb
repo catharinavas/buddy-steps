@@ -1,10 +1,26 @@
-<div class="body">
-  <h1>Dashboard</h1>
+<div class="body bg-orange-100">
+  <div class="p-4 md:px-24">
+    <h2 class="text-3xl text-purple-900 font-mono font-semibold">Mood Graph</h2>
+    <%= render 'mood_graph' %>
+  </div>
 
-  <h2>Mood Graph</h2>
-  <%= render 'mood_graph' %>
-
-  <h2>Goals</h2>
+  <div class="flex pt-3 justify-between p-4 md:px-24">
+      <h2 class="text-3xl text-purple-900 font-mono font-semibold">Goals</h2>
+      <div class="flex">
+        <div id="btn_new_goal" class="cursor-pointer text-white bg-purple-600 text-sm font-semibold border-2 border-purple-600 px-3 py-1 h-8 mr-5 rounded-full hover:bg-purple-500 hover:border-purple-500 transition-soft">
+          <span class="m-auto">NEW GOAL</span>
+        </div>
+        <div class=" flex rounded-full bg-orange-200 border-orange-200 border-2 p-1 w-48 h-8 items-center">
+          <div id="my_goals_icon" class="active cursor-pointer inline-flex text-orange-400 rounded-full w-1/2 h-6">
+            <span class="m-auto text-sm font-mono font-semibold">My Goals</span>
+          </div>
+          <div id="buddies_goals_icon" class=" cursor-pointer inline-flex text-orange-400 rounded-full w-1/2 h-6">
+            <span class="m-auto text-sm font-mono font-semibold">Buddies</span>
+          </div>
+        </div>
+      </div>
+  </div>
   <%= render 'goal_cards' %>
+
 </div>
 
