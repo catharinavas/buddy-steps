@@ -23,3 +23,4 @@ Rails.application.routes.draw do
 
   # USER_FEELINGS
   resources :user_feelings, only: %i[new create edit update show]
+end
