@@ -9,8 +9,14 @@ Rails.application.routes.draw do
 
   resources :milestones, only: %i[edit destroy]
 
-  # routes to community
-  resources :communities, only: :show
+  resources :users, only: %i[show]
+
+  # COMMUNITIES
+  resources :communities, only: %i[index show]
+
+  resources :publications, only: %i[show] do
+    resources :claps, only: %i[new show create]
+  end
 
   # USERS
   get "dashboard", to: "users#dashboard"
