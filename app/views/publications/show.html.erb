@@ -1,3 +1,18 @@
 <h1><%= @publication.title %></h1>
 <p><%= @publication.content %></p>
 <p>Posted in <%= @publication.community.name %></p>
+
+<div class="container md:flex md:m-10 p-10 bg-white shadow rounded-lg border border-gray-200">
+  <div class="md:w-3/4">
+    <h1 class="text-2xl"><%= @publication.title %></h1>
+
+    <hr>
+  </div>
+
+  <div class="border-l"></div>
+
+  <div class="md:w-1/4">
+    <p>Posted by <%= @publication.community.name %></p>
+    <p><%= @publication.community.name %></p>
+  </div>
+</div>

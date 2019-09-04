@@ -151,10 +151,19 @@ Community.all.each do |community|
   members = community.users
 
   unless community.users == []
+    paragraphs =
+      [
+        Faker::Lorem.paragraph_by_chars(number: rand(250...350)).to_s,
+        Faker::Lorem.paragraph_by_chars(number: rand(250...350)).to_s,
+        Faker::Lorem.paragraph_by_chars(number: rand(250...350)).to_s,
+        Faker::Lorem.paragraph_by_chars(number: rand(250...350)).to_s
+      ]
+    text = paragraphs.first(rand(2..4)).join("\n\n")
+
     12.times do
       publication = Publication.create!(
         title: Faker::TvShows::TwinPeaks.quote,
-        content: Faker::Lorem.paragraph(sentence_count: 4),
+        content: text,
         publication_type: [news, questions, celebrations].sample,
         is_private: false,
         community: community,
