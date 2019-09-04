@@ -5,4 +5,11 @@ class GoalsController < ApplicationController
     @milestones = @goal.milestones
     @milestone = Milestone.new
   end
+
+  def new
+    @goal = Goal.new
+    milestones = []
+    @goal.milestones = milestones
+    @milestone = Milestone.new
+  end
 end
