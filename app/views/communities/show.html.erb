@@ -1,0 +1,25 @@
+<div class="body">
+  <nav class="bg-white px-8 pt-2 shadow-md">
+       <div class="-mb-px flex justify-start">
+           <a id="menu-news" class="no-underline text-teal-dark border-b-2 border-teal-dark uppercase tracking-wide font-bold text-xs py-3 mr-8" href="#">
+               News
+           </a>
+           <a id="menu-celebrations" class="no-underline text-grey-dark border-b-2 border-transparent uppercase tracking-wide font-bold text-xs py-3 mr-8" href="#">
+               Celebrations
+           </a>
+           <a id="menu-users" class="no-underline text-grey-dark border-b-2 border-transparent uppercase tracking-wide font-bold text-xs py-3" href="#">
+               Users
+           </a>
+       </div>
+  </nav>
+
+
+
+  <div id="menu-news-list" class="transition-soft transition-delay"><%= render "news", news: @news %></div>
+
+  <div id="menu-celebrations-list" class="hidden transition-soft transition-delay"><%= render "celebrations", celebrations: @celebrations %></div>
+
+  <div id="menu-user-list" class="hidden transition-soft transition-delay"><%= render "users", users: @users %></div>
+</div>
+
+

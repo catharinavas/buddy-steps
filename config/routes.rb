@@ -8,4 +8,12 @@ Rails.application.routes.draw do
   end
 
   resources :milestones, only: %i[edit destroy]
-end
+
+  # routes to community
+  resources :communities, only: :show
+
+  # USERS
+  get "dashboard", to: "users#dashboard"
+
+  # USER_FEELINGS
+  resources :user_feelings, only: %i[new create edit update show]

@@ -9,5 +9,11 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
-@import "font-awesome";
 
+.transition-delay {
+  transition-delay: 2s;
+}
+
+.line-height-username1 {
+  line-height: 3.75rem;
+}
