@@ -6,6 +6,13 @@ class GoalsController < ApplicationController
     @milestone = Milestone.new
   end
 
+  def new
+    @goal = Goal.new
+    milestones = []
+    @goal.milestones = milestones
+    @milestone = Milestone.new
+  end
+
   def buddy_assign
     @goal = Goal.find(params[:id])
     city = current_user.city
