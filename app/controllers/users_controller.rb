@@ -5,10 +5,12 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @moods = UserFeeling.where(user: params[:id])
     # GOALS DATA
-    @goals = Goal.where(user: params[:id])
+    @my_goals = Goal.where(user: params[:id])
+    @buddies_goals = Goal.where(buddy_id: current_user)
+
 
   end
-  
+
   def show
   end
 
@@ -17,7 +19,7 @@ class UsersController < ApplicationController
   def user_params
     # params.require(:user).permit()
   end
-    
+
   def set_user
     @user = User.find(params[:id])
   end
