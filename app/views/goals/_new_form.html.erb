@@ -1,0 +1,6 @@
+<h3>Add a new milestone</h3>
+<%= simple_form_for([@goal, @milestone], remote: true, html: {id: :new_milestone }) do |f| %>
+  <%= f.input :description %>
+  <%= f.input :deadline, as: :string, required: false, input_html: {class: "datepicker"} %>
+  <%= f.button :submit %>
+<% end %>
