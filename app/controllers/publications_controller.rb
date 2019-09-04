@@ -13,7 +13,7 @@ class PublicationsController < ApplicationController
     if @publication.save
       redirect_to community_path(@community)
     else
-      redirect_to :back
+      render :community
     end
   end
 

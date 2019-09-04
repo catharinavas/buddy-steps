@@ -1,3 +1,12 @@
+<h3>Add a new publication</h3>
+<%= simple_form_for @publication, url: publications_path do |f| %>
+  <%= f.input :title %>
+  <%= f.input :content %>
+  <%= f.association :publication_type, collection: @type1 %>
+  <%= f.association :community, :as => :hidden, :input_html => { :value => @community.id } %>
+  <%= f.button :submit, as: " " %>
+<% end %>
+
 
 <div class="publications-list m-5 md:m-10">
   <% @news.each do |publication| %>
