@@ -40,11 +40,13 @@ class GoalsController < ApplicationController
     @goal = Goal.find(params[:id])
     @goal.confirmed_buddy = true
     @goal.save
+    redirect_to goal_path(@goal)
   end
 
   def cancel_buddy
     @goal = Goal.find(params[:id])
     buddy_assign
+    redirect_to dashboard_path(current_user)
   end
 end
 

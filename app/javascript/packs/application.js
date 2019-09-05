@@ -6,19 +6,17 @@ import { addMilestone } from '../components/add_milestone';
 import { chat } from '../components/chat';
 import { modal } from '../components/modal';
 import { readToggle } from '../components/read_toggle.js';
-//publications index;
-readToggle();
-
 import { cardsGoals } from '../components/dashboard';
+
+//publications index;
 
 menuToggle();
 dropdownToggle();
 closeMenu();
-
 showPublications();
-
 addMilestone();
 chat();
 modal();
-
+readToggle();
 cardsGoals();
+
