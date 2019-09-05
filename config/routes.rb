@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
-  root to: 'pages#home'
+  root to: 'communities#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :goals, except: %i[new] do
     resources :milestones, only: %i[index new create update]
