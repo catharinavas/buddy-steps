@@ -71,10 +71,14 @@
 <div>
 
 </div>
-  <% @buddies_goal.each do |buddy_goal| %>
-    <p><%= link_to "#{@buddy_goal.user.first_name}", user_path %> wants your help with the goal <%= link_to "#{@buddy_goal.title}", goal_path(buddy_goal) %>! Can you help him? </p>
-    <%= link_to 'Yes!', confirm_buddy_goal_path %>
-    <%= link_to 'No, sorry :/', cancel_buddy_goal_path %>
+  <% @buddies_goals.each do |buddy_goal| %>
+    <% if buddy_goal.confirmed_buddy == false %>
+      <div class="notification">
+        <p><%= link_to "#{buddy_goal.user.first_name}", user_path %> wants your help with the goal <%= link_to "#{buddy_goal.title}", goal_path(buddy_goal) %>! Can you help? </p>
+        <%= link_to 'Yes!', confirm_buddy_goal_path(buddy_goal) %>
+        <%= link_to 'No, sorry :/', cancel_buddy_goal_path(buddy_goal) %>
+      </div>
+    <% end %>
   <% end %>
 </div>
 

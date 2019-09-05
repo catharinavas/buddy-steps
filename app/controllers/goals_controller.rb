@@ -4,6 +4,7 @@ class GoalsController < ApplicationController
     @goal_chat = Goal.includes(messages: :user).find(params[:id])
     @milestones = @goal.milestones
     @milestone = Milestone.new
+    @buddies_goal = Goal.where(buddy_id: current_user)
   end
 
   def create
@@ -13,16 +14,6 @@ class GoalsController < ApplicationController
     @goal.milestones = milestones
     @milestone = Milestone.new
     @goal.start_date = Date.today
-
-    if @goal.save
-      @notification = Notification.create(goal: @goal)
-    end
-
-
-
-
-
-
   end
 
   def buddy_assign
@@ -34,18 +25,20 @@ class GoalsController < ApplicationController
     else
       possible_buddy = users_from_city.sample
     end
-    # @goal.buddy = possible_buddy
-    # @goal.save
+    @goal.buddy = possible_buddy
+    @goal.save
   end
 
   def confirm_buddy
     @goal = Goal.find(params[:id])
-    confirmed_buddy = true
+    @goal.confirmed_buddy = true
     @goal.save
+    redirect_to goal_path(@goal)
   end
 
   def cancel_buddy
     @goal = Goal.find(params[:id])
     buddy_assign
+    redirect_to dashboard_path(current_user)
   end
 end
