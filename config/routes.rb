@@ -23,7 +23,9 @@ Rails.application.routes.draw do
 
   resources :publications, only: %i[create show] do
     resources :claps, only: %i[new show create]
+    resources :comments, only: %i[create]
   end
+  resources :comments, only: %i[destroy]
 
   # USERS
   get "/dashboard/:id", to: "users#dashboard", as: 'dashboard'
