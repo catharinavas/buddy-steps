@@ -1,6 +1,5 @@
 class Message < ApplicationRecord
   belongs_to :goal
-  belongs_to :user
   validates :content, presence: true, allow_blank: false
   after_create :broadcast_message
 
