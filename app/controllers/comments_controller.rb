@@ -7,15 +7,24 @@ class CommentsController < ApplicationController
 
     if @comment.save
       respond_to do |format|
+        puts 'saved'
         format.html { redirect_to publication_path(@publication) }
-        format.json
+        format.js
       end
     else
       respond_to do |format|
+        puts 'not saved'
         format.html { render 'publications/show' }
-        format.json
+        format.js
       end
     end
+  end
+
+  def destroy
+    @comment = Comment.find(params[:id])
+    @publication = @comment.publication
+    @comment.destroy!
+    redirect_to publication_path(@publication)
   end
 
   private

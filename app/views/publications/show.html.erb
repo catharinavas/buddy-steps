@@ -39,10 +39,10 @@
 <!-- COMMENTS -->
 <div id="comments" class="md:w-1/2 md:mx-auto">
   <h3 class="text-2xl text-bold mb-5 text-purple-900">Comments (<%= @publication.comments.count %>)</h3>
-  <%= render 'publications/form', publication: @publication, comment: Comment.new %>
+  <%= render 'comments/form', publication: @publication, comment: Comment.new %>
 
   <% @publication.comments.each do |comment| %>
-    <%= render 'publications/comment', comment: comment %>
+    <%= render 'comments/comment', comment: comment %>
   <% end %>
 </div>
 
