@@ -4,6 +4,7 @@ ruby '2.6.3'
 gem 'faker'
 gem 'carrierwave', '~> 1.2'
 gem 'cloudinary', '~> 1.9.1'
+gem 'roberto_barros'
 
 gem 'bootsnap', require: false
 gem 'devise'
@@ -14,7 +15,7 @@ gem 'rails', '5.2.3'
 gem 'redis'
 
 gem 'autoprefixer-rails'
-gem 'font-awesome-sass', '~> 5.6.1'
+gem 'font-awesome-sass'
 gem "font-awesome-rails"
 gem 'sassc-rails'
 gem 'simple_form'
