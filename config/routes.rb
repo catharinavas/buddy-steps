@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   # COMMUNITIES
   resources :communities, only: %i[index show]
 
-  resources :publications, only: %i[show] do
+  resources :publications, only: %i[create show] do
     resources :claps, only: %i[new show create]
   end
 
