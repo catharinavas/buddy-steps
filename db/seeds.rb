@@ -197,14 +197,22 @@ Community.all.each do |community|
       )
       author = publication.user
 
-      rand(1..3) do
+      rand(1..3).times do
         members = community.users
         # possible_clappers = User.where.not(id: author)
         # clapper = possible_clappers.sample
         Clap.create!(publication: Publication.last, user: members.sample)
         # possible_clappers.delete!(clapper)
-        Comment.create!(publication: Publication.last, user: members.sample)
       end
+
+      user1 = members.sample
+      user2 = members.sample
+      user3 = members.sample
+      Comment.create!(publication: Publication.last, user: user1, content: "I totally see your point, but I still disagree.")
+      Comment.create!(publication: Publication.last, user: user2, content: "Why?")
+      Comment.create!(publication: Publication.last, user: user3, content: "sadjbajkdbjkdbwdawdw")
+      Comment.create!(publication: Publication.last, user: user3, content: "Sorry, that was my cat walking on my keyboard:p")
+      Comment.create!(publication: Publication.last, user: user1, content: "OP is ignoring that even though it ain't ideal, it does help many people to cope.")
     end
   end
 end

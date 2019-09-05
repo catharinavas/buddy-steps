@@ -1,0 +1,20 @@
+<div class="bg-white md:rounded rounded-5 shadow md:mb-5 border-b p-5 w-full flex items-center">
+  <div class="col">
+    <div class="flex items-center mb-5">
+      <div class="w-1/6 lg:w-1/12">
+        <%= image_tag "#{comment.user.photo}", class:"rounded-lg object-cover mx-auto" %>
+      </div>
+      <div class="w-5/6 lg:w-11/12 mx-3">
+        <p>
+          <%=
+            link_to "#{comment.user.first_name} #{comment.user.last_name}",
+            user_path(comment.user),
+            class: "text-blue-400"
+          %>
+        </p>
+        <p class="text-xs text-blue-300"><%= comment.created_at %></p>
+      </div>
+    </div>
+    <p class="text-gray-600"> <%= comment.content %>
+  </div>
+</div>

@@ -21,6 +21,7 @@ Rails.application.routes.draw do
 
   resources :publications, only: %i[show] do
     resources :claps, only: %i[new show create]
+    resources :comments, only: %i[create]
   end
 
   # USERS

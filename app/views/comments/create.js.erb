@@ -1,0 +1,17 @@
+function refreshForm(innerHTML) {
+  const newCommentForm = document.getElementById('comment_content');
+  newCommentForm.innerHTML = innerHTML;
+}
+
+function addComment(commentHTML) {
+  const comments = document.getElementById('comments');
+  comments.insertAdjacentHTML('beforeend', commentHTML);
+}
+
+
+<% if @comment.errors.any? %>
+  refreshForm('<%= j render "publications/form", publication: @publication, comment: @comment %>');
+<% else %>
+  addComment('<%= j render "publications/comment", comment: @comment %>');
+  refreshForm('<%= j render "publications/form", publication: @publication, comment: Comment.new %>');
+<% end %>
