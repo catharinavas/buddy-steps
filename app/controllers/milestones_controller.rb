@@ -38,7 +38,7 @@ class MilestonesController < ApplicationController
     @goal = Goal.find(params[:goal_id])
     @milestone = Milestone.find(params[:id])
     if @milestone.update!(milestone_params)
-      redirect_to goal_path(@goal)
+      redirect_to dashboard_path(current_user)
     else
       render 'edit'
     end
