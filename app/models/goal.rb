@@ -4,7 +4,6 @@ class Goal < ApplicationRecord
   belongs_to :category
   has_many :messages, dependent: :destroy
   has_many :milestones, dependent: :destroy
-  has_many :notifications, dependent: :destroy
 
 
   validates :title, presence: true
