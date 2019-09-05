@@ -42,7 +42,7 @@
 
               <!--Body-->
               <%= render 'goals/new_form', goal: @goal %>
-              <%= render 'milestones/new_form', goal: @goal %>
+              <%#= render 'milestones/new_form', goal: @goal, milestone: @milestone %>
 
               <!--Footer-->
               <div class="flex justify-end pt-2">
@@ -68,7 +68,13 @@
   <%= render 'goal_cards' %>
 
 
+<div>
 
-
+</div>
+  <% @buddies_goal.each do |buddy_goal| %>
+    <p><%= link_to "#{@buddy_goal.user.first_name}", user_path %> wants your help with the goal <%= link_to "#{@buddy_goal.title}", goal_path(buddy_goal) %>! Can you help him? </p>
+    <%= link_to 'Yes!', confirm_buddy_goal_path %>
+    <%= link_to 'No, sorry :/', cancel_buddy_goal_path %>
+  <% end %>
 </div>
 

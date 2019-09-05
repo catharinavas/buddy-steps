@@ -14,7 +14,9 @@ class GoalsController < ApplicationController
     @milestone = Milestone.new
     @goal.start_date = Date.today
 
-
+    if @goal.save
+      @notification = Notification.create(goal: @goal)
+    end
 
 
 
@@ -32,8 +34,8 @@ class GoalsController < ApplicationController
     else
       possible_buddy = users_from_city.sample
     end
-    @goal.buddy = possible_buddy
-    @goal.save
+    # @goal.buddy = possible_buddy
+    # @goal.save
   end
 
   def confirm_buddy

@@ -12,6 +12,9 @@ class UsersController < ApplicationController
     # MODAL NEW GOAL
     @goal = Goal.new
     @milestone = Milestone.new
+
+    # BUDDY NOTIFICATION
+
   end
 
   def show
