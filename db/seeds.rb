@@ -107,6 +107,7 @@ cognitive_category = Category.create!(name: 'Cognitive')
 mental_health_category = Category.create!(name: 'Mental Health')
 social_category = Category.create!(name: 'Social')
 financial_category = Category.create!(name: 'Financial')
+other_category = Category.create!(name: 'Other')
 
 puts 'creating Goals, Messages and Milestones'
 User.all.each do |user|
