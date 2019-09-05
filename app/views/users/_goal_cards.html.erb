@@ -30,7 +30,7 @@
   </div>
   <!-- BUDDIES GOALS -->
   <% if current_user == @user %>
-    <div id="buddies_goals" class="hidden">
+    <div id="buddies_goals" class="hidden flex overflow-x-scroll flex-no-wrap scroll py-5 pl-5 sm:flex-wrap sm:overflow-visible sm:justify-center">
       <% @buddies_goals.each do |goal| %>
         <!-- GOAL CARD -->
         <% if !goal.complete %>

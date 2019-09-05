@@ -24,6 +24,28 @@ class GoalsController < ApplicationController
     end
   end
 
+  def edit
+    @goal = Goal.find(params[:id])
+    # respond_to do |format|
+    #   format.js
+    # end
+  end
+
+  def update
+    @goal = Goal.find(params[:id])
+    if @goal.update!(goal_params)
+      redirect_to dashboard_path(current_user)
+    else
+      render 'edit'
+    end
+  end
+
+  def destroy
+    @goal = Goal.find(params[:id])
+    @goal.destroy
+    redirect_to dashboard_path(current_user)
+  end
+
   def buddy_assign
     # @goal = Goal.find(params[:id])
     city = current_user.city
