@@ -7,43 +7,51 @@ class GoalsController < ApplicationController
   end
 
   def create
-    @goal = Goal.new()
+    @goal = Goal.new(goal_params)
+    # @milestone = Milestone.new
     @goal.buddy = buddy_assign
-    milestones = []
-    @goal.milestones = milestones
-    @milestone = Milestone.new
     @goal.start_date = Date.today
-
-
-
-
-
-
-
-
+    @goal.user = current_user
+    unless params[:goal][:category_id].nil?
+      @goal.category = Category.find(params[:goal][:category_id])
+    else
+      @goal.category = Category.find_by(name: "Others")
+    end
+    if @goal.save
+      redirect_to goal_path(@goal)
+    else
+      render 'goals/new_form'
+    end
   end
 
   def buddy_assign
-    @goal = Goal.find(params[:id])
+    # @goal = Goal.find(params[:id])
     city = current_user.city
-    users_from_city = User.where("city = '#{city}'")
+    users_from_city = User.where("city = '#{city}'").where.not(id: current_user)
     if users_from_city.empty?
       possible_buddy = User.where.not(id: current_user).sample
     else
       possible_buddy = users_from_city.sample
     end
-    @goal.buddy = possible_buddy
-    @goal.save
+    possible_buddy
   end
 
   def confirm_buddy
     @goal = Goal.find(params[:id])
-    confirmed_buddy = true
+    @goal.confirmed_buddy = true
     @goal.save
+    redirect_to goal_path(@goal)
   end
 
   def cancel_buddy
     @goal = Goal.find(params[:id])
     buddy_assign
+    redirect_to dashboard_path(current_user)
   end
+end
+
+private
+
+def goal_params
+  params.require(:goal).permit(:title, :description, :deadline, :category)
 end

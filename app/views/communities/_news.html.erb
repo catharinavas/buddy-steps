@@ -1,5 +1,9 @@
+<div>
+  <h3>Add a new new or question</h3>
+  <%= render 'publications/news', community: @community, publication: @publication %>
+</div>
 
-<div class="publications-list m-5 md:m-10">
+<div id="publications" class="publications-list m-5 md:m-10">
   <% @news.each do |publication| %>
     <div class="flex flex-col md:flex-row items-center mb-10 pt-5 w-full shadow rounded-lg border border-gray-200">
       <div class="flex md:flex-col items-center w-1/6 flex-shrink-0 mx-1">

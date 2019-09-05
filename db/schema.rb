@@ -10,7 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_05_130340) do
+
+ActiveRecord::Schema.define(version: 2019_09_05_155337) do
+
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -81,12 +83,10 @@ ActiveRecord::Schema.define(version: 2019_09_05_130340) do
 
   create_table "messages", force: :cascade do |t|
     t.string "content"
-    t.bigint "user_id"
     t.bigint "goal_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["goal_id"], name: "index_messages_on_goal_id"
-    t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
   create_table "milestones", force: :cascade do |t|
@@ -97,14 +97,6 @@ ActiveRecord::Schema.define(version: 2019_09_05_130340) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["goal_id"], name: "index_milestones_on_goal_id"
-  end
-
-  create_table "notifications", force: :cascade do |t|
-    t.string "content"
-    t.bigint "goal_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["goal_id"], name: "index_notifications_on_goal_id"
   end
 
   create_table "publication_types", force: :cascade do |t|
@@ -164,9 +156,7 @@ ActiveRecord::Schema.define(version: 2019_09_05_130340) do
   add_foreign_key "goals", "categories"
   add_foreign_key "goals", "users"
   add_foreign_key "messages", "goals"
-  add_foreign_key "messages", "users"
   add_foreign_key "milestones", "goals"
-  add_foreign_key "notifications", "goals"
   add_foreign_key "publications", "communities"
   add_foreign_key "publications", "publication_types"
   add_foreign_key "publications", "users"

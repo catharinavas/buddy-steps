@@ -1,5 +1,4 @@
 const increaseClaps = (dataset, claps) => {
-  console.log(dataset);
   const clapCount = document.querySelector(`[data-publication='${dataset}']`);
   clapCount.innerText = claps;
 }
