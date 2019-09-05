@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  resources :goals, only: %i[show] do
+  resources :goals, only: %i[show create] do
     resources :milestones, only: %i[index new create update]
     resources :messages, only: %i[new create index]
     member do
