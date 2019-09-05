@@ -3,7 +3,7 @@ class CommunitiesController < ApplicationController
   before_action :set_community, only: :show
 
   def index
-    @communities = current_user.communities
+    @communities = Community.all - current_user.communities
     @all_publications = []
     @communities.each do |community|
       community.publications.each { |pub| @all_publications << pub }
