@@ -1,4 +1,8 @@
+
+
 const showPublications = () => {
+
+
   const menuNews = document.getElementById('menu-news');
   if (menuNews) {
     const menuNewsList = document.getElementById('menu-news-list');
@@ -10,6 +14,7 @@ const showPublications = () => {
     const menuUsersList = document.getElementById('menu-user-list');
 
     menuNews.addEventListener('click', () => {
+      console.log(url)
       menuNewsList.classList.remove('hidden');
       menuCelebrationsList.classList.add('hidden');
       menuUsersList.classList.add('hidden');
@@ -28,5 +33,7 @@ const showPublications = () => {
     })
   }
 }
+
+
 
 export { showPublications };

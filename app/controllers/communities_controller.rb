@@ -3,7 +3,7 @@ class CommunitiesController < ApplicationController
   before_action :set_community, only: :show
 
   def index
-    @communities = current_user.communities
+    @communities = Community.all - current_user.communities
     @all_publications = []
     @communities.each do |community|
       community.publications.each { |pub| @all_publications << pub }
@@ -13,8 +13,8 @@ class CommunitiesController < ApplicationController
   def show
     @publication = Publication.new
     @users = @community.users
-    @type1 = PublicationType.where(name: ['News', 'Questions'])
-    @type2 = PublicationType.where(name: 'Celebrations')
+    @type1 = PublicationType.where(name: ['News', 'Question'])
+    @type2 = PublicationType.where(name: 'Celebration')
     @news = Publication.where(community: params[:id], publication_type: [@type1[0].id, @type1[1].id])
     @celebrations = Publication.where(community: params[:id], publication_type: @type2[0].id)
   end

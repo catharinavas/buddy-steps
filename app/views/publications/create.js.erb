@@ -1,0 +1,20 @@
+function refreshForm(innerHTML) {
+  const newPublicationForm = document.getElementById('new_publication');
+  newPublicationForm.innerHTML = innerHTML;
+}
+
+
+function addPublication(publicationHTML) {
+  console.log(1)
+  console.log(publicationHTML)
+  const publications = document.getElementById('publications');
+  publications.insertAdjacentHTML('beforebegin', publicationHTML);
+}
+
+
+<% if @publication.errors.any? %>
+  refreshForm('<%= j render "publications/news", community: @community, publication: @publication %>');
+<% else %>
+  addPublication('<%= j render "publications/card", community: @community, publication: @publication, type1: @type1 %>');
+  refreshForm('<%= j render "publications/news", community: @community, publication: Publication.new %>');
+<% end %>

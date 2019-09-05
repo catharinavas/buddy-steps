@@ -11,9 +11,15 @@ class PublicationsController < ApplicationController
     @publication.community = @community
     @publication.user = current_user
     if @publication.save
-      redirect_to community_path(@community)
+      respond_to do |format|
+        format.html { redirect_to community_path(@community) }
+        format.js  # <-- will render `app/views/reviews/create.js.erb`
+      end
     else
-      render :community
+      respond_to do |format|
+        format.html { render "publications/news" }
+        format.js  # <-- idem
+      end
     end
   end
 

@@ -2,7 +2,8 @@ class Publication < ApplicationRecord
   belongs_to :user
   belongs_to :community, optional: true
   belongs_to :publication_type
-  has_many :claps
+  has_many :claps, dependent: :destroy
+  has_many :comments, dependent: :destroy
 
   validates :title, presence: true
   validates :content, presence: true

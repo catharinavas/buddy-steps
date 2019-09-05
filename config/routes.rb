@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  resources :goals, only: %i[show create] do
+  resources :goals, except: %i[new] do
     resources :milestones, only: %i[index new create update]
     resources :messages, only: %i[new create index]
     member do
@@ -17,11 +17,15 @@ Rails.application.routes.draw do
   resources :users, only: %i[show]
 
   # COMMUNITIES
-  resources :communities, only: %i[index show]
+  resources :communities, only: %i[index show] do
+    resources :publications, only: :create
+  end
 
   resources :publications, only: %i[create show] do
     resources :claps, only: %i[new show create]
+    resources :comments, only: %i[create]
   end
+  resources :comments, only: %i[destroy]
 
   # USERS
   get "/dashboard/:id", to: "users#dashboard", as: 'dashboard'

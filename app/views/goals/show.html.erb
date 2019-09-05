@@ -5,6 +5,15 @@
 
     <h3 class="text-gray-900 text-base ml-5">Days since goal started: <%= (@goal.start_date - Date.today).to_i %></h3>
     <h3 class="text-gray-900 text-base ml-5">Deadline: <%= @goal.deadline %></h3>
+
+    <%= link_to goal_path(@goal), method: :delete, data: { confirm: 'Are you sure you want to delete?' } do %>
+      <%= fa_icon "trash alt" %>
+    <% end %>
+    <hr>
+    <%= link_to edit_goal_path(@goal) do %>
+      <p>EDIT</p>
+    <% end %>
+
     <%= render 'milestones' %>
   </div>
 

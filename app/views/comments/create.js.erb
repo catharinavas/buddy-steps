@@ -1,0 +1,20 @@
+function refreshForm(innerHTML) {
+  const newCommentForm = document.getElementById('comment_content');
+  newCommentForm.innerHTML = innerHTML;
+}
+
+function addComment(commentHTML) {
+  const comments = document.getElementById('comments');
+  comments.insertAdjacentHTML('beforeend', commentHTML);
+  window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+}
+
+
+<% if @comment.errors.any? %>
+  refreshForm('<%= j render "comments/form", publication: @publication, comment: @comment %>');
+<% else %>
+  addComment('<%= j render "comments/comment", comment: @comment %>');
+  refreshForm('<%= j render "comments/form", publication: @publication, comment: Comment.new %>');
+<% end %>
+
+console.log('hi from create.js')
