@@ -2,11 +2,9 @@
   <div class="flex flex-col md:flex-row items-center mb-10 pt-5 w-full shadow rounded-lg border border-gray-200">
       <div class="flex md:flex-col items-center w-1/6 flex-shrink-0 mx-1">
         <% if ["News", "Questions"].include?(publication.publication_type.name) %>
-        <!-- imagem SVG que o HUGO removeu xD -->
-
+        <img src="https://image.flaticon.com/icons/svg/126/126115.svg" alt="newspaper icon" class="mt-8 mb-12 md:my-0 w-12">
         <% else %>
-        <!-- imagem SVG que o HUGO removeu xD -->
-
+        <img src="https://image.flaticon.com/icons/svg/906/906794.svg" alt="newspaper icon" class="mt-8 mb-12 md:my-0 w-12">
         <% end %>
       </div>
       <div class="flex flex-col md:w-5/6 p-8 md:pl-0">
