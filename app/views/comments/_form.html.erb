@@ -1,4 +1,4 @@
 <%= simple_form_for([ publication, comment ], url: publication_comments_path(publication), remote: true) do |form| %>
-  <%= form.input :content, as: :text %>
+  <%= form.input :content, as: :text, label: false %>
   <%= form.button :submit %>
 <% end %>
