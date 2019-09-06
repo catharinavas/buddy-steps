@@ -1,75 +1,40 @@
 @import "tailwindcss/dist/base";
-
 @import "tailwindcss/dist/components";
-
-/**
- * Here you would add any of your custom component classes; stuff that you'd
- * want loaded *before* the utilities so that the utilities could still
- * override them.
- *
- * Example:
- *
- * .btn { ... }
- * .form-input { ... }
- *
- * Or if using a preprocessor or `postcss-import`:
- *
- * @import "components/buttons";
- * @import "components/forms";
- */
-
 @import "tailwindcss/dist/utilities";
 
-/**
- * Here you would add any custom utilities you need that don't come out of the
- * box with Tailwind.
- *
- * Example :
- *
- * .bg-pattern-graph-paper { ... }
- * .skew-45 { ... }
- *
- * Or if using a preprocessor or `postcss-import`:
- *
- * @import "utilities/background-patterns";
- * @import "utilities/skew-transforms";
- */
+// .input {
+//   @apply appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight;
+// }
 
-// @import "tailwindcss/screens";
+// .input:focus {
+//   @apply outline-none bg-white border-gray-500;
+// }
 
-.input {
-  @apply appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight;
-}
+// .label {
+//   @apply block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2;
+// }
 
-.input:focus {
-  @apply outline-none bg-white border-gray-500;
-}
+// .select {
+//   @apply appearance-none py-3 px-4 pr-8 block w-full bg-gray-200 border border-gray-200 text-gray-700
+//    rounded leading-tight;
+//    -webkit-appearance: none;
+// }
 
-.label {
-  @apply block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2;
-}
+// .select:focus {
+//   @apply outline-none bg-white border-gray-500;
+// }
 
-.select {
-  @apply appearance-none py-3 px-4 pr-8 block w-full bg-gray-200 border border-gray-200 text-gray-700
-   rounded leading-tight;
-   -webkit-appearance: none;
-}
+// .link-grey {
+//   @apply text-gray-600 underline;
+// }
 
-.select:focus {
-  @apply outline-none bg-white border-gray-500;
-}
+// .link-grey:hover {
+//   @apply text-gray-700;
+// }
 
-.link-grey {
-  @apply text-gray-600 underline;
-}
-
-.link-grey:hover {
-  @apply text-gray-700;
-}
-
-.btn-options {
-  @apply flex-1 p-2 text-base text-gray-700 text-center bg-orange-400 px-4 py-2 m-2 w-1/4 rounded;
-}
+// .btn-options {
+//   @apply flex-1 p-2 text-base text-gray-700 text-center bg-orange-400 px-4 py-2 m-2 w-1/4 rounded;
+// }
 
 .transition-soft {
   transition: 0.3s ease;
