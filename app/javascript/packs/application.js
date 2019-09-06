@@ -1,6 +1,6 @@
-// import '../css/application.css';
-// import "../plugins/flatpickr";
-// import { menuToggle, dropdownToggle, closeMenu } from '../components/navbar';
+import '../css/application.css';
+import "../plugins/flatpickr";
+import { menuToggle, dropdownToggle, closeMenu } from '../components/navbar';
 // import { showPublications } from '../components/show-publications';
 // import { addMilestone } from '../components/add_milestone';
 // import { chat } from '../components/chat';
@@ -11,9 +11,9 @@
 
 //publications index;
 
-// menuToggle();
-// dropdownToggle();
-// closeMenu();
+menuToggle();
+dropdownToggle();
+closeMenu();
 // showPublications();
 // addMilestone();
 // chat();
