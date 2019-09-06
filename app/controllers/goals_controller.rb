@@ -34,7 +34,7 @@ class GoalsController < ApplicationController
   def update
     @goal = Goal.find(params[:id])
     if @goal.update!(goal_params)
-      redirect_to dashboard_path(current_user)
+      redirect_to goal_path(@goal)
     else
       render 'edit'
     end

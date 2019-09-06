@@ -107,3 +107,26 @@
     max-height: 26px;
   }
 }
+
+.milestone_description {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+  #milestone_description {
+    // flex-grow: 1;
+    width: 80%;
+    border: 1px solid gray;
+    max-height: 26px;
+    height: 23px;
+  }
+}
+
+.milestone_deadline {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+  .input.form-control {
+    border: 1px solid gray !important;
+    width: 80% !important;
+  }
+}
