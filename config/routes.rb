@@ -2,6 +2,10 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'communities#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+  # action cabel (chat)
+  mount ActionCable.server => "/cable"
+
   resources :goals, except: %i[new] do
     resources :milestones, only: %i[index new create update destroy]
     resources :messages, only: %i[new create index]
@@ -21,7 +25,7 @@ Rails.application.routes.draw do
     resources :publications, only: :create
   end
 
-  resources :publications, only: %i[create show] do
+  resources :publications, only: %i[create show destroy] do
     resources :claps, only: %i[new show create]
     resources :comments, only: %i[create]
   end
