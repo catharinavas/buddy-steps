@@ -8,7 +8,7 @@
   <!-- </div> -->
 
   <!-- GOALS SESSION -->
-  <div class="flex pt-3 justify-between p-4 md:px-24">
+  <div class="flex justify-between mt-20 pt-3 p-4 md:px-24">
       <h2 class="text-3xl text-purple-900 font-mono font-semibold">Goals</h2>
       <!-- GOALS BUTTONS -->
       <% if current_user == @user %>
@@ -75,7 +75,7 @@
   </div>
 <% end %>
 
-</div>
+  <!-- NOTIFICATIONS -->
   <% @buddies_goals.each do |buddy_goal| %>
     <% if buddy_goal.confirmed_buddy == false %>
       <div class="notification">
@@ -85,4 +85,14 @@
       </div>
     <% end %>
   <% end %>
+
+  <!-- DIARY -->
+  <div class="pt-3 p-4 md:px-24 mt-20">
+    <h2 class="text-3xl mb-5 text-purple-900 font-mono font-semibold">Diary</h2>
+    <h3>Make a new publication</h3>
+    <%= render 'publications/form', publication: Publication.new %>
+
+    <%= render 'publications/publications_list', publications: @diary_publications %>
+  </div>
+
 </div>
