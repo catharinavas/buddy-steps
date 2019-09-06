@@ -8,7 +8,7 @@
     <%= action_cable_meta_tag %>
     <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
     <%= stylesheet_link_tag 'application', media: 'all' %>
-    <%= stylesheet_pack_tag 'application' %>
+    <%#= stylesheet_pack_tag 'application' %>
   </head>
   <body class=" bg-orange-100">
     <%= render 'shared/navbar' %>
@@ -16,7 +16,6 @@
     <%= yield %>
     <%= javascript_include_tag 'application' %>
     <%= javascript_pack_tag 'application' %>
-    <%= stylesheet_pack_tag 'application', media: 'all' %>
     <%= yield :after_js %>
   </body>
 </html>
