@@ -7,6 +7,7 @@ import { chat } from '../components/chat';
 import { modal } from '../components/modal';
 import { readToggle } from '../components/read_toggle.js';
 import { cardsGoals } from '../components/dashboard';
+import { scrollLastMessageIntoView } from '../components/scroll';
 
 //publications index;
 
@@ -19,4 +20,4 @@ chat();
 modal();
 readToggle();
 cardsGoals();
-
+scrollLastMessageIntoView();
