@@ -1,19 +1,19 @@
-// // Graphical variables
-// @import "config/fonts";
-// @import "config/colors";
+// Graphical variables
+@import "config/fonts";
+@import "config/colors";
 
-// // External libraries
-// @import "font-awesome-sprockets";
-// @import "font-awesome";
+// External libraries
+@import "font-awesome-sprockets";
+@import "font-awesome";
 
-// // Your CSS partials
-// @import "components/index";
-// @import "pages/index";
+// Your CSS partials
+@import "components/index";
+@import "pages/index";
 
-// .transition-delay {
-//   transition-delay: 2s;
-// }
+.transition-delay {
+  transition-delay: 2s;
+}
 
-// .line-height-username1 {
-//   line-height: 3.75rem;
-// }
+.line-height-username1 {
+  line-height: 3.75rem;
+}
