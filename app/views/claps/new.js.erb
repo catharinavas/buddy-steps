@@ -1,11 +1,23 @@
 var increaseClaps = (dataset, claps) => {
   var clapCount = document.querySelector(`[data-clapID='${dataset}']`);
   clapCount.innerText = claps;
+
+  const clapsButton = document.querySelector(`[data-claps-button='${dataset}']`);
+
+  clapsButton.classList.toggle('bg-blue-300');
+  clapsButton.classList.toggle('text-white');
+  clapsButton.classList.toggle('text-blue-300');
 }
 
 var decreaseClaps = (dataset, claps) => {
   var clapCount = document.querySelector(`[data-clapID='${dataset}']`);
-    clapCount.innerText = claps;
+  clapCount.innerText = claps;
+
+  const clapsButton = document.querySelector(`[data-claps-button='${dataset}']`);
+
+  clapsButton.classList.toggle('bg-blue-300');
+  clapsButton.classList.toggle('text-white');
+  clapsButton.classList.toggle('text-blue-300');
 }
 
 <% if @clap.nil? %>
