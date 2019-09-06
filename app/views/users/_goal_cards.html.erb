@@ -35,7 +35,7 @@
         <!-- GOAL CARD -->
         <% if !goal.complete %>
           <%= link_to goal_path(goal), class:"relative scroll-card bg-white shadow-lg rounded-2xl pt-6 mr-4 p-4 sm:px-0 w-56 h-64 text-center text-purple-700 sm:block sm:mb-4" do %>
-            <%= cl_image_tag goal.buddy.photo, height: 60, width: 60, crop: :fill, class: "m-auto rounded-full h-auto object-contain float-none" %>
+            <%= cl_image_tag goal.user.photo, height: 60, width: 60, crop: :fill, class: "m-auto rounded-full h-auto object-contain float-none" %>
             <span class="font-sans font-semibold text-5xl">
               <% done = goal.milestones.count { |milestone| milestone.complete == true } %>
               <% total = goal.milestones.length %>

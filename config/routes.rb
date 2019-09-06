@@ -1,9 +1,13 @@
 Rails.application.routes.draw do
   devise_for :users
-  root to: 'pages#home'
+  root to: 'communities#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+  # action cabel (chat)
+  mount ActionCable.server => "/cable"
+
   resources :goals, except: %i[new] do
-    resources :milestones, only: %i[index new create update]
+    resources :milestones, only: %i[index new create update destroy]
     resources :messages, only: %i[new create index]
     member do
       get 'buddy_assign'
@@ -12,7 +16,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :milestones, only: %i[edit destroy]
+  resources :milestones, only: %i[edit]
 
   resources :users, only: %i[show]
 

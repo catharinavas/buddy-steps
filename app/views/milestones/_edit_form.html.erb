@@ -2,7 +2,7 @@
     <%= f.input :description %>
     <%= f.input :deadline, as: :string, required: false, input_html: {class: "datepicker"} %>
     <%= f.button :submit %>
-    <%= link_to milestone_path(milestone), method: :delete, data: { confirm: 'Are you sure you want to delete? Think about your main goal!' } do %>
+    <%= link_to goal_milestone_path(goal, milestone), method: :delete, data: { confirm: 'Are you sure you want to delete? Think about your main goal!' } do %>
       <%= fa_icon "trash alt" %>
     <% end %>
   </div>

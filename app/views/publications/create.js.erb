@@ -1,12 +1,10 @@
 function refreshForm(innerHTML) {
-  const newPublicationForm = document.getElementById('new_publication');
+  var newPublicationForm = document.getElementById('new_publication');
   newPublicationForm.innerHTML = innerHTML;
 }
 
 
 function addPublication(publicationHTML) {
-  console.log(1)
-  console.log(publicationHTML)
   const publications = document.getElementById('publications');
   publications.insertAdjacentHTML('afterbegin', publicationHTML);
 

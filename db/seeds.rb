@@ -128,12 +128,12 @@ User.all.each do |user|
     goal.save!
 
     rand(20).times do
-      Message.create!(goal: goal, user: user, content: Faker::Games::Overwatch.quote)
+      Message.create!(goal: goal, user: user, content: RobertoBarros.in_ingrish)
     end
 
     5.times do
       Milestone.create!(
-        description: Faker::TvShows::RuPaul.quote,
+        description: RobertoBarros.in_ingrish,
         deadline: (Date.today + rand(5..10).days),
         complete: [true, false, false].sample,
         goal: goal
