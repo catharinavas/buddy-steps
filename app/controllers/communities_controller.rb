@@ -3,11 +3,12 @@ class CommunitiesController < ApplicationController
   before_action :set_community, only: :show
 
   def index
-    @communities = Community.all - current_user.communities
+    @communities = current_user.communities
     @all_publications = []
     @communities.each do |community|
       community.publications.each { |pub| @all_publications << pub }
     end
+    @all_publications.sort_by!(&:created_at)
   end
 
   def show
