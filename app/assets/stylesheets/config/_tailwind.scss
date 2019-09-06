@@ -1,49 +1,9 @@
-@import "tailwindcss/dist/base";
-@import "tailwindcss/dist/components";
-@import "tailwindcss/dist/utilities";
+@import "tailwindcss/dist/base.min";
+@import "tailwindcss/dist/components.min";
+@import "tailwindcss/dist/utilities.min";
 
-// .input {
-//   @apply appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight;
-// }
-
-// .input:focus {
-//   @apply outline-none bg-white border-gray-500;
-// }
-
-// .label {
-//   @apply block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2;
-// }
-
-// .select {
-//   @apply appearance-none py-3 px-4 pr-8 block w-full bg-gray-200 border border-gray-200 text-gray-700
-//    rounded leading-tight;
-//    -webkit-appearance: none;
-// }
-
-// .select:focus {
-//   @apply outline-none bg-white border-gray-500;
-// }
-
-// .link-grey {
-//   @apply text-gray-600 underline;
-// }
-
-// .link-grey:hover {
-//   @apply text-gray-700;
-// }
-
-// .btn-options {
-//   @apply flex-1 p-2 text-base text-gray-700 text-center bg-orange-400 px-4 py-2 m-2 w-1/4 rounded;
-// }
 
 .transition-soft {
   transition: 0.3s ease;
 }
 
-// .body {
-//   @apply h-screen pt-3;
-// }
-
-// .active {
-//   @apply bg-orange-400 text-orange-100
-// }
