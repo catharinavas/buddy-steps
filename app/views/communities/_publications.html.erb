@@ -1,7 +1,9 @@
+<% if current_user.communities.include?(@community) %>
 <div>
   <h3>Start a new discussion or question thread</h3>
   <%= render 'publications/form', community: @community, publication: @publication %>
 </div>
+<% end %>
 
 <div class="w-3/4 m-auto">
   <%= render 'publications/publications_list', publications: @community_publications %>
