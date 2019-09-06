@@ -90,9 +90,10 @@
   <!-- DIARY -->
   <div class="pt-3 p-4 md:px-24 mt-20">
     <h2 class="text-3xl mb-5 text-purple-900 font-mono font-semibold">Diary</h2>
+    <% if @user == current_user  %>
     <h3>Make a new publication</h3>
     <%= render 'publications/form', publication: Publication.new %>
-
+    <% end %>
     <%= render 'publications/publications_list', publications: @diary_publications %>
   </div>
 
