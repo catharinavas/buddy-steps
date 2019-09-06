@@ -12,7 +12,7 @@ class GoalsController < ApplicationController
     @goal.buddy = buddy_assign
     @goal.start_date = Date.today
     @goal.user = current_user
-    unless params[:goal][:category_id].nil?
+    unless params[:goal][:category_id] == ""
       @goal.category = Category.find(params[:goal][:category_id])
     else
       @goal.category = Category.find_by(name: "Others")
@@ -20,7 +20,7 @@ class GoalsController < ApplicationController
     if @goal.save
       redirect_to goal_path(@goal)
     else
-      render 'goals/new_form'
+      render partial: 'goals/new_form'
     end
   end
 
