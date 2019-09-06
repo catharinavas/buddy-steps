@@ -41,9 +41,9 @@
     <!-- BUTTONS -->
     <div class= "flex justify-between items-end mt-10">
         <p class="text-blue-300 text-sm text-right flex-shrink-0 mt-16">
-          <%= link_to new_publication_clap_path(@publication), remote: true,class: "border p-3 border-blue-300 rounded-full" do%>
+          <%= link_to new_publication_clap_path(@publication), remote: true,class: "p-3" do%>
             <span id="clap-count" data-clapID="<%= @publication.id %>"><%= @publication.claps.count %></span>
-            <i class="text-xl fas fa-sign-language text-blue-300"></i>
+            <i class="text-xs text-blue-300">Claps</i>
           <% end %>
         </p>
 

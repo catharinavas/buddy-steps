@@ -8,7 +8,11 @@ function addPublication(publicationHTML) {
   console.log(1)
   console.log(publicationHTML)
   const publications = document.getElementById('publications');
-  publications.insertAdjacentHTML('beforebegin', publicationHTML);
+  publications.insertAdjacentHTML('afterbegin', publicationHTML);
+
+  navbarHeight = document.querySelector('#navbar').offsetHeight
+  const topOfPublications = document.getElementById('publications').offsetTop - 1.3 * navbarHeight;
+  window.scroll({ top: topOfPublications, behavior: "smooth" });
 }
 
 
