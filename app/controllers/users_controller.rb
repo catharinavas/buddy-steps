@@ -13,11 +13,17 @@ class UsersController < ApplicationController
     @goal = Goal.new
     @milestone = Milestone.new
 
+    # PUBLICATIONS
+    diary_publication_types = PublicationType.where(name: ['Frustration', 'Pleasure', 'Celebration'])
+    @diary_publications = current_user.publications.where(publication_type: diary_publication_types)
+    @communities = nil
+
     # BUDDY NOTIFICATION
 
   end
 
   def show
+    @user = User.find(params[:id])
   end
 
   private

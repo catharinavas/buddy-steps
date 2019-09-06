@@ -13,8 +13,8 @@ function addPublication(publicationHTML) {
 
 
 <% if @publication.errors.any? %>
-  refreshForm('<%= j render "publications/news", community: @community, publication: @publication %>');
+  refreshForm('<%= j render "publications/form", community: @community, publication: @publication %>');
 <% else %>
   addPublication('<%= j render "publications/card", community: @community, publication: @publication, type1: @type1 %>');
-  refreshForm('<%= j render "publications/news", community: @community, publication: Publication.new %>');
+  refreshForm('<%= j render "publications/form", community: @community, publication: Publication.new %>');
 <% end %>

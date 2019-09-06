@@ -221,9 +221,18 @@ end
 puts "creating Publications for users' diaries"
 User.all.each do |user|
   5.times do
+    paragraphs =
+      [
+        Faker::Lorem.paragraph_by_chars(number: rand(250...350)).to_s,
+        Faker::Lorem.paragraph_by_chars(number: rand(250...350)).to_s,
+        Faker::Lorem.paragraph_by_chars(number: rand(250...350)).to_s,
+        Faker::Lorem.paragraph_by_chars(number: rand(250...350)).to_s
+      ]
+    text = paragraphs.first(rand(2..4)).join("\n\n")
+
     publication = Publication.create!(
       title: Faker::TvShows::TwinPeaks.quote,
-      content: Faker::Lorem.paragraph(sentence_count: 4),
+      content: text,
       publication_type: [frustration, pleasure].sample,
       is_private: true,
       user: user

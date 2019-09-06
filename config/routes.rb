@@ -21,7 +21,7 @@ Rails.application.routes.draw do
     resources :publications, only: :create
   end
 
-  resources :publications, only: %i[create show] do
+  resources :publications, only: %i[create show destroy] do
     resources :claps, only: %i[new show create]
     resources :comments, only: %i[create]
   end
