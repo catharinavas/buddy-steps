@@ -1,4 +1,4 @@
-// import '../css/application.css';
+import '../css/application.css';
 import "../plugins/flatpickr";
 import { menuToggle, dropdownToggle, closeMenu } from '../components/navbar';
 import { showPublications } from '../components/show-publications';
