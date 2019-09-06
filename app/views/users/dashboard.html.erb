@@ -64,13 +64,13 @@
           <%= f.input :description %>
           <%= f.input :deadline, as: :string, required: false, input_html: {class: "datepicker"} %>
           <%= f.association :category %>
-        <!--Footer-->
-        <div class="flex justify-end pt-2">
-          <%= f.button :submit, class: "px-4 bg-transparent p-3 rounded-lg text-indigo-500 hover:bg-gray-100 hover:text-indigo-400 mr-2" %>
-          <!-- <button class="px-4 bg-transparent p-3 rounded-lg text-indigo-500 hover:bg-gray-100 hover:text-indigo-400 mr-2">Action</button> -->
+          <!--Footer-->
+          <div class="flex justify-end pt-2">
+            <%= f.button :submit, class: "px-4 bg-transparent p-3 rounded-lg text-indigo-500 hover:bg-gray-100 hover:text-indigo-400 mr-2"%>
+            <!-- <button class="px-4 bg-transparent p-3 rounded-lg text-indigo-500 hover:bg-gray-100 hover:text-indigo-400 mr-2">Action</button> -->
+            <p class="modal-close px-4 bg-indigo-500 p-3 rounded-lg text-white hover:bg-indigo-400">Close</p>
+          </div>
         <% end %>
-          <button class="modal-close px-4 bg-indigo-500 p-3 rounded-lg text-white hover:bg-indigo-400">Close</button>
-        </div>
       </div>
     </div>
   </div>
