@@ -1,4 +1,3 @@
-import '../css/application.css';
 import "../plugins/flatpickr";
 import { menuToggle, dropdownToggle, closeMenu } from '../components/navbar';
 import { showPublications } from '../components/show-publications';
@@ -9,7 +8,6 @@ import { readToggle } from '../components/read_toggle.js';
 import { cardsGoals } from '../components/dashboard';
 import { scrollLastMessageIntoView } from '../components/scroll';
 
-//publications index;
 
 menuToggle();
 dropdownToggle();

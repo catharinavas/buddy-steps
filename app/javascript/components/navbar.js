@@ -29,6 +29,4 @@ const closeMenu = () => {
   // })
 }
 
-export { menuToggle };
-export { dropdownToggle };
-export { closeMenu };
+export { menuToggle, dropdownToggle, closeMenu };
