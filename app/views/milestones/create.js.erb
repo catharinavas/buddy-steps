@@ -1,10 +1,10 @@
 function refreshForm(innerHTML) {
-  const newMilestone = document.getElementById('new_milestone');
+  var newMilestone = document.getElementById('new_milestone');
   newMilestone.innerHTML = innerHTML;
 }
 
 function addMilestone(milestoneHTML) {
-  const milestones = document.getElementById('milestones');
+  var milestones = document.getElementById('milestones');
   milestones.insertAdjacentHTML('afterbegin', milestoneHTML);
 }
 
