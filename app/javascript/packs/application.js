@@ -9,7 +9,7 @@ import { readToggle } from '../components/read_toggle.js';
 import { cardsGoals } from '../components/dashboard';
 import { scrollLastMessageIntoView } from '../components/scroll';
 
-// publications index;
+publications index;
 
 // menuToggle();
 // dropdownToggle();
