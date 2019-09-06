@@ -19,7 +19,7 @@
     <!-- ONLY SHOW EDIT/DELETE GOAL IF CURRENT_USER == GOAL.USER_ID -->
     <% if @goal.user == current_user %>
       <%= link_to goal_path(@goal), method: :delete, data: { confirm: 'Are you sure you want to delete?' } do %>
-        <%= fa_icon "trash alt" %>
+
       <% end %>
       <hr>
       <%= link_to edit_goal_path(@goal) do %>
