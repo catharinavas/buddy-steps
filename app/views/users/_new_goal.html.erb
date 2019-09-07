@@ -2,7 +2,7 @@
 <% if current_user == @user %>
   <div class="modal opacity-0 pointer-events-none fixed w-full h-full top-0 left-0 flex items-center justify-center">
     <div class="modal-overlay absolute w-full h-full bg-gray-900 opacity-50"></div>
-    <div class="modal-container bg-white w-11/12 md:max-w-md mx-auto rounded shadow-lg z-50 overflow-y-auto">
+    <div class="modal-container bg-white w-screen h-screen md:h-auto md:max-w-md mx-auto rounded shadow-lg z-50 overflow-y-auto">
       <!-- Add margin if you want to see some of the overlay behind the modal-->
       <div class="modal-content py-4 text-left px-6 border-t-8 border-purple-700">
         <!--Title-->
@@ -25,11 +25,11 @@
           <%= f.input :title %>
           <%= f.input :description %>
           <div class="flex">
-            <%= f.input :deadline, as: :string, required: false, input_html: {class: "datepicker"} %>
-            <%= f.association :category, input_html: { class: "w-3/5 ml-4"}, label_html: { class: 'ml-4' } %>
+            <%= f.input :deadline, as: :string, required: false, input_html: {class: "datepicker "} %>
+            <%= f.association :category, input_html: { class: " md:w-3/5 ml-4"}, label_html: { class: 'ml-4' },wrapper_html: { class: 'flex-1 pr-4' } %>
           </div>
           <!--Footer-->
-          <div class="flex pt-2 justify-between items-center">
+          <div class="flex fixed w-full pr-12 md:pr-0 bottom-0 md:relative pt-2 justify-between items-center">
             <p class="modal-close cursor-pointer text-gray-600 hover:underline hover:text-gray-700">Cancel</p>
             <%= f.button :submit%>
           </div>
