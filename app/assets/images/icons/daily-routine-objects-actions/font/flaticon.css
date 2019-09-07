@@ -1,0 +1,91 @@
+	/*
+  	Flaticon icon font: Flaticon
+  	Creation date: 05/05/2017 10:55
+  	*/
+
+@font-face {
+  font-family: "Flaticon";
+  src: url("./Flaticon.eot");
+  src: url("./Flaticon.eot?#iefix") format("embedded-opentype"),
+       url("./Flaticon.woff") format("woff"),
+       url("./Flaticon.ttf") format("truetype"),
+       url("./Flaticon.svg#Flaticon") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  @font-face {
+    font-family: "Flaticon";
+    src: url("./Flaticon.svg#Flaticon") format("svg");
+  }
+}
+
+[class^="flaticon-"]:before, [class*=" flaticon-"]:before,
+[class^="flaticon-"]:after, [class*=" flaticon-"]:after {   
+  font-family: Flaticon;
+        font-size: 20px;
+font-style: normal;
+margin-left: 20px;
+}
+
+.flaticon-001-working:before { content: "\f100"; }
+.flaticon-002-cloudy:before { content: "\f101"; }
+.flaticon-003-wallet:before { content: "\f102"; }
+.flaticon-004-vitamins:before { content: "\f103"; }
+.flaticon-005-gamepad:before { content: "\f104"; }
+.flaticon-006-underpants:before { content: "\f105"; }
+.flaticon-007-umbrella:before { content: "\f106"; }
+.flaticon-008-shirt:before { content: "\f107"; }
+.flaticon-009-garbage:before { content: "\f108"; }
+.flaticon-010-toothbrush:before { content: "\f109"; }
+.flaticon-011-toilet-paper:before { content: "\f10a"; }
+.flaticon-012-toaster:before { content: "\f10b"; }
+.flaticon-013-watch:before { content: "\f10c"; }
+.flaticon-014-tie:before { content: "\f10d"; }
+.flaticon-015-ticket:before { content: "\f10e"; }
+.flaticon-016-like:before { content: "\f10f"; }
+.flaticon-017-tablet:before { content: "\f110"; }
+.flaticon-018-study:before { content: "\f111"; }
+.flaticon-019-dumbbell:before { content: "\f112"; }
+.flaticon-020-chat:before { content: "\f113"; }
+.flaticon-021-sock:before { content: "\f114"; }
+.flaticon-022-slippers:before { content: "\f115"; }
+.flaticon-023-sleep:before { content: "\f116"; }
+.flaticon-024-shopping-cart:before { content: "\f117"; }
+.flaticon-025-shopping-bag:before { content: "\f118"; }
+.flaticon-026-sewing:before { content: "\f119"; }
+.flaticon-027-schedule:before { content: "\f11a"; }
+.flaticon-028-repair:before { content: "\f11b"; }
+.flaticon-029-list:before { content: "\f11c"; }
+.flaticon-030-pillow:before { content: "\f11d"; }
+.flaticon-031-activity:before { content: "\f11e"; }
+.flaticon-032-pet:before { content: "\f11f"; }
+.flaticon-033-agenda:before { content: "\f120"; }
+.flaticon-034-newspaper:before { content: "\f121"; }
+.flaticon-035-smartphone:before { content: "\f122"; }
+.flaticon-036-mailbox:before { content: "\f123"; }
+.flaticon-037-laundry-1:before { content: "\f124"; }
+.flaticon-038-key:before { content: "\f125"; }
+.flaticon-039-ironing:before { content: "\f126"; }
+.flaticon-040-invoice:before { content: "\f127"; }
+.flaticon-041-hurry:before { content: "\f128"; }
+.flaticon-042-house:before { content: "\f129"; }
+.flaticon-043-meat:before { content: "\f12a"; }
+.flaticon-044-eat:before { content: "\f12b"; }
+.flaticon-045-profits:before { content: "\f12c"; }
+.flaticon-046-wash:before { content: "\f12d"; }
+.flaticon-047-laundry:before { content: "\f12e"; }
+.flaticon-048-cosmetics:before { content: "\f12f"; }
+.flaticon-049-cooking:before { content: "\f130"; }
+.flaticon-050-coffee:before { content: "\f131"; }
+.flaticon-051-cleaning:before { content: "\f132"; }
+.flaticon-052-fatherhood:before { content: "\f133"; }
+.flaticon-053-car:before { content: "\f134"; }
+.flaticon-054-calendar:before { content: "\f135"; }
+.flaticon-055-burger:before { content: "\f136"; }
+.flaticon-056-briefcase:before { content: "\f137"; }
+.flaticon-057-box:before { content: "\f138"; }
+.flaticon-058-bathtub:before { content: "\f139"; }
+.flaticon-059-handbag:before { content: "\f13a"; }
+.flaticon-060-alarm-clock:before { content: "\f13b"; }

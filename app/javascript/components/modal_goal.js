@@ -1,6 +1,7 @@
 const modalGoal = () => {
   var openmodal = document.querySelectorAll('.modal-open-goal')
   for (var i = 0; i < openmodal.length; i++) {
+    console.log(i)
     openmodal[i].addEventListener('click', function(event){
     event.preventDefault()
     toggleModal()
@@ -31,8 +32,9 @@ const modalGoal = () => {
 
 
   function toggleModal () {
+    console.log("toggle")
     const body = document.querySelector('body')
-    const modal = document.querySelector('.modal')
+    const modal = document.querySelector('.modal-goal')
     modal.classList.toggle('opacity-0')
     modal.classList.toggle('pointer-events-none')
     body.classList.toggle('modal-active')

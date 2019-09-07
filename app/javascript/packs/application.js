@@ -17,6 +17,7 @@ showPublications();
 addMilestone();
 chat();
 modal();
+modalGoal();
 readToggle();
 cardsGoals();
 scrollLastMessageIntoView();

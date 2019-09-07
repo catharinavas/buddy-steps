@@ -15,12 +15,13 @@ class GoalsController < ApplicationController
     unless params[:goal][:category_id] == ""
       @goal.category = Category.find(params[:goal][:category_id])
     else
-      @goal.category = Category.find_by(name: "Others")
+      @goal.category = Category.find_by(name: "Other")
     end
     if @goal.save
       redirect_to goal_path(@goal)
     else
-      render partial: 'goals/new_form'
+      flash[:notice] = 'Invalid parameters!'
+      redirect_to dashboard_path(current_user)
     end
   end
 
@@ -34,7 +35,7 @@ class GoalsController < ApplicationController
   def update
     @goal = Goal.find(params[:id])
     if @goal.update!(goal_params)
-      redirect_to dashboard_path(current_user)
+      redirect_to goal_path(@goal)
     else
       render 'edit'
     end
