@@ -41,12 +41,18 @@
         <% end %>
 
         <!-- AVATAR -->
-        <div id="avatar-icon" class="cursor-pointer px-2 py-1 rounded-lg">
-          <% if current_user %>
-            <%= image_tag "icons/avatar.png", class:"h-8 w-8"%>
-          <% end %>
+        <% if current_user %>
+  Z       <div id="avatar-icon" class="cursor-pointer px-2 py-1 rounded-lg">
+            <% if current_user.photo.present? %>
+             <%= cl_image_tag(current_user.photo, :transformation=>[
+             {width: 50, height: 50, gravity: :face, radius: :max, crop: :thumb}
+             ]) %>
+            <% else %>
+              <%= image_tag "icons/avatar.png", class:"h-8 w-8"%>
+            <% end %>
+          </div>
+        <% end %>
         </div>
-      </div>
 
     <!-- SMALL SCREEN MENU LIST -->
     <div id="menu-list" class="block hidden sm:hidden bg-white border-t-2 border-gray-200 py-2 transition-soft">
