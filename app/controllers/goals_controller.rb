@@ -20,7 +20,8 @@ class GoalsController < ApplicationController
     if @goal.save
       redirect_to goal_path(@goal)
     else
-      render partial: 'goals/new_form'
+      flash[:notice] = 'Invalid parameters!'
+      redirect_to dashboard_path(current_user)
     end
   end
 
