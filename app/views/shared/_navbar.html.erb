@@ -42,7 +42,7 @@
 
         <!-- AVATAR -->
         <% if current_user %>
-  Z       <div id="avatar-icon" class="cursor-pointer px-2 py-1 rounded-lg">
+         <div id="avatar-icon" class="cursor-pointer px-2 py-1 rounded-lg">
             <% if current_user.photo.present? %>
              <%= cl_image_tag(current_user.photo, :transformation=>[
              {width: 50, height: 50, gravity: :face, radius: :max, crop: :thumb}
