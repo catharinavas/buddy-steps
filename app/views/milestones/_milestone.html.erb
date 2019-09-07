@@ -16,11 +16,11 @@
   <td class="whitespace-no-wrap"><%= milestone.deadline.strftime("%d %b") %></td>
   <td class="text-gray-500 hover:text-gray-900 whitespace-no-wrap">
     <% if current_user.id == milestone.goal.user_id %>
-      <%= fa_icon "edit", class: "modal-open" %>
+      <%= fa_icon "edit", class: "modal-open", data: {modal: milestone.id} %>
       <%= link_to goal_milestone_path(@goal, milestone), method: :delete, data: { confirm: 'Are you sure you want to delete? Think about your main goal!' } do %>
         <%= fa_icon "trash alt" %>
       <% end %>
-      <div class="modal opacity-0 pointer-events-none fixed w-full h-full top-0 left-0 flex items-center justify-center">
+      <div class="modal opacity-0 pointer-events-none fixed w-full h-full top-0 left-0 flex items-center justify-center" id="<%= milestone.id %>">
         <div class="modal-overlay absolute w-full h-full bg-gray-900 opacity-50"></div>
 
         <div class="modal-container bg-white w-11/12 md:max-w-md mx-auto rounded shadow-lg z-50 overflow-y-auto">
