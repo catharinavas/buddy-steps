@@ -15,7 +15,7 @@ class GoalsController < ApplicationController
     unless params[:goal][:category_id] == ""
       @goal.category = Category.find(params[:goal][:category_id])
     else
-      @goal.category = Category.find_by(name: "Others")
+      @goal.category = Category.find_by(name: "Other")
     end
     if @goal.save
       redirect_to goal_path(@goal)
