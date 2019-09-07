@@ -1,4 +1,6 @@
 class Publication < ApplicationRecord
+  searchkick
+
   belongs_to :user
   belongs_to :community, optional: true
   belongs_to :publication_type
