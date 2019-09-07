@@ -5,6 +5,16 @@
 </div>
 <% end %>
 
+
+  <%= form_tag community_path, method: :get do %>
+    <%= text_field_tag :query,
+      params[:query],
+      class: "form-control",
+      placeholder: "Find a publication"
+    %>
+    <%= submit_tag "Search", class: "" %>
+  <% end %>
+
 <div class="w-3/4 m-auto">
   <%= render 'publications/publications_list', publications: @community_publications %>
 </div>
