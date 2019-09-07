@@ -12,7 +12,7 @@ class CommunitiesController < ApplicationController
   end
 
   def show
-    Publication.reindex
+    # Publication.reindex
     @publication = Publication.new
     @type = PublicationType.where(name: ['News', 'Question'])
 
