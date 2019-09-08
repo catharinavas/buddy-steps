@@ -1,0 +1,13 @@
+<%= simple_form_for user_feeling, url: user_feelings_path do |f| %>
+  <div class="form-inputs">
+    <%= f.association :feeling, label: "How are you feeling?", include_hidden: false, collection: feelings %>
+    <%= f.input :intensity, collection: [1, 2, 3, 4, 5], label: 'Shall we stagger this?' %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+    <%= link_to 'Back',
+                dashboard_path(current_user),
+                class: 'btn btn-danger' %>
+  </div>
+<% end %>
