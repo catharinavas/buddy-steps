@@ -147,7 +147,7 @@ puts 'creating Feelings'
 anxiety = Feeling.create!(name: 'Anxiety')
 irritability = Feeling.create!(name: 'Irritability')
 sleep_quality = Feeling.create!(name: 'Sleep Quality')
-happinnes = Feeling.create!(name: 'Happinnes')
+happiness = Feeling.create!(name: 'Happiness')
 
 puts 'creating Feelings for the users'
 User.all.each do |user|

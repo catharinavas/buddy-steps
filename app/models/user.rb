@@ -14,6 +14,7 @@ class User < ApplicationRecord
   has_many :publications, dependent: :destroy
   has_many :claps, dependent: :destroy
   has_many :user_feelings, dependent: :destroy
+  has_many :feelings, through: :user_feelings
 
   # validates :first_name, presence: true
   # validates :last_name, presence: true
