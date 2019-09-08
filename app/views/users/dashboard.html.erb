@@ -63,7 +63,7 @@
           <div id="btn_new_goal" class="modal-open-new-post cursor-pointer text-white bg-purple-600 text-sm font-semibold border-2 border-purple-600 px-3 py-1 h-8 mr-5 rounded-full hover:bg-purple-500 hover:border-purple-500 transition-soft">
             <span class="m-auto">NEW PUBLICATION</span>
           </div>
-      <%= render 'publications/form', publication: Publication.new %>
+      <%= render 'publications/new_publication', publication: Publication.new %>
     <% end %>
     <%= render 'publications/publications_list', publications: @diary_publications %>
   </div>
