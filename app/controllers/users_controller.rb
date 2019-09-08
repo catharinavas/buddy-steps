@@ -2,6 +2,18 @@ class UsersController < ApplicationController
   before_action :set_user, only: :dashboard
 
   def dashboard
+
+    # user feelings
+    @user_feeling = UserFeeling.new # new feeling
+
+    @user_feelings = today_feeling
+    if @user_feelings == []
+      @feelings = Feeling.all
+    else
+      @feelings = Feeling.where.not(id: @user_feelings.pluck(:feeling_id))
+    end
+
+
     @user = User.find(params[:id])
     @moods = UserFeeling.where(user: params[:id])
 
@@ -34,5 +46,9 @@ class UsersController < ApplicationController
 
   def set_user
     @user = User.find(params[:id])
+  end
+
+  def today_feeling
+    UserFeeling.where(user: current_user, feeling_date: Date.today)
   end
 end

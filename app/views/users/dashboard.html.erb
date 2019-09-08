@@ -32,7 +32,14 @@
   <!-- GOALS CARDS -->
   <%= render 'goal_cards' %>
 
+  <!-- FEELINGS -->
+  <% if @user == current_user %>
 
+    <% unless @feelings == [] %>
+      <%= render 'new_feeling', user_feeling: @user_feeling, feelings: @feelings %>
+    <% end %>
+
+  <% end %>
   <!-- MODAL -->
   <%= render 'new_goal' %>
 
