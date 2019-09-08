@@ -5,6 +5,8 @@ Rails.application.routes.draw do
 
   # action cabel (chat)
   # mount ActionCable.server => "/cable"
+  post 'communities/:id', to: 'communities#join_community', as: 'join_community'
+  delete 'communities/:id', to: 'communities#leave_community', as: 'leave_community'
 
   resources :goals, except: %i[new] do
     resources :milestones, only: %i[index new create update destroy]
