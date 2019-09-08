@@ -1,18 +1,17 @@
-const modalNewPost = () => {
-  var openmodal = document.querySelectorAll('.modal-open-new-post')
+const modalEditGoal = () => {
+  var openmodal = document.querySelectorAll('.modal-open-edit-goal')
   for (var i = 0; i < openmodal.length; i++) {
-    console.log(i)
     openmodal[i].addEventListener('click', function(event){
     event.preventDefault()
     toggleModal()
     })
   }
 
-  const overlay = document.querySelector('.modal-new-post-overlay');
+  const overlay = document.querySelector('.modal-edit-goal-overlay');
   if(overlay){
     overlay.addEventListener('click', toggleModal)
   }
-  var closemodal = document.querySelectorAll('.modal-new-post-close')
+  var closemodal = document.querySelectorAll('.modal-edit-goal-close')
   for (var i = 0; i < closemodal.length; i++) {
     closemodal[i].addEventListener('click', toggleModal)
   }
@@ -25,20 +24,19 @@ const modalNewPost = () => {
     } else {
     isEscape = (evt.keyCode === 27)
     }
-    if (isEscape && document.body.classList.contains('modal-new-post-active')) {
+    if (isEscape && document.body.classList.contains('modal-edit-goal-active')) {
     toggleModal()
     }
   };
 
 
   function toggleModal () {
-    console.log("toggle")
     const body = document.querySelector('body')
-    const modal = document.querySelector('.modal-new-post')
+    const modal = document.querySelector('.modal-edit-goal')
     modal.classList.toggle('opacity-0')
     modal.classList.toggle('pointer-events-none')
-    body.classList.toggle('modal-new-post-active')
+    body.classList.toggle('modal-edit-goal-active')
   }
 }
 
-export {modalNewPost};
+export {modalEditGoal};

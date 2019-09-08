@@ -3,7 +3,7 @@
 }
 
 
-.simple_form input:not(.boolean) {
+.simple_form input:not(.boolean .input-custom1) {
   appearance: none;
   display: block;
   width: 100%;
@@ -20,7 +20,7 @@
   margin-bottom: 1rem;
 }
 
-.simple_form input:not(.boolean):focus {
+.simple_form input:not(.boolean .input-custom1):focus {
   outline: 0;
   background-color: #fff;
   border-color: #a0aec0;
@@ -43,7 +43,7 @@
   font-size: .75rem;
 }
 
-.simple_form select {
+.simple_form select:not(.select-custom1) {
   appearance: none;
   padding-top: 0.75rem;
   padding-bottom: 0.75rem;
@@ -58,15 +58,14 @@
   color: #4a5568;
   line-height: 1.25;
   -webkit-appearance: none;
-}
-
-.simple_form select:focus {
+  &:focus {
   outline: 0;
   background-color: #fff;
   border-color: #a0aec0;
+  }
 }
 
-.simple_form input.btn{
+.simple_form input.btn:not(.btn-custom1){
   cursor: pointer;
   background-color: #6b46c1;
   color: #fff;
@@ -79,16 +78,91 @@
     width: 100%;
     border-radius: 0.5rem;
   }
-}
-
-.simple_form input.btn:hover {
+  &:hover {
   cursor: pointer;
   background-color: #805ad5;
+  }
 }
 
 .simple_form input.boolean {
   margin: 0.75rem;
 }
+
+.input-custom1 {
+  appearance: none;
+  display: block;
+  width: 100%;
+  color: #4a5568;
+  border-bottom-width: 2px;
+  border-color: #e9d8fd;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  line-height: 1.25;
+  margin-bottom: 1rem;
+  font-weight: 500;
+  &.content {
+  height: 16rem;
+  border-color: #edf2f7;
+  }
+  &.title {
+  font-size: 1.125rem;
+  color: #2d3748;
+  font-weight: 700;
+  }
+}
+
+.select-custom1 {
+  appearance: none;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-right: 2rem;
+  width: 100%;
+  border-width: 2px;
+  border-color: #edf2f7;
+  border-radius: 0.25rem;
+  background-color: #fff;
+  color: #4a5568;
+  line-height: 1.25;
+  -webkit-appearance: none;
+}
+
+.input-custom1:focus {
+  outline: 0;
+  border-color: #a0aec0;
+}
+
+.btn-custom1 {
+  cursor: pointer;
+  background-color: #6b46c1;
+  color: #fff;
+  width: 5rem;
+  border-radius: 0.5rem;
+  text-align: center;
+  font-weight: 600;
+  margin-bottom: 0rem;
+  &.w-full{
+    width: 100%;
+    border-radius: 0.5rem;
+  }
+  &:hover {
+  cursor: pointer;
+  background-color: #805ad5;
+  }
+}
+
+
+
+
+
+
+
+
+
+
 
 .body {
   height: 100%;
@@ -98,4 +172,8 @@
 .active {
   background-color: #f6ad55;
   color: #fffaf0;
+}
+
+.-mt-custom1 {
+  margin-top: -3.3rem;
 }
