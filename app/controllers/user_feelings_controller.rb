@@ -15,18 +15,20 @@ class UserFeelingsController < ApplicationController
     @user_feeling.user = current_user
     @user_feeling.feeling_date = Date.today
 
-    @feeling_today = current_user.user_feelings.where(feeling_date: @user_feeling.feeling_date, feeling: @user_feeling.feeling).uniq
-    unless @feeling_today.count.zero?
-      if (@feeling_today.first.user == @user_feeling.user || @feeling_today.first.feeling == @user_feeling.feeling)
-        @feeling_today.first.update(user_feeling_params)
-        dashboard_path(current_user)
-      end
-    end
+    # @feeling_today = current_user.user_feelings.where(feeling_date: @user_feeling.feeling_date, feeling: @user_feeling.feeling).uniq
+    # unless @feeling_today.count.zero?
+    #   if (@feeling_today.first.user == @user_feeling.user || @feeling_today.first.feeling == @user_feeling.feeling)
+    #     if @feeling_today.first.update(user_feeling_params)
+    #       redirect_to dashboard_path(current_user)
+    #     end
+    #   end
+    # end
 
-    if @user_feeling.save!
+    if @user_feeling.save
       redirect_to dashboard_path(current_user)
     else
-      render :new
+      flash[:notice] = 'Invalid parameters!'
+      redirect_to dashboard_path(current_user)
     end
   end
 

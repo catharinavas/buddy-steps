@@ -1,4 +1,4 @@
-<div id="navbar" class="font-sans w-full m-0 bg-white shadow h-67">
+<div id="navbar" class="fixed font-sans w-full m-0 bg-white shadow h-67">
 
     <div class="hidden sm:inline-block absolute bg-purple-900 h-1 my-0 p-0 w-full"></div>
 
@@ -11,24 +11,22 @@
         </div>
 
         <!-- LOGO -->
-        <div class="inline text-xl align-middle">
+        <div class="inline text-xl align-middle m-auto pr-8 sm:m-0 sm:pr-0">
           <%= fa_icon "walking", class: "mx-2 text-purple-900" %>
-          <span class="text-purple-900 font-bold">NEXT STEP</span>
+          <span class="text-purple-900 font-bold">BUDDY STEPS</span>
         </div>
 
         <!-- LARGE SCREEN TABS -->
-        <div class="hidden sm:flex sm:items-center">
+        <% unless current_user.nil? %>
+          <div class="hidden sm:flex sm:items-center pt-3">
 
-          <% unless current_user.nil? %>
             <h1><%= link_to "Dashboard", dashboard_path(current_user),
-              class:"text-gray-700 text-sm font-semibold hover:text-purple-600 mr-4" %></h1>
-          <% end %>
+              class:"uppercase text-gray-700 text-md font-semibold hover:text-purple-600 mr-4" %></h1>
 
-
-          <h1><%= link_to "Community", communities_path,
-          class:"text-gray-700 text-sm font-semibold hover:text-purple-600 mr-4" %></h1>
-
-        </div>
+            <h1><%= link_to "Community", communities_path,
+            class:"uppercase text-gray-700 text-md font-semibold hover:text-purple-600 mr-4" %></h1>
+          </div>
+        <% end %>
 
         <!-- LARGE SCREEN BUTTONS -->
         <% if !current_user %>
@@ -41,12 +39,18 @@
         <% end %>
 
         <!-- AVATAR -->
-        <div id="avatar-icon" class="cursor-pointer px-2 py-1 rounded-lg">
-          <% if current_user %>
-            <%= image_tag "icons/avatar.png", class:"h-8 w-8"%>
-          <% end %>
+        <% if current_user %>
+         <div id="avatar-icon" class="cursor-pointer px-2 py-1 rounded-lg">
+            <% if current_user.photo.present? %>
+             <%= cl_image_tag(current_user.photo, :transformation=>[
+             {width: 50, height: 50, gravity: :face, radius: :max, crop: :thumb}
+             ]) %>
+            <% else %>
+              <%= image_tag "icons/avatar.png", class:"h-8 w-8"%>
+            <% end %>
+          </div>
+        <% end %>
         </div>
-      </div>
 
     <!-- SMALL SCREEN MENU LIST -->
     <div id="menu-list" class="block hidden sm:hidden bg-white border-t-2 border-gray-200 py-2 transition-soft">
@@ -80,11 +84,11 @@
 </div>
 
 <!-- DROPDOWN FROM AVATAR -->
-<div id="dropdown-list" class="hidden absolute rounded bg-gray-100 shadow-md right-0 w-48 text-right pr-5">
+<div id="dropdown-list" class="hidden absolute rounded bg-gray-100 shadow-md right-0 w-48 text-right pr-5 mt-20">
   <ul>
 
     <li>
-      <%= link_to "Other", "#",
+      <%= link_to "Profile", "#",
     class:"text-sm text-gray-800 font-semibold px-3 py-1 block hover:bg-gray-200 cursor-pointer" %></li>
     <hr class="border-gray-200 w-11/12 m-auto">
     <li>
