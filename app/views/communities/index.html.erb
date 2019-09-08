@@ -1,17 +1,38 @@
+<% if user_signed_in? %>
+  <div class="container md:flex flex-row-reverse md:p-10 ">
+    <div class="md:w-1/3">
+      <h2 class="text-purple-800 font-bold text-2xl ml-5">Your communities</h2>
+      <%= render 'communities_list', communities: current_user.communities %>
 
-<div class="container md:flex flex-row-reverse md:p-10 ">
-  <div class="md:w-1/3">
-    <h2 class="text-purple-800 font-bold text-2xl ml-5">Your communities</h2>
-    <%= render 'communities_list', communities: current_user.communities %>
+      <h2 class="text-purple-800 font-bold md:mt-24 text-2xl ml-5">Other communities</h2>
+      <%= render 'communities_list', communities: @communities %>
+    </div>
 
-    <h2 class="text-purple-800 font-bold md:mt-24 text-2xl ml-5">Other communities</h2>
-    <%= render 'communities_list', communities: @communities %>
+    <div class="border-l"></div>
+
+    <div class="md:w-2/3">
+      <h2 class="text-purple-800 font-bold text-2xl ml-5">Recent activity</h2>
+      <%= render 'publications/publications_list', publications: @all_publications %>
+    </div>
   </div>
+<% else %>
+  <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1461532257246-777de18cd58b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1355&q=80'); margin-top: 78px;">
 
-  <div class="border-l"></div>
+    <%= render 'special_offer' %>
 
-  <div class="md:w-2/3">
-    <h2 class="text-purple-800 font-bold text-2xl ml-5">Recent activity</h2>
-    <%= render 'publications/publications_list', publications: @all_publications %>
+    <div class="container mt-navbar">
+      <h1>Book your appointment now!</h1>
+      <p>Choose from several qualified doctors to help in your recovery process.</p>
+      <div class="flex form-inline">
+        <%= form_tag doctors_path(anchor: 'search-results'), method: :get do %>
+
+          <%= select_tag 'query', options_from_collection_for_select(@specialities, 'name', 'name'),
+           class: 'form-control doctor-form select2' %>
+
+          <%= submit_tag "Search", class: "btn btn-ghost ml-3", id: 'search' %>
+        <% end %>
+      </div>
+    </div>
   </div>
-</div>
+<% end %>
+
