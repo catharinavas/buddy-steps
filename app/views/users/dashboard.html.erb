@@ -1,11 +1,8 @@
 <div class="body bg-orange-100">
   <!-- MOOD SESSION -->
+  <div id="chart"></div>
 
-  <!-- <div class="p-4 md:px-24"> -->
-    <!-- <h2 class="text-3xl text-purple-900 font-mono font-semibold">Mood Graph</h2> -->
-    <!-- MOOD GRAPH -->
-    <%#= render 'mood_graph' %>
-  <!-- </div> -->
+  <%#= line_chart(@daily_series, @options) %>
 
   <!-- GOALS SESSION -->
   <div class="flex justify-between mt-20 pt-3 p-4 md:px-24">
