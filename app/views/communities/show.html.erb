@@ -1,5 +1,5 @@
 <div class="border-t">
-  <nav class="bg-white px-8 pt-2 shadow-md">
+  <nav class="mt-12 bg-white px-8 pt-2 shadow-md">
     <div class="-mb-px flex justify-start">
       <a id="menu-news" class="no-underline text-teal-dark border-b-2 border-teal-dark uppercase tracking-wide font-bold text-xs py-3 mr-8" href="?type=news">
         Publications
@@ -9,6 +9,19 @@
       </a>
     </div>
   </nav>
+
+  <% if current_user.communities.include?(@community) %>
+  <div>
+    <%= link_to "Leave community", leave_community_path(@community), method: :delete,
+              class:"text-gray-700 text-sm font-semibold hover:text-purple-600 mr-4" %>
+  </div>
+
+  <% else %>
+  <div>
+      <%= link_to "Join community", join_community_path(@community), method: :post,
+    class:"text-sm text-gray-600 px-3 py-1 block hover:bg-gray-200 cursor-pointer pb-2 mt-4" %></li>
+  </div>
+  <% end %>
 
 
   <div id="menu-news-list" class="transition-soft transition-delay">
