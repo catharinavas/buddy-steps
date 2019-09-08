@@ -1,21 +1,12 @@
-const modal = () => {
-  var openmodal = document.querySelectorAll('.modal-open')
-  openmodal.forEach(function(openModalButton){
-    openModalButton.addEventListener('click', function(event){
-      event.preventDefault()
-
-      const dataMilestoneId = openModalButton.getAttribute('data-modal')
-
-      console.log(dataMilestoneId)
-      toggleModal(dataMilestoneId)
+const modalEditGoal = () => {
+  var openmodal = document.querySelectorAll('.modal-open-new-goal')
+  for (var i = 0; i < openmodal.length; i++) {
+    console.log(i)
+    openmodal[i].addEventListener('click', function(event){
+    event.preventDefault()
+    toggleModal()
     })
-  })
-  // for (var i = 0; i < openmodal.length; i++) {
-  //   openmodal[i].addEventListener('click', function(event){
-  //   event.preventDefault()
-  //   toggleModal()
-  //   })
-  // }
+  }
 
   const overlay = document.querySelector('.modal-overlay');
   if(overlay){
@@ -40,16 +31,14 @@ const modal = () => {
   };
 
 
-  function toggleModal (dataGoalId) {
+  function toggleModal () {
+    console.log("toggle")
     const body = document.querySelector('body')
-    let modal
-    if (dataGoalId) modal = document.getElementById(dataGoalId)
-    else modal = document.querySelector('.modal')
-
+    const modal = document.querySelector('.modal-goal')
     modal.classList.toggle('opacity-0')
     modal.classList.toggle('pointer-events-none')
     body.classList.toggle('modal-active')
   }
 }
 
-export {modal};
+export {modalEditGoal};
