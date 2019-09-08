@@ -1,6 +1,9 @@
 class CommunitiesController < ApplicationController
   skip_before_action :authenticate_user!, only: :show
-  before_action :set_community, only: :show
+  before_action :set_community, only: %i[show join_community leave_community]
+
+
+
 
   def index
     @communities = Community.where.not(name: current_user.communities.pluck(:name))
@@ -30,6 +33,16 @@ class CommunitiesController < ApplicationController
     end
 
     @users = @community.users
+  end
+
+  def join_community
+    CommunityUser.create(user: current_user, community: @community)
+    redirect_to community_path(@community)
+  end
+
+  def leave_community
+    CommunityUser.all.where(user: current_user, community: @community).destroy_all
+    redirect_to communities_path
   end
 
   private
