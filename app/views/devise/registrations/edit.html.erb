@@ -5,7 +5,7 @@
       <div class="m-auto">
         <p class="text-2xl font-bold text-gray-700 text-center">Edit Account Information</p>
       </div>
-      <div class="modal-close cursor-pointer z-50">
+      <div class="modal-close cursor-pointer">
         <%= link_to :back do %>
         <svg class="fill-current text-gray-700" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18">
           <path d="M14.53 4.53l-1.06-1.06L9 7.94 4.53 3.47 3.47 4.53 7.94 9l-4.47 4.47 1.06 1.06L9 10.06l4.47 4.47 1.06-1.06L10.06 9z"></path>
@@ -40,13 +40,13 @@
       </div>
 
       <!--Footer-->
-      <div class="flex w-full pr-12 md:pr-0 pt-2 items-center">
-        <div class="form-actions mr-6">
-          <%= f.button :submit, "Save" %>
-        </div>
+      <div class="flex w-full md:pr-0 pt-2 items-center justify-between">
         <div class="my-auto cursor-pointer text-gray-600">
           <p>Unhappy?</p>
           <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class:"hover:underline hover:text-gray-700" %>
+        </div>
+        <div class="form-actions">
+          <%= f.button :submit, "Save" %>
         </div>
       </div>
     <% end %>
