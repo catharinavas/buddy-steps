@@ -1,69 +1,72 @@
-<div class="md:w-1/2 md:mx-auto md:mt-12 ">
-  <% if @publication.community %>
-    <p><%= link_to "< #{@publication.community.name} community", community_path(@publication.community), class:"text-gray-900 text-2xl font-bold text-purple-900" %></p>
-  <% end %>
+<div class="body bg-gray-100">
+  <div class="md:w-1/2 md:mx-auto md:mt-12 ">
+    <% if @publication.community %>
+      <p><%= link_to "< #{@publication.community.name} community", community_path(@publication.community), class:"text-gray-900 text-2xl font-bold text-purple-900" %></p>
+    <% end %>
 
-  <% unless @publication.community %>
-    <p>
-      <%= link_to "< #{@publication.user.first_name} #{@publication.user.last_name}",
-        user_path(@publication.user), class:"text-gray-900 text-2xl font-bold text-purple-900" %>
-    </p>
-  <% end %>
-</div>
-
-<div class="md:w-1/2 md:mx-auto mt-1 md:my-4 md:flex p-10 bg-white shadow md:rounded-lg border border-gray-200">
-  <div class="min-w-full">
-    <!-- TITLE -->
-    <h1 class="text-2xl font-bold"><%= @publication.title %></h1>
-    <hr class="mt-4 mb-2">
-
-    <!-- META -->
-    <div class="flex justify-between items-center pb-3 md:pb-0 mb-10">
-      <p class="text-blue-300 text-sm">
-        <%= @publication.publication_type.name %>
-        posted by
-        <%= link_to "#{@publication.user.first_name}", dashboard_path(@publication.user), class: "italic underline"  %>
-        <% if @publication.community %>
-          in
-          <%= link_to "#{@publication.community.name}", community_path(@publication.community),
-            class: "italic underline" %>,
-        <% end %>
-        on
-        <%= @publication.created_at.strftime('%d/%m/%Y at %I:%M') %>
+    <% unless @publication.community %>
+      <p>
+        <%= link_to "< #{@publication.user.first_name} #{@publication.user.last_name}",
+          user_path(@publication.user), class:"text-gray-900 text-2xl font-bold text-purple-900" %>
       </p>
-    </div>
-
-    <!-- CONTENT -->
-    <div class="publication-content text-gray-600">
-      <%= simple_format(@publication.content) %>
-    </div>
-
-    <!-- BUTTONS -->
-    <div class= "flex justify-between items-end mt-10">
-        <p class="text-blue-300 text-sm text-right flex-shrink-0 mt-16">
-          <%= link_to new_publication_clap_path(@publication), remote: true,class: "p-3" do%>
-            <span id="clap-count" data-clapID="<%= @publication.id %>"><%= @publication.claps.count %></span>
-            <i class="text-xs text-blue-300">Claps</i>
-          <% end %>
-        </p>
-
-        <% if @publication.user == current_user %>
-          <%= link_to "delete", publication_path(@publication), method: :delete, class:"text-xs text-gray-500 hover:text-red-500" %>
-        <% end %>
-    </div>
-
-
+    <% end %>
   </div>
+
+  <div class="md:w-1/2 md:mx-auto mt-1 md:my-4 md:flex p-10 bg-white shadow md:rounded-lg border border-gray-200">
+    <div class="min-w-full">
+      <!-- TITLE -->
+      <h1 class="text-2xl font-bold"><%= @publication.title %></h1>
+      <hr class="mt-4 mb-2">
+
+      <!-- META -->
+      <div class="flex justify-between items-center pb-3 md:pb-0 mb-10">
+        <p class="text-blue-300 text-sm">
+          <%= @publication.publication_type.name %>
+          posted by
+          <%= link_to "#{@publication.user.first_name}", dashboard_path(@publication.user), class: "italic underline"  %>
+          <% if @publication.community %>
+            in
+            <%= link_to "#{@publication.community.name}", community_path(@publication.community),
+              class: "italic underline" %>,
+          <% end %>
+          on
+          <%= @publication.created_at.strftime('%d/%m/%Y at %I:%M') %>
+        </p>
+      </div>
+
+      <!-- CONTENT -->
+      <div class="publication-content text-gray-600">
+        <%= simple_format(@publication.content) %>
+      </div>
+
+      <!-- BUTTONS -->
+      <div class= "flex justify-between items-end mt-10">
+          <p class="text-blue-300 text-sm text-right flex-shrink-0 mt-16">
+            <%= link_to new_publication_clap_path(@publication), remote: true,class: "p-3" do%>
+              <span id="clap-count" data-clapID="<%= @publication.id %>"><%= @publication.claps.count %></span>
+              <i class="text-xs text-blue-300">Claps</i>
+            <% end %>
+          </p>
+
+          <% if @publication.user == current_user %>
+            <%= link_to "delete", publication_path(@publication), method: :delete, class:"text-xs text-gray-500 hover:text-red-500" %>
+          <% end %>
+      </div>
+
+
+    </div>
+  </div>
+
+  <!-- COMMENTS -->
+  <div id="comments" class="md:w-1/2 md:mx-auto">
+    <h3 class="text-2xl text-bold mb-5 text-purple-900">Comments (<%= @publication.comments.count %>)</h3>
+    <%= render 'comments/form', publication: @publication, comment: Comment.new %>
+
+    <% @publication.comments.reverse.each do |comment| %>
+      <%= render 'comments/comment', comment: comment %>
+    <% end %>
+  </div>
+
+
+
 </div>
-
-<!-- COMMENTS -->
-<div id="comments" class="md:w-1/2 md:mx-auto">
-  <h3 class="text-2xl text-bold mb-5 text-purple-900">Comments (<%= @publication.comments.count %>)</h3>
-  <%= render 'comments/form', publication: @publication, comment: Comment.new %>
-
-  <% @publication.comments.reverse.each do |comment| %>
-    <%= render 'comments/comment', comment: comment %>
-  <% end %>
-</div>
-
-
