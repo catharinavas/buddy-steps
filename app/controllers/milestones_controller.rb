@@ -44,6 +44,15 @@ class MilestonesController < ApplicationController
     end
   end
 
+  def toggle_complete
+    @milestone = Milestone.find(params[:id])
+    @goal = @milestone.goal
+    @milestone.complete = @milestone.complete ? false : true
+    @milestone.save
+
+    redirect_to goal_path(@goal)
+  end
+
   def destroy
     @goal = Goal.find(params[:goal_id])
     @milestone = Milestone.find(params[:id])

@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   end
 
   resources :milestones, only: %i[edit]
+  get 'milestones/:id', to: 'milestones#toggle_complete', as: 'milestones_complete'
 
   resources :users, only: %i[show]
 
