@@ -1,6 +1,6 @@
 import "../plugins/flatpickr";
 import { menuToggle, dropdownToggle, closeMenu } from '../components/navbar';
-import { showPublications } from '../components/show-publications';
+import { showPublications, tabSelected } from '../components/show-publications';
 import { addMilestone } from '../components/add_milestone';
 import { chat } from '../components/chat';
 import { modalEditMilestone } from '../components/modals/modal_edit_milestone';
@@ -11,15 +11,18 @@ import { readToggle } from '../components/read_toggle.js';
 import { cardsGoals } from '../components/dashboard';
 import { scrollLastMessageIntoView } from '../components/scroll';
 import ApexCharts from 'apexcharts';
-import { fetchGraphData } from "../components/chart.js"
+import { placeholderGraph } from "../components/placeholder_graph.js";
+import { fetchGraphData } from "../components/graph.js";
 import { changeGraph } from "../components/change_graph";
 import { landing } from "../components/landing";
+import { previewImageOnFileSelect } from "../components/photo_preview";
 
 
 menuToggle();
 dropdownToggle();
 closeMenu();
 showPublications();
+tabSelected();
 addMilestone();
 chat();
 modalEditMilestone();
@@ -29,6 +32,8 @@ modalNewPost();
 readToggle();
 cardsGoals();
 scrollLastMessageIntoView();
+placeholderGraph();
 fetchGraphData();
 changeGraph();
 landing();
+previewImageOnFileSelect();

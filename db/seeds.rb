@@ -13,7 +13,6 @@ Message.destroy_all
 Community.destroy_all #also destroys publications and community_users
 User.destroy_all #also destroys comments, goals, notifications, user_feelings, claps, messages and milestones
 Category.destroy_all
-Feeling.destroy_all
 PublicationType.destroy_all
 
 puts '---------------------------------------'
@@ -143,31 +142,29 @@ User.all.each do |user|
   end
 end
 
-puts 'creating Feelings'
-anxiety = Feeling.create!(name: 'Anxiety')
-irritability = Feeling.create!(name: 'Irritability')
-sleep_quality = Feeling.create!(name: 'Sleep Quality')
-happiness = Feeling.create!(name: 'Happiness')
 
 puts 'creating Feelings for general users'
 User.all.each do |user|
   day = 1
-  Feeling.all.each do |feeling|
-    intensity = 3
-    date = Date.today - 3.days
-    2.times do
-      UserFeeling.create!(
-        feeling_date: (date + day.days),
-        # feeling_date: DateTime.now,
-        user: user,
-        feeling: feeling,
-        intensity: intensity
-      )
-      intensity += [+1, +2, -1, -2].sample
-      intensity = 5 if intensity > 5
-      intensity = 1 if intensity < 1
-      day += 1
+  intensity = [3, 3, 3, 3]
+  date = Date.today - 3.days
+  2.times do
+    UserFeeling.create!(
+      feeling_date: (date + day.days),
+      happiness: intensity[0],
+      carefreeness: intensity[1],
+      patience: intensity[2],
+      sleep_quality: intensity[3],
+      user: user,
+    )
+    intensity = intensity.map do |feel_int|
+      new_feel_int = feel_int + [+1, +2, -1, -2].sample
+      new_feel_int = 5 if new_feel_int > 5
+      new_feel_int = 1 if new_feel_int < 1
+      new_feel_int
     end
+
+    day += 1
   end
 end
 
@@ -175,22 +172,25 @@ puts 'creating Feelings for Lucas, Daniela, Catharina and Hugo '
 [lucas, daniela, catharina, hugo].each do |user|
   day = 1
   puts "---creating feelings data for #{user.first_name}"
-  Feeling.all.each do |feeling|
-    intensity = 3
-    date = Date.today - 50.days
-    50.times do
-      UserFeeling.create!(
-        feeling_date: (date + day.days),
-        # feeling_date: DateTime.now,
-        user: user,
-        feeling: feeling,
-        intensity: intensity
-      )
-      intensity += [+1, +2, -1, -2].sample
-      intensity = 5 if intensity > 5
-      intensity = 1 if intensity < 1
-      day += 1
+  intensity = [3, 3, 3, 3]
+  date = Date.today - 51.days
+  50.times do
+    UserFeeling.create!(
+      feeling_date: (date + day.days),
+      happiness: intensity[0],
+      carefreeness: intensity[1],
+      patience: intensity[2],
+      sleep_quality: intensity[3],
+      user: user,
+    )
+    intensity = intensity.map do |feel_int|
+      new_feel_int = feel_int + [+1, +2, -1, -2].sample
+      new_feel_int = 5 if new_feel_int > 5
+      new_feel_int = 1 if new_feel_int < 1
+      new_feel_int
     end
+
+    day += 1
   end
 end
 

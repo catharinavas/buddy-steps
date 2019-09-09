@@ -2,78 +2,80 @@ import ApexCharts from 'apexcharts';
 
 const changeGraph = () => {
   var days_in_the_past = 0;
-
-  // SETTING LISTENERS AND CLASSES FOR FILTERS
   var sevenDayBtn = document.querySelector('#seven-day-view');
   var fifteenDayBtn = document.querySelector('#fifteen-day-view');
   var thirtyDayBtn = document.querySelector('#thirty-day-view');
 
-  sevenDayBtn.addEventListener('click', (event) => {
-    event.target.classList.add('opacity-50', 'cursor-not-allowed');
-    fifteenDayBtn.classList.remove('opacity-50', 'cursor-not-allowed');
-    thirtyDayBtn.classList.remove('opacity-50', 'cursor-not-allowed');
-    updateData(days_in_the_past);
-  });
+  if (sevenDayBtn) {
 
-  fifteenDayBtn.addEventListener('click', (event) => {
-    event.target.classList.add('opacity-50', 'cursor-not-allowed');
-    sevenDayBtn.classList.remove('opacity-50', 'cursor-not-allowed');
-    thirtyDayBtn.classList.remove('opacity-50', 'cursor-not-allowed');
-    updateData(days_in_the_past);
-  });
-
-  thirtyDayBtn.addEventListener('click', (event) => {
-    event.target.classList.add('opacity-50', 'cursor-not-allowed');
-    sevenDayBtn.classList.remove('opacity-50', 'cursor-not-allowed');
-    fifteenDayBtn.classList.remove('opacity-50', 'cursor-not-allowed');
-    updateData(days_in_the_past);
-  });
-
-  // SETTING LISTENERS AND CLASSES FOR BUTTONS
-  let previousWeekBtn = document.querySelector('#previous-week');
-  let nextWeekBtn = document.querySelector('#next-week');
-  let previousDayBtn = document.querySelector('#previous-day');
-  let nextDayBtn = document.querySelector('#next-day');
-
-  previousWeekBtn.addEventListener('click', (event) => {
-    if (previousWeekBtn.matches(".cursor-not-allowed") === false) {
-      days_in_the_past += 7;
+    // SETTING LISTENERS AND CLASSES FOR FILTERS
+    sevenDayBtn.addEventListener('click', (event) => {
+      event.target.classList.add('opacity-50', 'cursor-not-allowed');
+      fifteenDayBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+      thirtyDayBtn.classList.remove('opacity-50', 'cursor-not-allowed');
       updateData(days_in_the_past);
-      nextWeekBtn.classList.remove('opacity-50', 'cursor-not-allowed');
-      nextDayBtn.classList.remove('opacity-50', 'cursor-not-allowed');
-    }
-  });
+    });
 
-  nextWeekBtn.addEventListener('click', (event) => {
-    if (nextWeekBtn.matches(".cursor-not-allowed") === false) {
-      days_in_the_past -= 7;
+    fifteenDayBtn.addEventListener('click', (event) => {
+      event.target.classList.add('opacity-50', 'cursor-not-allowed');
+      sevenDayBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+      thirtyDayBtn.classList.remove('opacity-50', 'cursor-not-allowed');
       updateData(days_in_the_past);
-      previousWeekBtn.classList.remove('opacity-50', 'cursor-not-allowed');
-      previousDayBtn.classList.remove('opacity-50', 'cursor-not-allowed');
-    }
-  });
+    });
 
-  previousDayBtn.addEventListener('click', (event) => {
-    if (previousDayBtn.matches(".cursor-not-allowed") === false) {
-      days_in_the_past += 1;
+    thirtyDayBtn.addEventListener('click', (event) => {
+      event.target.classList.add('opacity-50', 'cursor-not-allowed');
+      sevenDayBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+      fifteenDayBtn.classList.remove('opacity-50', 'cursor-not-allowed');
       updateData(days_in_the_past);
-      nextDayBtn.classList.remove('opacity-50', 'cursor-not-allowed');
-      nextWeekBtn.classList.remove('opacity-50', 'cursor-not-allowed');
-    }
-  });
+    });
 
-  nextDayBtn.addEventListener('click', (event) => {
-    if (nextDayBtn.matches(".cursor-not-allowed") === false) {
-      days_in_the_past -= 1;
-      updateData(days_in_the_past);
-      previousDayBtn.classList.remove('opacity-50', 'cursor-not-allowed');
-      previousWeekBtn.classList.remove('opacity-50', 'cursor-not-allowed');
-    }
-  });
+    // SETTING LISTENERS AND CLASSES FOR BUTTONS
+    let previousWeekBtn = document.querySelector('#previous-week');
+    let nextWeekBtn = document.querySelector('#next-week');
+    let previousDayBtn = document.querySelector('#previous-day');
+    let nextDayBtn = document.querySelector('#next-day');
+
+    previousWeekBtn.addEventListener('mousedown', (event) => {
+      if (previousWeekBtn.matches(".cursor-not-allowed") === false) {
+        days_in_the_past += 7;
+        updateData(days_in_the_past);
+        nextWeekBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+        nextDayBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+      }
+    });
+
+    nextWeekBtn.addEventListener('mousedown', (event) => {
+      if (nextWeekBtn.matches(".cursor-not-allowed") === false) {
+        days_in_the_past -= 7;
+        updateData(days_in_the_past);
+        previousWeekBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+        previousDayBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+      }
+    });
+
+    previousDayBtn.addEventListener('mousedown', (event) => {
+      if (previousDayBtn.matches(".cursor-not-allowed") === false) {
+        days_in_the_past += 1;
+        updateData(days_in_the_past);
+        nextDayBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+        nextWeekBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+      }
+    });
+
+    nextDayBtn.addEventListener('mousedown', (event) => {
+      if (nextDayBtn.matches(".cursor-not-allowed") === false) {
+        days_in_the_past -= 1;
+        updateData(days_in_the_past);
+        previousDayBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+        previousWeekBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+      }
+    });
+  };
 }
 
 var updateData = (days_in_the_past) => {
-  fetch("/dashboard/1.json")
+  fetch("/dashboard.json")
     .then(response => response.json())
     .then((data) => {
       setGraphRange(data.feelings, days_in_the_past);
@@ -126,23 +128,14 @@ const updateGraph = (feelings, most_recent_day, amountOfDays) => {
     chart: {
       type: 'line',
       background: '#fff',
-      toolbar: {
-        show: true,
-        tools: {
-          download: true,
-          selection: false,
-          zoom: true,
-          zoomin: true,
-          zoomout: true,
-          pan: true,
-          reset: true | '<img src="/static/icons/reset.png" width="20">',
-          customIcons: []
-        },
-        autoSelected: 'pan'
-      },
       animations: {
           enabled: false,
       },
+      height: '200rem',
+    },
+    colors: ['#38A89D', '#794ACF', '#F6993F', '#FFED4A'],
+    legend: {
+      position: 'top'
     },
     yaxis: {
         max: 6,

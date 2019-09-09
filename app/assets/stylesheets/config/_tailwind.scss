@@ -3,7 +3,7 @@
 }
 
 
-.simple_form input:not(.boolean):not(.input-custom1):not(.btn-custom1) {
+.simple_form input.input {
   appearance: none;
   display: block;
   width: 100%;
@@ -20,7 +20,7 @@
   margin-bottom: 1rem;
 }
 
-.simple_form input:not(.boolean):not(.input-custom1):not(.btn-custom1):focus {
+.simple_form input.input:focus {
   outline: 0;
   background-color: #fff;
   border-color: #a0aec0;
@@ -66,14 +66,22 @@
 }
 
 .simple_form input.btn:not(.btn-custom1){
+appearance: none;
+  display: block;
   cursor: pointer;
   background-color: #6b46c1;
   color: #fff;
   width: 8rem;
+  border-width: 1px;
   border-radius: 9999px;
   text-align: center;
   font-weight: 600;
   margin-bottom: 0rem;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  line-height: 1.25;
   &.w-full{
     width: 100%;
     border-radius: 0.5rem;
@@ -144,6 +152,12 @@
   text-align: center;
   font-weight: 600;
   margin-bottom: 0rem;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  line-height: 1.25;
+  height: 3.25rem;
   &.w-full{
     width: 100%;
     border-radius: 0.5rem;
@@ -166,6 +180,7 @@
 
 .body {
   height: 100%;
+  min-height: 100vh;
   padding-top: 6rem;
 }
 

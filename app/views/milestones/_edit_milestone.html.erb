@@ -24,8 +24,8 @@
 
             <!--Body-->
             <%= simple_form_for milestone, url: goal_milestone_path(@goal, milestone) do |f| %>
-                <%= f.input :description %>
-                <%= f.input :deadline, as: :string, required: false, input_html: {class: "datepicker"} %>
+                <%= f.input :description, input_html: { class: "input"}  %>
+                <%= f.input :deadline, as: :string, required: false, input_html: { class: "input datepicker"} %>
             <!--Footer-->
             <div class="flex justify-end pt-2">
                 <%= f.button :submit, class: "px-4 bg-transparent p-3 rounded-lg text-indigo-500 hover:bg-gray-100 hover:text-indigo-400 mr-2" %>

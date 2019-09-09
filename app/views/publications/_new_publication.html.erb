@@ -1,65 +1,77 @@
-<%# if current_user == @user %>
-  <div class="modal-new-post opacity-0 pointer-events-none fixed w-full h-full top-0 left-0 flex items-center justify-center">
-    <div class="modal-new-post-overlay absolute w-full h-full bg-gray-900 opacity-50"></div>
-    <div class="modal-container bg-white w-screen h-screen md:h-auto md:max-w-3xl mx-auto rounded shadow-lg z-50 overflow-y-auto">
-      <!-- Add margin if you want to see some of the overlay behind the modal-->
-      <div class="modal-content text-left">
-        <div class="flex justify-end bg-purple-700 py-3 pr-4">
-          <div class="modal-new-post-close cursor-pointer">
-            <svg class="fill-current text-white" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 18 18">
-              <path d="M14.53 4.53l-1.06-1.06L9 7.94 4.53 3.47 3.47 4.53 7.94 9l-4.47 4.47 1.06 1.06L9 10.06l4.47 4.47 1.06-1.06L10.06 9z"></path>
-            </svg>
+<div class="modal-new-post opacity-0 pointer-events-none fixed w-full h-full top-0 left-0 flex items-center justify-center z-50">
+  <div class="modal-new-post-overlay absolute w-full h-full bg-gray-900 opacity-50"></div>
+  <div class="modal-container bg-white w-screen h-screen md:h-auto md:max-w-3xl mx-auto rounded shadow-lg z-50 overflow-y-auto overflow-x-hidden">
+    <!-- Add margin if you want to see some of the overlay behind the modal-->
+    <div class="modal-content text-left">
+      <div class="flex justify-end bg-purple-700 py-3 pr-4">
+        <div class="modal-new-post-close cursor-pointer">
+          <svg class="fill-current text-white" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 18 18">
+            <path d="M14.53 4.53l-1.06-1.06L9 7.94 4.53 3.47 3.47 4.53 7.94 9l-4.47 4.47 1.06 1.06L9 10.06l4.47 4.47 1.06-1.06L10.06 9z"></path>
+          </svg>
+        </div>
+      </div>
+      <div class="py-4 px-6">
+        <!--Header-->
+        <div class="flex py-3 justify-center ">
+          <div class="absolute -mt-custom1">
+            <% if current_user.photo.present? %>
+             <%= cl_image_tag(current_user.photo, :transformation=>[
+             {width: 50, height: 50, gravity: :face, radius: :max, crop: :thumb}
+             ], class: "rounded-full border-2 border-white") %>
+            <% else %>
+              <%= image_tag "icons/avatar.png", class:"h-8 w-8"%>
+            <% end %>
+          </div>
+          <div class="">
+            <div class="mt-2 border-2 border-purple-600 flex rounded-lg py-1 ">
+              <%= fa_icon "globe", class: "mx-2 text-sm text-purple-600" %>
+              <p class="text-xs text-bold text-purple-700">Sharing with everyone</p>
+              <%= fa_icon "caret-down", class: "mx-2 text-sm text-purple-600" %>
+            </div>
           </div>
         </div>
-        <div class="py-4 px-6">
-          <!--Header-->
-          <div class="flex py-3 justify-center ">
-            <div class="absolute -mt-custom1">
-              <% if current_user.photo.present? %>
-               <%= cl_image_tag(current_user.photo, :transformation=>[
-               {width: 50, height: 50, gravity: :face, radius: :max, crop: :thumb}
-               ], class: "rounded-full border-2 border-white") %>
-              <% else %>
-                <%= image_tag "icons/avatar.png", class:"h-8 w-8"%>
-              <% end %>
+        <!--Body-->
+        <% if request.env['PATH_INFO'].include?("communities")%>
+          <!-- PUBLICATION IN COMMUNITY -->
+          <%= simple_form_for([publication], url: publications_path) do |f|%>
+            <%= f.input :title, label:false , input_html: { class: "input-custom1 title", autocomplete: 'off'}, placeholder: "Title" %>
+            <%= f.input :content, label:false , input_html: { class: "input-custom1 content", autocomplete: 'off'}, placeholder: "What would you like to share?"  %>
+            <!-- INPUT PHOTO PREVIEW  -->
+              <%= image_tag "", width: 300, class: "hidden input-custom1 w-auto max-h-full", id: "photo-preview" %>
+
+            <%= f.association :community, :as => :hidden, input_html: { class: "input", value: community.id}  %>
+            <div class="flex my-2">
+              <%= f.association :publication_type, collection: PublicationType.where(name: ['News', 'Question']), label:false , input_html: { class: "select-custom1 md:w-10/12", autocomplete: 'off'}, wrapper_html: { class: 'flex-1' }, prompt: "-- Choose a publication type --", prompt_html: { class: "select-custom1" } %>
+
+              <!-- INPUT PHOTO -->
+              <%= f.input :photo, input_html: { class: 'invisible', id: 'photo-input'}, label_html: { class: 'mx-5 p-4 border border-gray-200 text-3xl text-gray-600 bg-gray-200 rounded-lg'}, label: ('<i class="fa fa-camera fa-2x"></i>').html_safe %>
+              <%= f.button :submit, "Post", class: "btn-custom1" %>
             </div>
-            <div class="">
-              <div class="mt-2 border-2 border-purple-600 flex rounded-lg py-1 ">
-                <%= fa_icon "globe", class: "mx-2 text-sm text-purple-600" %>
-                <p class="text-xs text-bold text-purple-700">Sharing with everyone</p>
-                <%= fa_icon "caret-down", class: "mx-2 text-sm text-purple-600" %>
-              </div>
-            </div>
-          </div>
-          <!--Body-->
-          <% if request.env['PATH_INFO'].include?("communities")%>
-
-            <%= simple_form_for([publication], url: publications_path, remote: true) do |f|%>
-              <%= f.input :title, label:false , input_html: { class: "input-custom1 title", autocomplete: 'off'}, placeholder: "Title" %>
-              <%= f.input :content, label:false , input_html: { class: "input-custom1 content", autocomplete: 'off'}, placeholder: "What would you like to share?"  %>
-              <%= f.association :community, :as => :hidden, :input_html => { :value => community.id } %>
-              <div class="flex my-2">
-                <%= f.association :publication_type, collection: PublicationType.where(name: ['News', 'Question']), label:false , input_html: { class: "select-custom1 md:w-10/12", autocomplete: 'off'}, wrapper_html: { class: 'flex-1' }, prompt: "-- Choose a publication type --", prompt_html: { class: "select-custom1" } %>
-                <%= fa_icon "camera", class: "mx-5 p-4 border border-gray-200 text-3xl text-gray-600 bg-gray-200 rounded-lg" %>
-                <%= f.button :submit, "Post", class: "btn-custom1" %>
-              </div>
-            <% end %>
-
-          <% else %>
-
-            <%= simple_form_for([publication], url: publications_path, remote: true) do |f|%>
-              <%= f.input :title, label:false , input_html: { class: "input-custom1 title", autocomplete: 'off'}, placeholder: "Title" %>
-              <%= f.input :content, label:false , input_html: { class: "input-custom1 content", autocomplete: 'off'}, placeholder: "What would you like to share?"  %>
-              <div class="flex my-2">
-                <%= f.association :publication_type, collection: PublicationType.where(name: ['Pleasure', 'Frustration']), label:false , input_html: { class: "select-custom1 md:w-10/12", autocomplete: 'off'}, wrapper_html: { class: 'flex-1' }, prompt: "-- Choose a publication type --", prompt_html: { class: "select-custom1" } %>
-                <%= fa_icon "camera", class: "mx-5 p-4 border border-gray-200 text-3xl text-gray-600 bg-gray-200 rounded-lg" %>
-                <%= f.button :submit, "Post", class: "btn-custom1" %>
-              </div>
-            <% end %>
-
           <% end %>
-        </div>
+
+        <% else %>
+          <!-- PUBLICATION IN DIARY -->
+          <%= simple_form_for([publication], url: publications_path) do |f|%>
+            <%= f.input :title, label:false , input_html: { class: "input-custom1 title", autocomplete: 'off'}, placeholder: "Title" %>
+            <%= f.input :content, label:false , input_html: { class: "input-custom1 content", autocomplete: 'off'}, placeholder: "What would you like to share?"  %>
+
+              <!-- INPUT PHOTO PREVIEW  -->
+              <%= image_tag "", width: 300, class: "hidden w-40 h-40 object-contain", id: "photo-preview" %>
+
+
+            <div class="flex my-2">
+              <%= f.association :publication_type, collection: PublicationType.where(name: ['Pleasure', 'Frustration']), label:false , input_html: { class: "select-custom1 md:w-10/12", autocomplete: 'off'}, wrapper_html: { class: 'flex-1' }, prompt: "-- Choose a publication type --", prompt_html: { class: "select-custom1" } %>
+
+
+              <%= f.input :photo, input_html: { class: 'invisible', id: 'photo-input'}, label_html: { class: 'mx-5 p-3 border border-gray-200 text-3xl text-gray-600 bg-gray-200 rounded-lg px-auto hover:bg-gray-300 hover:border-gray-300'}, label: ('<i class="fa fa-camera fa-2x"></i>').html_safe, wrapper_html: { class: 'w-24' } %>
+
+
+              <%= f.button :submit, "Post", class: "btn-custom1" %>
+            </div>
+          <% end %>
+
+        <% end %>
       </div>
     </div>
   </div>
-<%# end %>
+</div>

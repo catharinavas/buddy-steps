@@ -1,7 +1,7 @@
 import ApexCharts from 'apexcharts';
 
 var fetchGraphData = () => {
-  fetch("/dashboard/1.json")
+  fetch("/dashboard.json")
     .then(response => response.json())
     .then((data) => {
       generateGraph(data.feelings);
@@ -14,25 +14,11 @@ var generateGraph = (feelings) => {
     chart: {
       type: 'line',
       background: '#fff',
-      // zoom: {
-      //     enabled: true,
-      //     type: 'x',
-      //     autoScaleYaxis: true,
-      // },
-      toolbar: {
-        show: true,
-        tools: {
-          download: true,
-          selection: false,
-          zoom: true,
-          zoomin: true,
-          zoomout: true,
-          pan: true,
-          reset: true | '<img src="/static/icons/reset.png" width="20">',
-          customIcons: []
-        },
-        autoSelected: 'pan'
-      },
+      height: '200rem',
+    },
+    colors: ['#38A89D', '#794ACF', '#F6993F', '#FFED4A'],
+    legend: {
+      position: 'top'
     },
     yaxis: {
         max: 6,
