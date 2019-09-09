@@ -1,17 +1,18 @@
 <div class="body bg-gray-100">
   <!-- MOOD GRAPH -->
   <% if @user == current_user %>
-    <div class="flex">
-      <div class="pt-3 p-4 md:px-24 mt-20">
+      <div class="pt-3 p-4 md:px-24">
         <h2 class="text-3xl text-purple-900 font-mono font-semibold mb-10">Mood Graph</h2>
-        <%= render 'mood_graph' %>
+        <div class="flex flex-col lg:flex-row">
+          <%= render 'mood_graph' %>
+          <!-- FEELINGS -->
+          <div class="flex-shrink-0 m-10">
+            <% unless @last_feeling.feeling_date == Date.today %>
+              <%= render 'new_feeling', user_feeling: @new_feeling %>
+            <% end %>
+          </div>
+        </div>
       </div>
-
-      <!-- FEELINGS -->
-      <% unless @last_feeling.feeling_date == Date.today %>
-        <%= render 'new_feeling', user_feeling: @new_feeling %>
-      <% end %>
-    </div>
   <% end %>
 
   <!-- GOALS SESSION -->

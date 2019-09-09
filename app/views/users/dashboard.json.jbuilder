@@ -22,7 +22,7 @@ current_user.user_feelings.each do |feeling|
   @carefreeness.push(feeling.carefreeness)
   @patience.push(feeling.patience)
   @sleep.push(feeling.sleep_quality)
-  @dates.push(feeling.feeling_date)
+  @dates.push(feeling.feeling_date.strftime('%d/%m/%y'))
 end
 
 json.feelings do
