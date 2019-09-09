@@ -21,7 +21,7 @@ class GoalsController < ApplicationController
     else
       flash[:notice] = 'Invalid parameters!'
       # redirect_to new_goal_path(@goal)
-      redirect_to dashboard_path(current_user)
+      redirect_to dashboard_path
     end
   end
 
@@ -44,7 +44,7 @@ class GoalsController < ApplicationController
   def destroy
     @goal = Goal.find(params[:id])
     @goal.destroy
-    redirect_to dashboard_path(current_user)
+    redirect_to dashboard_path
   end
 
   def buddy_assign
@@ -69,7 +69,7 @@ class GoalsController < ApplicationController
   def cancel_buddy
     @goal = Goal.find(params[:id])
     buddy_assign
-    redirect_to dashboard_path(current_user)
+    redirect_to dashboard_path
   end
 end
 

@@ -47,7 +47,7 @@
             <div>
               <p class="text-blue-300 text-sm">
                 Posted by
-                <%= link_to "#{publication.user.first_name}", dashboard_path(publication.user),
+                <%= link_to "#{publication.user.first_name}", user_path(publication.user),
                   class: "italic underline"  %>
                 <% if publication.community %>
                   in
