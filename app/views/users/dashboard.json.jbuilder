@@ -4,11 +4,11 @@
 @slp = Feeling.find_by(name: 'Sleep Quality')
 
 def define_user_feeling(feeling)
-  @user_feeling = current_user.user_feelings.where(feeling: feeling)
-  @feeling_intensities = @user_feeling.map { |happ| happ.intensity }
-  @feeling_dates = @user_feeling.map { |happ| happ.feeling_date.strftime('%D') }
+  @user_feelings = current_user.user_feelings.where(feeling: feeling)
+  @feeling_intensities = @user_feelings.map { |happ| happ.intensity }
+  @feeling_dates = @user_feelings.map { |happ| happ.feeling_date.strftime('%D') }
 
-  { intensities: @feeling_intensities, dates: @feeling_dates }
+  { intensities: @feeling_intensities.reverse, dates: @feeling_dates.reverse }
 end
 
 @happiness = define_user_feeling(@hpn)
