@@ -1,7 +1,4 @@
-
-
 const showPublications = () => {
-
 
   const menuNews = document.getElementById('menu-news');
   if (menuNews) {
@@ -34,6 +31,19 @@ const showPublications = () => {
   }
 }
 
+const tabSelected = () => {
+  const menuNews = document.getElementById('menu-news');
+  const menuUsers = document.getElementById('menu-users');
+  if (menuNews) {
+    menuNews.addEventListener('click', () => {
+      menuNews.classList.toggle('selected');
+      menuUsers.classList.toggle('selected');
+    })
+    menuUsers.addEventListener('click', () => {
+      menuNews.classList.toggle('selected');
+      menuUsers.classList.toggle('selected');
+    })
+  }
+}
 
-
-export { showPublications };
+export { tabSelected, showPublications };

@@ -1,6 +1,6 @@
 import "../plugins/flatpickr";
 import { menuToggle, dropdownToggle, closeMenu } from '../components/navbar';
-import { showPublications } from '../components/show-publications';
+import { showPublications, tabSelected } from '../components/show-publications';
 import { addMilestone } from '../components/add_milestone';
 import { chat } from '../components/chat';
 import { modalEditMilestone } from '../components/modals/modal_edit_milestone';
@@ -19,6 +19,7 @@ menuToggle();
 dropdownToggle();
 closeMenu();
 showPublications();
+tabSelected();
 addMilestone();
 chat();
 modalEditMilestone();
