@@ -1,34 +1,77 @@
-<div class="body bg-gray-100">
-  <div class="border-t">
-    <nav class="mt-12 bg-white px-8 pt-2 shadow-md">
-      <div class="-mb-px flex justify-start">
-        <a id="menu-news" class="no-underline text-teal-dark border-b-2 border-teal-dark uppercase tracking-wide font-bold text-xs py-3 mr-8" href="?type=news">
-          Publications
-        </a>
-        <a id="menu-users" class="no-underline text-grey-dark border-b-2 border-transparent uppercase tracking-wide font-bold text-xs py-3" href="#">
-          Users
-        </a>
+<div class="bg-gray-100 pt-20 h-full">
+  <div class="lg:flex min-h-screen p-10">
+    <!-- SIDEBAR -->
+    <!-- <div class="flex-column content-between mr-16"></div> -->
+    <!-- MAIN COLUMN -->
+    <div class="flex-column w-full">
+      <!-- HEADER -->
+      <div class="border-b">
+        <h1 class="text-3xl text-purple-900 font-mono font-semibold mt-3 mb-2"><%= @community.name %></h1>
+        <div class="lg:flex justify-between items-end">
+          <div class="pb-2">
+            <a id="menu-news" class="transition-soft text-gray-700 uppercase font-bold text-sm pb-2 mr-8 selected" href="?type=news">
+              Publications
+            </a>
+            <a id="menu-users" class="transition-soft text-gray-700 uppercase font-bold text-sm pb-2" href="#">
+              Users
+            </a>
+
+          </div>
+          <div class="hidden lg:block pb-2">
+            <%= form_tag community_path, method: :get, class:"inline-flex" do %>
+              <%= text_field_tag :query,
+                params[:query],
+                placeholder: "Find a publication",
+                class: "appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-1 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+              %>
+              <%= button_tag(type: "submit", class: "ml-2 py-1 px-2 border border-gray-300 text-md text-gray-600 bg-gray-300 rounded-lg cursor-pointer") do %>
+                  <%= fa_icon "search" %>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
       </div>
-    </nav>
+      <!-- CONTENT -->
+      <div class="">
+        <div id="menu-news-list" class="transition-soft transition-delay">
+          <!-- NEW PUBLICATION BUTTON -->
+            <div id="btn_new_goal" class="modal-open-new-post flex items-center cursor-pointer my-5 bg-gray-200 rounded-lg border-2 border-gray-200 bg-white p-4 hover:border-gray-300 hover:bg-gray-300 transition-soft">
+              <%= fa_icon "edit 2x", class: "mx-2 text-3xl text-gray-600" %>
+              <p class="ml-2 text-lg font-bold text-gray-600 hover:text-gray-700 hover:underline">Create a new post</p>
+            </div>
+          <!-- PUBLICATIONS -->
+          <%= render "publications", community_publications: @community_publications %>
+        </div>
 
-    <% if current_user.communities.include?(@community) %>
-    <div>
-      <%= link_to "Leave community", leave_community_path(@community), method: :delete,
-                class:"text-gray-700 text-sm font-semibold hover:text-purple-600 mr-4" %>
+        <!-- USERS  -->
+        <div id="menu-user-list" class="hidden transition-soft transition-delay"><%= render "users", users: @users %></div>
+      </div>
+      <!-- FOOTER -->
+      <div class="border-t">
+        <div class="lg:hidden my-2">
+          <%= form_tag community_path, method: :get, class:"inline-flex" do %>
+            <%= text_field_tag :query,
+              params[:query],
+              placeholder: "Find a publication",
+              class: "appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-1 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+            %>
+            <%= button_tag(type: "submit", class: "ml-2 py-1 px-2 border border-gray-300 text-md text-gray-600 bg-gray-300 rounded-lg cursor-pointer") do %>
+                <%= fa_icon "search" %>
+            <% end %>
+          <% end %>
+        </div>
+        <% if current_user.communities.include?(@community) %>
+        <div>
+          <%= link_to "Leave community", leave_community_path(@community), method: :delete,
+                    class:"text-gray-600 text-sm hover:text-gray-900 mr-4" %>
+        </div>
+        <% else %>
+        <div>
+            <%= link_to "Join community", join_community_path(@community), method: :post,
+          class:"text-sm text-gray-600 px-3 py-1 block hover:bg-gray-200 cursor-pointer pb-2 mt-4" %></li>
+        </div>
+        <% end %>
+      </div>
     </div>
-
-    <% else %>
-    <div>
-        <%= link_to "Join community", join_community_path(@community), method: :post,
-      class:"text-sm text-gray-600 px-3 py-1 block hover:bg-gray-200 cursor-pointer pb-2 mt-4" %></li>
-    </div>
-    <% end %>
-
-
-    <div id="menu-news-list" class="transition-soft transition-delay">
-      <%= render "publications", community_publications: @community_publications %>
-    </div>
-
-    <div id="menu-user-list" class="hidden transition-soft transition-delay"><%= render "users", users: @users %></div>
   </div>
 </div>

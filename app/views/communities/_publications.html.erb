@@ -1,20 +1,11 @@
 <% if current_user.communities.include?(@community) %>
-<div>
-  <h3>Start a new discussion or question thread</h3>
-  <%= render 'publications/new_publication', community: @community, publication: @publication %>
-</div>
+  <div>
+    <%= render 'publications/new_publication', community: @community, publication: @publication %>
+  </div>
 <% end %>
 
 
-  <%= form_tag community_path, method: :get do %>
-    <%= text_field_tag :query,
-      params[:query],
-      class: "form-control",
-      placeholder: "Find a publication"
-    %>
-    <%= submit_tag "Search", class: "" %>
-  <% end %>
 
-<div class="w-3/4 m-auto">
+<div class="mt-5">
   <%= render 'publications/publications_list', publications: @community_publications %>
 </div>
