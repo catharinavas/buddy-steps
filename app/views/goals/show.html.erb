@@ -42,7 +42,7 @@
           <p class="pr-2">
             This goal belongs to:
             <% if @goal.confirmed_buddy == true %>
-              <%= link_to "#{@goal.user.first_name} #{@goal.user.last_name}", dashboard_path(@goal.user) %>
+              <%= link_to "#{@goal.user.first_name} #{@goal.user.last_name}", user_path(@goal.user) %>
             <% else %>
               Let's help <%= @goal.user.first_name %>
             <% end %>
@@ -56,7 +56,7 @@
           <p class="pr-2">
             Buddy for this goal:
             <% if @goal.confirmed_buddy == true %>
-              <%= link_to "#{@goal.buddy.first_name} #{@goal.buddy.last_name}", dashboard_path(@goal.buddy) %>
+              <%= link_to "#{@goal.buddy.first_name} #{@goal.buddy.last_name}", user_path(@goal.buddy) %>
             <% else %>
               We are trying to find someone for you!
             <% end %>
