@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_05_130338) do
+ActiveRecord::Schema.define(version: 2019_09_09_150140) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -121,12 +121,13 @@ ActiveRecord::Schema.define(version: 2019_09_05_130338) do
 
   create_table "user_feelings", force: :cascade do |t|
     t.bigint "user_id"
-    t.bigint "feeling_id"
     t.date "feeling_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "intensity", default: 3
-    t.index ["feeling_id"], name: "index_user_feelings_on_feeling_id"
+    t.integer "carefreeness", default: 3
+    t.integer "patience", default: 3
+    t.integer "sleep_quality", default: 3
+    t.integer "happiness", default: 3
     t.index ["user_id"], name: "index_user_feelings_on_user_id"
   end
 
@@ -161,6 +162,5 @@ ActiveRecord::Schema.define(version: 2019_09_05_130338) do
   add_foreign_key "publications", "communities"
   add_foreign_key "publications", "publication_types"
   add_foreign_key "publications", "users"
-  add_foreign_key "user_feelings", "feelings"
   add_foreign_key "user_feelings", "users"
 end
