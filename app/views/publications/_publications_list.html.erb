@@ -2,4 +2,8 @@
   <% publications.each do |publication| %>
    <%=  render 'publications/card', publication: publication %>
   <% end %>
+
+  <% if publications.empty? %>
+   <%=  render 'publications/placeholder_card' %>
+  <% end %>
 </div>

@@ -1,16 +1,19 @@
 <div class="body bg-gray-100">
+
   <!-- MOOD GRAPH -->
   <% if @user == current_user %>
       <div class="pt-3 p-4 md:px-24">
         <h2 class="text-3xl text-purple-900 font-mono font-semibold mb-10">Mood Graph</h2>
         <div class="flex flex-col lg:flex-row">
-          <%= render 'mood_graph' %>
-          <!-- FEELINGS -->
-          <div class="flex-shrink-0 m-10">
-            <% unless @last_feeling.feeling_date == Date.today %>
+          <% if @last_feeling.nil? %>
+              <%= render 'placeholder_graph' %>
               <%= render 'new_feeling', user_feeling: @new_feeling %>
-            <% end %>
-          </div>
+          <% else %>
+            <%= render 'mood_graph' %>
+              <% unless @last_feeling.feeling_date == Date.today %>
+                <%= render 'new_feeling', user_feeling: @new_feeling %>
+              <% end %>
+          <% end %>
         </div>
       </div>
   <% end %>
@@ -65,6 +68,7 @@
           </div>
       <%= render 'publications/new_publication', publication: Publication.new %>
     <% end %>
+
     <%= render 'publications/publications_list', publications: @diary_publications %>
   </div>
 

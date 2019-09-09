@@ -133,6 +133,7 @@ const updateGraph = (feelings, most_recent_day, amountOfDays) => {
       },
       height: '200rem',
     },
+    colors: ['#38A89D', '#794ACF', '#F6993F', '#FFED4A'],
     legend: {
       position: 'top'
     },
