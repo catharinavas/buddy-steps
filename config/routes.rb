@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   # action cabel (chat)
-  mount ActionCable.server => "/cable"
+  # mount ActionCable.server => "/cable"
 
   post 'communities/:id', to: 'communities#join_community', as: 'join_community'
   delete 'communities/:id', to: 'communities#leave_community', as: 'leave_community'
