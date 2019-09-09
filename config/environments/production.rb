@@ -47,6 +47,8 @@ Rails.application.configure do
   # config.action_cable.mount_path = nil
   # config.action_cable.url = 'wss://buddysteps.herokuapp.com/cable'
   # config.action_cable.allowed_request_origins = [ 'http://buddysteps.herokuapp.com', 'https://buddysteps.herokuapp.com' ]
+  config.web_socket_server_url = "wss://buddysteps.com/cable"
+  config.action_cable.allowed_request_origins = ['https://buddysteps.com', 'http://buddysteps.com']
 
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
   # config.force_ssl = true
