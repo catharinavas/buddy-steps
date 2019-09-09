@@ -13,6 +13,7 @@ import { scrollLastMessageIntoView } from '../components/scroll';
 import ApexCharts from 'apexcharts';
 import { fetchGraphData } from "../components/chart.js"
 import { changeGraph } from "../components/change_graph";
+import { landing } from "../components/landing";
 
 
 menuToggle();
@@ -30,3 +31,4 @@ cardsGoals();
 scrollLastMessageIntoView();
 fetchGraphData();
 changeGraph();
+landing();

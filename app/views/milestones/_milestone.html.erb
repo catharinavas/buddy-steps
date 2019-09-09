@@ -16,7 +16,7 @@
   <td class="whitespace-no-wrap"><%= milestone.deadline.strftime("%d %b") %></td>
   <td class="text-gray-500 hover:text-gray-900 whitespace-no-wrap">
     <% if current_user.id == milestone.goal.user_id %>
-      <%= fa_icon "edit", class: "modal-edit-milestone-open", data: {modal: milestone.id} %>
+      <%= fa_icon "edit", class: "modal-edit-milestone-open", data: {milestone: milestone.id} %>
 
       <%= link_to goal_milestone_path(@goal, milestone), method: :delete, data: { confirm: 'Are you sure you want to delete? Think about your main goal!' } do %>
         <%= fa_icon "trash alt" %>

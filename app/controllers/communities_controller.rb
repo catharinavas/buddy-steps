@@ -1,17 +1,18 @@
 class CommunitiesController < ApplicationController
-  skip_before_action :authenticate_user!, only: :show
+  skip_before_action :authenticate_user!, only: %i[show index]
   before_action :set_community, only: %i[show join_community leave_community]
 
-
-
-
   def index
-    @communities = Community.where.not(name: current_user.communities.pluck(:name))
-    @all_publications = []
-    @communities.each do |community|
-      community.publications.each { |pub| @all_publications << pub }
+    if user_signed_in?
+      @communities = Community.where.not(name: current_user.communities.pluck(:name))
+      @all_publications = []
+      @communities.each do |community|
+        community.publications.each { |pub| @all_publications << pub }
+      end
+      @all_publications.sort_by!(&:created_at)
+    else
+      @all_communities = Community.all
     end
-    @all_publications.sort_by!(&:created_at)
   end
 
   def show
