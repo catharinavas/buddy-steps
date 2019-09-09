@@ -27,8 +27,16 @@ class PublicationsController < ApplicationController
 
   def destroy
     @publication = Publication.find(params[:id])
-    @publication.destroy!
-    redirect_to dashboard_path
+
+    @publication.community ? community = @publication.community : community = false
+
+    @publication.destroy
+
+    if community
+      redirect_to community_path(community)
+    else
+      redirect_to dashboard_path
+    end
   end
 
   private

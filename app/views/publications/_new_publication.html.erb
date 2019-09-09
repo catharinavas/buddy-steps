@@ -33,7 +33,7 @@
         <!--Body-->
         <% if request.env['PATH_INFO'].include?("communities")%>
           <!-- PUBLICATION IN COMMUNITY -->
-          <%= simple_form_for([publication], url: publications_path, remote: true) do |f|%>
+          <%= simple_form_for([publication], url: publications_path) do |f|%>
             <%= f.input :title, label:false , input_html: { class: "input-custom1 title", autocomplete: 'off'}, placeholder: "Title" %>
             <%= f.input :content, label:false , input_html: { class: "input-custom1 content", autocomplete: 'off'}, placeholder: "What would you like to share?"  %>
             <!-- INPUT PHOTO PREVIEW  -->
