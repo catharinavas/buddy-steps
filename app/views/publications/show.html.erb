@@ -23,7 +23,7 @@
         <p class="text-blue-300 text-sm">
           <%= @publication.publication_type.name %>
           posted by
-          <%= link_to "#{@publication.user.first_name}", dashboard_path(@publication.user), class: "italic underline"  %>
+          <%= link_to "#{@publication.user.first_name}", user_path(@publication.user), class: "italic underline"  %>
           <% if @publication.community %>
             in
             <%= link_to "#{@publication.community.name}", community_path(@publication.community),
@@ -38,6 +38,9 @@
       <div class="publication-content text-gray-600">
         <%= simple_format(@publication.content) %>
       </div>
+
+      <!-- IMAGE -->
+      <%= cl_image_tag @publication.photo, height: 300, width: 400, crop: :fill %>
 
       <!-- BUTTONS -->
       <div class= "flex justify-between items-end mt-10">

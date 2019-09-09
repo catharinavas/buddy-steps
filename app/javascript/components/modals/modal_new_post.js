@@ -31,7 +31,6 @@ const modalNewPost = () => {
 
 
   function toggleModal () {
-    console.log("toggle")
     const body = document.querySelector('body')
     const modal = document.querySelector('.modal-new-post')
     modal.classList.toggle('opacity-0')

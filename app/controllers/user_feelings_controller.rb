@@ -19,16 +19,16 @@ class UserFeelingsController < ApplicationController
     # unless @feeling_today.count.zero?
     #   if (@feeling_today.first.user == @user_feeling.user || @feeling_today.first.feeling == @user_feeling.feeling)
     #     if @feeling_today.first.update(user_feeling_params)
-    #       redirect_to dashboard_path(current_user)
+    #       redirect_to dashboard_path
     #     end
     #   end
     # end
 
     if @user_feeling.save
-      redirect_to dashboard_path(current_user)
+      redirect_to dashboard_path
     else
       flash[:notice] = 'Invalid parameters!'
-      redirect_to dashboard_path(current_user)
+      redirect_to dashboard_path
     end
   end
 
@@ -38,7 +38,7 @@ class UserFeelingsController < ApplicationController
   def update
     if @user_feeling.update(user_feeling_params)
       respond_to do |format|
-        format.html { redirect_to dashboard_path(current_user)}
+        format.html { redirect_to dashboard_path}
         format.json
       end
     else
