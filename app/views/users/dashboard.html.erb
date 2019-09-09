@@ -11,7 +11,7 @@
       <% if current_user == @user %>
         <div class="flex">
           <!-- NEW GOAL BUTTON -->
-          <div id="btn_new_goal" class="modal-open cursor-pointer text-white bg-purple-600 text-sm font-semibold border-2 border-purple-600 px-3 py-1 h-8 mr-5 rounded-full hover:bg-purple-500 hover:border-purple-500 transition-soft">
+          <div id="btn_new_goal" class="modal-open-new-goal cursor-pointer text-white bg-purple-600 text-sm font-semibold border-2 border-purple-600 px-3 py-1 h-8 mr-5 rounded-full hover:bg-purple-500 hover:border-purple-500 transition-soft">
             <span class="m-auto">NEW GOAL</span>
           </div>
           <!-- GOALS CARDS FLIP -->
@@ -39,7 +39,7 @@
   <% end %>
 
   <!-- NEW GOAL MODAL -->
-  <%= render 'new_goal' %>
+  <%= render 'goals/new_goal' %>
 
   <!-- NOTIFICATIONS -->
   <% @buddies_goals.each do |buddy_goal| %>
@@ -60,7 +60,7 @@
           <div id="btn_new_goal" class="modal-open-new-post cursor-pointer text-white bg-purple-600 text-sm font-semibold border-2 border-purple-600 px-3 py-1 h-8 mr-5 rounded-full hover:bg-purple-500 hover:border-purple-500 transition-soft">
             <span class="m-auto">NEW PUBLICATION</span>
           </div>
-      <%= render 'publications/form', publication: Publication.new %>
+      <%= render 'publications/new_publication', publication: Publication.new %>
     <% end %>
     <%= render 'publications/publications_list', publications: @diary_publications %>
   </div>
