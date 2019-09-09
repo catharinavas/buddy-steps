@@ -23,6 +23,9 @@
             messagesContainer.insertAdjacentHTML('beforeend', data.message_partial);
             scrollLastMessageIntoView();
           }
+        },
+        connected() {
+          console.log('connected');
         }
       }
     )
