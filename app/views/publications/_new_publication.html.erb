@@ -1,6 +1,6 @@
-<div class="modal-new-post opacity-0 pointer-events-none fixed w-full h-full top-0 left-0 flex items-center justify-center">
+<div class="modal-new-post opacity-0 pointer-events-none fixed w-full h-full top-0 left-0 flex items-center justify-center z-50">
   <div class="modal-new-post-overlay absolute w-full h-full bg-gray-900 opacity-50"></div>
-  <div class="modal-container bg-white w-screen h-screen md:h-auto md:max-w-3xl mx-auto rounded shadow-lg z-50 overflow-y-auto">
+  <div class="modal-container bg-white w-screen h-screen md:h-auto md:max-w-3xl mx-auto rounded shadow-lg z-50 overflow-y-auto overflow-x-hidden">
     <!-- Add margin if you want to see some of the overlay behind the modal-->
     <div class="modal-content text-left">
       <div class="flex justify-end bg-purple-700 py-3 pr-4">
@@ -32,26 +32,40 @@
         </div>
         <!--Body-->
         <% if request.env['PATH_INFO'].include?("communities")%>
-
-          <%= simple_form_for([publication], url: publications_path, remote: true) do |f|%>
+          <!-- PUBLICATION IN COMMUNITY -->
+          <%= simple_form_for([publication], url: publications_path) do |f|%>
             <%= f.input :title, label:false , input_html: { class: "input-custom1 title", autocomplete: 'off'}, placeholder: "Title" %>
             <%= f.input :content, label:false , input_html: { class: "input-custom1 content", autocomplete: 'off'}, placeholder: "What would you like to share?"  %>
-            <%= f.association :community, :as => :hidden, :input_html => { :value => community.id } %>
+            <!-- INPUT PHOTO PREVIEW  -->
+              <%= image_tag "", width: 300, class: "hidden input-custom1 w-auto max-h-full", id: "photo-preview" %>
+
+            <%= f.association :community, :as => :hidden, input_html: { class: "input", value: community.id}  %>
             <div class="flex my-2">
               <%= f.association :publication_type, collection: PublicationType.where(name: ['News', 'Question']), label:false , input_html: { class: "select-custom1 md:w-10/12", autocomplete: 'off'}, wrapper_html: { class: 'flex-1' }, prompt: "-- Choose a publication type --", prompt_html: { class: "select-custom1" } %>
-              <%= fa_icon "camera", class: "mx-5 p-4 border border-gray-200 text-3xl text-gray-600 bg-gray-200 rounded-lg" %>
+
+              <!-- INPUT PHOTO -->
+              <%= f.input :photo, input_html: { class: 'invisible', id: 'photo-input'}, label_html: { class: 'mx-5 p-4 border border-gray-200 text-3xl text-gray-600 bg-gray-200 rounded-lg'}, label: ('<i class="fa fa-camera fa-2x"></i>').html_safe %>
               <%= f.button :submit, "Post", class: "btn-custom1" %>
             </div>
           <% end %>
 
         <% else %>
-
-          <%= simple_form_for([publication], url: publications_path, remote: true) do |f|%>
+          <!-- PUBLICATION IN DIARY -->
+          <%= simple_form_for([publication], url: publications_path) do |f|%>
             <%= f.input :title, label:false , input_html: { class: "input-custom1 title", autocomplete: 'off'}, placeholder: "Title" %>
             <%= f.input :content, label:false , input_html: { class: "input-custom1 content", autocomplete: 'off'}, placeholder: "What would you like to share?"  %>
+
+              <!-- INPUT PHOTO PREVIEW  -->
+              <%= image_tag "", width: 300, class: "hidden w-40 h-40 object-contain", id: "photo-preview" %>
+
+
             <div class="flex my-2">
               <%= f.association :publication_type, collection: PublicationType.where(name: ['Pleasure', 'Frustration']), label:false , input_html: { class: "select-custom1 md:w-10/12", autocomplete: 'off'}, wrapper_html: { class: 'flex-1' }, prompt: "-- Choose a publication type --", prompt_html: { class: "select-custom1" } %>
-              <%= fa_icon "camera", class: "mx-5 p-4 border border-gray-200 text-3xl text-gray-600 bg-gray-200 rounded-lg" %>
+
+
+              <%= f.input :photo, input_html: { class: 'invisible', id: 'photo-input'}, label_html: { class: 'mx-5 p-3 border border-gray-200 text-3xl text-gray-600 bg-gray-200 rounded-lg px-auto hover:bg-gray-300 hover:border-gray-300'}, label: ('<i class="fa fa-camera fa-2x"></i>').html_safe, wrapper_html: { class: 'w-24' } %>
+
+
               <%= f.button :submit, "Post", class: "btn-custom1" %>
             </div>
           <% end %>

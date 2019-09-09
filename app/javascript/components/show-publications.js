@@ -1,7 +1,4 @@
-
-
 const showPublications = () => {
-
 
   const menuNews = document.getElementById('menu-news');
   if (menuNews) {
@@ -14,7 +11,6 @@ const showPublications = () => {
     const menuUsersList = document.getElementById('menu-user-list');
 
     menuNews.addEventListener('click', () => {
-      console.log(url)
       menuNewsList.classList.remove('hidden');
       // menuCelebrationsList.classList.add('hidden');
       menuUsersList.classList.add('hidden');
@@ -34,6 +30,19 @@ const showPublications = () => {
   }
 }
 
+const tabSelected = () => {
+  const menuNews = document.getElementById('menu-news');
+  const menuUsers = document.getElementById('menu-users');
+  if (menuNews) {
+    menuNews.addEventListener('click', () => {
+      menuNews.classList.toggle('selected');
+      menuUsers.classList.toggle('selected');
+    })
+    menuUsers.addEventListener('click', () => {
+      menuNews.classList.toggle('selected');
+      menuUsers.classList.toggle('selected');
+    })
+  }
+}
 
-
-export { showPublications };
+export { tabSelected, showPublications };

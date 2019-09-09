@@ -1,6 +1,6 @@
 import "../plugins/flatpickr";
 import { menuToggle, dropdownToggle, closeMenu } from '../components/navbar';
-import { showPublications } from '../components/show-publications';
+import { showPublications, tabSelected } from '../components/show-publications';
 import { addMilestone } from '../components/add_milestone';
 import { chat } from '../components/chat';
 import { modalEditMilestone } from '../components/modals/modal_edit_milestone';
@@ -14,12 +14,14 @@ import ApexCharts from 'apexcharts';
 import { placeholderGraph } from "../components/placeholder_graph.js";
 import { fetchGraphData } from "../components/graph.js";
 import { changeGraph } from "../components/change_graph";
+import { previewImageOnFileSelect } from "../components/photo_preview";
 
 
 menuToggle();
 dropdownToggle();
 closeMenu();
 showPublications();
+tabSelected();
 addMilestone();
 chat();
 modalEditMilestone();
@@ -32,3 +34,4 @@ scrollLastMessageIntoView();
 placeholderGraph();
 fetchGraphData();
 changeGraph();
+previewImageOnFileSelect();

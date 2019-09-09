@@ -10,7 +10,7 @@ class UsersController < ApplicationController
     @moods = UserFeeling.where(user: params[:id])
 
     # GOALS DATA
-    @my_goals = Goal.where(user: params[:id])
+    @my_goals = Goal.where(user: current_user)
     @buddies_goals = Goal.where(buddy_id: current_user)
 
     # MODAL NEW GOAL
