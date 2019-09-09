@@ -1,0 +1,35 @@
+<% if current_user == @user %>
+  <div class="modal-new-goal opacity-0 pointer-events-none fixed w-full h-full top-0 left-0 flex items-center justify-center">
+      <div class="modal-new-goal-content py-4 text-left px-6 border-t-8 border-purple-700">
+        <!--Title-->
+        <div class="flex justify-between items-center py-3">
+          <div class="m-auto">
+            <p class="text-2xl font-bold text-gray-700 text-center">New Goal</p>
+          </div>
+          <div class="modal-new-goal-close cursor-pointer z-50">
+            <svg class="fill-current text-gray-700" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18">
+              <path d="M14.53 4.53l-1.06-1.06L9 7.94 4.53 3.47 3.47 4.53 7.94 9l-4.47 4.47 1.06 1.06L9 10.06l4.47 4.47 1.06-1.06L10.06 9z"></path>
+            </svg>
+          </div>
+        </div>
+        <!--Body-->
+        <%= simple_form_for @goal, html: { autocomplete: 'off' } do |f| %>
+          <%= f.error_notification %>
+          <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+          <%= f.input :title %>
+          <%= f.input :description %>
+          <div class="flex">
+            <%= f.input :deadline, as: :string, required: false, input_html: {class: "datepicker "} %>
+            <%= f.association :category, input_html: { class: " md:w-3/5 ml-4"}, label_html: { class: 'ml-4' },wrapper_html: { class: 'flex-1 pr-4' } %>
+          </div>
+          <!--Footer-->
+          <div class="flex fixed w-full pr-12 md:pr-0 bottom-0 md:relative pt-2 justify-between items-center">
+            <p class="modal-new-goal-close cursor-pointer text-gray-600 hover:underline hover:text-gray-700">Cancel</p>
+            <%= f.button :submit%>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+<% end %>

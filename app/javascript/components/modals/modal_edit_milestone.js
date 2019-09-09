@@ -1,27 +1,20 @@
-const modal = () => {
-  var openmodal = document.querySelectorAll('.modal-open')
+const modalEditMilestone = () => {
+  var openmodal = document.querySelectorAll('.modal-edit-milestone-open')
   openmodal.forEach(function(openModalButton){
     openModalButton.addEventListener('click', function(event){
       event.preventDefault()
 
-      const dataMilestoneId = openModalButton.getAttribute('data-modal')
+      const dataMilestoneId = openModalButton.getAttribute('data-modal-edit-milestone')
 
-      console.log(dataMilestoneId)
       toggleModal(dataMilestoneId)
     })
   })
-  // for (var i = 0; i < openmodal.length; i++) {
-  //   openmodal[i].addEventListener('click', function(event){
-  //   event.preventDefault()
-  //   toggleModal()
-  //   })
-  // }
 
-  const overlay = document.querySelector('.modal-overlay');
+  const overlay = document.querySelector('.modal-edit-milestone-overlay');
   if(overlay){
     overlay.addEventListener('click', toggleModal)
   }
-  var closemodal = document.querySelectorAll('.modal-close')
+  var closemodal = document.querySelectorAll('.modal-edit-milestone-close')
   for (var i = 0; i < closemodal.length; i++) {
     closemodal[i].addEventListener('click', toggleModal)
   }
@@ -34,7 +27,7 @@ const modal = () => {
     } else {
     isEscape = (evt.keyCode === 27)
     }
-    if (isEscape && document.body.classList.contains('modal-active')) {
+    if (isEscape && document.body.classList.contains('modal-edit-milestone-active')) {
     toggleModal()
     }
   };
@@ -44,12 +37,12 @@ const modal = () => {
     const body = document.querySelector('body')
     let modal
     if (dataGoalId) modal = document.getElementById(dataGoalId)
-    else modal = document.querySelector('.modal')
+    else modal = document.querySelector('.modal-edit-milestone')
 
     modal.classList.toggle('opacity-0')
     modal.classList.toggle('pointer-events-none')
-    body.classList.toggle('modal-active')
+    body.classList.toggle('modal-edit-milestone-active')
   }
 }
 
-export {modal};
+export {modalEditMilestone};
