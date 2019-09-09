@@ -6,8 +6,8 @@ gem 'carrierwave', '~> 1.2'
 gem 'cloudinary', '~> 1.9.1'
 gem 'pg_search', '~> 2.3.0'
 gem 'roberto_barros'
-gem 'apexcharts'
-gem 'groupdate'
+# gem 'apexcharts'
+# gem 'groupdate'
 # gem 'searchkick', '~> 3.0'
 
 gem 'bootsnap', require: false

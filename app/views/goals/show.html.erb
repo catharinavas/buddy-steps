@@ -1,77 +1,79 @@
-<div class="max-w-4xl flex items-center h-auto flex-wrap mx-auto lg:mt-5 lg:my-5 lg:flex-no-wrap">
+<div class="body bg-gray-100">
+  <div class="max-w-4xl flex items-center h-auto flex-wrap mx-auto lg:mt-5 lg:my-5 lg:flex-no-wrap">
 
-  <!--Main Col-->
-  <div id="profile" class="w-full lg:w-3/5 rounded-lg lg:rounded-l-lg lg:rounded-r-none shadow-2xl bg-white opacity-75 lg:mx-6 lg:mx-0">
+    <!--Main Col-->
+    <div id="profile" class="w-full lg:w-3/5 rounded-lg lg:rounded-l-lg lg:rounded-r-none shadow-2xl bg-white opacity-75 lg:mx-6 lg:mx-0">
 
 
-    <div class="p-4 md:p-12 text-center lg:text-left">
-      <!-- INFO ABOUT GOAL -->
-      <div class="flex justify-center lg:justify-start">
-        <h1 class="text-3xl font-bold pt-8 lg:pt-0"><%= @goal.title.capitalize %></h1>
+      <div class="p-4 md:p-12 text-center lg:text-left">
+        <!-- INFO ABOUT GOAL -->
+        <div class="flex justify-center lg:justify-start">
+          <h1 class="text-3xl font-bold pt-8 lg:pt-0"><%= @goal.title.capitalize %></h1>
 
-        <!-- ONLY SHOW EDIT/DELETE GOAL IF CURRENT_USER == GOAL.USER_ID -->
-        <% if @goal.user == current_user %>
-          <%= link_to goal_path(@goal), method: :delete, data: { confirm: 'Are you sure you want to delete?' } do %>
-            <%= fa_icon "trash alt", class: "mr-2 text-lg text-teal-700" %>
+          <!-- ONLY SHOW EDIT/DELETE GOAL IF CURRENT_USER == GOAL.USER_ID -->
+          <% if @goal.user == current_user %>
+            <%= link_to goal_path(@goal), method: :delete, data: { confirm: 'Are you sure you want to delete?' } do %>
+              <%= fa_icon "trash alt", class: "mr-2 text-lg text-teal-700" %>
+            <% end %>
+            <%#= link_to edit_goal_path(@goal) do %>
+            <%= fa_icon "edit", class: "modal-open-edit-goal mr-2 text-lg text-teal-700" %>
+            <%# end %>
           <% end %>
-          <%#= link_to edit_goal_path(@goal) do %>
-          <%= fa_icon "edit", class: "modal-open-edit-goal mr-2 text-lg text-teal-700" %>
-          <%# end %>
+        </div>
+
+        <!-- EDIT GOAL MODAL -->
+        <%= render 'edit_goal' %>
+
+
+        <div class="mx-auto lg:mx-0 w-4/5 pt-3 border-b-2 border-teal-500 opacity-25"></div>
+        <p class="pt-4 text-base font-bold flex items-center justify-center lg:justify-start">
+         Description: <%= @goal.description %></p>
+        <p class="pt-2 text-gray-600 text-xs lg:text-sm flex items-center justify-center lg:justify-start"><%= fa_icon "calendar alt", class:" h-4 fill-current text-teal-700 pr-4" %> Deadline: <%= @goal.deadline %> | <span class="font-bold">Days since goal started: <%= (@goal.start_date - Date.today).to_i %></span></p>
+
+        <!-- MILESTONES -->
+        <div class="block pt-8 text-sm">
+          <%= render 'milestones', class:"mx-auto" %>
+        </div>
+
+        <!-- User info if current_user is buddy -->
+        <% if current_user == @goal.buddy %>
+        <div class="flex bg-teal-700 text-white font-bold py-2 px-4 rounded-full mt-8 items-center">
+          <%= cl_image_tag @goal.user.photo, height: 35, width: 35, crop: :fill, class: "mr-2 rounded-full h-auto object-contain float-none border-2 border-white" %>
+          <p class="pr-2">
+            This goal belongs to:
+            <% if @goal.confirmed_buddy == true %>
+              <%= link_to "#{@goal.user.first_name} #{@goal.user.last_name}", dashboard_path(@goal.user) %>
+            <% else %>
+              Let's help <%= @goal.user.first_name %>
+            <% end %>
+          </p>
+        </div>
+
+        <% else %>
+        <!-- User info if current_user is buddy -->
+        <div class="flex bg-teal-700 text-white font-bold py-2 px-4 rounded-full mt-8 items-center">
+          <%= cl_image_tag @goal.buddy.photo, height: 35, width: 35, crop: :fill, class: "mr-2 rounded-full h-auto object-contain float-none border-2 border-white" %>
+          <p class="pr-2">
+            Buddy for this goal:
+            <% if @goal.confirmed_buddy == true %>
+              <%= link_to "#{@goal.buddy.first_name} #{@goal.buddy.last_name}", dashboard_path(@goal.buddy) %>
+            <% else %>
+              We are trying to find someone for you!
+            <% end %>
+          </p>
+        </div>
         <% end %>
       </div>
 
-      <!-- EDIT GOAL MODAL -->
-      <%= render 'edit_goal' %>
-
-
-      <div class="mx-auto lg:mx-0 w-4/5 pt-3 border-b-2 border-teal-500 opacity-25"></div>
-      <p class="pt-4 text-base font-bold flex items-center justify-center lg:justify-start">
-       Description: <%= @goal.description %></p>
-      <p class="pt-2 text-gray-600 text-xs lg:text-sm flex items-center justify-center lg:justify-start"><%= fa_icon "calendar alt", class:" h-4 fill-current text-teal-700 pr-4" %> Deadline: <%= @goal.deadline %> | <span class="font-bold">Days since goal started: <%= (@goal.start_date - Date.today).to_i %></span></p>
-
-      <!-- MILESTONES -->
-      <div class="block pt-8 text-sm">
-        <%= render 'milestones', class:"mx-auto" %>
-      </div>
-
-      <!-- User info if current_user is buddy -->
-      <% if current_user == @goal.buddy %>
-      <div class="flex bg-teal-700 text-white font-bold py-2 px-4 rounded-full mt-8 items-center">
-        <%= cl_image_tag @goal.user.photo, height: 35, width: 35, crop: :fill, class: "mr-2 rounded-full h-auto object-contain float-none border-2 border-white" %>
-        <p class="pr-2">
-          This goal belongs to:
-          <% if @goal.confirmed_buddy == true %>
-            <%= link_to "#{@goal.user.first_name} #{@goal.user.last_name}", dashboard_path(@goal.user) %>
-          <% else %>
-            Let's help <%= @goal.user.first_name %>
-          <% end %>
-        </p>
-      </div>
-
-      <% else %>
-      <!-- User info if current_user is buddy -->
-      <div class="flex bg-teal-700 text-white font-bold py-2 px-4 rounded-full mt-8 items-center">
-        <%= cl_image_tag @goal.buddy.photo, height: 35, width: 35, crop: :fill, class: "mr-2 rounded-full h-auto object-contain float-none border-2 border-white" %>
-        <p class="pr-2">
-          Buddy for this goal:
-          <% if @goal.confirmed_buddy == true %>
-            <%= link_to "#{@goal.buddy.first_name} #{@goal.buddy.last_name}", dashboard_path(@goal.buddy) %>
-          <% else %>
-            We are trying to find someone for you!
-          <% end %>
-        </p>
-      </div>
-      <% end %>
     </div>
 
-  </div>
-
-  <!--Img Col-->
-  <div class="w-full mt-6 lg:mx-0 lg:w-2/5 flex-grow">
-    <!-- class="rounded-none lg:rounded-lg shadow-2xl hidden lg:block" -->
-    <!-- ONLY SHOW CHAT FOR USER & BUDDY -->
-    <% if @goal.confirmed_buddy == true && ( @goal.user == current_user || @goal.buddy == current_user ) %>
-      <%= render 'chat', class: "w-full" %>
-    <% end %>
+    <!--Img Col-->
+    <div class="w-full mt-6 lg:mx-0 lg:w-2/5 flex-grow">
+      <!-- class="rounded-none lg:rounded-lg shadow-2xl hidden lg:block" -->
+      <!-- ONLY SHOW CHAT FOR USER & BUDDY -->
+      <% if @goal.confirmed_buddy == true && ( @goal.user == current_user || @goal.buddy == current_user ) %>
+        <%= render 'chat', class: "w-full" %>
+      <% end %>
+    </div>
   </div>
 </div>
