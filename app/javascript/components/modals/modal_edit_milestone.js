@@ -1,11 +1,10 @@
 const modalEditMilestone = () => {
   var openmodal = document.querySelectorAll('.modal-edit-milestone-open')
-  openmodal.forEach(function(openModalButton){
+  openmodal.forEach( function(openModalButton) {
     openModalButton.addEventListener('click', function(event){
       event.preventDefault()
 
-      const dataMilestoneId = openModalButton.getAttribute('data-modal-edit-milestone')
-
+      const dataMilestoneId = openModalButton.getAttribute('data-milestone')
       toggleModal(dataMilestoneId)
     })
   })
@@ -33,10 +32,10 @@ const modalEditMilestone = () => {
   };
 
 
-  function toggleModal (dataGoalId) {
+  function toggleModal (dataMilestoneId) {
     const body = document.querySelector('body')
     let modal
-    if (dataGoalId) modal = document.getElementById(dataGoalId)
+    if (dataMilestoneId) modal = document.getElementById(dataMilestoneId)
     else modal = document.querySelector('.modal-edit-milestone')
 
     modal.classList.toggle('opacity-0')
