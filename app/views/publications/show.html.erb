@@ -51,8 +51,11 @@
             <% end %>
           </p>
 
+
+          <!-- DELETE PUBLICATION -->
           <% if @publication.user == current_user %>
-            <%= link_to "delete", publication_path(@publication), method: :delete, class:"text-xs text-gray-500 hover:text-red-500" %>
+
+            <%= link_to "Delete", publication_path, method: :delete, class:"text-xs text-gray-500 hover:text-red-500" %>
           <% end %>
       </div>
 
