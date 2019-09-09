@@ -29,7 +29,7 @@ class PublicationsController < ApplicationController
   def destroy
     @publication = Publication.find(params[:id])
     @publication.destroy!
-    redirect_to dashboard_path(current_user)
+    redirect_to dashboard_path
   end
 
   private

@@ -34,7 +34,7 @@ Rails.application.routes.draw do
   resources :comments, only: %i[destroy]
 
   # USERS
-  get "/dashboard/:id", to: "users#dashboard", as: 'dashboard'
+  get "/dashboard", to: "users#dashboard", as: 'dashboard'
 
   # USER_FEELINGS
   resources :user_feelings, only: %i[new create edit update show]
