@@ -1,11 +1,8 @@
 <div class="body bg-orange-100">
   <!-- MOOD SESSION -->
+  <div id="chart"></div>
 
-  <!-- <div class="p-4 md:px-24"> -->
-    <!-- <h2 class="text-3xl text-purple-900 font-mono font-semibold">Mood Graph</h2> -->
-    <!-- MOOD GRAPH -->
-    <%#= render 'mood_graph' %>
-  <!-- </div> -->
+  <%#= line_chart(@daily_series, @options) %>
 
   <!-- GOALS SESSION -->
   <div class="flex justify-between mt-20 pt-3 p-4 md:px-24">
@@ -13,8 +10,8 @@
       <!-- GOALS BUTTONS -->
       <% if current_user == @user %>
         <div class="flex">
-          <!-- NEW GOAL MODAL -->
-          <div id="btn_new_goal" class="modal-open cursor-pointer text-white bg-purple-600 text-sm font-semibold border-2 border-purple-600 px-3 py-1 h-8 mr-5 rounded-full hover:bg-purple-500 hover:border-purple-500 transition-soft">
+          <!-- NEW GOAL BUTTON -->
+          <div id="btn_new_goal" class="modal-open-new-goal cursor-pointer text-white bg-purple-600 text-sm font-semibold border-2 border-purple-600 px-3 py-1 h-8 mr-5 rounded-full hover:bg-purple-500 hover:border-purple-500 transition-soft">
             <span class="m-auto">NEW GOAL</span>
           </div>
           <!-- GOALS CARDS FLIP -->
@@ -40,8 +37,9 @@
     <% end %>
 
   <% end %>
-  <!-- MODAL -->
-  <%= render 'new_goal' %>
+
+  <!-- NEW GOAL MODAL -->
+  <%= render 'goals/new_goal' %>
 
   <!-- NOTIFICATIONS -->
   <% @buddies_goals.each do |buddy_goal| %>
@@ -58,8 +56,11 @@
   <div class="pt-3 p-4 md:px-24 mt-20">
     <h2 class="text-3xl mb-5 text-purple-900 font-mono font-semibold">Diary</h2>
     <% if @user == current_user  %>
-    <h3>Make a new publication</h3>
-    <%= render 'publications/form', publication: Publication.new %>
+      <!-- NEW PUBLICATION BUTTON -->
+          <div id="btn_new_goal" class="modal-open-new-post cursor-pointer text-white bg-purple-600 text-sm font-semibold border-2 border-purple-600 px-3 py-1 h-8 mr-5 rounded-full hover:bg-purple-500 hover:border-purple-500 transition-soft">
+            <span class="m-auto">NEW PUBLICATION</span>
+          </div>
+      <%= render 'publications/new_publication', publication: Publication.new %>
     <% end %>
     <%= render 'publications/publications_list', publications: @diary_publications %>
   </div>

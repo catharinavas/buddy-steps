@@ -1,5 +1,5 @@
 class Publication < ApplicationRecord
-  searchkick
+  # searchkick
 
   belongs_to :user
   belongs_to :community, optional: true
