@@ -7,14 +7,14 @@ class UsersController < ApplicationController
     # @daily_series = set_daily_series
 
     # user feelings
-    @user_feeling = UserFeeling.new # new feeling
+    @new_feeling = UserFeeling.new # new feeling
 
-    @user_feelings = today_feeling
-    if @user_feelings == []
-      @feelings = Feeling.all
-    else
-      @feelings = Feeling.where.not(id: @user_feelings.pluck(:feeling_id))
-    end
+    @last_feeling = current_user.user_feelings.last
+    # if @last_feeling.feeling_date == Date.today
+    #   @feelings = Feeling.all
+    # else
+    #   @feelings = Feeling.where.not(id: @user_feelings.pluck(:feeling_id))
+    # end
 
 
     @moods = UserFeeling.where(user: params[:id])

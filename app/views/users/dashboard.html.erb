@@ -1,40 +1,18 @@
 <div class="body bg-gray-100">
-  <!-- MOOD SESSION -->
-  <div class="pt-3 p-4 md:px-24 mt-20">
-    <h2 class="text-3xl text-purple-900 font-mono font-semibold mb-10">Mood Graph</h2>
-    <!-- AMOUNT-OF-DAYS FILTERS -->
-    <div class="flex justify-center">
-      <button id="seven-day-view" class="graph-btn border p-2 rounded hover:bg-orange-300 opacity-50 cursor-not-allowed" data-day="0">
-        7-day view
-      </button>
-      <button id="fifteen-day-view" class="graph-btn border p-2 rounded hover:bg-orange-300">
-        15-day view
-      </button>
-      <button id="thirty-day-view" class="graph-btn border p-2 rounded hover:bg-orange-300">
-        30-day view
-      </button>
-    </div>
-
-    <!-- GRAPH -->
-    <div id="chart"></div>
-
-    <!-- GRAPH BUTTONS -->
-    <div class="flex flex-col items-center">
-      <div class="">
-        <button id="previous-week" class="graph-btn border mr-5 p-2 rounded hover:bg-orange-300">Previous week</button>
-        <button id="next-week" class="graph-btn border p-2 rounded hover:bg-orange-300 opacity-50 cursor-not-allowed">
-          Next week
-        </button>
+  <!-- MOOD GRAPH -->
+  <% if @user == current_user %>
+    <div class="flex">
+      <div class="pt-3 p-4 md:px-24 mt-20">
+        <h2 class="text-3xl text-purple-900 font-mono font-semibold mb-10">Mood Graph</h2>
+        <%= render 'mood_graph' %>
       </div>
 
-      <div class="">
-        <button id="previous-day" class="graph-btn border mr-5 p-2 rounded hover:bg-orange-300">Previous day</button>
-        <button id="next-day" class="graph-btn border p-2 rounded hover:bg-orange-300 opacity-50 cursor-not-allowed">
-          Next day
-        </button>
-      </div>
+      <!-- FEELINGS -->
+      <% unless @last_feeling.feeling_date == Date.today %>
+        <%= render 'new_feeling', user_feeling: @new_feeling %>
+      <% end %>
     </div>
-  </div>
+  <% end %>
 
   <!-- GOALS SESSION -->
   <div class="flex justify-between mt-20 pt-3 p-4 md:px-24">
@@ -60,15 +38,6 @@
   </div>
   <!-- GOALS CARDS -->
   <%= render 'goal_cards' %>
-
-  <!-- FEELINGS -->
-  <% if @user == current_user %>
-
-    <% unless @feelings == [] %>
-      <%= render 'new_feeling', user_feeling: @user_feeling, feelings: @feelings %>
-    <% end %>
-
-  <% end %>
 
   <!-- NEW GOAL MODAL -->
   <%= render 'goals/new_goal' %>
