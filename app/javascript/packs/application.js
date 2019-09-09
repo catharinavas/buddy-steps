@@ -11,7 +11,8 @@ import { readToggle } from '../components/read_toggle.js';
 import { cardsGoals } from '../components/dashboard';
 import { scrollLastMessageIntoView } from '../components/scroll';
 import ApexCharts from 'apexcharts';
-import { fetchGraphData } from "../components/chart.js"
+import { placeholderGraph } from "../components/placeholder_graph.js";
+import { fetchGraphData } from "../components/graph.js";
 import { changeGraph } from "../components/change_graph";
 import { previewImageOnFileSelect } from "../components/photo_preview";
 
@@ -30,6 +31,7 @@ modalNewPost();
 readToggle();
 cardsGoals();
 scrollLastMessageIntoView();
+placeholderGraph();
 fetchGraphData();
 changeGraph();
 previewImageOnFileSelect();

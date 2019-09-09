@@ -1,14 +1,16 @@
-<%= simple_form_for user_feeling, url: user_feelings_path do |f| %>
-  <div class="form-inputs">
-    <%#= f.association :feeling, label: "How are you feeling?", include_hidden: false %>
-    <%= f.input :happiness, collection: [1, 2, 3, 4, 5], label: 'General happiness', input_html: { class: "input"}  %>
-    <%= f.input :carefreeness, collection: [1, 2, 3, 4, 5], label: 'Carefreeness', input_html: { class: "input"}  %>
-    <%= f.input :patience, collection: [1, 2, 3, 4, 5], label: 'Patience', input_html: { class: "input"}  %>
-    <%= f.input :sleep_quality, collection: [1, 2, 3, 4, 5], label: 'Sleep quality', input_html: { class: "input"}  %>
-  </div>
+<div class="flex-shrink-0 m-10">
+  <%= simple_form_for user_feeling, url: user_feelings_path do |f| %>
+    <div class="form-inputs">
+      <%#= f.association :feeling, label: "How are you feeling?", include_hidden: false %>
+      <%= f.input :happiness, collection: [1, 2, 3, 4, 5], label: 'General happiness' %>
+      <%= f.input :carefreeness, collection: [1, 2, 3, 4, 5], label: 'Carefreeness' %>
+      <%= f.input :patience, collection: [1, 2, 3, 4, 5], label: 'Patience' %>
+      <%= f.input :sleep_quality, collection: [1, 2, 3, 4, 5], label: 'Sleep quality' %>
+    </div>
 
-  <div class="form-actions">
-    <%= f.button :submit, "Record today's mood" %>
-    <%#= link_to 'Back', dashboard_path, class: 'btn btn-danger' %>
-  </div>
-<% end %>
+    <div class="form-actions">
+      <%= f.button :submit, "Record today's mood" %>
+      <%#= link_to 'Back', dashboard_path(current_user), class: 'btn btn-danger' %>
+    </div>
+  <% end %>
+</div>
