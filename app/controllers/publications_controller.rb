@@ -13,15 +13,14 @@ class PublicationsController < ApplicationController
     end
 
     if @publication.save
-      respond_to do |format|
-        format.html { redirect_to publication_path(@publication) }
-        format.js  # <-- will render `app/views/reviews/create.js.erb`
-      end
+        redirect_to publication_path(@publication)
     else
-      respond_to do |format|
-        format.html { render "publications/news" } if params[:community_id]
-        # PRECISA FAZERUM REDIRECIONAMENTO HTML PARA DIARY TAMBÉM!!!!
-        format.js  # <-- idem
+      if params[:community_id]
+        flash[:notice] = 'Invalid parameters!'
+        redirect_to community_path(params[:community_id])
+      else
+        flash[:notice] = 'Invalid parameters!'
+        redirect_to dashboard_path
       end
     end
   end
@@ -35,6 +34,6 @@ class PublicationsController < ApplicationController
   private
 
   def publication_params
-    params.require(:publication).permit(:title, :content, :community_id, :publication_type_id)
+    params.require(:publication).permit(:title, :content, :community_id, :publication_type_id, :photo)
   end
 end

@@ -11,7 +11,6 @@ const showPublications = () => {
     const menuUsersList = document.getElementById('menu-user-list');
 
     menuNews.addEventListener('click', () => {
-      console.log(url)
       menuNewsList.classList.remove('hidden');
       // menuCelebrationsList.classList.add('hidden');
       menuUsersList.classList.add('hidden');
