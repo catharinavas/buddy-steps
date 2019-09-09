@@ -3,7 +3,7 @@
 }
 
 
-.simple_form input:not(.boolean .input-custom1) {
+.simple_form input:not(.boolean):not(.input-custom1):not(.btn-custom1) {
   appearance: none;
   display: block;
   width: 100%;
@@ -20,7 +20,7 @@
   margin-bottom: 1rem;
 }
 
-.simple_form input:not(.boolean .input-custom1):focus {
+.simple_form input:not(.boolean):not(.input-custom1):not(.btn-custom1):focus {
   outline: 0;
   background-color: #fff;
   border-color: #a0aec0;
@@ -166,7 +166,7 @@
 
 .body {
   height: 100%;
-  padding-top: 0.75rem;
+  padding-top: 6rem;
 }
 
 .active {

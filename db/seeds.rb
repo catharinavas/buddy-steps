@@ -25,7 +25,7 @@ depression = Community.create!(name: 'Depression')
 amputation = Community.create!(name: 'Amputation')
 
 puts "Creating Lucas"
-user = User.new(
+lucas = User.new(
     first_name: 'Lucas',
     last_name: 'Sandeville',
     email: 'lucas@nextstep.com',
@@ -33,13 +33,13 @@ user = User.new(
     city: 'São Paulo'
   )
   url = "https://avatars1.githubusercontent.com/u/29074669?s=400&v=4"
-  user.remote_photo_url = url
+  lucas.remote_photo_url = url
 
-  user.communities << Community.all.sample
-  user.save!
+  lucas.communities << Community.all.sample
+  lucas.save!
 
 puts "Creating Daniela"
-user = User.new(
+daniela = User.new(
     first_name: 'Daniela',
     last_name: 'Ichikawa',
     email: 'daniela@nextstep.com',
@@ -47,13 +47,13 @@ user = User.new(
     city: 'São Paulo'
   )
   url = "https://avatars3.githubusercontent.com/u/52746846?s=400&v=4"
-  user.remote_photo_url = url
+  daniela.remote_photo_url = url
 
-  user.communities << Community.all.sample
-  user.save!
+  daniela.communities << Community.all.sample
+  daniela.save!
 
 puts "Creating Catharina"
-user = User.new(
+catharina = User.new(
     first_name: 'Catharina',
     last_name: 'Vasconcelos',
     email: 'catharina@nextstep.com',
@@ -61,13 +61,13 @@ user = User.new(
     city: 'São Paulo'
   )
   url = "https://avatars3.githubusercontent.com/u/17905364?s=400&v=4"
-  user.remote_photo_url = url
+  catharina.remote_photo_url = url
 
-  user.communities << Community.all.sample
-  user.save!
+  catharina.communities << Community.all.sample
+  catharina.save!
 
 puts "Creating Hugo"
-user = User.new(
+hugo = User.new(
     first_name: 'Hugo',
     last_name: 'Branquinho',
     email: 'hugo@nextstep.com',
@@ -75,10 +75,10 @@ user = User.new(
     city: 'São Paulo'
   )
   url = "https://avatars0.githubusercontent.com/u/52136198?s=460&v=4"
-  user.remote_photo_url = url
+  hugo.remote_photo_url = url
 
-  user.communities << Community.all.sample
-  user.save!
+  hugo.communities << Community.all.sample
+  hugo.save!
 
 
 
@@ -149,18 +149,46 @@ irritability = Feeling.create!(name: 'Irritability')
 sleep_quality = Feeling.create!(name: 'Sleep Quality')
 happiness = Feeling.create!(name: 'Happiness')
 
-puts 'creating Feelings for the users'
+puts 'creating Feelings for general users'
 User.all.each do |user|
   day = 1
   Feeling.all.each do |feeling|
-    10.times do
+    intensity = 3
+    date = Date.today - 3.days
+    2.times do
       UserFeeling.create!(
-        feeling_date: (Date.today + day.days),
+        feeling_date: (date + day.days),
         # feeling_date: DateTime.now,
         user: user,
         feeling: feeling,
-        intensity: rand(1..5)
+        intensity: intensity
       )
+      intensity += [+1, +2, -1, -2].sample
+      intensity = 5 if intensity > 5
+      intensity = 1 if intensity < 1
+      day += 1
+    end
+  end
+end
+
+puts 'creating Feelings for Lucas, Daniela, Catharina and Hugo '
+[lucas, daniela, catharina, hugo].each do |user|
+  day = 1
+  puts "---creating feelings data for #{user.first_name}"
+  Feeling.all.each do |feeling|
+    intensity = 3
+    date = Date.today - 50.days
+    50.times do
+      UserFeeling.create!(
+        feeling_date: (date + day.days),
+        # feeling_date: DateTime.now,
+        user: user,
+        feeling: feeling,
+        intensity: intensity
+      )
+      intensity += [+1, +2, -1, -2].sample
+      intensity = 5 if intensity > 5
+      intensity = 1 if intensity < 1
       day += 1
     end
   end
