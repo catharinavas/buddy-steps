@@ -36,7 +36,7 @@ const changeGraph = () => {
     let previousDayBtn = document.querySelector('#previous-day');
     let nextDayBtn = document.querySelector('#next-day');
 
-    previousWeekBtn.addEventListener('click', (event) => {
+    previousWeekBtn.addEventListener('mousedown', (event) => {
       if (previousWeekBtn.matches(".cursor-not-allowed") === false) {
         days_in_the_past += 7;
         updateData(days_in_the_past);
@@ -45,7 +45,7 @@ const changeGraph = () => {
       }
     });
 
-    nextWeekBtn.addEventListener('click', (event) => {
+    nextWeekBtn.addEventListener('mousedown', (event) => {
       if (nextWeekBtn.matches(".cursor-not-allowed") === false) {
         days_in_the_past -= 7;
         updateData(days_in_the_past);
@@ -54,7 +54,7 @@ const changeGraph = () => {
       }
     });
 
-    previousDayBtn.addEventListener('click', (event) => {
+    previousDayBtn.addEventListener('mousedown', (event) => {
       if (previousDayBtn.matches(".cursor-not-allowed") === false) {
         days_in_the_past += 1;
         updateData(days_in_the_past);
@@ -63,7 +63,7 @@ const changeGraph = () => {
       }
     });
 
-    nextDayBtn.addEventListener('click', (event) => {
+    nextDayBtn.addEventListener('mousedown', (event) => {
       if (nextDayBtn.matches(".cursor-not-allowed") === false) {
         days_in_the_past -= 1;
         updateData(days_in_the_past);
@@ -75,7 +75,7 @@ const changeGraph = () => {
 }
 
 var updateData = (days_in_the_past) => {
-  fetch("/dashboard/1.json")
+  fetch("/dashboard.json")
     .then(response => response.json())
     .then((data) => {
       setGraphRange(data.feelings, days_in_the_past);
@@ -128,23 +128,13 @@ const updateGraph = (feelings, most_recent_day, amountOfDays) => {
     chart: {
       type: 'line',
       background: '#fff',
-      toolbar: {
-        show: true,
-        tools: {
-          download: true,
-          selection: false,
-          zoom: true,
-          zoomin: true,
-          zoomout: true,
-          pan: true,
-          reset: true | '<img src="/static/icons/reset.png" width="20">',
-          customIcons: []
-        },
-        autoSelected: 'pan'
-      },
       animations: {
           enabled: false,
       },
+      height: '200rem',
+    },
+    legend: {
+      position: 'top'
     },
     yaxis: {
         max: 6,
