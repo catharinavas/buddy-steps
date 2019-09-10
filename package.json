@@ -9,9 +9,9 @@
     "gmaps": "^0.4.24",
     "jquery": "^3.4.1",
     "popper.js": "^1.15.0"
+    "tailwindcss": "^1.1.2",
   },
   "devDependencies": {
-    "tailwindcss": "^1.1.2",
     "webpack-dev-server": "^3.8.0"
   }
 }
