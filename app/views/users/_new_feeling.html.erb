@@ -1,16 +1,33 @@
-<div class="flex-shrink-0 m-10">
+<div class="flex-shrink-0 lg:ml-5 p-5 flex flex-col items-center justify-center bg-white shadow-2xl rounded">
+  <h2 class="text-xl font-bold text-purple-900">How is your mood today?</h2>
   <%= simple_form_for user_feeling, url: user_feelings_path do |f| %>
-    <div class="form-inputs">
-      <%#= f.association :feeling, label: "How are you feeling?", include_hidden: false %>
-      <%= f.input :happiness, collection: [1, 2, 3, 4, 5], label: 'General happiness' %>
-      <%= f.input :carefreeness, collection: [1, 2, 3, 4, 5], label: 'Carefreeness' %>
-      <%= f.input :patience, collection: [1, 2, 3, 4, 5], label: 'Patience' %>
-      <%= f.input :sleep_quality, collection: [1, 2, 3, 4, 5], label: 'Sleep quality' %>
+    <div class="feelings-grid form-inputs p-2">
+
+      <h3 class="feelings-title text-center text-sm mt-6 font-bold text-gray-700">General Happiness</h3>
+      <p class="m-2 mb-0 text-sm text-right text-gray-500">sad</p>
+      <%= f.input :happiness, as: :range, input_html: { min: '1', max: '5', step: '1' }, label: false %>
+      <p class="m-2 mb-0 text-sm text-left text-gray-500">happy</p>
+
+      <h3 class="feelings-title text-center text-sm mt-6 font-bold text-gray-700">Carefreeness</h3>
+      <p class="m-2 mb-0 text-sm text-right text-gray-500">anxious</p>
+      <%= f.input :carefreeness, as: :range, input_html: { min: '1', max: '5', step: '1' }, label: false %>
+      <p class="m-2 mb-0 text-sm text-left text-gray-500">carefree</p>
+
+      <h3 class="feelings-title text-center text-sm mt-6 font-bold text-gray-700">Patience</h3>
+      <p class="m-2 mb-0 text-sm text-right text-gray-500">irritable</p>
+      <%= f.input :patience, as: :range, input_html: { min: '1', max: '5', step: '1' }, label: false %>
+      <p class="m-2 mb-0 text-sm text-left text-gray-500">patient</p>
+
+      <h3 class="feelings-title text-center text-sm mt-6 font-bold text-gray-700">Sleep Quality</h3>
+      <p class="m-2 mb-0 text-sm text-right text-gray-500">bad</p>
+      <%= f.input :sleep_quality, as: :range, input_html: { min: '1', max: '5', step: '1' }, label: false %>
+      <p class="m-2 mb-0 text-sm text-left text-gray-500">good</p>
     </div>
 
     <div class="form-actions">
-      <%= f.button :submit, "Record today's mood" %>
+      <%= f.button :submit, "Record today's mood", class: "mx-auto mt-5" %>
       <%#= link_to 'Back', dashboard_path(current_user), class: 'btn btn-danger' %>
     </div>
+
   <% end %>
 </div>
