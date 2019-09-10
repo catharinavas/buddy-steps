@@ -8,15 +8,15 @@ const menuToggle = () => {
   }
 }
 
-const dropdownToggle = () => {
-  const avatarIcon = document.getElementById('avatar-icon');
-  const dropdownList = document.getElementById('dropdown-list');
-  if (avatarIcon) {
-    avatarIcon.addEventListener('click', () => {
-      dropdownList.classList.toggle('hidden');
-    })
-  }
-}
+// const dropdownToggle = () => {
+//   const avatarIcon = document.getElementById('avatar-icon');
+//   const dropdownList = document.getElementById('dropdown-list');
+//   if (avatarIcon) {
+//     avatarIcon.addEventListener('click', () => {
+//       dropdownList.classList.toggle('hidden');
+//     })
+//   }
+// }
 
 const closeMenu = () => {
   const body = document.getElementsByTagName('body');
@@ -31,4 +31,4 @@ const closeMenu = () => {
   // })
 }
 
-export { menuToggle, dropdownToggle, closeMenu };
+export { menuToggle, closeMenu };
