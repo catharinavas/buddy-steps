@@ -1,38 +1,75 @@
 <!-- AMOUNT-OF-DAYS FILTERS -->
-<div class="flex-col flex-grow pt-5 pb-10 px-8 bg-white shadow-2xl h-full">
+<div class="pt-5 pb-10 px-8 bg-white border-2 border-gray-200 rounded-lg h-full">
 
-  <h2 class="text-xl text-purple-900 font-mono font-semibold">Mood graph</h2>
+  <h2 class="text-3xl text-gray-800 font-bold leading-none mb-3">Mood graph</h2>
   <!-- GRAPH -->
   <div id="chart" class="mx-auto"></div>
   <!-- GRAPH BUTTONS -->
-  <div class="flex justify-between items-end">
+  <!-- large screen -->
+  <div class="hidden md:flex justify-between items-end">
     <div class="flex">
-      <button id="previous-week" class="graph-btn w-32 font-mono appearance-none text-gray-700 border border-gray-600 rounded-full m-1 px-3 py-2 leading-tight hover:bg-purple-600 hover:border-purple-600 hover:text-white hover:font-bold transition-soft text-xs">previous week</button>
-      <button id="previous-day" class="graph-btn w-32 font-mono appearance-none text-gray-700 border border-gray-600 rounded-full m-1 px-3 py-2 leading-tight hover:bg-purple-600 hover:border-purple-600 hover:text-white hover:font-bold transition-soft text-xs">previous day</button>
+      <button id="previous-week" class="graph-btn w-32 appearance-none text-gray-700 border border-gray-600 rounded-full m-1 px-3 py-2 leading-tight hover:bg-purple-600 hover:border-purple-600 hover:text-white hover:font-bold transition-soft text-xs">previous week</button>
+      <button id="previous-day" class="graph-btn w-32 appearance-none text-gray-700 border border-gray-600 rounded-full m-1 px-3 py-2 leading-tight hover:bg-purple-600 hover:border-purple-600 hover:text-white hover:font-bold transition-soft text-xs">previous day</button>
     </div>
 
     <div class="flex flex-col items-center">
       <p class="text-center text-sm text-gray-700">Number of days shown:</p>
       <div class="flex justify-center">
-        <button id="seven-day-view" class="graph-btn font-mono appearance-none text-gray-700 rounded-full m-1 px-3 py-2 leading-tight text-xs hover:font-bold hover:font-bold transition-soft opacity-50 cursor-not-allowed" data-day="0">
+        <button id="seven-day-view" class="graph-btn appearance-none text-gray-700 rounded-full m-1 px-3 py-2 leading-tight text-xs hover:font-bold hover:font-bold transition-soft opacity-50 cursor-not-allowed" data-day="0">
           7
         </button>
-        <button id="fifteen-day-view" class="graph-btn font-mono appearance-none text-gray-700 rounded-full m-1 px-3 py-2 leading-tight text-xs hover:font-bold hover:font-bold transition-soft transition-soft">
+        <button id="fifteen-day-view" class="graph-btn appearance-none text-gray-700 rounded-full m-1 px-3 py-2 leading-tight text-xs hover:font-bold hover:font-bold transition-soft transition-soft">
           15
         </button>
-        <button id="thirty-day-view" class="graph-btn font-mono appearance-none text-gray-700 rounded-full m-1 px-3 py-2 leading-tight text-xs hover:font-bold hover:font-bold transition-soft">
+        <button id="thirty-day-view" class="graph-btn appearance-none text-gray-700 rounded-full m-1 px-3 py-2 leading-tight text-xs hover:font-bold hover:font-bold transition-soft">
           30
         </button>
       </div>
     </div>
 
     <div class="flex">
-      <button id="next-day" class="graph-btn w-32 font-mono appearance-none text-gray-700 border border-gray-600 rounded-full m-1 px-3 py-2 leading-tight hover:bg-purple-600 hover:border-purple-600 hover:text-white hover:font-bold transition-soft text-xs opacity-50 cursor-not-allowed">
+      <button id="next-day" class="graph-btn w-32 appearance-none text-gray-700 border border-gray-600 rounded-full m-1 px-3 py-2 leading-tight hover:bg-purple-600 hover:border-purple-600 hover:text-white hover:font-bold transition-soft text-xs opacity-50 cursor-not-allowed">
         next day
       </button>
     </div>
-      <button id="next-week" class="graph-btn w-32 font-mono appearance-none text-gray-700 border border-gray-600 rounded-full m-1 px-3 py-2 leading-tight hover:bg-purple-600 hover:border-purple-600 hover:text-white hover:font-bold transition-soft text-xs opacity-50 cursor-not-allowed">
+      <button id="next-week" class="graph-btn w-32 appearance-none text-gray-700 border border-gray-600 rounded-full m-1 px-3 py-2 leading-tight hover:bg-purple-600 hover:border-purple-600 hover:text-white hover:font-bold transition-soft text-xs opacity-50 cursor-not-allowed">
         next week
       </button>
+  </div>
+
+  <!-- small screen -->
+  <div class="flex justify-between items-end md:hidden">
+    <div class="flex">
+      <button id="previous-week" class="graph-btn appearance-none font-semibold text-gray-700 m-1 px-3 py-2 leading-tight hover:text-lg transition-soft bg-gray-200 rounded-lg text-xs">
+        <<
+      </button>
+      <button id="previous-day" class="graph-btn appearance-none font-semibold text-gray-700 m-1 px-3 py-2 leading-tight hover:text-lg transition-soft  bg-gray-200 rounded-lg  text-xs">
+        <
+      </button>
+    </div>
+
+    <div class="flex flex-col items-center ">
+      <p class="text-center text-sm text-gray-600 mb-1">Number of days shown:</p>
+      <div class="flex justify-center bg-gray-100 rounded-lg">
+        <button id="seven-day-view" class="graph-btn appearance-none text-gray-700 rounded-full m-1 px-3 py-2 leading-tight text-lg hover:font-bold transition-soft opacity-50 cursor-not-allowed font-semibold" data-day="0">
+          7
+        </button>
+        <button id="fifteen-day-view" class="graph-btn appearance-none text-gray-700 rounded-full m-1 px-3 py-2 leading-tight text-lg hover:font-bold transition-soft transition-soft font-semibold">
+          15
+        </button>
+        <button id="thirty-day-view" class="graph-btn appearance-none text-gray-700 rounded-full m-1 px-3 py-2 leading-tight text-lg hover:font-bold transition-soft font-semibold">
+          30
+        </button>
+      </div>
+    </div>
+
+    <div class="flex">
+      <button id="next-day" class="graph-btn appearance-none font-semibold text-gray-700 m-1 px-3 py-2 leading-tight hover:text-lg transition-soft bg-gray-200 rounded-lg text-xs opacity-50 cursor-not-allowed">
+        >
+      </button>
+      <button id="next-week" class="graph-btn appearance-none font-semibold text-gray-700 m-1 px-3 py-2 leading-tight hover:text-lg transition-soft bg-gray-200 rounded-lg text-xs opacity-50 cursor-not-allowed">
+        >>
+      </button>
+    </div>
   </div>
 </div>

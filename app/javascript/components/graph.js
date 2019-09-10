@@ -15,6 +15,9 @@ var generateGraph = (feelings) => {
       type: 'line',
       background: '#fff',
       height: '200rem',
+      animations: {
+          enabled: false,
+      },
       toolbar: {
           show: false
       },
