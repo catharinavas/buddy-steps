@@ -1,0 +1,32 @@
+<div class="h-auto">
+  <div class="chat-header"><h4>#<%= @room.name %></h4></div>
+  <div class="room-messages">
+    <% @room_chat.room_messages.sort_by(&:created_at).each do |message| %>
+      <%= render "room_messages", message: message, user_is_messages_author: message.user == current_user %>
+    <% end %>
+  </div>
+  <div id="create-message">
+    <%= simple_form_for [ @room_chat, RoomMessage.new ], remote: true, html: {autocomplete: "off" } do |f| %>
+      <%= f.input :content, label: false %>
+      <%= f.submit %>
+    <% end %>
+  </div>
+</div>
+<% content_for :after_js do %>
+  <script>
+    App['room_<%= @room.id %>'] = App.cable.subscriptions.create(
+      { channel: 'RoomsChannel', room_id: <%= @room.id %> },
+      {
+        received: (data) => {
+          if (data.current_user_id !== <%= current_user.id %>) {
+            const messagesContainer = document.querySelector('.room-messages');
+            messagesContainer.insertAdjacentHTML('beforeend', data.message_partial);
+          }
+        },
+        connected() {
+          console.log('connected');
+        }
+      }
+    )
+  </script>
+<% end %>
