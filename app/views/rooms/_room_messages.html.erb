@@ -1,0 +1,4 @@
+<div class="message <%= user_is_messages_author ? "right" : "" %>">
+  <%= cl_image_tag message.user.photo, class: "avatar" %>
+  <div class="room-message-content"><%= message.content %></div>
+</div>

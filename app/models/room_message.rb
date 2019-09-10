@@ -10,7 +10,7 @@ class RoomMessage < ApplicationRecord
   end
 
     def broadcast_message
-    ActionCable.server.broadcast("chat_room_#{room.id}", {
+    ActionCable.server.broadcast("room_#{room.id}", {
       message_partial: ApplicationController.renderer.render(
         partial: "messages/message",
         locals: { message: self, user_is_messages_author: false }
