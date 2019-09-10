@@ -1,0 +1,143 @@
+@import "tailwindcss/base";
+
+@import "tailwindcss/components";
+
+/**
+ * Here you would add any of your custom component classes; stuff that you'd
+ * want loaded *before* the utilities so that the utilities could still
+ * override them.
+ *
+ * Example:
+ *
+ * .btn { ... }
+ * .form-input { ... }
+ *
+ * Or if using a preprocessor or `postcss-import`:
+ *
+ * @import "components/buttons";
+ * @import "components/forms";
+ */
+
+@import "tailwindcss/utilities";
+
+
+/**
+ * Here you would add any custom utilities you need that don't come out of the
+ * box with Tailwind.
+ *
+ * Example :
+ *
+ * .bg-pattern-graph-paper { ... }
+ * .skew-45 { ... }
+ *
+ * Or if using a preprocessor or `postcss-import`:
+ *
+ * @import "utilities/background-patterns";
+ * @import "utilities/skew-transforms";
+ */
+
+@import "tailwindcss/screens";
+
+.link-grey {
+  @apply text-gray-600 underline;
+}
+
+.link-grey:hover {
+  @apply text-gray-700;
+}
+
+.btn-options {
+  @apply flex-1 p-2 text-base text-gray-700 text-center bg-orange-400 px-4 py-2 m-2 w-1/4 rounded;
+}
+
+.simple_form input.input {
+  @apply appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight mb-4;
+}
+
+.simple_form input.input:focus {
+  @apply outline-none bg-white border-gray-500;
+}
+
+.simple_form label{
+  @apply block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2;
+}
+
+.simple_form .hint {
+  @apply block tracking-wide text-gray-700 text-xs;
+}
+
+.simple_form select:not(.select-custom1) {
+  @apply appearance-none py-3 px-4 pr-8 block w-full bg-gray-200 border border-gray-200 text-gray-700 rounded leading-tight;
+   -webkit-appearance: none;
+}
+
+.simple_form select:not(.select-custom1):focus {
+  @pply bg-white border-gray-500 outline-none;
+}
+
+
+.simple_form input.btn:not(.btn-custom1){
+  @apply appearance-none block cursor-pointer bg-purple-700  text-white border rounded-full text-center font-semibold mb-0 py-3 px-4 leading-tight;
+}
+
+.simple_form input.btn:not(.btn-custom1).w-full{
+  @apply w-full rounded-lg;
+}
+
+.simple_form input.btn:not(.btn-custom1):hover {
+  @apply cursor-pointer bg-purple-600;
+}
+
+.simple_form input.boolean {
+  @apply m-3;
+}
+
+.input-custom1 {
+  @apply appearance-none block w-full bg-gray-200 text-gray-700 border-b-2 border-purple-200 py-3 px-4 leading-tight mb-4 font-medium;
+}
+
+.input-custom1.content {
+  @apply appearance-none block w-full bg-gray-200 text-gray-700 border-b-2 py-3 px-4 leading-tight mb-4 font-medium h-64 border-purple-100;
+}
+
+.input-custom1.title {
+  @apply appearance-none block w-full bg-gray-200 border-b-2 border-purple-100 py-3 px-4 leading-tight mb-4 font-medium text-lg text-gray-800 font-bold;
+}
+
+.input-custom1:focus {
+  @apply outline-none border-gray-500;
+}
+
+.select-custom1 {
+  @apply appearance-none py-3 px-4 pr-8 w-full bg-gray-200 border border-gray-200 text-gray-700 rounded leading-tight bg-white;
+   -webkit-appearance: none;
+}
+.select-custom1:focus {
+  @pply bg-white border-gray-500 outline-none;
+}
+
+.btn-custom1 {
+  @apply appearance-none block cursor-pointer bg-purple-700 w-20 text-white border rounded-lg text-center font-semibold mb-0 py-3 px-4 leading-tight;
+  height: 3.25rem;
+}
+
+.btn-custom1.w-full{
+  @apply appearance-none block cursor-pointer bg-purple-700 text-white border rounded-lg text-center font-semibold mb-0 py-3 px-4 leading-tight;
+  height: 3.25rem;
+}
+
+.btn-custom1:hover {
+  @apply cursor-pointer bg-purple-600;
+}
+
+.body {
+  @apply h-full min-h-screen pt-24;
+}
+
+.active {
+  @apply bg-orange-400 text-orange-100;
+}
+
+.-mt-custom1 {
+  margin-top: -3.3rem;
+}

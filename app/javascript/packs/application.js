@@ -15,7 +15,6 @@ import ApexCharts from 'apexcharts';
 import { placeholderGraph } from "../components/placeholder_graph.js";
 import { fetchGraphData } from "../components/graph.js";
 import { changeGraph } from "../components/change_graph";
-import { landing } from "../components/landing";
 import { previewImageOnFileSelect } from "../components/photo_preview";
 
 
@@ -36,5 +35,4 @@ scrollLastMessageIntoView();
 placeholderGraph();
 fetchGraphData();
 changeGraph();
-landing();
 previewImageOnFileSelect();

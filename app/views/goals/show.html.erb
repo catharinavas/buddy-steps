@@ -7,7 +7,7 @@
 
       <div class="p-4 md:p-12 text-center lg:text-left">
         <!-- INFO ABOUT GOAL -->
-        <div class="flex justify-center lg:justify-start">
+        <div class="flex justify-center lg:justify-start pt-24">
           <h1 class="text-3xl font-bold pt-8 lg:pt-0"><%= @goal.title.capitalize %></h1>
 
           <!-- ONLY SHOW EDIT/DELETE GOAL IF CURRENT_USER == GOAL.USER_ID -->
@@ -15,9 +15,21 @@
             <%= link_to goal_path(@goal), method: :delete, data: { confirm: 'Are you sure you want to delete?' } do %>
               <%= fa_icon "trash alt", class: "mr-2 text-lg text-teal-700" %>
             <% end %>
-            <%#= link_to edit_goal_path(@goal) do %>
             <%= fa_icon "edit", class: "modal-open-edit-goal mr-2 text-lg text-teal-700" %>
-            <%# end %>
+            <label class="custom-label flex" data-goal="<%= @goal.id %>">
+              <form action="/goals/<%= @goal.id %>/completed" method="get">
+                <button name="goal-complete" type="submit" class="flex">
+                  <div class="bg-white shadow w-4 h-4 p-1 flex justify-center items-center mr-2">
+                    <input type="checkbox" class="hidden"
+                      <% if @goal.complete %>
+                        checked
+                      <% end %>
+                    >
+                    <svg class="hidden w-4 h-4 text-green-600 pointer-events-none" viewBox="0 0 172 172"><g fill="none" stroke-width="none" stroke-miterlimit="10" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode:normal"><path d="M0 172V0h172v172z"/><path d="M145.433 37.933L64.5 118.8658 33.7337 88.0996l-10.134 10.1341L64.5 139.1341l91.067-91.067z" fill="currentColor" stroke-width="1"/></g></svg>
+                  </div>
+                </button>
+              </form>
+            </label>
           <% end %>
         </div>
 

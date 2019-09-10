@@ -1,13 +1,14 @@
 class GoalsController < ApplicationController
+  before_action :set_goal, only: [:show, :edit, :update, :destroy, :completed, :confirm_buddy, :cancel_buddy]
+
   def show
-    @goal = Goal.find(params[:id])
     @goal_chat = Goal.includes(messages: :user).find(params[:id])
     @milestones = @goal.milestones
     @milestone = Milestone.new
   end
+
   def create
     @goal = Goal.new(goal_params)
-    # @milestone = Milestone.new
     @goal.buddy = buddy_assign
     @goal.start_date = Date.today
     @goal.user = current_user
@@ -20,20 +21,14 @@ class GoalsController < ApplicationController
       redirect_to goal_path(@goal)
     else
       flash[:notice] = 'Invalid parameters!'
-      # redirect_to new_goal_path(@goal)
       redirect_to dashboard_path
     end
   end
 
   def edit
-    @goal = Goal.find(params[:id])
-    # respond_to do |format|
-    #   format.js
-    # end
   end
 
   def update
-    @goal = Goal.find(params[:id])
     if @goal.update!(goal_params)
       redirect_to goal_path(@goal)
     else
@@ -42,13 +37,17 @@ class GoalsController < ApplicationController
   end
 
   def destroy
-    @goal = Goal.find(params[:id])
     @goal.destroy
     redirect_to dashboard_path
   end
 
+  def completed
+    @goal.complete = @goal.complete ? false : true
+    @goal.save
+    redirect_to goal_path(@goal)
+  end
+
   def buddy_assign
-    # @goal = Goal.find(params[:id])
     city = current_user.city
     users_from_city = User.where("city = '#{city}'").where.not(id: current_user)
     if users_from_city.empty?
@@ -60,21 +59,23 @@ class GoalsController < ApplicationController
   end
 
   def confirm_buddy
-    @goal = Goal.find(params[:id])
     @goal.confirmed_buddy = true
     @goal.save
     redirect_to goal_path(@goal)
   end
 
   def cancel_buddy
-    @goal = Goal.find(params[:id])
     buddy_assign
     redirect_to dashboard_path
   end
-end
 
-private
+  private
 
-def goal_params
-  params.require(:goal).permit(:title, :description, :deadline, :category)
+  def goal_params
+    params.require(:goal).permit(:title, :description, :deadline, :category)
+  end
+
+  def set_goal
+    @goal = Goal.find(params[:id])
+  end
 end

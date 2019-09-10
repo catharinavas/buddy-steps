@@ -1,4 +1,10 @@
 <div class="body bg-gray-100">
   <h1><%= @user.first_name %> <%= @user.last_name %>'s page</h1>
 
+  <!-- GOALS COMPLETED -->
+  <% @completed_goals.each do |completed_goal| %>
+    <%= completed_goal.title %>
+    <%= completed_goal.description %>
+  <% end %>
+
 </div>
