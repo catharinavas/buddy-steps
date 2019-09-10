@@ -2,7 +2,7 @@
   <div class="chat-header"><h4>#<%= @room.name %></h4></div>
   <div class="room-messages">
     <% @room_chat.room_messages.sort_by(&:created_at).each do |message| %>
-      <%= render "room_messages", message: message, user_is_messages_author: message.user == current_user %>
+      <%= render "room_messages/message", message: message, user_is_messages_author: message.user == current_user %>
     <% end %>
   </div>
   <div id="create-message">
@@ -19,7 +19,8 @@
       {
         received: (data) => {
           if (data.current_user_id !== <%= current_user.id %>) {
-            const messagesContainer = document.querySelector('.room-messages');
+            var messagesContainer = document.querySelector('.room-messages');
+            // class diferent for prevent conflict
             messagesContainer.insertAdjacentHTML('beforeend', data.message_partial);
           }
         },
