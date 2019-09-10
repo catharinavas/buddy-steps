@@ -77,7 +77,7 @@
 
 
 .simple_form input.btn:not(.btn-custom1){
-  @apply appearance-none block cursor-pointer bg-purple-700  text-white border rounded-full text-center font-semibold mb-0 py-3 px-4 leading-tight;
+  @apply appearance-none block cursor-pointer bg-purple-500  text-white border rounded-full text-center font-semibold mb-0 py-3 px-4 leading-tight;
 }
 
 .simple_form input.btn:not(.btn-custom1).w-full{
