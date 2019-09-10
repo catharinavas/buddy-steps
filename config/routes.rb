@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   devise_for :users
   root to: 'communities#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
@@ -42,5 +43,9 @@ Rails.application.routes.draw do
   # USER_FEELINGS
   resources :user_feelings, only: %i[new create edit update show]
 
+  # ROOM CHAT
 
+  resources :rooms, only: :show do
+    resources :room_messages, only: :create
+  end
 end
