@@ -130,6 +130,18 @@
   @apply cursor-pointer bg-purple-600;
 }
 
+.btn-custom2{
+  @apply appearance-none block cursor-pointer bg-purple-500  text-white border rounded-full text-center font-semibold mb-0 py-3 px-4 leading-tight;
+}
+
+.btn-custom2.w-full{
+  @apply w-full rounded-lg;
+}
+
+.btn-custom2:hover {
+  @apply cursor-pointer bg-purple-600;
+}
+
 .body {
   @apply h-full min-h-screen pt-24;
 }
