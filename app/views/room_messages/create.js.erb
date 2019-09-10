@@ -1,3 +1,14 @@
+function scrollLastMessageIntoView() {
+  const messages = document.querySelectorAll('.message');
+  if(messages){
+    const lastMessage = messages[messages.length - 1];
+
+    if (lastMessage !== undefined) {
+      lastMessage.scrollIntoView();
+    }
+  }
+}
+
 function insertMessage(message) {
 
   var messagesContainer = document.querySelector('.room-messages');
@@ -7,6 +18,7 @@ function insertMessage(message) {
     input.value = '';
     input.blur();
   }
+  scrollLastMessageIntoView();
 }
 
 <% if @room_message.errors.any? %>
