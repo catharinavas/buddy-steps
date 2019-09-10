@@ -15,10 +15,13 @@ var generateGraph = (feelings) => {
       type: 'line',
       background: '#fff',
       height: '200rem',
+      toolbar: {
+          show: false
+      },
     },
     colors: ['#38A89D', '#794ACF', '#F6993F', '#FFED4A'],
     legend: {
-      position: 'top'
+      position: 'bottom'
     },
     yaxis: {
         max: 6,
@@ -46,7 +49,7 @@ var generateGraph = (feelings) => {
         data: feelings.sleep.intensities.slice(total_days - 7, total_days)
     }],
     xaxis: {
-      categories: feelings.happiness.dates.slice(total_days - 7, total_days)
+      categories: feelings.happiness.dates.slice(total_days - 7, total_days),
     }
   }
 
