@@ -80,12 +80,7 @@
             </div>
             <div id="past-goals" class="hidden flex justify-center py-2 border-t mt-3">
               <!-- GOALS COMPLETED -->
-
-              PLACEHOLDER
-              <% @completed_goals.each do |completed_goal| %>
-                <%= completed_goal.title %>
-                <%= completed_goal.description %>
-              <% end %>
+              <%= render 'goal_completed_cards' %>
             </div>
           </div>
         </div>
