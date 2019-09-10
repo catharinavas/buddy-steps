@@ -49,22 +49,22 @@
               <%= image_tag "icons/avatar.png", class:"h-8 w-8"%>
             <% end %>
           </div>
+        <!-- DROPDOWN FROM AVATAR -->
+        <div id="dropdown-list" class="hidden absolute rounded bg-gray-100 shadow-md right-0 w-48 text-right pr-5 z-40 mt-16">
+          <ul>
+
+            <li>
+              <%= link_to "Profile", user_path(current_user),
+            class:"text-sm text-gray-800 font-semibold px-3 py-1 block hover:bg-gray-200 cursor-pointer" %></li>
+            <hr class="border-gray-200 w-11/12 m-auto">
+            <li>
+              <%= link_to "Sign out", destroy_user_session_path, method: :delete,
+            class:"text-sm text-gray-600 px-3 py-1 block hover:bg-gray-200 cursor-pointer pb-2" %></li>
+          </ul>
+        </div>
         <% end %>
         </div>
-
-        <!-- DROPDOWN FROM AVATAR -->
-          <div id="dropdown-list" class="hidden absolute rounded bg-gray-100 shadow-md right-0 w-48 text-right pr-5 z-40">
-            <ul>
-
-              <li>
-                <%= link_to "Profile", user_path(current_user),
-              class:"text-sm text-gray-800 font-semibold px-3 py-1 block hover:bg-gray-200 cursor-pointer" %></li>
-              <hr class="border-gray-200 w-11/12 m-auto">
-              <li>
-                <%= link_to "Sign out", destroy_user_session_path, method: :delete,
-              class:"text-sm text-gray-600 px-3 py-1 block hover:bg-gray-200 cursor-pointer pb-2" %></li>
-            </ul>
-          </div>
+      
     <!-- SMALL SCREEN MENU LIST -->
     <div id="menu-list" class="block hidden sm:hidden bg-white border-t-2 border-gray-200 py-2 transition-soft">
 

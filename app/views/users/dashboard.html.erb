@@ -1,51 +1,5 @@
 <div class="body bg-gray-100">
 
-  <!-- MOOD GRAPH -->
-  <% if @user == current_user %>
-      <div class="pt-3 p-4 md:px-24">
-        <!-- <h2 class="text-3xl text-purple-900 font-mono font-semibold">Mood</h2> -->
-        <div class="flex flex-col items-center lg:flex-row">
-          <% if @last_feeling.nil? %>
-              <%= render 'placeholder_graph' %>
-              <%= render 'new_feeling', user_feeling: @new_feeling %>
-          <% else %>
-            <%= render 'mood_graph' %>
-              <% unless @last_feeling.feeling_date == Date.today %>
-                <%= render 'new_feeling', user_feeling: @new_feeling %>
-              <% end %>
-          <% end %>
-        </div>
-      </div>
-  <% end %>
-
-  <!-- GOALS SESSION -->
-  <div class="flex justify-between mt-20 pt-3 p-4 md:px-24">
-      <h2 class="text-3xl text-purple-900 font-mono font-semibold">Goals</h2>
-      <!-- GOALS BUTTONS -->
-      <% if current_user == @user %>
-        <div class="flex">
-          <!-- NEW GOAL BUTTON -->
-          <div id="btn_new_goal" class="modal-open-new-goal cursor-pointer text-white bg-purple-600 text-sm font-semibold border-2 border-purple-600 px-3 py-1 h-8 mr-5 rounded-full hover:bg-purple-500 hover:border-purple-500 transition-soft">
-            <span class="m-auto">NEW GOAL</span>
-          </div>
-          <!-- GOALS CARDS FLIP -->
-          <div class=" flex rounded-full bg-orange-200 border-orange-200 border-2 p-1 w-48 h-8 items-center">
-            <div id="my_goals_icon" class="active cursor-pointer inline-flex text-orange-400 rounded-full w-1/2 h-6">
-              <span class="m-auto text-sm font-mono font-semibold">My Goals</span>
-            </div>
-            <div id="buddies_goals_icon" class=" cursor-pointer inline-flex text-orange-400 rounded-full w-1/2 h-6">
-              <span class="m-auto text-sm font-mono font-semibold">Buddies</span>
-            </div>
-          </div>
-        </div>
-      <% end %>
-  </div>
-  <!-- GOALS CARDS -->
-  <%= render 'goal_cards' %>
-
-  <!-- NEW GOAL MODAL -->
-  <%= render 'goals/new_goal' %>
-
   <!-- NOTIFICATIONS -->
   <% @buddies_goals.each do |buddy_goal| %>
     <% if buddy_goal.confirmed_buddy == false %>
@@ -57,9 +11,54 @@
     <% end %>
   <% end %>
 
+  <!-- GOALS SESSION -->
+  <div class="flex justify-between pt-3 p-4 md:px-24 mt-5">
+      <h2 class="text-3xl text-gray-800 font-bold leading-none mb-3">Goals</h2>
+      <!-- GOALS BUTTONS -->
+      <% if current_user == @user %>
+        <div class="flex">
+          <!-- NEW GOAL BUTTON -->
+          <div id="btn_new_goal" class="modal-open-new-goal cursor-pointer text-white bg-purple-600 text-sm font-semibold border-2 border-purple-600 px-3 py-1 h-8 mr-5 rounded-full hover:bg-purple-500 hover:border-purple-500 transition-soft">
+            <span class="m-auto">NEW GOAL</span>
+          </div>
+          <!-- GOALS CARDS FLIP -->
+          <div class=" flex rounded-full bg-orange-200 border-orange-200 border-2 p-1 w-48 h-8 items-center">
+            <div id="my_goals_icon" class="active cursor-pointer inline-flex text-orange-400 rounded-full w-1/2 h-6">
+              <span class="m-auto text-sm font-semibold">My Goals</span>
+            </div>
+            <div id="buddies_goals_icon" class=" cursor-pointer inline-flex text-orange-400 rounded-full w-1/2 h-6">
+              <span class="m-auto text-sm font-semibold">Buddies</span>
+            </div>
+          </div>
+        </div>
+      <% end %>
+  </div>
+  <!-- GOALS CARDS -->
+  <%= render 'goal_cards' %>
+
+  <!-- NEW GOAL MODAL -->
+  <%= render 'goals/new_goal' %>
+
+  <!-- MOOD GRAPH -->
+  <% if @user == current_user %>
+      <div class="pt-3 p-4 mt-20">
+        <div class="md:flex">
+          <% if @last_feeling.nil? %>
+              <%= render 'placeholder_graph' %>
+              <%= render 'new_feeling', user_feeling: @new_feeling, class:"mt-5 md:mt-0"%>
+          <% else %>
+            <%= render 'mood_graph' %>
+              <% unless @last_feeling.feeling_date == Date.today %>
+                <%= render 'new_feeling', user_feeling: @new_feeling %>
+              <% end %>
+          <% end %>
+        </div>
+      </div>
+  <% end %>
+
   <!-- DIARY -->
   <div class="pt-3 p-4 md:px-24 mt-20">
-    <h2 class="text-3xl mb-5 text-purple-900 font-mono font-semibold">Diary</h2>
+    <h2 class="text-3xl text-gray-800 font-bold leading-none mb-3">Diary</h2>
     <% if @user == current_user  %>
       <!-- NEW PUBLICATION BUTTON -->
           <div id="btn_new_goal" class="modal-open-new-post flex items-center cursor-pointer mb-5 bg-gray-200 rounded-lg border-2 border-gray-200 bg-white p-4 hover:border-gray-300 hover:bg-gray-300 transition-soft">
