@@ -4,13 +4,13 @@
     <h2 class="text-2xl font-bold text-gray-700 text-center mb-5">Sign up</h2>
     <!--Body-->
     <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-    <%= f.error_notification %>
+    <%= f.error_notification%>
 
       <div class="form-inputs">
         <%= f.input :email,
                     required: true,
                     autofocus: true,
-                    , input_html: { class: "input", autocomplete: "email" }%>
+                    input_html: { class: "input", autocomplete: "email" }%>
         <%= f.input :password,
                     required: true,
                     hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
