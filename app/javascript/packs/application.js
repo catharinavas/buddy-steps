@@ -1,4 +1,3 @@
-import './application.css'
 import "../plugins/flatpickr";
 import { menuToggle, dropdownToggle, closeMenu } from '../components/navbar';
 import { showPublications, tabSelected } from '../components/show-publications';
