@@ -29,7 +29,16 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+
+    # GOALS
     @completed_goals = Goal.where(user: @user).where(complete: true)
+    @my_goals = Goal.where(user: current_user)
+
+    # PUBLICATIONS
+    diary_publication_types = PublicationType.where(name: ['Frustration', 'Pleasure', 'Celebration'])
+    @diary_publications = current_user.publications.where(publication_type: diary_publication_types)
+    @communities = nil
+
   end
 
   private

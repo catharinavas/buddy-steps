@@ -45,50 +45,52 @@
 
   </div>
   <!-- BUDDIES GOALS -->
-  <% if current_user == @user %>
-    <div id="buddies_goals" class="hidden flex overflow-x-scroll flex-no-wrap scroll py-5 pl-5 sm:flex-wrap sm:overflow-visible sm:justify-center">
-      <% @buddies_goals.each do |goal| %>
-        <!-- GOAL CARD -->
-        <% if !goal.complete %>
-          <%= link_to goal_path(goal), class:"relative scroll-card bg-white shadow-lg rounded-2xl pt-6 mr-4 p-4 sm:px-0 w-56 h-64 text-center text-purple-700 sm:block sm:mb-4" do %>
-            <%= cl_image_tag goal.user.photo, height: 60, width: 60, crop: :fill, class: "m-auto rounded-full h-auto object-contain float-none" %>
-            <span class="font-sans font-semibold text-5xl">
-              <% done = goal.milestones.count { |milestone| milestone.complete == true } %>
-              <% total = goal.milestones.length %>
-              <%= done %>
-            </span>
-            <span class="font-sans font-bold text-2xl text-purple-700">
-            / <%= total %>
-            </span> <br>
-            <span class="font-sans text-xs text-purple-700">
-              completed so far
-            </span>
-            <h3 class="font-sans font-semibold text-base text-gray-800"><%= goal.title.upcase %></h3>
-            <div class="absolute inset-x-0 bottom-0 bg-gray-200 rounded-full py-1 w-3/4 mx-auto mt-3 mb-4">
-              <span class="inline-block align-middle font-sans font-medium text-xs text-gray-800">
-                <%= (Date.today - goal.start_date).to_i %>
-                focusing on it
+  <% if request.env['PATH_INFO'].include?("dashboard")%>
+    <% if current_user == @user %>
+      <div id="buddies_goals" class="hidden flex overflow-x-scroll flex-no-wrap scroll py-5 pl-5 sm:flex-wrap sm:overflow-visible sm:justify-center">
+        <% @buddies_goals.each do |goal| %>
+          <!-- GOAL CARD -->
+          <% if !goal.complete %>
+            <%= link_to goal_path(goal), class:"relative scroll-card bg-white shadow-lg rounded-2xl pt-6 mr-4 p-4 sm:px-0 w-56 h-64 text-center text-purple-700 sm:block sm:mb-4" do %>
+              <%= cl_image_tag goal.user.photo, height: 60, width: 60, crop: :fill, class: "m-auto rounded-full h-auto object-contain float-none" %>
+              <span class="font-sans font-semibold text-5xl">
+                <% done = goal.milestones.count { |milestone| milestone.complete == true } %>
+                <% total = goal.milestones.length %>
+                <%= done %>
               </span>
-            </div>
+              <span class="font-sans font-bold text-2xl text-purple-700">
+              / <%= total %>
+              </span> <br>
+              <span class="font-sans text-xs text-purple-700">
+                completed so far
+              </span>
+              <h3 class="font-sans font-semibold text-base text-gray-800"><%= goal.title.upcase %></h3>
+              <div class="absolute inset-x-0 bottom-0 bg-gray-200 rounded-full py-1 w-3/4 mx-auto mt-3 mb-4">
+                <span class="inline-block align-middle font-sans font-medium text-xs text-gray-800">
+                  <%= (Date.today - goal.start_date).to_i %>
+                  focusing on it
+                </span>
+              </div>
+            <% end %>
           <% end %>
         <% end %>
-      <% end %>
 
-      <% if @buddies_goals.empty? %>
-        <div class="scroll-card bg-white shadow-lg rounded-2xl pt-6 mr-4 p-4 w-64 text-center text-purple-700 block sm:mb-4 sm:px-4 flex-col justify-between" do >
-          <p class="font-sans text-xs mt-3 text-purple-700">
-            be a good
-          </p>
-          <p class="mb-12 font-sans font-semibold font-sans font-bold text-3xl text-purple-700">
-            buddy
-          </p>
-          <h3 class="font-sans font-semibold text-base text-gray-800">Be a buddy and help others achieve their goals.</h3>
-          <p class="inline-block align-middle p-2 mb-4 font-sans font-medium text-xs text-gray-700">
-            If you get an invitation to be someone's buddy and you accept it, her goal will be shown here, so you can stay up to date with your buddy's progress.
-          </p>
-        </div>
-      <% end %>
+        <% if @buddies_goals.empty? %>
+          <div class="scroll-card bg-white shadow-lg rounded-2xl pt-6 mr-4 p-4 w-64 text-center text-purple-700 block sm:mb-4 sm:px-4 flex-col justify-between" do >
+            <p class="font-sans text-xs mt-3 text-purple-700">
+              be a good
+            </p>
+            <p class="mb-12 font-sans font-semibold font-sans font-bold text-3xl text-purple-700">
+              buddy
+            </p>
+            <h3 class="font-sans font-semibold text-base text-gray-800">Be a buddy and help others achieve their goals.</h3>
+            <p class="inline-block align-middle p-2 mb-4 font-sans font-medium text-xs text-gray-700">
+              If you get an invitation to be someone's buddy and you accept it, her goal will be shown here, so you can stay up to date with your buddy's progress.
+            </p>
+          </div>
+        <% end %>
 
+      <% end %>
     <% end %>
   </div>
 </div>
