@@ -5,7 +5,7 @@
   </div>
   <div class="flex overflow-x-scroll flex-no-wrap scroll py-5 pl-5 sm:flex-wrap sm:overflow-visible sm:justify-center">
     <% @completed_goals.each do |completed_goal| %>
-      <%= link_to goal_path(completed_goal), class: "scroll-card bg-white shadow-lg rounded-2xl pt-6 mr-4 p-4 w-56 h-64 text-center text-purple-700 block sm:mb-4 sm:px-0 flex-col justify-between" do %>
+      <%= link_to goal_path(completed_goal), class: "scroll-card bg-gray-100 shadow-lg rounded-2xl pt-6 mr-4 p-4 w-56 h-64 text-center text-purple-700 block sm:mb-4 sm:px-0 flex-col justify-between" do %>
         <p class="font-sans font-semibold text-3xl">
           All done! Congrats!
         </p> <br>
