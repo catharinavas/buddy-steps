@@ -6,7 +6,6 @@ class UsersController < ApplicationController
 
     @last_feeling = current_user.user_feelings.last
 
-
     @moods = UserFeeling.where(user: params[:id])
 
     # GOALS DATA
@@ -17,17 +16,20 @@ class UsersController < ApplicationController
     @goal = Goal.new
     @milestone = Milestone.new
 
+    # QUANTITY OF INCOMPLETED GOALS
+    @incompleted_goals = Goal.where(user: current_user).where(complete: false)
+
     # PUBLICATIONS
     diary_publication_types = PublicationType.where(name: ['Frustration', 'Pleasure', 'Celebration'])
     @diary_publications = current_user.publications.where(publication_type: diary_publication_types)
     @communities = nil
 
     # BUDDY NOTIFICATION
-
   end
 
   def show
     @user = User.find(params[:id])
+    @completed_goals = Goal.where(user: @user).where(complete: true)
   end
 
   private

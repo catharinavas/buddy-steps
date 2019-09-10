@@ -6,9 +6,9 @@ class GoalsController < ApplicationController
     @milestones = @goal.milestones
     @milestone = Milestone.new
   end
+
   def create
     @goal = Goal.new(goal_params)
-    # @milestone = Milestone.new
     @goal.buddy = buddy_assign
     @goal.start_date = Date.today
     @goal.user = current_user
@@ -21,7 +21,6 @@ class GoalsController < ApplicationController
       redirect_to goal_path(@goal)
     else
       flash[:notice] = 'Invalid parameters!'
-      # redirect_to new_goal_path(@goal)
       redirect_to dashboard_path
     end
   end
@@ -80,4 +79,3 @@ class GoalsController < ApplicationController
     @goal = Goal.find(params[:id])
   end
 end
-
