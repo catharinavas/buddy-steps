@@ -13,6 +13,7 @@ Rails.application.routes.draw do
     resources :milestones, only: %i[new create update destroy]
     resources :messages, only: %i[create]
     member do
+      get 'completed'
       get 'buddy_assign'
       get 'confirm_buddy'
       get 'cancel_buddy'

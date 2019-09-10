@@ -15,9 +15,8 @@
             <%= link_to goal_path(@goal), method: :delete, data: { confirm: 'Are you sure you want to delete?' } do %>
               <%= fa_icon "trash alt", class: "mr-2 text-lg text-teal-700" %>
             <% end %>
-            <%#= link_to edit_goal_path(@goal) do %>
             <%= fa_icon "edit", class: "modal-open-edit-goal mr-2 text-lg text-teal-700" %>
-            <%# end %>
+            <%= link_to "Mark this goal as completed", completed_goal_path(@goal) %>
           <% end %>
         </div>
 
