@@ -132,10 +132,13 @@ const updateGraph = (feelings, most_recent_day, amountOfDays) => {
           enabled: false,
       },
       height: '200rem',
+      toolbar: {
+          show: false
+      },
     },
     colors: ['#38A89D', '#794ACF', '#F6993F', '#FFED4A'],
     legend: {
-      position: 'top'
+      position: 'bottom'
     },
     yaxis: {
         max: 6,

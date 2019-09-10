@@ -1,0 +1,46 @@
+const modalFirstClap = () => {
+  var clapsCount = document.getElementById('clap');
+  console.log(clapsCount);
+  if (clapsCount.dataset.userClaps === 0) {
+    var openmodal = document.querySelectorAll('.modal-open-first-clap')
+    for (var i = 0; i < openmodal.length; i++) {
+      openmodal[i].addEventListener('click', function(event){
+      event.preventDefault()
+      toggleModal()
+      })
+    }
+
+    const overlay = document.querySelector('.modal-first-clap-overlay');
+    if(overlay){
+      overlay.addEventListener('click', toggleModal)
+    }
+    var closemodal = document.querySelectorAll('.modal-first-clap-close')
+    for (var i = 0; i < closemodal.length; i++) {
+      closemodal[i].addEventListener('click', toggleModal)
+    }
+
+    document.onkeydown = function(evt) {
+      evt = evt || window.event
+      var isEscape = false
+      if ("key" in evt) {
+      isEscape = (evt.key === "Escape" || evt.key === "Esc")
+      } else {
+      isEscape = (evt.keyCode === 27)
+      }
+      if (isEscape && document.body.classList.contains('modal-first-clap-active')) {
+      toggleModal()
+      }
+    };
+
+
+    function toggleModal () {
+      const body = document.querySelector('body')
+      const modal = document.querySelector('.modal-first-clap')
+      modal.classList.toggle('opacity-0')
+      modal.classList.toggle('pointer-events-none')
+      body.classList.toggle('modal-first-clap-active')
+    }
+  }
+}
+
+export {modalFirstClap};

@@ -11,8 +11,8 @@
         </div>
 
         <!-- LOGO -->
-        <div class="inline text-xl align-middle m-auto pr-8 sm:m-0 sm:pr-0">
-          <%= fa_icon "walking", class: "mx-2 text-purple-900" %>
+        <div class="inline text-lg md:text-xl align-middle m-auto pr-8 sm:m-0 sm:pr-0">
+          <%#= fa_icon "walking", class: "mx-2 text-purple-900" %>
           <span class="text-purple-900 font-bold">BUDDY STEPS</span>
         </div>
 
@@ -32,15 +32,15 @@
         <% if !current_user %>
           <div class="hidden sm:flex sm:items-center">
             <%= link_to "Sign in", new_user_session_path,
-            class:"text-gray-700 border-gray-600 text-sm font-semibold hover:text-white hover:bg-gray-600 mr-4 border-2 px-4 py-2 rounded-full transition-soft" %>
+            class:"text-gray-700 text-sm font-semibold hover:underline hover:text-gray-900 mr-4 px-4 py-2 rounded-full transition-soft" %>
             <%= link_to "Sign up", new_user_registration_path,
-            class:"text-white bg-blue-600 text-sm font-semibold border-2 border-blue-600 px-4 py-2 rounded-full hover:bg-blue-500 hover:border-blue-500 transition-soft" %>
+            class:"text-white bg-orange-500 text-sm font-semibold border-2 border-orange-500 px-4 py-2 rounded-full hover:bg-orange-600 hover:border-orange-600 transition-soft" %>
           </div>
         <% end %>
 
         <!-- AVATAR -->
         <% if current_user %>
-         <div id="avatar-icon" class="cursor-pointer px-2 py-1 rounded-lg">
+         <div id="avatar-icon" class="cursor-pointer px-2 py-1 rounded-lg"  onClick='document.getElementById("dropdown-list").classList.toggle("hidden")'>
             <% if current_user.photo.present? %>
              <%= cl_image_tag(current_user.photo, :transformation=>[
              {width: 50, height: 50, gravity: :face, radius: :max, crop: :thumb}
@@ -50,6 +50,20 @@
             <% end %>
           </div>
         <% end %>
+        </div>
+
+        <!-- DROPDOWN FROM AVATAR -->
+        <div id="dropdown-list" class="hidden absolute rounded bg-gray-100 shadow-md right-0 w-48 text-right pr-5 z-40">
+          <ul>
+
+            <li>
+              <%= link_to "Profile", user_path(current_user),
+            class:"text-sm text-gray-800 font-semibold px-3 py-1 block hover:bg-gray-200 cursor-pointer" %></li>
+            <hr class="border-gray-200 w-11/12 m-auto">
+            <li>
+              <%= link_to "Sign out", destroy_user_session_path, method: :delete,
+            class:"text-sm text-gray-600 px-3 py-1 block hover:bg-gray-200 cursor-pointer pb-2" %></li>
+          </ul>
         </div>
 
     <!-- SMALL SCREEN MENU LIST -->
@@ -75,24 +89,10 @@
             <%= link_to "Sign in", new_user_session_path,
             class:"text-gray-700 border-gray-600 text-sm font-semibold hover:text-white hover:bg-gray-600 mr-4 border-2 px-3 py-1 rounded-full transition-soft" %>
             <%= link_to "Sign up", new_user_registration_path,
-            class:"text-white bg-blue-600 text-sm font-semibold border-2 border-blue-600 px-3 py-1 rounded-full hover:bg-blue-500 hover:border-blue-500 transition-soft" %>
+            class:"text-white bg-orange-500 text-sm font-semibold border-2 border-orange-500 px-3 py-1 rounded-full hover:bg-orange-600 hover:border-orange-600 transition-soft" %>
           </div>
         <% end %>
       </div>
     </div>
   </div>
-</div>
-
-<!-- DROPDOWN FROM AVATAR -->
-<div id="dropdown-list" class="hidden absolute rounded bg-gray-100 shadow-md right-0 w-48 text-right pr-5 mt-20">
-  <ul>
-
-    <li>
-      <%= link_to "Profile", "#",
-    class:"text-sm text-gray-800 font-semibold px-3 py-1 block hover:bg-gray-200 cursor-pointer" %></li>
-    <hr class="border-gray-200 w-11/12 m-auto">
-    <li>
-      <%= link_to "Sign out", destroy_user_session_path, method: :delete,
-    class:"text-sm text-gray-600 px-3 py-1 block hover:bg-gray-200 cursor-pointer pb-2" %></li>
-  </ul>
 </div>
