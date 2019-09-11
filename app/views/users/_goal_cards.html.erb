@@ -4,6 +4,12 @@
   <div id="my_goals" class="flex overflow-x-scroll flex-no-wrap scroll py-5 pl-5 sm:flex-wrap sm:overflow-visible sm:justify-center">
     <% @my_goals.each do |goal| %>
       <!-- GOAL CARD -->
+<<<<<<< HEAD
+      <% if !goal.complete %>
+        <%= link_to goal_path(goal), class: "scroll-card bg-white rounded-2xl mr-10 p-5 border-2 border-gray-300 w-56 text-center text-gray-600 sm:mb-4 sm:px-0 flex flex-col justify-between pt-10", style: "height: 20rem" do %>
+          <p class="mb-4">
+            <%= render 'goal_image_category', goal: goal %>
+=======
       <!-- GOAL CARD LEADS TO GOAL#SHOW -->
       <% if !goal.complete && (goal.user == current_user || goal.buddy == current_user)%>
 
@@ -18,12 +24,15 @@
           </p>
           <p class="font-sans text-xs text-purple-700">
             completed so far
+>>>>>>> master
           </p>
           <h3 class="font-sans font-semibold text-base text-gray-800"><%= goal.title.upcase %></h3>
-          <div class="bg-gray-200 rounded-full py-1 w-3/4 mx-auto mt-3 mb-4">
+          <div class="bg-gray-200 rounded-full py-1 w-3/4 mx-auto mt-2 mb-4">
             <span class="inline-block align-middle font-sans font-medium text-xs text-gray-800">
-              <%= (Date.today - goal.start_date).to_i %> days
-              focusing on it
+              <% done = goal.milestones.count { |milestone| milestone.complete == true } %>
+              <% total = goal.milestones.length %>
+              <%= done %>
+              / <%= total %> milestones done
             </span>
           </div>
         <% end %>
@@ -90,24 +99,18 @@
         <% @buddies_goals.each do |goal| %>
           <!-- GOAL CARD -->
           <% if !goal.complete %>
-            <%= link_to goal_path(goal), class:"relative scroll-card bg-white shadow-lg rounded-2xl pt-6 mr-4 p-4 sm:px-0 w-56 h-64 text-center text-purple-700 sm:block sm:mb-4" do %>
-              <%= cl_image_tag goal.user.photo, height: 60, width: 60, crop: :fill, class: "m-auto rounded-full h-auto object-contain float-none" %>
-              <span class="font-sans font-semibold text-5xl">
-                <% done = goal.milestones.count { |milestone| milestone.complete == true } %>
-                <% total = goal.milestones.length %>
-                <%= done %>
-              </span>
-              <span class="font-sans font-bold text-2xl text-purple-700">
-              / <%= total %>
-              </span> <br>
-              <span class="font-sans text-xs text-purple-700">
-                completed so far
-              </span>
+            <%= link_to goal_path(goal), class: "relative scroll-card bg-white rounded-2xl mr-10 p-5 border-2 border-gray-300 w-56 text-center text-gray-600 sm:mb-4 sm:px-0 flex flex-col justify-between pt-10 absolute", style: "height: 20rem" do %>
+              <%= cl_image_tag goal.user.photo, height: 80, width: 80, crop: :fill, class: "mx-auto rounded-full h-auto object-contain float-none absolute border-2 border-gray-300", style: "left: 150px; top: -20px;" %>
+              <p class="mb-4">
+                <%= render 'buddygoal_image_category', goal: goal %>
+              </p>
               <h3 class="font-sans font-semibold text-base text-gray-800"><%= goal.title.upcase %></h3>
-              <div class="absolute inset-x-0 bottom-0 bg-gray-200 rounded-full py-1 w-3/4 mx-auto mt-3 mb-4">
+              <div class="bg-gray-200 rounded-full py-1 w-3/4 mx-auto mt-2 mb-4">
                 <span class="inline-block align-middle font-sans font-medium text-xs text-gray-800">
-                  <%= (Date.today - goal.start_date).to_i %>
-                  focusing on it
+                  <% done = goal.milestones.count { |milestone| milestone.complete == true } %>
+                  <% total = goal.milestones.length %>
+                  <%= done %>
+                  / <%= total %> milestones done
                 </span>
               </div>
             <% end %>

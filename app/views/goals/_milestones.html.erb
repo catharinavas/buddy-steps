@@ -1,4 +1,3 @@
-
 <% if current_user.id == @goal.user_id %>
   <div class="flex items-center mb-3">
     <p class="pt-4 text-xl font-bold flex items-center justify-center lg:justify-start my-auto text-gray-700">Milestones</p>
@@ -7,10 +6,15 @@
     </div>
   </div>
   <div id="add-milestone" class="hidden transition-soft transition-delay">
-    <%= render "milestones/new_form", goal: @goal, milestone: @milestone %>
+    <%= render "milestones/new_form", goal: @goal, milestone: Milestone.new %>
   </div>
 <% end %>
-<table class="table-auto mx-auto">
+<table class="w-full">
+  <thead class="text-gray-700 font-bold">
+    <td> Description </td>
+    <td class="whitespace-no-wrap text-right w-1/5"> Deadline </td>
+    <td class="whitespace-no-wrap text-right w-1/5"> Actions </td>
+  </thead>
   <tbody id="milestones">
     <% @milestones.each do |milestone| %>
       <%= render "milestones/milestone", milestone: milestone %>
