@@ -1,6 +1,6 @@
 function refreshForm(innerHTML) {
   var newMilestone = document.getElementById('new_milestone');
-  newMilestone.innerHTML = innerHTML;
+  newMilestone.reset();
 }
 
 function addMilestone(milestoneHTML) {
@@ -14,7 +14,6 @@ banana.classList.add('hidden');
 <% if @milestone.errors.any? %>
   refreshForm('<%= j render "milestones/new_form", goal: @goal, milestone: @milestone %>');
 <% else %>
-  addMilestone('<%= j render "milestones/milestone", milestone: @milestone %>');
-  debugger
   refreshForm('<%= j render "milestones/new_form", goal: @goal, milestone: Milestone.new %>');
+  addMilestone('<%= j render "milestones/milestone", milestone: @milestone%>');
 <% end %>

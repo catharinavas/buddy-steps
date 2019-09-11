@@ -19,11 +19,13 @@ class MilestonesController < ApplicationController
         format.html { redirect_to goal_path(@goal) }
         format.js
       end
+      # redirect_to goal_path(@goal)
     else
       respond_to do |format|
-        format.html { render '/goals/show' }
+        format.html { redirect_to goal_path(@goal) }
         format.js
       end
+      # redirect_to goal_path(@goal)
     end
   end
 
