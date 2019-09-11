@@ -1,7 +1,7 @@
 <div class="body bg-gray-100">
   <div class="md:mx-5 md:mt-5 ">
     <% if @publication.community %>
-      <%= link_to community_path(@publication.community), class:"text-gray-600 text-lg font-semibold hover:text-gray-700 transition-soft" do%>
+      <%= link_to community_path(@publication.community), class:"text-gray-600 text-lg font-semibold hover:text-gray-800 transition-soft" do%>
         <%= fa_icon "fas arrow-left" %>
         <%= @publication.community.name %>
       <% end %>
@@ -12,7 +12,7 @@
     <% unless @publication.community %>
       <p>
         <%= link_to "< #{@publication.user.first_name} #{@publication.user.last_name}",
-          user_path(@publication.user), class:"text-gray-900 text-2xl font-bold text-purple-900" %>
+          user_path(@publication.user), class:"text-gray-900 text-2xl font-bold" %>
       </p>
     <% end %>
   </div>
