@@ -1,10 +1,11 @@
 <tr class="text-gray-700 text-md my-1 text-left tracking-widest">
   <td>
-    <style>
-    .custom-label input:checked + svg {
-        display: block !important;
-    }
-    </style>
+    <% if milestone.goal.user == current_user %>
+      <style>
+      .custom-label input:checked + svg {
+          display: block !important;
+      }
+      </style>
     <label class="custom-label flex" data-milestone="<%= milestone.id %>">
       <form action="/milestones/<%= milestone.id %>" method="get">
         <button name="toggle-milestone-complete" type="submit" class="flex">
@@ -20,6 +21,9 @@
         </button>
       </form>
     </label>
+    <% else %>
+      <span class="select-none"><%= milestone.description %></span>
+    <% end %>
   </td>
   <td class="whitespace-no-wrap"><%= milestone.deadline.strftime("%d %b") %></td>
   <td class=" whitespace-no-wrap">

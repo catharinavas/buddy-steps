@@ -18,9 +18,12 @@
           </div>
         </div>
 
-        <div class="ml-auto -mt-16 mr-5 h-16 w-16 bg-orange-500 rounded-full text-white hover:cursor-pointer hover:bg-orange-400  text-center pt-3 transition-soft shadow-md">
-          <%= fa_icon "far comments 2x mt-1" %>
-        </div>
+          <div class="ml-auto -mt-16 mr-5 h-16 w-16 bg-orange-500 rounded-full text-white hover:cursor-pointer hover:bg-orange-400  text-center pt-3 transition-soft shadow-md">
+            <%= link_to rooms_path(@user), method: 'post' do %>
+              <%= fa_icon "far comments 2x mt-1" %>
+            <% end %>
+          </div>
+
       </div>
 
       <!-- small screens -->
@@ -92,6 +95,18 @@
           <div class="lg:flex justify-between items-end mb-3">
             <p class="transition-soft uppercase font-bold text-gray-700 text-md pb-2 selected text-lg">
               Records</p>
+              <div class="hidden lg:block pb-2">
+                <%= form_tag user_path, method: :get, class:"inline-flex" do %>
+                  <%= text_field_tag :query,
+                    params[:query],
+                    placeholder: "Find a publication",
+                    class: "appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-1 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                  %>
+                  <%= button_tag(type: "submit", class: "ml-2 py-1 px-2 border border-gray-300 text-md text-gray-600 bg-gray-300 rounded-lg cursor-pointer") do %>
+                      <%= fa_icon "search" %>
+                  <% end %>
+                <% end %>
+              </div>
           </div>
           <div class="flex justify-center py-2">
             <%= render 'publications/publications_list', publications: @diary_publications %>

@@ -1,6 +1,5 @@
 const modalFirstClap = () => {
   var clapsCount = document.getElementById('clap');
-  console.log(clapsCount);
   if (clapsCount.dataset.userClaps === 0) {
     var openmodal = document.querySelectorAll('.modal-open-first-clap')
     for (var i = 0; i < openmodal.length; i++) {
