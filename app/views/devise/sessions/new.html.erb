@@ -16,16 +16,19 @@
       </div>
 
       <!--Footer-->
-      <div class="flex w-full pr-12 md:pr-0 pt-2 items-center">
+      <div class="flex justify-center pr-12 md:pr-0 pt-2">
         <div class="form-actions mr-6">
-          <%= f.button :submit, "Login" %>
+          <%= f.button :submit, "Sign up" %>
         </div>
         <div class="my-auto cursor-pointer text-gray-600">
           <%= render "devise/shared/links" %>
         </div>
       </div>
     <% end %>
+  </div>
 
+  <div class="flex justify-center pr-12 md:pr-0 mt-10">
+    <div class="fb-login-button" data-width="" data-size="large" data-button-type="continue_with" data-auto-logout-link="false" data-use-continue-as="false"></div>
   </div>
 
 </div>
