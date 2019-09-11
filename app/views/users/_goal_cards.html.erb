@@ -30,13 +30,8 @@
 
       <!-- GOAL CARD RENDERS INFOBOX WITH GOAL DETAILS -->
       <% else %>
-        <% @my_goal.each do |goal| %>
-          <% if !goal.complete %>
-            <%= render "show_public" %>
-          <% end %>
-        <% end %>
 
-        <button class="unclickable-goal scroll-card bg-white shadow-lg rounded-2xl pt-6 mr-4 p-4 w-56 h-64 text-center text-purple-700 block sm:mb-4 sm:px-0 flex-col justify-between" data-goal="<%= goal.id %>"></button>
+        <button class="unclickable-goal scroll-card bg-white shadow-lg rounded-2xl pt-6 mr-4 p-4 w-56 h-64 text-center text-purple-700 block sm:mb-4 sm:px-0 flex-col justify-between" data-goal="<%= goal.id %>">
           <p class="font-sans font-semibold text-5xl">
             <% done = goal.milestones.count { |milestone| milestone.complete == true } %>
             <% total = goal.milestones.length %>
@@ -55,6 +50,7 @@
               focusing on it
             </span>
           </div>
+        </button>
 
       <% end %>
     <% end %>
@@ -75,6 +71,18 @@
     <% end %>
 
   </div>
+
+  <!-- INVISIBLE INFOBOXES -->
+  <% @my_goals.each do |goal| %>
+    <% if !goal.complete %>
+      <% @goal = goal %>
+      <% @milestones = goal.milestones %>
+      <% @milestone = Milestone.new %>
+      <%= render "goals/show_public" %>
+    <% end %>
+  <% end %>
+
+
   <!-- BUDDIES GOALS -->
   <% if request.env['PATH_INFO'].include?("dashboard")%>
     <% if current_user == @user %>
