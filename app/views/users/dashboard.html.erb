@@ -1,32 +1,24 @@
 <div class="body bg-gray-100">
 
   <!-- NOTIFICATIONS -->
-  <% @buddies_goals.each do |buddy_goal| %>
-    <% if buddy_goal.confirmed_buddy == false %>
-      <div class="notification">
-        <p><%= link_to "#{buddy_goal.user.first_name}", user_path(buddy_goal.user) %> wants your help with the goal <%= link_to "#{buddy_goal.title}", goal_path(buddy_goal) %>! Can you help? </p>
-        <%= link_to 'Yes!', confirm_buddy_goal_path(buddy_goal) %>
-        <%= link_to 'No, sorry :/', cancel_buddy_goal_path(buddy_goal) %>
-      </div>
-    <% end %>
-  <% end %>
+  <%= render 'notifications'%>
 
   <!-- GOALS SESSION -->
-  <div class="flex justify-between pt-3 p-4 md:px-24 mt-5">
+  <div class="md:flex justify-between pt-3 p-4 md:px-24 mt-5">
       <h2 class="text-3xl text-gray-800 font-bold leading-none mb-3">Goals</h2>
       <!-- GOALS BUTTONS -->
       <% if current_user == @user %>
-        <div class="flex">
+        <div class="flex justify-between md:justify-end">
           <!-- NEW GOAL BUTTON -->
-          <div id="btn_new_goal" class="modal-open-new-goal cursor-pointer text-white bg-purple-600 text-sm font-semibold border-2 border-purple-600 px-3 py-1 h-8 mr-5 rounded-full hover:bg-purple-500 hover:border-purple-500 transition-soft">
+          <div id="btn_new_goal" class="modal-open-new-goal cursor-pointer text-white bg-purple-600 text-sm font-semibold border-2 border-purple-600 px-3 py-1 h-8 mr-5 rounded-full hover:bg-purple-500 hover:border-purple-500 transition-soft flex-grow-0">
             <span class="m-auto">NEW GOAL</span>
           </div>
           <!-- GOALS CARDS FLIP -->
           <div class=" flex rounded-full bg-orange-200 border-orange-200 border-2 p-1 w-48 h-8 items-center">
-            <div id="my_goals_icon" class="active cursor-pointer inline-flex text-orange-400 rounded-full w-1/2 h-6">
+            <div id="my_goals_icon" class="active cursor-pointer inline-flex text-orange-600 rounded-full w-1/2 h-6">
               <span class="m-auto text-sm font-semibold">My Goals</span>
             </div>
-            <div id="buddies_goals_icon" class=" cursor-pointer inline-flex text-orange-400 rounded-full w-1/2 h-6">
+            <div id="buddies_goals_icon" class=" cursor-pointer inline-flex text-orange-600 rounded-full w-1/2 h-6">
               <span class="m-auto text-sm font-semibold">Buddies</span>
             </div>
           </div>
@@ -41,16 +33,17 @@
 
   <!-- MOOD GRAPH -->
   <% if @user == current_user %>
-      <div class="pt-3 p-4 mt-20">
-        <div class="md:flex">
+      <div class="pt-3 p-4 mt-20 md:px-24">
+        <h2 class="text-3xl text-gray-800 font-bold leading-none mb-3">How are you feeling today?</h2>
+        <div class="lg:flex justify-center">
           <% if @last_feeling.nil? %>
-              <%= render 'placeholder_graph' %>
-              <%= render 'new_feeling', user_feeling: @new_feeling, class:"mt-5 md:mt-0"%>
+            <%= render 'placeholder_graph' %>
+            <%= render 'new_feeling', user_feeling: @new_feeling, class:"mt-5 md:mt-0"%>
           <% else %>
             <%= render 'mood_graph' %>
-              <% unless @last_feeling.feeling_date == Date.today %>
-                <%= render 'new_feeling', user_feeling: @new_feeling %>
-              <% end %>
+            <% unless @last_feeling.feeling_date == Date.today %>
+              <%= render 'new_feeling', user_feeling: @new_feeling %>
+            <% end %>
           <% end %>
         </div>
       <p class="text-orange-700 text-lg">You've been recording your mood for <span class="font-bold"><%= @current_streak %> days </span> now. Your longest streak is <span class="font-bold"><%= @longest_streak %> days</span>.</p>

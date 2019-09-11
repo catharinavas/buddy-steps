@@ -10,18 +10,19 @@ function scrollLastMessageIntoView() {
 }
 
 function insertMessage(message) {
-  var messagesContainer = document.querySelector('.messages');
+
+  var messagesContainer = document.querySelector('.room-messages');
   if (messagesContainer) {
     messagesContainer.insertAdjacentHTML('beforeend', message);
-    var input = document.querySelector('#message_content');
+    var input = document.querySelector('#room_message_content');
     input.value = '';
     input.blur();
   }
   scrollLastMessageIntoView();
 }
 
-<% if @message.errors.any? %>
+<% if @room_message.errors.any? %>
   // handle validation errors later
 <% else %>
-  insertMessage('<%= j render "message", message: @message, user_is_messages_author: true %>');
+  insertMessage('<%= j render "message", message: @room_message, user_is_messages_author: true %>');
 <% end %>
