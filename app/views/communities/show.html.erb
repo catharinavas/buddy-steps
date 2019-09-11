@@ -35,10 +35,17 @@
       <div class="">
         <div id="menu-news-list" class="transition-soft transition-delay">
           <!-- NEW PUBLICATION BUTTON -->
-            <div id="btn_new_goal" class="modal-open-new-post flex items-center cursor-pointer my-5 bg-gray-200 rounded-lg border-2 border-gray-200 bg-white p-4 hover:border-gray-300 hover:bg-gray-300 transition-soft">
-              <%= fa_icon "edit 2x", class: "mx-2 text-3xl text-gray-600" %>
-              <p class="ml-2 text-lg font-bold text-gray-600 hover:text-gray-700 hover:underline">Create a new post</p>
-            </div>
+            <% if current_user.communities.include?(@community) %>
+              <div id="btn_new_goal" class="modal-open-new-post flex items-center cursor-pointer my-5 bg-gray-200 rounded-lg border-2 border-gray-200 bg-white p-4 hover:border-gray-300 hover:bg-gray-300 transition-soft">
+                <%= fa_icon "edit 2x", class: "mx-2 text-3xl text-gray-600" %>
+                <p class="ml-2 text-lg font-bold text-gray-600 hover:text-gray-700 hover:underline">Create a new post</p>
+              </div>
+            <% else %>
+              <div class="flex items-center my-5 bg-gray-200 rounded-lg border-2 border-gray-200 bg-white p-4 transition-soft">
+                <p class="mx-2 text-3xl text-gray-600 font-bold"> X </p>
+                <p class="ml-2 text-lg font-bold text-gray-600">Sorry, only members can post</p>
+              </div>
+            <% end %>
           <!-- PUBLICATIONS -->
           <%= render "publications", community_publications: @community_publications %>
         </div>
