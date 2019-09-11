@@ -18,6 +18,12 @@ class Publication < ApplicationRecord
       tsearch: { prefix: true }
     }
 
+  pg_search_scope :profile_search,
+    against: [ :title, :content ],
+    using: {
+      tsearch: { prefix: true }
+    }
+
   validates :title, presence: true
   validates :content, presence: true
   validates :publication_type_id, presence: true
