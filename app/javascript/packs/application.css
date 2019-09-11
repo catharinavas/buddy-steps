@@ -142,6 +142,16 @@
   @apply cursor-pointer bg-purple-600;
 }
 
+#btn-custom3 {
+  @apply ml-2 mb-1 h-12 w-12 bg-orange-500 rounded-full text-white text-center border-transparent shadow-md;
+}
+
+#btn-custom3:hover {
+  @apply cursor-pointer bg-orange-400;
+}
+
+
+
 .body {
   @apply h-full min-h-screen pt-24;
 }
@@ -152,4 +162,16 @@
 
 .-mt-custom1 {
   margin-top: -3.3rem;
+}
+
+.new_comment {
+  @apply appearance-none flex w-full bg-white pt-2 px-2 h-48 text-gray-700 items-end overflow-auto resize-none
+}
+
+.new_comment:focus {
+  @apply outline-none
+}
+
+.comment_content {
+  @apply flex-grow
 }
