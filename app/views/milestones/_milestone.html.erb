@@ -1,4 +1,4 @@
-<tr class="text-gray-900 text-xs Smy-1">
+<tr class="text-gray-700 text-md my-1 text-left tracking-widest">
   <td>
     <% if milestone.goal.user == current_user %>
       <style>
@@ -6,32 +6,32 @@
           display: block !important;
       }
       </style>
-      <label class="custom-label flex" data-milestone="<%= milestone.id %>">
-        <form action="/milestones/<%= milestone.id %>" method="get">
-          <button name="toggle-milestone-complete" type="submit" class="flex">
-            <div class="bg-white shadow w-4 h-4 p-1 flex justify-center items-center mr-2">
-              <input type="checkbox" class="hidden"
-                <% if milestone.complete %>
-                  checked
-                <% end %>
-              >
-              <svg class="hidden w-4 h-4 text-green-600 pointer-events-none" viewBox="0 0 172 172"><g fill="none" stroke-width="none" stroke-miterlimit="10" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode:normal"><path d="M0 172V0h172v172z"/><path d="M145.433 37.933L64.5 118.8658 33.7337 88.0996l-10.134 10.1341L64.5 139.1341l91.067-91.067z" fill="currentColor" stroke-width="1"/></g></svg>
-            </div>
-            <span class="select-none"><%= milestone.description %></span>
-          </button>
-        </form>
-      </label>
+    <label class="custom-label flex" data-milestone="<%= milestone.id %>">
+      <form action="/milestones/<%= milestone.id %>" method="get">
+        <button name="toggle-milestone-complete" type="submit" class="flex">
+          <div class="bg-gray-300 rounded-full w-4 h-4 p-1 flex justify-center items-center mr-2">
+            <input type="checkbox" class="hidden"
+              <% if milestone.complete %>
+                checked
+              <% end %>
+            >
+            <svg class="hidden w-8 h-8 text-green-600 pointer-events-none" viewBox="0 0 172 172"><g fill="none" stroke-width="none" stroke-miterlimit="10" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode:normal"><path d="M0 172V0h172v172z"/><path d="M145.433 37.933L64.5 118.8658 33.7337 88.0996l-10.134 10.1341L64.5 139.1341l91.067-91.067z" fill="currentColor" stroke-width="1"/></g></svg>
+          </div>
+          <span class="select-none text-left"><%= milestone.description %></span>
+        </button>
+      </form>
+    </label>
     <% else %>
       <span class="select-none"><%= milestone.description %></span>
     <% end %>
   </td>
   <td class="whitespace-no-wrap"><%= milestone.deadline.strftime("%d %b") %></td>
-  <td class="text-gray-500 hover:text-gray-900 whitespace-no-wrap">
+  <td class=" whitespace-no-wrap">
     <% if current_user.id == milestone.goal.user_id %>
-      <%= fa_icon "edit", class: "modal-edit-milestone-open", data: {milestone: milestone.id} %>
+      <%= fa_icon "edit", class: "modal-edit-milestone-open mx-3 mt-1 text-gray-500 hover:text-gray-700", data: {milestone: milestone.id} %>
 
       <%= link_to goal_milestone_path(@goal, milestone), method: :delete, data: { confirm: 'Are you sure you want to delete? Think about your main goal!' } do %>
-        <%= fa_icon "trash alt" %>
+        <%= fa_icon "trash alt", class:"text-gray-500 hover:text-gray-700" %>
       <% end %>
 
       <!-- EDIT THIS MILESTONE MODAL -->

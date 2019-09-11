@@ -5,6 +5,11 @@ class GoalsController < ApplicationController
     @goal_chat = Goal.includes(messages: :user).find(params[:id])
     @milestones = @goal.milestones
     @milestone = Milestone.new
+    if current_user == @goal.buddy || current_user == @goal.user
+      render 'show'
+    else
+      redirect_to user_path(@goal.user)
+    end
   end
 
   def create
