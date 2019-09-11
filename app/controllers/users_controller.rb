@@ -8,9 +8,12 @@ class UsersController < ApplicationController
     @moods = UserFeeling.where(user: params[:id])
 
     @all_happiness_intensities = current_user.user_feelings.map(&:happiness)
-    @streaks = @all_happiness_intensities.join.split('0')
-    @current_streak = @streaks.last.size
-    @longest_streak = @streaks.map(&:size).max
+    if @all_happiness_intensities.size > 0
+
+      @streaks = @all_happiness_intensities.join.split('0')
+      @current_streak = @streaks.last.size
+      @longest_streak = @streaks.map(&:size).max
+    end
 
     # GOALS DATA
     @my_goals = Goal.where(user: current_user)
@@ -47,10 +50,10 @@ class UsersController < ApplicationController
     @communities = nil
 
     if params[:query].present?
-      @diary_publications = current_user.publications.where(publication_type: diary_publication_types)
+      @diary_publications = @user.publications.where(publication_type: diary_publication_types)
       @diary_publications = @diary_publications.profile_search(params[:query])
     else
-      @diary_publications = current_user.publications.where(publication_type: diary_publication_types)
+      @diary_publications = @user.publications.where(publication_type: diary_publication_types)
     end
 
   end
