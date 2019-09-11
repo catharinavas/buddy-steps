@@ -1,9 +1,9 @@
 <!-- large screen -->
-<div class="hidden md:block mt-3 mb-3 px-8 items-center today-card bg-orange-100 mx-16 h-20 rounded-custom border-l-8 border-orange-500 text-orange-600 pt-2" style="border-radius: 20px;">
+<div class="hidden md:block>
   <% @buddies_goals.each do |buddy_goal| %>
     <% if buddy_goal.confirmed_buddy == false %>
       <div class="notification flex justify-between">
-        <div class="flex items-center">
+        <div class="flex items-center mt-3 mb-3 px-8 items-center today-card bg-orange-100 mx-16 h-20 rounded-custom border-l-8 border-orange-500 text-orange-600 pt-2" style="border-radius: 20px;">
           <%= link_to user_path(buddy_goal.user) do %>
             <%= cl_image_tag buddy_goal.user.photo, height: 65, width: 65, crop: :fill, class: "mr-5 rounded-full h-auto object-contain float-none border-2 border-white" %>
           <% end %>
@@ -34,10 +34,10 @@
 </div>
 
 <!-- small screen -->
-<div class="md:hidden mt-3 mb-3 px-2 items-center today-card bg-orange-100 mx-2 h-12 rounded-custom border-l-8 border-orange-500 text-orange-600" style="border-radius: 20px;">
+<div class="md:hidden">
   <% @buddies_goals.each do |buddy_goal| %>
     <% if buddy_goal.confirmed_buddy == false %>
-      <div class="notification flex justify-between items-center">
+      <div class="notification flex justify-between items-center mt-3 mb-3 px-2 items-center today-card bg-orange-100 mx-2 h-12 rounded-custom border-l-8 border-orange-500 text-orange-600" style="border-radius: 20px;">
         <div class="flex items-center">
           <%= link_to user_path(buddy_goal.user) do %>
             <%= cl_image_tag buddy_goal.user.photo, height: 40, width: 40, crop: :fill, class: "mr-3 rounded-full h-auto object-contain float-none border-2 border-white" %>
