@@ -46,8 +46,12 @@
             <% end %>
           <% end %>
         </div>
-      <p class="text-orange-700 text-lg">You've been recording your mood for <span class="font-bold"><%= @current_streak %> days </span> now. Your longest streak is <span class="font-bold"><%= @longest_streak %> days</span>.</p>
-      <p class="text-orange-600">Keep recording daily and keep making a beautiful graph. The more often you record your mood, the easier it is to notice negative patterns before they become problems and to notice positive patterns that you can keep in your life.</p>
+        <div class="notification flex justify-between mt-3 mb-3 px-8 items-center today-card bg-orange-100 mx-16 h-20 rounded-custom border-l-8 border-orange-500 text-orange-600 hover:bg-orange-200 transition-soft" style="border-radius: 20px;">
+          <div class="flex flex-col">
+            <p class="text-orange-700 text-lg">You've been recording your mood for <span class="font-bold"><%= @current_streak %> days </span> now. Your longest streak is <span class="font-bold"><%= @longest_streak %> days</span>.</p>
+            <p class="text-orange-600">Keep recording daily and keep making a beautiful graph. The more often you record your mood, the easier it is to notice negative patterns before they become problems and to notice positive patterns that you can keep in your life.</p>
+          </div>
+        </div>
       </div>
   <% end %>
 
