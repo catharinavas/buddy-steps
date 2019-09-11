@@ -7,14 +7,14 @@ class User < ApplicationRecord
 
   mount_uploader :photo, PhotoUploader
 
-  has_many :rooms
+  has_many :rooms, dependent: :destroy
   has_many :room_messages, dependent: :destroy
 
   has_many :messages, dependent: :destroy
   has_many :goals, dependent: :destroy
 
   has_many :comments, dependent: :destroy
-  has_many :community_users
+  has_many :community_users, dependent: :destroy
   has_many :communities, through: :community_users
   has_many :publications, dependent: :destroy
   has_many :claps, dependent: :destroy

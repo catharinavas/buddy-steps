@@ -1,0 +1,21 @@
+<div class="hidden goal-infobox max-w-4xl flex items-center h-auto mx-auto" id="goal-<%= @goal.id %>">
+  <!-- INFO ABOUT GOAL -->
+  <div id="goal_info" class="w-full lg:rounded-lg border-2 border-gray-200 px-6">
+    <div class="p-4 text-center py-5 mx-auto">
+        <h1 class="text-3xl font-bold pt-8 lg:pt-0"><%= @goal.title.capitalize %></h1>
+        <div class="mx-auto w-4/5 pt-3 border-b-2 border-purple-500 opacity-25"></div>
+        <div class="">
+          <p class="pt-4 text-base font-semibold flex items-center justify-center">
+           Description: <%= @goal.description %></p>
+          <p class="pt-2 text-gray-600 text-xs lg:text-sm flex items-center justify-center align-middle"><%= fa_icon "calendar alt", class:" h-4 fill-current text-purple-500 pr-4" %> Objective date  : <%= @goal.deadline %></p>
+
+          <!-- MILESTONES -->
+
+          <div class="block pt-8">
+            <h1 class="text-base font-bold flex items-center justify-center">Milestones</h1>
+            <%= render 'goals/milestones', class:"flex justify-center" %>
+          </div>
+        </div>
+    </div>
+  </div>
+</div>

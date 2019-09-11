@@ -1,23 +1,19 @@
-
-<div class="flex flex-row">
-  <h1 class="text-base font-bold flex items-center justify-center lg:justify-start">Milestones</h1>
-  <% if current_user.id == @goal.user_id %>
-    <a id="add-icon" class="text-teal-700 hover:text-teal-900 font-bold py-2 px-4 rounded-full mr-5" href="#"><%= fa_icon "plus-circle" %></a>
-    <div id="add-milestone" class="hidden transition-soft transition-delay">
-      <%= render "milestones/new_form", goal: @goal, milestone: Milestone.new %>
+<% if current_user.id == @goal.user_id %>
+  <div class="flex items-center mb-3">
+    <p class="pt-4 text-xl font-bold flex items-center justify-center lg:justify-start my-auto text-gray-700">Milestones</p>
+    <div id="add-icon" class="text-orange-500 hover:text-orange-600 font-bold rounded-full ml-2 mt-1 cursor-pointer">
+      <%= fa_icon "plus" %>
     </div>
-  <% end %>
-</div>
-  <table class="table-auto">
-    <thead class="text-gray-900 text-xs my-1">
-<!--       <th></th>
-      <th>Due date</th>
-      <th></th> -->
-    </thead>
-    <tbody id="milestones">
-      <% @milestones.each do |milestone| %>
-        <%= render "milestones/milestone", milestone: milestone %>
-      <% end %>
-    </tbody>
-  </table>
+  </div>
+  <div id="add-milestone" class="hidden transition-soft transition-delay">
+    <%= render "milestones/new_form", goal: @goal, milestone: Milestone.new %>
+  </div>
+<% end %>
+<table class="table-auto mx-auto">
+  <tbody id="milestones">
+    <% @milestones.each do |milestone| %>
+      <%= render "milestones/milestone", milestone: milestone %>
+    <% end %>
+  </tbody>
+</table>
 

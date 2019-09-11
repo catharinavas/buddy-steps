@@ -173,5 +173,4 @@ const updateGraph = (feelings, most_recent_day, amountOfDays) => {
   chart.render();
 }
 
-
 export { changeGraph };
