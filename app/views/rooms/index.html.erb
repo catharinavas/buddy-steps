@@ -1,0 +1,29 @@
+<div class="pt-32 flex flex-wrap -mx-2 overflow-hidden sm:-mx-2 md:-mx-1 lg:-mx-2 xl:-mx-2">
+  <!-- show room -->
+  <div>
+    <!-- show messages -->
+    <div class="ml-3">
+      <% @rooms.sort_by(&:user || :partner).each do |room| %>
+        <%= link_to room_path(room) do %>
+        <div class="form-actions mb-2">
+          <%#= link_to 'Back', dashboard_path(current_user), class: 'btn btn-danger' %>
+          <% if room.user == current_user %>
+            <p class="cursor-pointer text-white bg-purple-600 text-sm font-semibold border-2 border-purple-600 px-3 py-1 h-8 mr-5 rounded-full hover:bg-purple-500 hover:border-purple-500 transition-soft flex-grow-0" >Chat with <%= room.partner.first_name %></p>
+          <% else %>
+            <p class="cursor-pointer text-white bg-purple-600 text-sm font-semibold border-2 border-purple-600 px-3 py-1 h-8 mr-5 rounded-full hover:bg-purple-500 hover:border-purple-500 transition-soft flex-grow-0" >Chat with <%= room.user.first_name %></p>
+          <% end %>
+        </div>
+        <% end %>
+      <% end %>
+    </div>
+    <!-- new message -->
+    <div>
+      <%= render 'room_chat', class: "w-full" %>
+    </div>
+    <div>
+    </div>
+  </div>
+</div>
+
+
+

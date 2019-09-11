@@ -73,7 +73,7 @@
     <h3 class="text-lg text-bold my-3 text-gray-600">Comments (<%= @publication.comments.count %>)</h3>
     <%= render 'comments/form', publication: @publication, comment: Comment.new, style: "height: 12rem;" %>
 
-    <% @publication.comments.reverse.each do |comment| %>
+    <% @publication.comments.sort_by(&:created_at).each do |comment| %>
       <%= render 'comments/comment', comment: comment %>
     <% end %>
   </div>

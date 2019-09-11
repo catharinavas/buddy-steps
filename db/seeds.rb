@@ -10,9 +10,12 @@ require 'faker'
 puts 'clearing database'
 
 Message.destroy_all
+Room.destroy_all
 Community.destroy_all #also destroys publications and community_users
 User.destroy_all #also destroys comments, goals, notifications, user_feelings, claps, messages and milestones
+Goal.destroy_all
 Category.destroy_all
+Publication.destroy_all
 PublicationType.destroy_all
 
 puts '---------------------------------------'
