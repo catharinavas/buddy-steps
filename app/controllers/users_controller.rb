@@ -41,7 +41,7 @@ class UsersController < ApplicationController
 
     # GOALS
     @completed_goals = Goal.where(user: @user).where(complete: true)
-    @my_goals = Goal.where(user: current_user)
+    @my_goals = Goal.where(user: @user)
 
     # PUBLICATIONS
     diary_publication_types = PublicationType.where(name: ['Frustration', 'Pleasure', 'Celebration'])
