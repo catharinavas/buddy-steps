@@ -101,17 +101,15 @@
           <% end %>
         </div>
       </div>
-
+      <!--CHAT-->
+      <div class="">
+        <!-- ONLY SHOW CHAT FOR USER & BUDDY -->
+        <% if @goal.confirmed_buddy == true && ( @goal.user == current_user || @goal.buddy == current_user ) %>
+          <%= render 'chat', class: "w-full" %>
+        <% end %>
+      </div>
     </div>
-
   </div>
-    <!--CHAT-->
-    <div class="">
-      <!-- ONLY SHOW CHAT FOR USER & BUDDY -->
-      <% if @goal.confirmed_buddy == true && ( @goal.user == current_user || @goal.buddy == current_user ) %>
-        <%= render 'chat', class: "w-full" %>
-      <% end %>
-    </div>
 </div>
 
 

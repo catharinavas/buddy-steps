@@ -35,9 +35,11 @@ const modalEditMilestone = () => {
   function toggleModal (dataMilestoneId) {
     const body = document.querySelector('body')
     let modal
-    if (dataMilestoneId) modal = document.getElementById(dataMilestoneId)
-    else modal = document.querySelector('.modal-edit-milestone')
-
+    if (dataMilestoneId) {
+      modal = document.getElementById(dataMilestoneId);
+    } else {
+     modal = document.querySelector('.modal-edit-milestone');
+    };
     modal.classList.toggle('opacity-0')
     modal.classList.toggle('pointer-events-none')
     body.classList.toggle('modal-edit-milestone-active')
