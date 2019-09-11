@@ -9,7 +9,12 @@
     <%= render "milestones/new_form", goal: @goal, milestone: Milestone.new %>
   </div>
 <% end %>
-<table class="table-auto mx-auto">
+<table class="w-full">
+  <thead class="text-gray-700 font-bold">
+    <td> Description </td>
+    <td class="whitespace-no-wrap text-right w-1/5"> Deadline </td>
+    <td class="whitespace-no-wrap text-right w-1/5"> Actions </td>
+  </thead>
   <tbody id="milestones">
     <% @milestones.each do |milestone| %>
       <%= render "milestones/milestone", milestone: milestone %>
