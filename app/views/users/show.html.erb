@@ -95,6 +95,18 @@
           <div class="lg:flex justify-between items-end mb-3">
             <p class="transition-soft uppercase font-bold text-gray-700 text-md pb-2 selected text-lg">
               Records</p>
+              <div class="hidden lg:block pb-2">
+                <%= form_tag user_path, method: :get, class:"inline-flex" do %>
+                  <%= text_field_tag :query,
+                    params[:query],
+                    placeholder: "Find a publication",
+                    class: "appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-1 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                  %>
+                  <%= button_tag(type: "submit", class: "ml-2 py-1 px-2 border border-gray-300 text-md text-gray-600 bg-gray-300 rounded-lg cursor-pointer") do %>
+                      <%= fa_icon "search" %>
+                  <% end %>
+                <% end %>
+              </div>
           </div>
           <div class="flex justify-center py-2">
             <%= render 'publications/publications_list', publications: @diary_publications %>
