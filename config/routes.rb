@@ -45,7 +45,7 @@ Rails.application.routes.draw do
 
   # ROOM CHAT
 
-  resources :rooms, only: %i[create show] do
+  resources :rooms, only: %i[index show create] do
     resources :room_messages, only: :create
   end
 end
