@@ -1,33 +1,40 @@
-<div class="h-auto">
-  <div class="chat-header"><h4>#<%= @room.name %></h4></div>
+<div class="room_message_group">
+  <div class="flex justify-between chat-header border-t-8 border-blue-600">
+    <h4>#<%= @room.name %></h4>
+    <div id="flash" class="text-white text-sm font-bold px-4 py-3" onClick='document.getElementById("user-list").classList.toggle="hidden"'>
+      <button type="button" class="close pl-4">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+  </div>
   <div class="room-messages">
     <% @room_chat.room_messages.sort_by(&:created_at).each do |message| %>
-      <%= render "room_messages/message", message: message, user_is_messages_author: message.user == current_user %>
+    <%= render "room_messages/message", message: message, user_is_messages_author: message.user == current_user %>
     <% end %>
   </div>
-  <div id="create-message">
+  <div id="create-message" class="">
     <%= simple_form_for [ @room_chat, RoomMessage.new ], remote: true, html: {autocomplete: "off" } do |f| %>
-      <%= f.input :content, label: false, as: :string %>
-      <%= f.submit %>
+    <%= f.input :content, label: false, as: :string, input_html: { class: 'w-full' }%>
     <% end %>
   </div>
 </div>
 <% content_for :after_js do %>
-  <script>
-    App['room_<%= @room.id %>'] = App.cable.subscriptions.create(
-      { channel: 'RoomsChannel', room_id: <%= @room.id %> },
-      {
-        received: (data) => {
-          if (data.current_user_id !== <%= current_user.id %>) {
-            var messagesContainer = document.querySelector('.room-messages');
+<script>
+  App['room_<%= @room.id %>'] = App.cable.subscriptions.create(
+    { channel: 'RoomsChannel', room_id: <%= @room.id %> },
+    {
+      received: (data) => {
+        if (data.current_user_id !== <%= current_user.id %>) {
+          var messagesContainer = document.querySelector('.room-messages');
             // class diferent for prevent conflict
             messagesContainer.insertAdjacentHTML('beforeend', data.message_partial);
+            messagesContainer.scrllTop = messagesContainer.scrollHeight;
           }
         },
         connected() {
           // console.log('connected');
         }
       }
-    )
-  </script>
-<% end %>
+      )
+    </script>
+    <% end %>

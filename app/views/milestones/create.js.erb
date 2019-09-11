@@ -15,5 +15,6 @@ banana.classList.add('hidden');
   refreshForm('<%= j render "milestones/new_form", goal: @goal, milestone: @milestone %>');
 <% else %>
   addMilestone('<%= j render "milestones/milestone", milestone: @milestone %>');
+  debugger
   refreshForm('<%= j render "milestones/new_form", goal: @goal, milestone: Milestone.new %>');
 <% end %>
