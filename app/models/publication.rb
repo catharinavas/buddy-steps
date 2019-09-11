@@ -20,6 +20,9 @@ class Publication < ApplicationRecord
 
   pg_search_scope :profile_search,
     against: [ :title, :content ],
+    associated_against: {
+      user: [ :first_name, :last_name ]
+    },
     using: {
       tsearch: { prefix: true }
     }

@@ -29,12 +29,10 @@
          <%= f.input :deadline, as: :string, required: false, input_html: { class: "input datepicker"} %>
          <%= f.association :category %>
         <!--Footer-->
-        <div class="flex justify-end pt-2">
-          <button class="modal-edit-goal-close px-4 text-gray-500 hover:text-gray-800">Close</button>
+        <div class="flex w-full pr-12 md:pr-0 pt-2 items-center justify-between">
+          <p class="modal-edit-goal-close cursor-pointer text-gray-600 hover:underline hover:text-gray-700">Close</p>
           <%= f.button :submit, class: "px-4 bg-transparent p-3 rounded-lg text-indigo-500 hover:bg-gray-100 hover:text-indigo-400 mr-2" %>
-          <!-- <button class="px-4 bg-transparent p-3 rounded-lg text-indigo-500 hover:bg-gray-100 hover:text-indigo-400 mr-2">Action</button> -->
-        <% end %>
-
+          <% end %>
         </div>
       </div>
     </div>
