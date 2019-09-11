@@ -6,7 +6,7 @@ const readToggle = () => {
       readBtn.addEventListener('click', (event) => {
         event.preventDefault();
 
-        let btn = event.target;
+        let btn = event.currentTarget;
         insertHTML(btn);
       });
     });
