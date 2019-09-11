@@ -18,7 +18,7 @@
             <%= fa_icon "edit", class: "modal-open-edit-goal mr-2 text-lg text-teal-700" %>
             <label class="custom-label flex" data-goal="<%= @goal.id %>">
               <form action="/goals/<%= @goal.id %>/completed" method="get">
-                <button name="goal-complete" type="submit" class="flex">
+                <button name="toggle-goal-complete" type="submit" class="flex">
                   <div class="bg-white shadow w-4 h-4 p-1 flex justify-center items-center mr-2">
                     <input type="checkbox" class="hidden"
                       <% if @goal.complete %>
