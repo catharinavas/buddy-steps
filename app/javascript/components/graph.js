@@ -9,6 +9,11 @@ var fetchGraphData = () => {
 }
 
 var generateGraph = (feelings) => {
+  let happiness = nullifyZeroIntesities(feelings.happiness.intensities);
+  let patience = nullifyZeroIntesities(feelings.patience.intensities);
+  let carefreeness = nullifyZeroIntesities(feelings.carefreeness.intensities);
+  let sleep = nullifyZeroIntesities(feelings.sleep.intensities);
+
   const total_days = feelings.happiness.dates.length
   var options = {
     chart: {
@@ -61,5 +66,16 @@ var generateGraph = (feelings) => {
 
 
 }
+
+const nullifyZeroIntesities = (intensities) => {
+  let noZeroesArray = intensities.map((intensity) => {
+    if (intensity === 0)
+      return null;
+    else
+      return intensity;
+  });
+  return noZeroesArray;
+}
+
 
 export { fetchGraphData };

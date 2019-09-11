@@ -2,11 +2,15 @@ class UsersController < ApplicationController
   before_action :set_user, only: :dashboard
 
   def dashboard
+    # MOOD GRAPH
     @new_feeling = UserFeeling.new # new feeling
-
     @last_feeling = current_user.user_feelings.last
-
     @moods = UserFeeling.where(user: params[:id])
+
+    @all_happiness_intensities = current_user.user_feelings.map(&:happiness)
+    @streaks = @all_happiness_intensities.join.split('0')
+    @current_streak = @streaks.last.size
+    @longest_streak = @streaks.map(&:size).max
 
     # GOALS DATA
     @my_goals = Goal.where(user: current_user)

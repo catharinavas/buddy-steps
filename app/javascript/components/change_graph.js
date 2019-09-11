@@ -124,6 +124,11 @@ const setGraphRange = (feelings, days_in_the_past) => {
 }
 
 const updateGraph = (feelings, most_recent_day, amountOfDays) => {
+  let happiness = nullifyZeroIntesities(feelings.happiness.intensities);
+  let patience = nullifyZeroIntesities(feelings.patience.intensities);
+  let carefreeness = nullifyZeroIntesities(feelings.carefreeness.intensities);
+  let sleep = nullifyZeroIntesities(feelings.sleep.intensities);
+
   var options = {
     chart: {
       type: 'line',
@@ -154,16 +159,16 @@ const updateGraph = (feelings, most_recent_day, amountOfDays) => {
         },
     series: [{
         name: 'Happiness',
-        data: feelings.happiness.intensities.slice(most_recent_day - amountOfDays, most_recent_day)
+        data: happiness.slice(most_recent_day - amountOfDays, most_recent_day)
         }, {
         name: 'Carefreeness',
-        data: feelings.carefreeness.intensities.slice(most_recent_day - amountOfDays, most_recent_day)
+        data: carefreeness.slice(most_recent_day - amountOfDays, most_recent_day)
         }, {
         name: 'Patience',
-        data: feelings.patience.intensities.slice(most_recent_day - amountOfDays, most_recent_day)
+        data: patience.slice(most_recent_day - amountOfDays, most_recent_day)
         }, {
         name: 'Sleep',
-        data: feelings.sleep.intensities.slice(most_recent_day - amountOfDays, most_recent_day)
+        data: sleep.slice(most_recent_day - amountOfDays, most_recent_day)
     }],
     xaxis: {
       categories: feelings.happiness.dates.slice(most_recent_day - amountOfDays, most_recent_day)
@@ -171,6 +176,16 @@ const updateGraph = (feelings, most_recent_day, amountOfDays) => {
   }
   var chart = new ApexCharts(document.querySelector("#chart"), options);
   chart.render();
+}
+
+const nullifyZeroIntesities = (intensities) => {
+  let noZeroesArray = intensities.map((intensity) => {
+    if (intensity === 0)
+      return null;
+    else
+      return intensity;
+  });
+  return noZeroesArray;
 }
 
 
