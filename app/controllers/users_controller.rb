@@ -5,11 +5,13 @@ class UsersController < ApplicationController
     # MOOD GRAPH
     @new_feeling = UserFeeling.new # new feeling
     @last_feeling = current_user.user_feelings.last
-    @moods = UserFeeling.where(user: params[:id])
+
+    # if current_user.user_feelings.to_a.nil?
+    #   @moods = UserFeeling.where(user: params[:id])
+    # end
 
     @all_happiness_intensities = current_user.user_feelings.map(&:happiness)
     if @all_happiness_intensities.size > 0
-
       @streaks = @all_happiness_intensities.join.split('0')
       @current_streak = @streaks.last.size
       @longest_streak = @streaks.map(&:size).max

@@ -18,6 +18,14 @@
     <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
       <%= f.error_notification %>
       <div class="form-inputs">
+        <div class="flex items-end">
+          <!-- INPUT PHOTO -->
+          <%= f.input :photo, input_html: { class: 'invisible', id: 'photo-input'}, label_html: { class: ' mr-10 p-3 border border-gray-200 text-3xl text-gray-600 bg-gray-200 rounded-lg px-auto hover:bg-gray-300 hover:border-gray-300'}, label: ('<i class="fa fa-camera fa-2x"></i>').html_safe, wrapper_html: { class: 'w-24' } %>
+
+          <!-- INPUT PHOTO PREVIEW  -->
+            <%= image_tag "", class: "hidden w-24 h-24 bg-gray-100 object-cover rounded-full ml-5 mb-2", id: "photo-preview" %>
+        </div>
+
         <%= f.input :email, required: true, autofocus: true, input_html: { class: "input"}  %>
 
         <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
@@ -37,6 +45,7 @@
                     required: true,
                     input_html: { class: "input", autocomplete: "current-password", style: "margin-bottom: 0 !important;" },
                     hint_html: { class: "mt-1 mb-4 ml-2"} %>
+
       </div>
 
       <!--Footer-->
