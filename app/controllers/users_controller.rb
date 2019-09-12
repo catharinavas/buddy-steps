@@ -19,7 +19,7 @@ class UsersController < ApplicationController
 
     # GOALS DATA
     @my_goals = Goal.where(user: current_user)
-    @buddies_goals = Goal.where(buddy_id: current_user, confirmed_buddy: true)
+    @buddies_goals = Goal.where(buddy_id: current_user)
 
     # MODAL NEW GOAL
     @goal = Goal.new
@@ -32,10 +32,10 @@ class UsersController < ApplicationController
     diary_publication_types = PublicationType.where(name: ['Frustration', 'Pleasure', 'Celebration'])
     @communities = nil
     if params[:query].present?
-      @diary_publications = current_user.publications.where(publication_type: diary_publication_types)
+      @diary_publications = current_user.publications.where(publication_type: diary_publication_types).sort_by(&:created_at).reverse
       @diary_publications = @diary_publications.profile_search(params[:query])
     else
-      @diary_publications = current_user.publications.where(publication_type: diary_publication_types)
+      @diary_publications = current_user.publications.where(publication_type: diary_publication_types).sort_by(&:created_at).reverse
     end
     # BUDDY NOTIFICATION
   end

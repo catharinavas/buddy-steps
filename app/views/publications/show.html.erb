@@ -18,7 +18,7 @@
     <% end %>
   </div>
 
-  <div class="md:w-3/4 md:mx-auto mt-1 md:my-4 md:flex p-10 bg-white md:rounded-lg border-2 border-gray-300">
+  <div class="md:w-3/4 md:mx-auto mt-1 md:my-4 md:flex p-10 md:rounded-lg border-2 <%= @publication.publication_type.name == 'Pleasure' ? "border-blue-200 bg-blue-100" : "border-gray-300 bg-white" %> ">
     <div class="min-w-full">
       <!-- TITLE -->
       <h1 class="text-2xl font-bold"><%= @publication.title %></h1>
@@ -52,7 +52,7 @@
       <div class= "flex justify-between items-end mt-10">
           <p data-claps-button='<%= @publication.id %>'
             <% if Clap.find_by(user: current_user, publication: @publication).nil? %>
-              class="text-gray-500 hover:text-gray-600 text-xs lg:text-sm flex-shrink-0 ml-2 rounded"
+              class="text-gray-500 hover:text-gray-600 text-xs lg:text-sm flex-shrink-0 ml-2 rounded <%= @publication.publication_type.name == 'Pleasure' ? "text-gray-600" : "text-gray-500" %> "
             <% else %>
               class="text-orange-500 font-bold text-lg lg:text-sm flex-shrink-0 ml-2"
             <% end %>
@@ -66,7 +66,7 @@
           <!-- DELETE PUBLICATION -->
           <% if @publication.user == current_user %>
             <%= link_to publication_path, method: :delete, data: { confirm: 'Are you sure you want to delete?' } do %>
-              <%= fa_icon "trash alt 2x", class: " mt-1 text-lg text-gray-500 text-center hover:text-gray-700" %>
+              <%= fa_icon "trash alt 2x", class: " mt-1 text-lg text-gray-500 text-center hover:text-gray-700 #{@publication.publication_type.name == 'Pleasure' ? "text-gray-600" : "text-gray-500"}" %>
             <% end %>
           <% end %>
       </div>
@@ -77,7 +77,7 @@
 
   <!-- COMMENTS -->
   <div id="comments" class="md:w-3/4 md:mx-auto">
-    <% if current_user.communities.include?(@publication.community) %>
+    <% if current_user.communities.include?(@publication.community) || (request.env['PATH_INFO'].include?("publications") && @publication.community.nil?)%>
 
     <h3 class="text-lg text-bold my-3 text-gray-600">Comments (<%= @publication.comments.count %>)</h3>
     <%= render 'comments/form', publication: @publication, comment: Comment.new, style: "height: 12rem;" %>
