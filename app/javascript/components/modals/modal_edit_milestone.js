@@ -26,7 +26,7 @@ const modalEditMilestone = () => {
     } else {
     isEscape = (evt.keyCode === 27)
     }
-    if (isEscape && document.body.classList.contains('modal-edit-milestone-active')) {
+    if (isEscape && document.body.classList.contains('modal-active')) {
     toggleModal()
     }
   };
@@ -42,7 +42,7 @@ const modalEditMilestone = () => {
     };
     modal.classList.toggle('opacity-0')
     modal.classList.toggle('pointer-events-none')
-    body.classList.toggle('modal-edit-milestone-active')
+    body.classList.toggle('modal-active')
   }
 }
 
