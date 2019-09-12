@@ -1,6 +1,12 @@
 <%= simple_form_for([@goal, Milestone.new], remote: true, html: {id: :new_milestone }) do |f| %>
-<h3>Add a new milestone</h3>
+<h3 class="font-sans text-sm text-gray-800">New milestone</h3>
+<div class="flex flex-col">
   <%= f.input :description %>
-  <%= f.input :deadline, as: :string, required: false, input_html: {class: "datepicker"} %>
-  <%= f.button :submit %>
+  <div class="flex flex-col lg:flex-row justify-between mt-3 mb-10">
+    <div class="mb-3 lg:flex-grow mr-3">
+      <%= f.input :deadline, as: :string, required: false, input_html: {class: "datepicker"} %>
+    </div>
+  <%= f.button :submit, class: "" %>
+  </div>
 <% end %>
+</div>

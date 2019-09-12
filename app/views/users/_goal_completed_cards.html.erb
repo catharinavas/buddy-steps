@@ -5,12 +5,16 @@
   </div>
   <div class="flex overflow-x-scroll flex-no-wrap scroll py-5 pl-5 sm:flex-wrap sm:overflow-visible sm:justify-center">
     <% @completed_goals.each do |completed_goal| %>
-      <%= link_to goal_path(completed_goal), class: "scroll-card bg-gray-100 shadow-lg rounded-2xl pt-6 mr-4 p-4 w-56 h-64 text-center text-purple-700 block sm:mb-4 sm:px-0 flex-col justify-between" do %>
-        <p class="font-sans font-semibold text-3xl">
-          All done! Congrats!
-        </p> <br>
+      <%= link_to goal_path(completed_goal), class: "relative scroll-card bg-white rounded-2xl mr-10 p-5 border-2 border-gray-300 w-56 text-center text-gray-600 sm:mb-4 sm:px-0 flex flex-col justify-between pt-10 absolute", style: "height: 20rem" do %>
+        <p class="mb-4">
+          <%= render 'goal_image_category', goal: completed_goal %>
+        </p>
+        <br>
         <h3 class="font-sans font-semibold text-base text-gray-800"><%= completed_goal.title.upcase %></h3>
-        <div class="bg-gray-200 rounded-full py-1 w-3/4 mx-auto mt-3 mb-4">
+        <div class="bg-orange-300 rounded-full py-1 w-3/4 mx-auto mt-2 mb-4">
+          <span class="inline-block align-middle font-sans font-medium text-xs text-orange-800 font-bold">
+            COMPLETED!
+          </span>
         </div>
       <% end %>
     <% end %>
