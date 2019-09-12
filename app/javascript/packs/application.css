@@ -157,7 +157,7 @@
 }
 
 .active {
-  @apply bg-orange-600 text-orange-700;
+  @apply bg-orange-600 text-orange-200;
 }
 
 .-mt-custom1 {
