@@ -14,10 +14,26 @@
           <!-- INPUT PHOTO PREVIEW  -->
             <%= image_tag "", class: "hidden w-24 h-24 bg-gray-100 object-cover rounded-full ml-5 mb-2", id: "photo-preview" %>
         </div>
+        <%= f.input :first_name,
+                    required: true,
+                    autofocus: true,
+                    input_html: { class: "input", autocomplete: "First name" }%>
+        <%= f.input :last_name,
+                    required: true,
+                    autofocus: true,
+                    input_html: { class: "input", autocomplete: "Last name" }%>
+        <%= f.input :address,
+                    required: true,
+                    autofocus: true,
+                    input_html: { class: "input", autocomplete: "Address" }%>
+        <%= f.input :city,
+                    required: true,
+                    autofocus: true,
+                    input_html: { class: "input", autocomplete: "City" }%>
         <%= f.input :email,
                     required: true,
                     autofocus: true,
-                    input_html: { class: "input", autocomplete: "email" }%>
+                    input_html: { class: "input", autocomplete: "Email" }%>
         <%= f.input :password,
                     required: true,
                     hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
