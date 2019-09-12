@@ -209,9 +209,14 @@ puts '--- creating them for the Parkinson community'
 members = parkinson.users
 
 unless parkinson.users == []
-  publications_text = [
-    ''
-  ]
+  paragraphs =
+    [
+      Faker::Lorem.paragraph_by_chars(number: rand(250...350)).to_s,
+      Faker::Lorem.paragraph_by_chars(number: rand(250...350)).to_s,
+      Faker::Lorem.paragraph_by_chars(number: rand(250...350)).to_s,
+      Faker::Lorem.paragraph_by_chars(number: rand(250...350)).to_s
+    ]
+  text = paragraphs.first(rand(2..4)).join("\n\n")
 
   12.times do
     publication = Publication.new(
