@@ -1,18 +1,11 @@
 <div id="publications" class="publications-list">
-  <div class="flex flex-col lg:flex-row items-start mb-5 w-full pl-2 pr-5 pb-5 rounded-lg border-2 border-gray-200 bg-white">
+  <div class="flex flex-col lg:flex-row items-start mb-5 w-full pl-2 pr-8 pb-5 rounded-lg border-2 border-gray-200 bg-white">
         <!-- IMAGE ACCORDING TO PUBLICATION TYPE -->
         <div class="flex lg:flex-col items-center w-1/12 mt-10 flex-shrink-0 mx-1">
-          <% if publication.publication_type.name == 'Frustration' %>
-
-          <% end %>
-          <% if publication.publication_type.name == 'Pleasure' %>
-
-          <% end %>
-          <% if publication.publication_type.name == 'Celebration' %>
-
-          <% end %>
           <% if  publication.publication_type.name == 'News' || publication.publication_type.name == 'Question' %>
             <%= cl_image_tag publication.user.photo, height: 50, width: 50, class: "publication-img mr-2 rounded-full float-none border-2 border-white" %>
+          <% else %>
+            <%= render 'publications/publication_image', publication: publication %>
           <% end %>
         </div>
 
@@ -24,7 +17,7 @@
 
           <!-- META -->
           <div>
-            <p class="text-blue-300 text-sm mb-8">
+            <p class="text-gray-500 text-sm mb-8">
               Posted by
               <%= link_to "#{publication.user.first_name}", user_path(publication.user),
                 class: "italic underline"  %>
@@ -39,29 +32,36 @@
           </div>
 
           <!-- CONTENT -->
-          <div class="text-gray-600 mb-16 lg:mb-8 text-left">
-            <span data-shown-text="<%= publication.id %>">
-              <%= (publication.content.first(300)) %>
-              <a href="#" class="read-toggle text-blue-300 font-bold" data-read-more="<%= publication.id %>" data-read-toggle="<%= publication.id %>">
-                <% if publication.content.size > 300  %>
-                  ...read more
-                <% end %>
-              </a>
+          <div class="text-gray-900 mb-16 lg:mb-8 text-left">
+            <span data-shown-text="<%= publication.id %>" class="flex">
+                <a href="#" class="read-toggle mr-6" data-read-more="<%= publication.id %>" data-read-toggle="<%= publication.id %>">
+                  <img src="https://source.unsplash.com/random" alt="posted-pic" class="h-20 w-full posted-picture rounded object-cover">
+                </a>
+                <div class="">
+                  <%= (publication.content.first(300)) %>
+                  <a href="#" class="read-toggle text-gray-500 font-bold" data-read-more="<%= publication.id %>" data-read-toggle="<%= publication.id %>">
+                    <% if publication.content.size > 300  %>
+                      ...read more
+                    <% end %>
+                  </a>
+                </div>
             </span>
 
             <!-- HIDDEN CONTENT -->
             <span class="hidden-text hidden publication-content" data-hidden-text="<%= publication.id %>">
               <%= simple_format(publication.content) %>
-              <a href="#" class="read-toggle text-blue-300 font-bold hidden" data-read-less="<%= publication.id %>" data-read-toggle="<%= publication.id %>">
+              <a href="#" class="read-toggle text-gray-500 font-bold hidden" data-read-less="<%= publication.id %>" data-read-toggle="<%= publication.id %>">
                   ^ hide
               </a>
+              <hr class="mt-4 mb-8">
+              <img src="https://source.unsplash.com/random" alt="">
             </span>
           </div>
 
           <!-- BUTTONS -->
-          <div class="flex justify-between items-center pb-3 lg:pb-0">
+          <div class="flex justify-end items-center pb-3 lg:pb-0">
             <div class="flex items-center flex-shrink-0 ml-1 md:ml-10">
-              <a href="/publications/<%= publication.id %>/#comments" class="text-blue-300 text-xs lg:text-sm flex-shrink-0" data-comments-button='<%= publication.id %>'>
+              <a href="/publications/<%= publication.id %>/#comments" class="text-gray-600 text-xs lg:text-sm flex-shrink-0" data-comments-button='<%= publication.id %>'>
                   <span class="p-2 md:p-3 px-2">
                     <%= publication.comments.count %>
                     <i class="text-xs">Comments</i>
@@ -70,9 +70,9 @@
 
               <p data-claps-button='<%= publication.id %>'
                 <% if Clap.find_by(user: current_user, publication: publication).nil? %>
-                  class="text-blue-300 text-xs lg:text-sm flex-shrink-0 ml-2 rounded"
+                  class="text-gray-600 text-xs lg:text-sm flex-shrink-0 ml-2 rounded"
                 <% else %>
-                  class="text-white bg-blue-300 text-xs lg:text-sm flex-shrink-0 ml-2 rounded"
+                  class="text-white bg-gray-500 text-xs lg:text-sm flex-shrink-0 ml-2 rounded"
                 <% end %>
               >
                 <%= link_to new_publication_clap_path(publication), remote: true,class: "p-2 md:p-3" do%>

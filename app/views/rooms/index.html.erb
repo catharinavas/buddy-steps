@@ -24,9 +24,11 @@
         <% end %>
         <% end %>
       </div>
-      <div class="w-full ">
-        <%= render 'room_chat', class: "w-full" %>
-      </div>
+      <% unless @room_chat.nil? %>
+        <div class="w-full ">
+          <%= render 'room_chat', class: "w-full" %>
+        </div>
+      <% end %>
     </div>
     <!-- new message -->
     <div>

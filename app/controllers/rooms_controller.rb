@@ -2,8 +2,10 @@ class RoomsController < ApplicationController
 
   def index
     @rooms = Room.where(user: current_user).or(Room.where(partner: current_user))
-    @room = @rooms.first
-    @room_chat = Room.includes(room_messages: :user).find(@room.id)
+    if @rooms.size > 0
+      @room = @rooms.first
+      @room_chat = Room.includes(room_messages: :user).find(@room.id)
+    end
 
   end
 

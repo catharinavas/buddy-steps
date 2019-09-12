@@ -25,7 +25,7 @@
 
       <!-- META -->
       <div class="flex justify-between items-center pb-3 md:pb-0 mb-10">
-        <p class="text-blue-300 text-sm">
+        <p class="text-gray-500 text-sm">
           <%= @publication.publication_type.name %>
           posted by
           <%= link_to "#{@publication.user.first_name}", user_path(@publication.user), class: "italic underline"  %>
@@ -40,7 +40,7 @@
       </div>
 
       <!-- CONTENT -->
-      <div class="publication-content text-gray-600">
+      <div class="publication-content text-gray-900">
         <%= simple_format(@publication.content) %>
       </div>
 
@@ -49,10 +49,16 @@
 
       <!-- BUTTONS -->
       <div class= "flex justify-between items-end mt-10">
-          <p class="text-blue-300 text-sm text-right flex-shrink-0 mt-16">
-            <%= link_to new_publication_clap_path(@publication), remote: true,class: "p-3" do%>
-              <span id="clap-count" data-clapID="<%= @publication.id %>"><%= @publication.claps.count %></span>
-              <i class="text-xs text-blue-300">Claps</i>
+          <p data-claps-button='<%= @publication.id %>'
+            <% if Clap.find_by(user: current_user, publication: @publication).nil? %>
+              class="text-gray-600 text-xs lg:text-sm flex-shrink-0 ml-2 rounded"
+            <% else %>
+              class="text-white bg-gray-500 text-xs lg:text-sm flex-shrink-0 ml-2 rounded"
+            <% end %>
+          >
+            <%= link_to new_publication_clap_path(@publication), remote: true,class: "p-2 md:p-3" do%>
+              <span data-clapID="<%= @publication.id %>"><%= @publication.claps.count %></span>
+              <i class="text-xs">Claps</i>
             <% end %>
           </p>
 
