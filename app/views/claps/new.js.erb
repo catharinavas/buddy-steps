@@ -4,9 +4,9 @@ var increaseClaps = (dataset, claps) => {
 
   const clapsButton = document.querySelector(`[data-claps-button='${dataset}']`);
 
-  clapsButton.classList.toggle('bg-gray-500');
-  clapsButton.classList.toggle('text-white');
-  clapsButton.classList.toggle('text-gray-600');
+  clapsButton.classList.toggle('text-orange-500');
+  clapsButton.classList.toggle('font-bold');
+  clapsButton.classList.toggle('text-lg');
 }
 
 var decreaseClaps = (dataset, claps) => {
@@ -15,9 +15,9 @@ var decreaseClaps = (dataset, claps) => {
 
   const clapsButton = document.querySelector(`[data-claps-button='${dataset}']`);
 
-  clapsButton.classList.toggle('bg-gray-500');
-  clapsButton.classList.toggle('text-white');
-  clapsButton.classList.toggle('text-gray-600');
+  clapsButton.classList.toggle('text-orange-500');
+  clapsButton.classList.toggle('font-bold');
+  clapsButton.classList.toggle('text-lg');
 }
 
 <% if @clap.nil? %>

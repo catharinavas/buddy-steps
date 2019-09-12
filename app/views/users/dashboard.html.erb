@@ -4,8 +4,8 @@
   <%= render 'notifications'%>
 
   <!-- GOALS SESSION -->
-  <div class="md:flex justify-between pt-3 p-4 md:px-24 mt-5">
-      <h2 class="text-3xl text-gray-800 font-bold leading-none mb-3">Goals</h2>
+  <div class="md:flex justify-between pt-3 px-8 md:px-0 md:px-24 mt-5">
+      <h2 class="text-xl lg:text-2xl text-gray-800 font-bold leading-none mb-3">Goals</h2>
       <!-- GOALS BUTTONS -->
       <% if current_user == @user %>
         <div class="flex justify-between md:justify-end">
@@ -15,10 +15,10 @@
           </div>
           <!-- GOALS CARDS FLIP -->
           <div class=" flex rounded-full bg-orange-200 border-orange-200 border-2 p-1 w-48 h-8 items-center">
-            <div id="my_goals_icon" class="active cursor-pointer inline-flex text-orange-600 rounded-full w-1/2 h-6">
+            <div id="my_goals_icon" class="active cursor-pointer inline-flex text-orange-700 rounded-full w-1/2 h-6">
               <span class="m-auto text-sm font-semibold">My Goals</span>
             </div>
-            <div id="buddies_goals_icon" class=" cursor-pointer inline-flex text-orange-600 rounded-full w-1/2 h-6">
+            <div id="buddies_goals_icon" class=" cursor-pointer inline-flex text-orange-700 rounded-full w-1/2 h-6">
               <span class="m-auto text-sm font-semibold">Buddies</span>
             </div>
           </div>
@@ -33,9 +33,13 @@
 
   <!-- MOOD GRAPH -->
   <% if @user == current_user %>
-      <div class="pt-3 p-4 mt-20 md:px-24">
-        <h2 class="text-3xl text-gray-800 font-bold leading-none mb-3">How are you feeling today?</h2>
-        <div class="lg:flex justify-center">
+      <div class="md:px-4 py-4 mt-10 lg:px-24">
+        <h2 class="px-8 text-xl lg:text-2xl text-gray-800 font-bold leading-none mb-2">How are you feeling today?</h2>
+        <div class="px-8 md:px-0">
+          <p class="text-gray-700 text-xs lg:text-md">You've been recording your mood for <span class="font-bold"><%= @current_streak %> days </span> now. Your longest streak is <span class="font-bold"><%= @longest_streak %> days</span>.</p>
+          <p class="text-gray-600 text-xs lg:text-md">Keep recording daily and keep making a beautiful graph. The more often you record your mood, the easier it is to notice negative patterns before they become problems and to notice positive patterns that you can keep in your life.</p>
+        </div>
+        <div class="px-8 md:px-0 lg:flex justify-center mt-2">
           <% if @last_feeling.nil? %>
             <%= render 'placeholder_graph' %>
             <%= render 'new_feeling', user_feeling: @new_feeling, class:"mt-5 md:mt-0"%>
@@ -46,19 +50,13 @@
             <% end %>
           <% end %>
         </div>
-        <div class="notification flex justify-between mt-3 mb-3 px-8 items-center today-card bg-orange-100 mx-16 h-20 rounded-custom border-l-8 border-orange-500 text-orange-600 hover:bg-orange-200 transition-soft" style="border-radius: 20px;">
-          <div class="flex flex-col">
-            <p class="text-orange-700 text-lg">You've been recording your mood for <span class="font-bold"><%= @current_streak %> days </span> now. Your longest streak is <span class="font-bold"><%= @longest_streak %> days</span>.</p>
-            <p class="text-orange-600">Keep recording daily and keep making a beautiful graph. The more often you record your mood, the easier it is to notice negative patterns before they become problems and to notice positive patterns that you can keep in your life.</p>
-          </div>
-        </div>
       </div>
   <% end %>
 
   <!-- DIARY -->
-  <div class="pt-3 md:px-4 py-4 md:px-24 mt-20">
-    <h2 class="text-3xl text-gray-800 font-bold leading-none mb-3">Records</h2>
-    <div class="mt-2 lg:block pb-2">
+  <div class="pt-3 md:px-4 py-4 lg:px-24 mt-10">
+    <h2 class="px-8 text-xl lg:text-2xl text-gray-800 font-bold leading-none mb-4">Records</h2>
+    <div class="px-8 md:px-0 mt-2 lg:block pb-2">
       <%= form_tag dashboard_path, method: :get, class:"inline-flex" do %>
         <%= text_field_tag :query,
           params[:query],
@@ -72,7 +70,7 @@
     </div>
     <% if @user == current_user  %>
       <!-- NEW PUBLICATION BUTTON -->
-          <div id="btn_new_goal" class="modal-open-new-post flex items-center cursor-pointer mb-5 bg-gray-200 rounded-lg border-2 border-gray-200 bg-white p-4 hover:border-gray-300 hover:bg-gray-300 transition-soft">
+          <div id="btn_new_goal" class=" mx-8 md:mx-0 modal-open-new-post flex items-center cursor-pointer mb-5 bg-gray-200 rounded-lg border-2 border-gray-200 bg-white p-4 hover:border-gray-300 hover:bg-gray-300 transition-soft">
             <%= fa_icon "edit 2x", class: "mx-2 text-3xl text-gray-600" %>
             <p class="ml-2 text-lg font-bold text-gray-600 hover:text-gray-700 hover:underline">Create a new post</p>
           </div>

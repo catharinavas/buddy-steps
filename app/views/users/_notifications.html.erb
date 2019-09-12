@@ -8,12 +8,12 @@
             <%= cl_image_tag buddy_goal.user.photo, height: 65, width: 65, crop: :fill, class: "mr-5 rounded-full h-auto object-contain float-none border-2 border-white" %>
           <% end %>
           <div>
-            <p class=" font-semibold text-lg"><span class="font-bold"><%= link_to "#{buddy_goal.user.first_name}", user_path(buddy_goal.user) %></span> has the new goal:</p>
-            <p class=" font-semibold text-xl capitalize"><%= link_to "#{buddy_goal.title}", goal_path(buddy_goal) %></p>
+            <p class="text-md"><span class="">Be the buddy of <%= link_to "#{buddy_goal.user.first_name}", user_path(buddy_goal.user), class:"font-bold" %></span> for the new goal:</p>
+            <p class="text-md font-bold capitalize"><%= link_to "#{buddy_goal.title}", goal_path(buddy_goal) %> ?</p>
           </div>
         </div>
         <div>
-          <p class=" font-semibold">Be her buddy?</p>
+          <!-- <p class=" font-semibold">Be her buddy?</p> -->
           <div class="flex">
             <%= link_to confirm_buddy_goal_path(buddy_goal) do %>
               <div class="h-10 w-10 rounded-full flex justify-center items-center text-orange-100 bg-orange-500 cursor-pointer">
@@ -43,8 +43,8 @@
             <%= cl_image_tag buddy_goal.user.photo, height: 40, width: 40, crop: :fill, class: "mr-3 rounded-full h-auto object-contain float-none border-2 border-white" %>
           <% end %>
           <div>
-            <p class=" text-sm"><span class="font-semibold"><%= link_to "#{buddy_goal.user.first_name}", user_path(buddy_goal.user) %></span> has the new goal:</p>
-            <p class=" text-sm capitalize"><%= link_to "#{buddy_goal.title}", goal_path(buddy_goal) %></p>
+            <p class=" text-sm">Be the buddy of <span class="font-semibold"><%= link_to "#{buddy_goal.user.first_name}", user_path(buddy_goal.user) %></span> for the new goal:</p>
+            <p class=" text-sm font-semibold capitalize"><%= link_to "#{buddy_goal.title}", goal_path(buddy_goal) %> ?</p>
           </div>
         </div>
         <div>
