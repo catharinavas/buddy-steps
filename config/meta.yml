@@ -1,0 +1,5 @@
+meta_product_name: "Buddy Steps"
+meta_title: "Buddy Steps - Help yourself by helping someone!"
+meta_description: "With buddysteps, you can track your recovery process and have a buddy to help you in this path!"
+meta_image: "images_banner.png" # should exist in `app/assets/images/`
+# twitter_account: "@product_twitter_account"   # required for Twitter Cards

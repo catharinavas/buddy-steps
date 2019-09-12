@@ -1,4 +1,4 @@
-<div class="body bg-gray-100">
+<div class="body bg-gray-100 mb-12">
   <div class="md:mx-5 md:mt-5 ">
     <% if @publication.community %>
       <%= link_to community_path(@publication.community), class:"text-gray-600 text-md font-semibold hover:text-gray-700 transition-soft" do%>
@@ -18,7 +18,7 @@
     <% end %>
   </div>
 
-  <div class="md:w-3/4 md:mx-auto mt-1 md:my-4 md:flex p-10 bg-white shadow md:rounded-lg border border-gray-200">
+  <div class="md:w-3/4 md:mx-auto mt-1 md:my-4 md:flex p-10 bg-white md:rounded-lg border-2 border-gray-300">
     <div class="min-w-full">
       <!-- TITLE -->
       <h1 class="text-2xl font-bold"><%= @publication.title %></h1>

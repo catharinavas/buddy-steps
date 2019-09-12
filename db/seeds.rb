@@ -22,9 +22,9 @@ puts '---------------------------------------'
 
 puts 'creating Communities'
 parkinson = Community.create!(name: 'Parkinson')
-stroke = Community.create!(name: 'Stroke')
-depression = Community.create!(name: 'Depression')
-amputation = Community.create!(name: 'Amputation')
+# stroke = Community.create!(name: 'Stroke')
+# depression = Community.create!(name: 'Depression')
+# amputation = Community.create!(name: 'Amputation')
 
 puts "Creating Lucas"
 lucas = User.new(
@@ -87,22 +87,22 @@ hugo = User.new(
 
 
 puts 'creating Users'
-40.times do
-  user = User.new(
-    first_name: Faker::Name.first_name,
-    last_name: Faker::Name.last_name,
-    email:Faker::Internet.email,
-    password: 'senha123',
-    city: Faker::Address.city
-  )
+# 40.times do
+#   user = User.new(
+#     first_name: Faker::Name.first_name,
+#     last_name: Faker::Name.last_name,
+#     email:Faker::Internet.email,
+#     password: 'senha123',
+#     city: Faker::Address.city
+#   )
 
-  user.communities << Community.all.sample
+#   user.communities << Community.all.sample
 
-  url = "https://source.unsplash.com/500x300/?person,face"
-  user.remote_photo_url = url
+#   url = "https://source.unsplash.com/500x300/?person,face"
+#   user.remote_photo_url = url
 
-  user.save!
-end
+#   user.save!
+# end
 
 puts 'creating Goal Categories'
 physical_category = Category.create!(name: 'Physical')
@@ -147,29 +147,29 @@ end
 
 
 puts 'creating Feelings for general users'
-User.all.each do |user|
-  day = 1
-  intensity = [3, 3, 3, 3]
-  date = Date.today - 3.days
-  2.times do
-    UserFeeling.create!(
-      feeling_date: (date + day.days),
-      happiness: intensity[0],
-      carefreeness: intensity[1],
-      patience: intensity[2],
-      sleep_quality: intensity[3],
-      user: user,
-    )
-    intensity = intensity.map do |feel_int|
-      new_feel_int = feel_int + [+1, +2, -1, -2].sample
-      new_feel_int = 5 if new_feel_int > 5
-      new_feel_int = 1 if new_feel_int < 1
-      new_feel_int
-    end
+# User.all.each do |user|
+#   day = 1
+#   intensity = [3, 3, 3, 3]
+#   date = Date.today - 3.days
+#   2.times do
+#     UserFeeling.create!(
+#       feeling_date: (date + day.days),
+#       happiness: intensity[0],
+#       carefreeness: intensity[1],
+#       patience: intensity[2],
+#       sleep_quality: intensity[3],
+#       user: user,
+#     )
+#     intensity = intensity.map do |feel_int|
+#       new_feel_int = feel_int + [+1, +2, -1, -2].sample
+#       new_feel_int = 5 if new_feel_int > 5
+#       new_feel_int = 1 if new_feel_int < 1
+#       new_feel_int
+#     end
 
-    day += 1
-  end
-end
+#     day += 1
+#   end
+# end
 
 puts 'creating Feelings for Lucas, Daniela, Catharina and Hugo '
 [lucas, daniela, catharina, hugo].each do |user|
