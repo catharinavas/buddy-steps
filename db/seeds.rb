@@ -26,19 +26,19 @@ stroke = Community.create!(name: 'Stroke')
 cancer = Community.create!(name: 'Cancer')
 diabetes = Community.create!(name: 'Diabetes')
 
-puts "Creating Lucas"
-lucas = User.new(
-    first_name: 'Lucas',
+puts "Creating joao"
+joao = User.new(
+    first_name: 'Joao',
     last_name: 'Sandeville',
-    email: 'lucas@buddysteps.com',
+    email: 'joao@buddysteps.com',
     password: 'senha123',
     city: 'São Paulo'
   )
-  url = "https://avatars1.githubusercontent.com/u/29074669?s=400&v=4"
-  lucas.remote_photo_url = url
+  url = "https://i.pinimg.com/originals/fe/61/db/fe61dba545c0b8b87a722cad8408d37d.jpg"
+  joao.remote_photo_url = url
 
-  lucas.communities << Community.all.sample
-  lucas.save!
+  joao.communities << stroke
+  joao.save!
 
 puts "Creating Maria"
 maria = User.new(
@@ -48,10 +48,10 @@ maria = User.new(
     password: 'senha123',
     city: 'São Paulo'
   )
-  url = "https://avatars3.githubusercontent.com/u/52746846?s=400&v=4"
+  url = "https://media.istockphoto.com/photos/portrait-of-smiling-senior-woman-sitting-on-sofa-at-home-picture-id874789016?k=6&m=874789016&s=612x612&w=0&h=sOasYjhikeYWNJe03meqhzzb9F7iC3FkiX2cu3qFILM="
   maria.remote_photo_url = url
 
-  maria.communities << Community.all.sample
+  maria.communities << stroke
   maria.save!
 
 puts "Creating Catharina"
@@ -160,10 +160,13 @@ puts 'creating Feelings for general users'
 #       sleep_quality: intensity[3],
 #       user: user,
 #     )
-#     intensity = intensity.map do |feel_int|
-#       new_feel_int = feel_int + [+1, +2, -1, -2].sample
+#       intensity = intensity.map do |feel_int|
+#       new_feel_int = feel_int + [+1, +1, +1, +2, -1, -1, -1, -2].sample
 #       new_feel_int = 5 if new_feel_int > 5
 #       new_feel_int = 1 if new_feel_int < 1
+#       if rand() < 0.1
+#         new_feel = 0
+#       end
 #       new_feel_int
 #     end
 
@@ -171,8 +174,8 @@ puts 'creating Feelings for general users'
 #   end
 # end
 
-puts 'creating Feelings for Lucas, maria, Catharina and Hugo '
-[lucas, maria, catharina, hugo].each do |user|
+puts 'creating Feelings for joao, maria, Catharina and Hugo '
+[joao, maria, catharina, hugo].each do |user|
   day = 1
   puts "---creating feelings data for #{user.first_name}"
   intensity = [3, 3, 3, 3]
