@@ -1,45 +1,6 @@
 abbr[title="required"] {
   display: none;
 }
-
-.messages {
-  border-left: 2px solid #e2e8f0 !important;
-  border-right: 2px solid #e2e8f0 !important;
-
-}
-
-.new_message {
-  border-bottom-right-radius: 8px !important;
-  border-bottom-left-radius: 8px !important;
-  padding: 4px 15px;
-}
-
-#new_message {
-  display: flex !important;
-  justify-content: space-between !important;
-  align-items: center;
-  background-color: white;
-  padding-top: 2px;
-  border-left: 2px solid #e2e8f0 !important;
-  border-right: 2px solid #e2e8f0 !important;
-  border-bottom: 2px solid #e2e8f0 !important;
-  border-top: 1px solid #e2e8f0;
-
-}
-
-.input.message_content {
-  width: 100% !important;
-  max-height: 48px;
-  #message_content {
-    width: 100% !important;
-    &:focus {
-      outline: 0;
-    }
-  }
-}
-
-
-
 .milestone_description {
   display: flex;
   justify-content: space-between;

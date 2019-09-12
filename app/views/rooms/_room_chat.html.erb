@@ -1,7 +1,7 @@
 <div class="room_message_group">
-  <div class="flex justify-between chat-header border-t-8 border-blue-600">
+  <div class="flex justify-between bg-gray-300 text-gray-600 font-bold p-3 rounded-t-lg">
     <h4>#<%= @room.name %></h4>
-    <div id="user-flash" class="text-white text-sm font-bold px-4 py-3" >
+    <div id="user-flash" class="bg-gray-300 text-gray-600 font-bold" >
       <button type="button" class="close pl-4">
         <span aria-hidden="true">&times;</span>
       </button>
@@ -14,7 +14,10 @@
   </div>
   <div id="create-message" class="">
     <%= simple_form_for [ @room_chat, RoomMessage.new ], remote: true, html: {autocomplete: "off" } do |f| %>
-    <%= f.input :content, label: false, as: :string, input_html: { class: 'w-full' }%>
+      <%= f.input :content, as: :text, label: false, placeholder: "Type your message..." %>
+      <%= button_tag(type: 'submit', id: "btn-custom3", class:" mattr_accessor :attr_names-0 mr-3 mt-1") do %>
+        <%= fa_icon "paper-plane" %>
+        <% end %>
     <% end %>
   </div>
 </div>

@@ -218,11 +218,6 @@
   border-radius: 50%;
 }
 
-#create-message {
-  padding: 10px;
-  background-color: #ffffff;
-  border: 1px solid #ececec;
-}
 .message_content {
   margin-bottom: 0;
 }
