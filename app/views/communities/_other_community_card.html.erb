@@ -1,11 +1,14 @@
-<div id="publications" class="publications-list flex-col mb-4 px-4 pb-1 w-56 opacity-100 hover:opacity-75">
-  <h2 class="text-2xl text-center text-gray-600 mb-0 p-1">All communities</h2>
-  <hr>
-  <p class="text-center py-1 w-3/4 mx-auto text-gray-600 rounded-full font-sans font-medium text-xs">
-    <%= communities.count %> other communities
-  </p>
-  <p class="text-center py-1 w-3/4 mx-auto bg-gray-200 text-gray-600 rounded-full font-sans font-medium text-xs">
-    see them all
-  </p>
+<div id="publications" class="scroll-card flex-col mb-4 px-4 pb-1 w-56 opacity-100">
+  <%= link_to community_path(community) do %>
+    <h2 class="text-2xl text-center text-gray-600 mb-0 p-1"><%= community.name %></h2>
+    <hr>
+    <p class="text-center py-1 w-3/4 mx-auto text-gray-600 rounded-full font-sans font-medium text-xs">
+      <%= community.publications.select { |pub| pub.created_at.to_date == Date.today }.count %> publications today
+    </p>
+  <% end %>
+<!--   <p class="text-center py-1 w-3/4 mx-auto bg-gray-200 text-gray-600 rounded-full font-sans font-medium text-xs hover:bg-gray-300">
+    Join community
+  </p> -->
+  <p class="text-center py-1 mx-auto bg-gray-200 text-gray-600 w-3/4 rounded-full font-sans font-medium text-xs hover:bg-gray-300"><%= link_to "Join community", join_community_path(community), method: :post, class:"block" %></p>
 </div>
 
