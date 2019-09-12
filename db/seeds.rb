@@ -40,19 +40,19 @@ lucas = User.new(
   lucas.communities << Community.all.sample
   lucas.save!
 
-puts "Creating Daniela"
-daniela = User.new(
-    first_name: 'Daniela',
+puts "Creating Maria"
+maria = User.new(
+    first_name: 'Maria',
     last_name: 'Ichikawa',
-    email: 'daniela@buddysteps.com',
+    email: 'maria@buddysteps.com',
     password: 'senha123',
     city: 'São Paulo'
   )
   url = "https://avatars3.githubusercontent.com/u/52746846?s=400&v=4"
-  daniela.remote_photo_url = url
+  maria.remote_photo_url = url
 
-  daniela.communities << Community.all.sample
-  daniela.save!
+  maria.communities << Community.all.sample
+  maria.save!
 
 puts "Creating Catharina"
 catharina = User.new(
@@ -87,22 +87,22 @@ hugo = User.new(
 
 
 puts 'creating Users'
-# 40.times do
-#   user = User.new(
-#     first_name: Faker::Name.first_name,
-#     last_name: Faker::Name.last_name,
-#     email:Faker::Internet.email,
-#     password: 'senha123',
-#     city: Faker::Address.city
-#   )
+40.times do
+  user = User.new(
+    first_name: Faker::Name.first_name,
+    last_name: Faker::Name.last_name,
+    email:Faker::Internet.email,
+    password: 'senha123',
+    city: Faker::Address.city
+  )
 
-#   user.communities << Community.all.sample
+  user.communities << Community.all.sample
 
-#   url = "https://source.unsplash.com/500x300/?person,face"
-#   user.remote_photo_url = url
+  url = "https://source.unsplash.com/500x300/?person,face"
+  user.remote_photo_url = url
 
-#   user.save!
-# end
+  user.save!
+end
 
 puts 'creating Goal Categories'
 physical_category = Category.create!(name: 'Physical')
@@ -171,8 +171,8 @@ puts 'creating Feelings for general users'
 #   end
 # end
 
-puts 'creating Feelings for Lucas, Daniela, Catharina and Hugo '
-[lucas, daniela, catharina, hugo].each do |user|
+puts 'creating Feelings for Lucas, maria, Catharina and Hugo '
+[lucas, maria, catharina, hugo].each do |user|
   day = 1
   puts "---creating feelings data for #{user.first_name}"
   intensity = [3, 3, 3, 3]
@@ -187,9 +187,12 @@ puts 'creating Feelings for Lucas, Daniela, Catharina and Hugo '
       user: user,
     )
     intensity = intensity.map do |feel_int|
-      new_feel_int = feel_int + [+1, +2, -1, -2].sample
+      new_feel_int = feel_int + [+1, +1, +1, +2, -1, -1, -1, -2].sample
       new_feel_int = 5 if new_feel_int > 5
       new_feel_int = 1 if new_feel_int < 1
+      if rand() < 0.1
+        new_feel = 0
+      end
       new_feel_int
     end
 
@@ -289,14 +292,14 @@ publications = [
   },
   { title: "Sleep problems with PD",
     content: "I was recently diagnosed with PD. This was about 6 months ago and I am experiencing a need to sleep more. I find I need a nap most of the time two times a day. Is this common with PD? I sleep well at night except I experience bad dreams--some I remember and others I don't.",
-    publication_type: ,
+    publication_type: question,
     is_private: false,
     community: parkinson,
     user: members.sample,
   },
   { title: "PD Warrior exercise program",
     content: "In one of these conversations someone mentioned PD Warrior, an exercise program for Parkinsons. It is supposed to be specific exercises targeted to slow the progression of PK. They say they do not have a licensed facility in the US but are working on it. However, they have an online program called the 10 week challenge. They say that these exercises can be done at home. Is there anyone who has information or has had experience with PD Warrior? I am considering it in addition to Rock Steady Boxing, which I am doing 3 times a week.",
-    publication_type: ,
+    publication_type: question,
     is_private: false,
     community: parkinson,
     user: members.sample,
@@ -319,13 +322,13 @@ publications.each do |publication|
   end
 
   user1 = members.sample
-  user2 = publication.user
+  user2 = pub.user
   user3 = members.sample
   Comment.create!(publication: Publication.last, user: user1, content: "I know someone who might know more about it, I'll ask her")
   Comment.create!(publication: Publication.last, user: user2, content: "That's really nice, thanks!")
   if rand() > 0.5
     Comment.create!(publication: Publication.last, user: user3, content: "I also may know someone, I'll let you you know")
-    if rand( > 0.5
+    if rand( ) > 0.5
       Comment.create!(publication: Publication.last, user: user2, content: "Thanks! :)")
     end
   end
@@ -435,13 +438,13 @@ publications.each do |publication|
   end
 
   user1 = members.sample
-  user2 = publication.user
+  user2 = pub.user
   user3 = members.sample
   Comment.create!(publication: Publication.last, user: user1, content: "I know someone who might know more about it, I'll ask her")
   Comment.create!(publication: Publication.last, user: user2, content: "That's really nice, thanks!")
   if rand() > 0.5
     Comment.create!(publication: Publication.last, user: user3, content: "I also may know someone, I'll let you you know")
-    if rand( > 0.5
+    if rand( ) > 0.5
       Comment.create!(publication: Publication.last, user: user2, content: "Thanks! :)")
     end
   end
@@ -558,13 +561,13 @@ publications.each do |publication|
   end
 
   user1 = members.sample
-  user2 = publication.user
+  user2 = pub.user
   user3 = members.sample
   Comment.create!(publication: Publication.last, user: user1, content: "I know someone who might know more about it, I'll ask her")
   Comment.create!(publication: Publication.last, user: user2, content: "That's really nice, thanks!")
   if rand() > 0.5
     Comment.create!(publication: Publication.last, user: user3, content: "I also may know someone, I'll let you you know")
-    if rand( > 0.5
+    if rand( ) > 0.5
       Comment.create!(publication: Publication.last, user: user2, content: "Thanks! :)")
     end
   end
@@ -656,14 +659,14 @@ publications = [
   },
   { title: "Metabolic syndrome",
     content: "After losing weight I was told that I would have to stop exercising for 6-8 weeks as exercise is keeping my reading high. Has anyone else experienced this and what did u do?",
-    publication_type: ,
+    publication_type: question,
     is_private: false,
     community: diabetes,
     user: members.sample
   },
   { title: "Type 1 LADA diabetes at 50 Any tips?",
     content: "I already have 2 autoimmune diseases, now a 3rd, type 1 LADA diabetes. Anyone in a similar situation? My blood glucose goes from almost hypo to almost hyper in the same day, anything effects it... Stress, too hot, too cold, too much walking, too little walking...not to mention the very limited diet I have No two days are the same even if I follow the same routine. My medication has been changed a number of times. Finding it hard. Any tips?",
-    publication_type: ,
+    publication_type: question,
     is_private: false,
     community: diabetes,
     user: members.sample
@@ -686,13 +689,13 @@ publications.each do |publication|
   end
 
   user1 = members.sample
-  user2 = publication.user
+  user2 = pub.user
   user3 = members.sample
   Comment.create!(publication: Publication.last, user: user1, content: "I know someone who might know more about it, I'll ask her")
   Comment.create!(publication: Publication.last, user: user2, content: "That's really nice, thanks!")
   if rand() > 0.5
     Comment.create!(publication: Publication.last, user: user3, content: "I also may know someone, I'll let you you know")
-    if rand( > 0.5
+    if rand( ) > 0.5
       Comment.create!(publication: Publication.last, user: user2, content: "Thanks! :)")
     end
   end
@@ -703,30 +706,30 @@ end
 
 
 
-puts "creating Publications for users' diaries"
-User.all.each do |user|
-  5.times do
-    paragraphs =
-      [
-        Faker::Lorem.paragraph_by_chars(number: rand(250...350)).to_s,
-        Faker::Lorem.paragraph_by_chars(number: rand(250...350)).to_s,
-        Faker::Lorem.paragraph_by_chars(number: rand(250...350)).to_s,
-        Faker::Lorem.paragraph_by_chars(number: rand(250...350)).to_s
-      ]
-    text = paragraphs.first(rand(2..4)).join("\n\n")
+# puts "creating Publications for users' diaries"
+# User.all.each do |user|
+#   5.times do
+#     paragraphs =
+#       [
+#         Faker::Lorem.paragraph_by_chars(number: rand(250...350)).to_s,
+#         Faker::Lorem.paragraph_by_chars(number: rand(250...350)).to_s,
+#         Faker::Lorem.paragraph_by_chars(number: rand(250...350)).to_s,
+#         Faker::Lorem.paragraph_by_chars(number: rand(250...350)).to_s
+#       ]
+#     text = paragraphs.first(rand(2..4)).join("\n\n")
 
-    publication = Publication.create!(
-      title: Faker::TvShows::TwinPeaks.quote,
-      content: text,
-      publication_type: [frustration, pleasure].sample,
-      is_private: true,
-      user: user
-    )
-    rand(1..3) do
-      Clap.create!(publication: publication, user: User.all.sample)
-    end
-  end
-end
+#     publication = Publication.create!(
+#       title: Faker::TvShows::TwinPeaks.quote,
+#       content: text,
+#       publication_type: [frustration, pleasure].sample,
+#       is_private: true,
+#       user: user
+#     )
+#     rand(1..3) do
+#       Clap.create!(publication: publication, user: User.all.sample)
+#     end
+#   end
+# end
 
 puts '---------------------------------------'
 puts 'Seed is complete'
