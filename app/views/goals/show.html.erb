@@ -69,12 +69,12 @@
             <!-- Buddy info when buddy view -->
             <div class="text-gray-700 py-2 px-4 rounded-full">
               <% if @goal.confirmed_buddy == true %>
-                <%= link_to user_path(@goal.buddy), class:"flex flex-col items-center" do %>
+                <%= link_to user_path(@goal.user), class:"flex flex-col items-center" do %>
                   <div class="h-auto">
-                    <%= cl_image_tag @goal.buddy.photo, height: 90, width: 90, crop: :fill, class: "rounded-full object-contain border-2 border-white mb-3" %>
+                    <%= cl_image_tag @goal.user.photo, height: 90, width: 90, crop: :fill, class: "rounded-full object-contain border-2 border-white mb-3" %>
                   </div>
-                  <p class="text-lg font-bold"><%= "#{@goal.buddy.first_name} #{@goal.buddy.last_name}" %></p>
-                  <p class="">is your buddy for this goal</p>
+                  <p class="text-lg font-bold"><%= "#{@goal.user.first_name} #{@goal.user.last_name}" %></p>
+                  <p class="">is the owner of this goal</p>
                 <% end %>
               <% end %>
             </div>
