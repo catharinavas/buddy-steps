@@ -24,7 +24,7 @@
       <!-- GOAL CARD RENDERS INFOBOX WITH GOAL DETAILS -->
       <% elsif !goal.complete%>
 
-        <button class="unclickable-goal scroll-card bg-white shadow-lg rounded-2xl pt-6 mr-4 p-4 w-56 h-64 text-center text-purple-700 block sm:mb-4 sm:px-0 flex-col justify-between" data-goal="<%= goal.id %>">
+        <button class="unclickable-goal scroll-card bg-white rounded-2xl mr-10 p-5 border-2 border-gray-300 w-56 text-center text-gray-600 sm:mb-4 sm:px-0 flex flex-col justify-between pt-10" style="height: 20rem" data-goal="<%= goal.id %>">
           <p class="mb-4">
             <%= render 'goal_image_category', goal: goal %>
           </p>
@@ -74,7 +74,7 @@
   <% if request.env['PATH_INFO'].include?("dashboard")%>
     <% if current_user == @user %>
       <div id="buddies_goals" class="hidden flex overflow-x-scroll flex-no-wrap scroll py-5 pl-5 sm:flex-wrap sm:overflow-visible sm:justify-center <%= "justify-center" if @buddies_goals.count == 1 %>">
-        <% @buddies_goals.each do |goal| %>
+        <% @buddies_goals.where(confirmed_buddy: true).each do |goal| %>
           <!-- GOAL CARD -->
           <% if !goal.complete %>
             <%= link_to goal_path(goal), class: "relative scroll-card bg-white rounded-2xl mr-10 p-5 border-2 border-gray-300 w-56 text-center text-gray-600 sm:mb-4 sm:px-0 flex flex-col justify-between pt-10 absolute", style: "height: 20rem" do %>
@@ -94,9 +94,7 @@
             <% end %>
           <% end %>
         <% end %>
-
-
-        <% if @buddies_goals.empty? %>
+        <% if @buddies_goals.where(confirmed_buddy: true).empty? %>
           <div class="scroll-card bg-white shadow-lg rounded-2xl pt-6 mr-4 p-4 w-64 text-center text-purple-700 block sm:mb-4 sm:px-4 flex-col justify-between" do >
             <p class="font-sans text-xs mt-3 text-purple-700">
               be a good

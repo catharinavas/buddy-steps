@@ -10,7 +10,7 @@ class CommunitiesController < ApplicationController
       @all_communities.each do |community|
         community.publications.each { |pub| @all_publications << pub }
       end
-      @all_publications.sort_by!(&:created_at)
+      @all_publications.sort_by!(&:created_at).reverse!
 
     else
       @all_communities = Community.all
@@ -23,10 +23,10 @@ class CommunitiesController < ApplicationController
     @type = PublicationType.where(name: ['News', 'Question'])
 
     if params[:query].present?
-      @community_publications = Publication.where(community: params[:id], publication_type: [@type[0].id, @type[1].id])
+      @community_publications = Publication.where(community: params[:id], publication_type: [@type[0].id, @type[1].id]).sort_by(&:created_at).reverse
       @community_publications = @community_publications.global_search(params[:query])
     else
-      @community_publications = Publication.where(community: params[:id], publication_type: [@type[0].id, @type[1].id])
+      @community_publications = Publication.where(community: params[:id], publication_type: [@type[0].id, @type[1].id]).sort_by(&:created_at).reverse
     end
 
     @users = @community.users
