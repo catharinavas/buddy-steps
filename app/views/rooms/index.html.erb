@@ -1,6 +1,11 @@
 <div class="body">
  <!-- show room -->
  <div>
+  <% if @rooms.empty? %>
+   <%=  render 'placeholder_chat' %>
+  <% end %>
+
+
    <!-- show messages -->
    <div class="md:flex w-full">
      <div id="user-list" class="md:w-64 flex md:block items-center mt-2 md:mt-0 overflow-x-scroll md:overflow-y-scroll flex-no-wrap scroll sm:flex-wrap sm:overflow-visible">
