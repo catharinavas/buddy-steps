@@ -19,7 +19,7 @@ class UsersController < ApplicationController
 
     # GOALS DATA
     @my_goals = Goal.where(user: current_user)
-    @buddies_goals = Goal.where(buddy_id: current_user)
+    @buddies_goals = Goal.where(buddy_id: current_user, confirmed_buddy: true)
 
     # MODAL NEW GOAL
     @goal = Goal.new
