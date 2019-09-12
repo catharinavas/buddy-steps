@@ -35,10 +35,12 @@
   <% if @user == current_user %>
       <div class="md:px-4 py-4 mt-10 lg:px-24">
         <h2 class="px-8 md:px-0 text-xl lg:text-2xl text-gray-800 font-bold leading-none mb-2">How are you feeling today?</h2>
-        <div class="px-8 md:px-0">
-          <p class="text-gray-700 text-xs lg:text-md">You've been recording your mood for <span class="font-bold"><%= @current_streak %> days </span> now. Your longest streak is <span class="font-bold"><%= @longest_streak %> days</span>.</p>
-          <p class="text-gray-600 text-xs lg:text-md">Keep recording daily and keep making a beautiful graph. The more often you record your mood, the easier it is to notice negative patterns before they become problems and to notice positive patterns that you can keep in your life.</p>
-        </div>
+        <% unless @last_feeling.nil? %>
+          <div class="px-8 md:px-0">
+            <p class="text-gray-700 text-xs lg:text-md">You've been recording your mood for <span class="font-bold"><%= @current_streak %> days </span> now. Your longest streak is <span class="font-bold"><%= @longest_streak %> days</span>.</p>
+            <p class="text-gray-600 text-xs lg:text-md">Keep recording daily and keep making a beautiful graph. The more often you record your mood, the easier it is to notice negative patterns before they become problems and to notice positive patterns that you can keep in your life.</p>
+          </div>
+        <% end %>
         <div class="md:px-0 lg:flex justify-center mt-2">
           <% if @last_feeling.nil? %>
             <%= render 'placeholder_graph' %>
