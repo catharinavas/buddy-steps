@@ -16,7 +16,8 @@ import { placeholderGraph } from "../components/placeholder_graph.js";
 import { fetchGraphData } from "../components/graph.js";
 import { changeGraph } from "../components/change_graph";
 import { previewImageOnFileSelect } from "../components/photo_preview";
-import { showGoalInfobox } from "../components/show_goal_infobox.js"
+import { showGoalInfobox } from "../components/show_goal_infobox"
+import { toggleChat } from "../components/toggle_chat"
 
 
 menuToggle();
@@ -38,3 +39,4 @@ fetchGraphData();
 changeGraph();
 previewImageOnFileSelect();
 showGoalInfobox();
+toggleChat();
