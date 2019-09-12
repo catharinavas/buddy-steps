@@ -236,7 +236,7 @@ unless parkinson.users == []
     publication.save!
 
     rand(1..2).times do
-      members = community.users
+      members = parkinson.users
       # possible_clappers = User.where.not(id: author)
       # clapper = possible_clappers.sample
       Clap.create!(publication: Publication.last, user: members.sample)
