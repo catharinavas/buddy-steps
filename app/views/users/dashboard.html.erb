@@ -34,7 +34,7 @@
   <!-- MOOD GRAPH -->
   <% if @user == current_user %>
       <div class="md:px-4 py-4 mt-10 lg:px-24">
-        <h2 class="px-8 text-xl lg:text-2xl text-gray-800 font-bold leading-none mb-2">How are you feeling today?</h2>
+        <h2 class="px-8 md:px-0 text-xl lg:text-2xl text-gray-800 font-bold leading-none mb-2">How are you feeling today?</h2>
         <div class="px-8 md:px-0">
           <p class="text-gray-700 text-xs lg:text-md">You've been recording your mood for <span class="font-bold"><%= @current_streak %> days </span> now. Your longest streak is <span class="font-bold"><%= @longest_streak %> days</span>.</p>
           <p class="text-gray-600 text-xs lg:text-md">Keep recording daily and keep making a beautiful graph. The more often you record your mood, the easier it is to notice negative patterns before they become problems and to notice positive patterns that you can keep in your life.</p>
@@ -55,7 +55,7 @@
 
   <!-- DIARY -->
   <div class="pt-3 md:px-4 py-4 lg:px-24 mt-10">
-    <h2 class="px-8 text-xl lg:text-2xl text-gray-800 font-bold leading-none mb-4">Records</h2>
+    <h2 class="px-8 md:px-0 text-xl lg:text-2xl text-gray-800 font-bold leading-none mb-4">Records</h2>
     <div class="px-8 md:px-0 mt-2 lg:block pb-2">
       <%= form_tag dashboard_path, method: :get, class:"inline-flex" do %>
         <%= text_field_tag :query,

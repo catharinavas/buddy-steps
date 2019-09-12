@@ -8,21 +8,17 @@
           <%= render 'user_community_card', community: community %>
         <% end %>
       <% end %>
-
       <% @communities.each do |community| %>
           <%= render 'other_community_card', community: community %>
       <% end %>
-
       <%#= render 'other_community_card', communities: @communities %>
     </div>
-
     <h2 class="px-4 md:px-20 text-3xl text-gray-800 font-bold mb-3">Recent activity</h2>
-    <%= render 'publications/publications_list', publications: @all_publications, class:"md:px-20" %>
+    <div class="md:px-20">
+      <%= render 'publications/publications_list', publications: @all_publications %>
+    </div>
   </div>
-
 <% else %>
   <!-- LANDING PAGE -->
   <%= render 'landing' %>
-
 <% end %>
-
