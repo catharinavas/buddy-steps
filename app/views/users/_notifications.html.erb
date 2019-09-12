@@ -43,8 +43,8 @@
             <%= cl_image_tag buddy_goal.user.photo, height: 40, width: 40, crop: :fill, class: "mr-3 rounded-full h-auto object-contain float-none border-2 border-white" %>
           <% end %>
           <div>
-            <p class=" text-sm">Be the buddy of <span class="font-semibold"><%= link_to "#{buddy_goal.user.first_name}", user_path(buddy_goal.user) %></span> for the new goal:</p>
-            <p class=" text-sm font-semibold capitalize"><%= link_to "#{buddy_goal.title}", goal_path(buddy_goal) %> ?</p>
+            <p class=" text-xs">Be the buddy of <span class="font-semibold"><%= link_to "#{buddy_goal.user.first_name}", user_path(buddy_goal.user) %></span> for the new goal:</p>
+            <span class=" text-xs font-semibold capitalize"><%= link_to "#{buddy_goal.title}", goal_path(buddy_goal) %> ?</span>
           </div>
         </div>
         <div>

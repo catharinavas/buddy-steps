@@ -22,13 +22,13 @@
           <div class="hidden sm:flex sm:items-center pt-3">
 
             <h1><%= link_to "Dashboard", dashboard_path,
-              class:"uppercase text-gray-700 text-md font-semibold hover:text-purple-600 mr-6 lg:mr-12" %></h1>
+              class:"uppercase text-md  hover:text-purple-600 mr-6 lg:mr-12 #{request.env['PATH_INFO'].include?('dashboard') ? 'text-orange-500 font-lg font-bold' : 'text-gray-700 font-semibold'}" %></h1>
 
             <h1><%= link_to "Community", communities_path,
-            class:"uppercase text-gray-700 text-md font-semibold hover:text-purple-600 mr-6 lg:mr-12" %></h1>
+            class:"uppercase text-md  hover:text-purple-600 mr-6 lg:mr-12 #{request.env['PATH_INFO'].include?('communities') ? 'text-orange-500  font-lg font-bold' : 'text-gray-700 font-semibold'}" %></h1>
 
             <h1><%= link_to "Chats", rooms_path,
-            class:"uppercase text-gray-700 text-md font-semibold hover:text-purple-600 mr-6 lg:mr-12" %></h1>
+            class:"uppercase text-md  hover:text-purple-600 mr-6 lg:mr-12 #{request.env['PATH_INFO'].include?('rooms') ? 'text-orange-500  font-lg font-bold' : 'text-gray-700 font-semibold'}" %></h1>
           </div>
         <% end %>
 
