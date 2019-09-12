@@ -194,7 +194,7 @@ puts 'creating Feelings for joao, maria, Catharina and Hugo '
       new_feel_int = 5 if new_feel_int > 5
       new_feel_int = 1 if new_feel_int < 1
       if rand() < 0.1
-        new_feel = 0
+        new_feel_int = 0
       end
       new_feel_int
     end
