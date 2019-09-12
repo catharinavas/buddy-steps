@@ -1,10 +1,14 @@
-<div id="publications" class="publications-list flex-col w-56 pb-1 mx-1 bg-white rounded-lg border border-gray-200">
+<div id="publications" class="publications-list flex-col px-4 pb-1 mb-4 w-56 opacity-100 hover:opacity-75">
  <!--  <div class="flex flex-col lg:flex-row items-center mb-5 w-full rounded-lg border-2 border-gray-200 bg-white"> -->
     <!-- IMAGE -->
-  <div class="flex items-end justify-center p-0 h-32 h-40 rounded-t-lg bg-cover" style="background-image: linear-gradient(rgba(38, 21, 66, 0.4),rgba(38, 21, 66, 0.4)), url('https://images.unsplash.com/photo-1454875392665-2ac2c85e8d3e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=333&q=80');">
-    <h2 class="text-2xl text-left text-white mb-0 font-bold"><%= community.name %></h2>
-  </div>
-  <p class="text-center py-1 w-3/4 mx-auto m-4 bg-gray-200 rounded-full font-sans font-medium text-xs text-gray-800">
-    <%= community.users.count %> members
+  <!-- <div class="flex items-end justify-center p-0 rounded-t-lg bg-gray-200"> -->
+  <!-- </div> -->
+  <h2 class="text-2xl text-center text-purple-800 font-bold mb-0 p-1"><%= community.name %></h2>
+  <hr>
+  <p class="text-center py-1 w-3/4 mx-auto text-gray-600 rounded-full font-sans font-medium text-xs">
+    <%= community.publications.select { |pub| pub.created_at.to_date == Date.today }.count %> publications today
+  </p>
+  <p class="text-center py-1 w-3/4 mx-auto bg-purple-800 text-white rounded-full font-sans font-medium text-xs">
+    see your community
   </p>
 </div>
