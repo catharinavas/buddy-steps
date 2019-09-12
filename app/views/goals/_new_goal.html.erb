@@ -17,7 +17,7 @@
             </div>
           </div>
           <!--Body-->
-          <%= simple_form_for @goal, html: { autocomplete: 'off' } do |f| %>
+          <%= simple_form_for Goal.new, html: { autocomplete: 'off' } do |f| %>
             <%= f.error_notification %>
             <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
