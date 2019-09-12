@@ -5,11 +5,13 @@ class CommunitiesController < ApplicationController
   def index
     if user_signed_in?
       @communities = Community.where.not(name: current_user.communities.pluck(:name))
+      @all_communities = Community.all
       @all_publications = []
-      @communities.each do |community|
+      @all_communities.each do |community|
         community.publications.each { |pub| @all_publications << pub }
       end
       @all_publications.sort_by!(&:created_at)
+
     else
       @all_communities = Community.all
     end
