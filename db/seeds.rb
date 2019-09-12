@@ -200,53 +200,52 @@ end
 puts 'creating PublicationTypes'
 news = PublicationType.create!(name: 'News')
 question = PublicationType.create!(name: 'Question')
-celebration = PublicationType.create!(name: 'Celebration')
 frustration = PublicationType.create!(name: 'Frustration')
 pleasure = PublicationType.create!(name: 'Pleasure')
 
 puts 'creating Publications, Comments and Claps in each community'
-Community.all.each do |community|
+puts '--- creating them for the Parkinson community'
   # members = User.joins(:community_users).where(community_users:{community: community})
-  members = community.users
+members = parkinson.users
 
-  unless community.users == []
-    paragraphs =
-      [
-        Faker::Lorem.paragraph_by_chars(number: rand(250...350)).to_s,
-        Faker::Lorem.paragraph_by_chars(number: rand(250...350)).to_s,
-        Faker::Lorem.paragraph_by_chars(number: rand(250...350)).to_s,
-        Faker::Lorem.paragraph_by_chars(number: rand(250...350)).to_s
-      ]
-    text = paragraphs.first(rand(2..4)).join("\n\n")
+unless parkinson.users == []
+  publications_text = [
+    ''
+  ]
 
-    12.times do
-      publication = Publication.create!(
-        title: Faker::TvShows::TwinPeaks.quote,
-        content: text,
-        publication_type: [news, question, celebration].sample,
-        is_private: false,
-        community: community,
-        user: members.sample
-      )
-      author = publication.user
+  12.times do
+    publication = Publication.new(
+      title: Faker::TvShows::TwinPeaks.quote,
+      content: text,
+      publication_type: [news, question].sample,
+      is_private: false,
+      community: parkinson,
+      user: members.sample
+    )
+    author = publication.user
+    url = "https://source.unsplash.com/random/recovery#{rand(20)}"
 
-      rand(1..3).times do
-        members = community.users
-        # possible_clappers = User.where.not(id: author)
-        # clapper = possible_clappers.sample
-        Clap.create!(publication: Publication.last, user: members.sample)
-        # possible_clappers.delete!(clapper)
-      end
-
-      user1 = members.sample
-      user2 = members.sample
-      user3 = members.sample
-      Comment.create!(publication: Publication.last, user: user1, content: "I totally see your point, but I still disagree.")
-      Comment.create!(publication: Publication.last, user: user2, content: "Why?")
-      Comment.create!(publication: Publication.last, user: user3, content: "sadjbajkdbjkdbwdawdw")
-      Comment.create!(publication: Publication.last, user: user3, content: "Sorry, that was my cat walking on my keyboard:p")
-      Comment.create!(publication: Publication.last, user: user1, content: "OP is ignoring that even though it ain't ideal, it does help many people to cope.")
+    if rand() > 0.8
+      publication.remote_photo_url = url
     end
+    publication.save!
+
+    rand(1..2).times do
+      members = community.users
+      # possible_clappers = User.where.not(id: author)
+      # clapper = possible_clappers.sample
+      Clap.create!(publication: Publication.last, user: members.sample)
+      # possible_clappers.delete!(clapper)
+    end
+
+    user1 = members.sample
+    user2 = members.sample
+    user3 = members.sample
+    Comment.create!(publication: Publication.last, user: user1, content: "I totally see your point, but I still disagree.")
+    Comment.create!(publication: Publication.last, user: user2, content: "Why?")
+    Comment.create!(publication: Publication.last, user: user3, content: "sadjbajkdbjkdbwdawdw")
+    Comment.create!(publication: Publication.last, user: user3, content: "Sorry, that was my cat walking on my keyboard:p")
+    Comment.create!(publication: Publication.last, user: user1, content: "OP is ignoring that even though it ain't ideal, it does help many people to cope.")
   end
 end
 
