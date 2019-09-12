@@ -1,19 +1,23 @@
 <% if user_signed_in? %>
   <!-- INDEX FOR LOGGED IN USERS -->
-  <div class="py-10 px-2 md:px-10 bg-gray-100 body md:px-48">
-    <h2 class="text-3xl text-gray-800 font-bold mb-3 mt-5">Communities</h2>
-    <div class="flex flex-col items-center md:flex-row mb-16">
+  <div class="py-10 bg-gray-100 body">
+    <h2 class="px-4 md:px-20 text-3xl text-gray-800 font-bold mb-3 mt-5">Communities</h2>
+    <div class="flex overflow-x-scroll flex-no-wrap scroll items-center md:flex-row mb-16">
       <% current_user.communities.each do |community| %>
         <%= link_to community_path(community) do %>
           <%= render 'user_community_card', community: community %>
         <% end %>
       <% end %>
 
-      <%= render 'other_community_card', communities: @communities %>
+      <% @communities.each do |community| %>
+          <%= render 'other_community_card', community: community %>
+      <% end %>
+
+      <%#= render 'other_community_card', communities: @communities %>
     </div>
 
-    <h2 class="text-3xl text-gray-800 font-bold mb-3">Recent activity</h2>
-    <%= render 'publications/publications_list', publications: @all_publications %>
+    <h2 class="px-4 md:px-20 text-3xl text-gray-800 font-bold mb-3">Recent activity</h2>
+    <%= render 'publications/publications_list', publications: @all_publications, class:"md:px-20" %>
   </div>
 
 <% else %>
