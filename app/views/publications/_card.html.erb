@@ -66,6 +66,10 @@
           <!-- BUTTONS -->
           <div class="flex justify-end items-center pb-3 lg:pb-0">
             <div class="flex items-center flex-shrink-0 ml-1 md:ml-10">
+
+
+
+
               <a href="/publications/<%= publication.id %>/#comments" class="text-gray-600 text-xs lg:text-sm flex-shrink-0" data-comments-button='<%= publication.id %>'>
                   <span class="p-2 md:p-3 px-2">
                     <%= publication.comments.count %>
@@ -82,7 +86,7 @@
               >
                 <%= link_to new_publication_clap_path(publication), remote: true,class: "p-2 md:p-3" do%>
                   <span data-clapID="<%= publication.id %>"><%= publication.claps.count %></span>
-                  <i class="text-xs">Claps</i>
+                  <%= fa_icon "fas sign-language" %>
                 <% end %>
               </p>
             </div>
