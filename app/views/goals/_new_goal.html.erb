@@ -1,6 +1,6 @@
 <% if current_user == @user %>
   <% if @incompleted_goals.size < 3 %>
-    <div class="modal-new-goal opacity-0 pointer-events-none fixed w-full h-full top-0 left-0 flex items-center justify-center z-50 md:z-0">
+    <div class="modal-new-goal opacity-0 pointer-events-none fixed w-full h-full top-0 left-0 flex items-center justify-center z-40">
       <div class="modal-new-goal-overlay absolute w-full h-full bg-gray-900 opacity-50"></div>
       <div class="modal-new-goal-container bg-white w-screen h-screen md:h-auto md:max-w-md mx-auto rounded shadow-lg z-50 overflow-y-auto">
         <!-- Add margin if you want to see some of the overlay behind the modal-->

@@ -24,7 +24,7 @@ const modalEditGoal = () => {
     } else {
     isEscape = (evt.keyCode === 27)
     }
-    if (isEscape && document.body.classList.contains('modal-edit-goal-active')) {
+    if (isEscape && document.body.classList.contains('modal-active')) {
     toggleModal()
     }
   };
@@ -35,7 +35,7 @@ const modalEditGoal = () => {
     const modal = document.querySelector('.modal-edit-goal')
     modal.classList.toggle('opacity-0')
     modal.classList.toggle('pointer-events-none')
-    body.classList.toggle('modal-edit-goal-active')
+    body.classList.toggle('modal-active')
   }
 }
 
