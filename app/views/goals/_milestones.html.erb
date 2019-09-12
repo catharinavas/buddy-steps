@@ -13,7 +13,9 @@
   <thead class="text-gray-700 font-bold">
     <td> Description </td>
     <td class="whitespace-no-wrap text-right w-1/5"> Deadline </td>
-    <td class="whitespace-no-wrap text-right w-1/5"> Actions </td>
+    <% if current_user.id == @goal.user_id %>
+      <td class="whitespace-no-wrap text-right w-1/5"> Actions </td>
+    <% end %>
   </thead>
   <tbody id="milestones">
     <% @milestones.each do |milestone| %>
