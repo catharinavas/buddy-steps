@@ -24,7 +24,7 @@
       <!-- GOAL CARD RENDERS INFOBOX WITH GOAL DETAILS -->
       <% elsif !goal.complete%>
 
-        <button class="unclickable-goal scroll-card bg-white shadow-lg rounded-2xl pt-6 mr-4 p-4 w-56 h-64 text-center text-purple-700 block sm:mb-4 sm:px-0 flex-col justify-between" data-goal="<%= goal.id %>">
+        <button class="unclickable-goal scroll-card bg-white rounded-2xl mr-10 p-5 border-2 border-gray-300 w-56 text-center text-gray-600 sm:mb-4 sm:px-0 flex flex-col justify-between pt-10" style="height: 20rem" data-goal="<%= goal.id %>">
           <p class="mb-4">
             <%= render 'goal_image_category', goal: goal %>
           </p>

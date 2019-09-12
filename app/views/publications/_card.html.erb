@@ -38,9 +38,11 @@
           <div class="text-gray-900 mb-4 lg:mb-2 text-left text-xs md:text-md">
             <span data-shown-text="<%= publication.id %>" class="flex flex-col-reverse md:flex-row">
                 <!-- PUBLICATION IMAGE -->
-                <a href="#" class="read-toggle md:mr-6 mt-2 md:mt-0 w-1/6" data-read-more="<%= publication.id %>" data-read-toggle="<%= publication.id %>">
-                  <img src="https://source.unsplash.com/random" alt="posted-pic" class=" w-full md:w-64 h-20 rounded object-cover">
-                </a>
+                <% if publication.photo.url %>
+                  <a href="#" class="read-toggle md:mr-6 mt-2 md:mt-0 w-1/6" data-read-more="<%= publication.id %>" data-read-toggle="<%= publication.id %>">
+                    <%= cl_image_tag publication.photo, height: 50, width: 50, class: "w-full md:w-64 h-20 rounded object-cover" %>
+                  </a>
+                <% end %>
                 <div class="w-5/6">
                   <%= (publication.content.first(300)) %>
                   <a href="#" class="read-toggle text-gray-500 font-bold" data-read-more="<%= publication.id %>" data-read-toggle="<%= publication.id %>">
@@ -58,7 +60,9 @@
               </a>
               <hr class="mt-4 mb-8">
                 <!-- PUBLICATION IMAGE -->
-                <img src="https://source.unsplash.com/random" alt="">
+                <% if publication.photo.url %>
+                  <%= cl_image_tag publication.photo, class: 'posted-pic-full' %>
+                <% end %>
             </span>
           </div>
           <!-- BUTTONS -->

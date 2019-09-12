@@ -32,10 +32,10 @@ class UsersController < ApplicationController
     diary_publication_types = PublicationType.where(name: ['Frustration', 'Pleasure', 'Celebration'])
     @communities = nil
     if params[:query].present?
-      @diary_publications = current_user.publications.where(publication_type: diary_publication_types)
+      @diary_publications = current_user.publications.where(publication_type: diary_publication_types).sort_by(&:created_at).reverse
       @diary_publications = @diary_publications.profile_search(params[:query])
     else
-      @diary_publications = current_user.publications.where(publication_type: diary_publication_types)
+      @diary_publications = current_user.publications.where(publication_type: diary_publication_types).sort_by(&:created_at).reverse
     end
     # BUDDY NOTIFICATION
   end
