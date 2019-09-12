@@ -73,7 +73,7 @@
   <!-- BUDDIES GOALS -->
   <% if request.env['PATH_INFO'].include?("dashboard")%>
     <% if current_user == @user %>
-      <div id="buddies_goals" class="hidden flex overflow-x-scroll flex-no-wrap scroll py-5 pl-5 sm:flex-wrap sm:overflow-visible sm:justify-center">
+      <div id="buddies_goals" class="hidden flex overflow-x-scroll flex-no-wrap scroll py-5 pl-5 sm:flex-wrap sm:overflow-visible sm:justify-center <%= "justify-center" if @buddies_goals.count == 1 %>">
         <% @buddies_goals.each do |goal| %>
           <!-- GOAL CARD -->
           <% if !goal.complete %>
@@ -95,6 +95,7 @@
           <% end %>
         <% end %>
 
+
         <% if @buddies_goals.empty? %>
           <div class="scroll-card bg-white shadow-lg rounded-2xl pt-6 mr-4 p-4 w-64 text-center text-purple-700 block sm:mb-4 sm:px-4 flex-col justify-between" do >
             <p class="font-sans text-xs mt-3 text-purple-700">
@@ -110,7 +111,7 @@
           </div>
         <% end %>
 
-      <% end %>
+      </div>
     <% end %>
-  </div>
+  <% end %>
 </div>

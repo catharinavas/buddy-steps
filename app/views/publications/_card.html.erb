@@ -1,5 +1,5 @@
 <div id="publications" class="publications-list">
-  <div class="flex flex-col md:flex-row items-start md:mb-5 w-full md:pl-2 px-10 md:pr-8 pb-3 md:rounded-lg border-2 border-gray-300 bg-white">
+  <div class="flex flex-col md:flex-row items-start md:mb-5 w-full md:pl-2 px-10 md:pr-8 pb-3 md:rounded-lg border-2 <%= publication.publication_type.name == 'Pleasure' ? "border-orange-100 bg-orange-100" : "border-gray-300 bg-white" %> ">
         <!-- IMAGE ACCORDING TO PUBLICATION TYPE -->
         <div class="lg:flex-col items-center w-full md:w-16 lg:w-1/12 mt-4 mx-1">
           <% if  publication.publication_type.name == 'News' || publication.publication_type.name == 'Question' %>
@@ -21,7 +21,7 @@
           <% end %>
           <!-- META -->
           <div>
-            <p class="text-gray-500 text-xs md:text-sm mb-4 mx-auto md:ml-0">
+            <p class=" text-xs md:text-sm mb-4 mx-auto md:ml-0 <%= publication.publication_type.name == 'Pleasure' ? "text-gray-700" : "text-gray-500" %>">
               Posted by
               <%= link_to "#{publication.user.first_name}", user_path(publication.user),
                 class: "italic underline"  %>
@@ -64,7 +64,7 @@
           <!-- BUTTONS -->
           <div class="flex justify-end items-center pb-3 lg:pb-0">
             <div class="flex items-end flex-shrink-0 ml-1 md:ml-10">
-              <a href="/publications/<%= publication.id %>/#comments" class="text-gray-600 text-xs lg:text-sm flex-shrink-0" data-comments-button='<%= publication.id %>'>
+              <a href="/publications/<%= publication.id %>/#comments" class="text-gray-600 text-xs lg:text-sm flex-shrink-0 <%= publication.publication_type.name == 'Pleasure' ? "text-gray-600" : "text-gray-500" %>" data-comments-button='<%= publication.id %>'>
                   <span class="p-2 md:p-3 px-2">
                     <%= publication.comments.count %>
                     <i class="text-xs">Comments</i>
@@ -72,7 +72,7 @@
               </a>
               <p data-claps-button='<%= publication.id %>'
                 <% if Clap.find_by(user: current_user, publication: publication).nil? %>
-                  class="text-gray-500 hover:text-gray-600  text-xs lg:text-sm flex-shrink-0 ml-2 rounded"
+                  class="text-gray-500 hover:text-gray-600  text-xs lg:text-sm flex-shrink-0 ml-2 rounded <%= publication.publication_type.name == 'Pleasure' ? "text-gray-600" : "text-gray-500" %>"
                 <% else %>
                   class="text-orange-500 font-bold text-lg lg:text-sm flex-shrink-0 ml-2"
                 <% end %>
