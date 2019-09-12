@@ -1,3 +1,7 @@
+abbr[title="required"] {
+  display: none;
+}
+
 .messages {
   border-left: 2px solid #e2e8f0 !important;
   border-right: 2px solid #e2e8f0 !important;
@@ -43,9 +47,14 @@
   #milestone_description {
     // flex-grow: 1;
     width: 80%;
-    border: 1px solid gray;
-    max-height: 26px;
-    height: 23px;
+    height: 30px;
+    background-color: #edf2f7;
+    border-radius: 0.25rem;
+    &:focus {
+      outline: 0;
+      background-color: #fff;
+      border: 1px solid #a0aec0;
+    }
   }
 }
 
@@ -53,8 +62,11 @@
   display: flex;
   justify-content: space-between;
   margin-top: 10px;
+  height: 30px;
   .input.form-control {
-    border: 1px solid gray !important;
     width: 80% !important;
+    background-color: #edf2f7;
+    height: 30px;
+    margin-left: 55px;
   }
 }
