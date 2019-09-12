@@ -22,7 +22,7 @@ class RoomsController < ApplicationController
     @room.partner = partner
     old_rooms = Room.where(user: current_user, partner: partner).or(Room.where(user: partner, partner: current_user))
 
-    if old_rooms.count.positive?
+    if old_rooms.count.positive? || current_user == partner
       redirect_to room_path(old_rooms.first)
     else
       @room.name = "#{current_user.first_name} & #{@room.partner.first_name}"
