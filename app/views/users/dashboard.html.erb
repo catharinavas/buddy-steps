@@ -43,7 +43,9 @@
         <% end %>
         <div class="md:px-0 lg:flex justify-center mt-2">
           <% if @last_feeling.nil? %>
-            <%= render 'placeholder_graph' %>
+            <div class="lg:w-4/5">
+              <%= render 'placeholder_graph' %>
+            </div>
             <%= render 'new_feeling', user_feeling: @new_feeling, class:"mt-5 md:mt-0"%>
           <% else %>
             <%= render 'mood_graph' %>
