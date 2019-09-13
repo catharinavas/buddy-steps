@@ -14,13 +14,13 @@
        <div class="form-actions mb-2">
          <%#= link_to 'Back', dashboard_path(current_user), class: 'btn btn-danger' %>
          <% if room.user == current_user %>
-         <div class="scroll-card flex items-center pb-2 md:border-b md:h-full">
+         <div class="scroll-card <%= 'bg-orange-400' if room == @rooms.first %> flex items-center py-2 md:border-b md:h-full">
            <%= cl_image_tag room.partner.photo, height: 40, width: 40, crop: :fill, class: "border-2 border-gray-200 rounded-full object-contain float-none ml-3 md:ml-1 " %>
            <p class="hidden md:block cursor-pointer text-gray-700  text-sm font-semibold px-3 py-1 h-8 hover:text-gray-900 transition-soft flex-grow-0" ><%= room.partner.first_name %></p>
          </div>
 
          <% else %>
-         <div class="scroll-card flex items-center pb-2 md:border-b">
+         <div class="scroll-card <%= 'bg-orange-400' if room == @rooms.first %> flex items-center py-2 md:border-b">
            <%= cl_image_tag room.user.photo, height: 40, width: 40, crop: :fill, class: "border-2 border-gray-200 rounded-full object-contain float-none ml-3 md:ml-1 h-24" %>
            <p class="hidden md:block cursor-pointer text-gray-700  text-sm font-semibold px-3 py-1 h-8 hover:text-gray-900 transition-soft flex-grow-0" ><%= room.user.first_name %></p>
          </div>

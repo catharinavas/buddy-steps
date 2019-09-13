@@ -51,10 +51,10 @@ class UsersController < ApplicationController
     @communities = nil
 
     if params[:query].present?
-      @diary_publications = @user.publications.where(publication_type: diary_publication_types)
+      @diary_publications = @user.publications.where(publication_type: diary_publication_types).reverse
       @diary_publications = @diary_publications.profile_search(params[:query])
     else
-      @diary_publications = @user.publications.where(publication_type: diary_publication_types)
+      @diary_publications = @user.publications.where(publication_type: diary_publication_types).reverse
     end
 
   end
