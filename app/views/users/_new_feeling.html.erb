@@ -1,27 +1,27 @@
-<div class=" mt-5 lg:mt-0 lg:ml-5 p-5 items-center justify-center bg-purple-100 rounded-lg">
+<div class="mx-4 sm:mx-0 mt-5 lg:mt-0 lg:ml-5 p-5 lg:px-2 items-center justify-center bg-purple-100 rounded-lg">
   <!-- <h2 class="text-lg text-purple-900 font-semibold text-center">How is your mood today?</h2> -->
   <%= simple_form_for user_feeling, url: user_feelings_path do |f| %>
     <div class="feelings-grid form-inputs p-2">
 
       <h3 class="feelings-title text-center text-sm mt-1 font-bold text-gray-700">General Happiness</h3>
-      <p class="m-2 mb-0 text-sm text-right text-gray-600">sad</p>
-      <%= f.input :happiness, as: :range, input_html: { min: '1', max: '5', step: '1' }, label: false %>
-      <p class="m-2 mb-0 text-sm text-left text-gray-600">happy</p>
+      <p class="m-2 md:mx-0 mb-0 text-xs text-left text-gray-600">sad</p>
+      <%= f.input :happiness, as: :range, input_html: { min: '1', max: '5', step: '1', class:"slider" }, label: false %>
+      <p class="m-2 md:mx-0 mb-0 text-xs text-right text-gray-600">happy</p>
 
       <h3 class="feelings-title text-center text-sm mt-2 font-bold text-gray-700">Carefreeness</h3>
-      <p class="m-2 mb-0 text-sm text-right text-gray-600">anxious</p>
-      <%= f.input :carefreeness, as: :range, input_html: { min: '1', max: '5', step: '1' }, label: false %>
-      <p class="m-2 mb-0 text-sm text-left text-gray-600">carefree</p>
+      <p class="m-2 md:mx-0 mb-0 text-xs text-left text-gray-600">anxious</p>
+      <%= f.input :carefreeness, as: :range, input_html: { min: '1', max: '5', step: '1', class:"slider" }, label: false %>
+      <p class="m-2 md:mx-0 mb-0 text-xs text-right text-gray-600">carefree</p>
 
       <h3 class="feelings-title text-center text-sm mt-2 font-bold text-gray-700">Patience</h3>
-      <p class="m-2 mb-0 text-sm text-right text-gray-600">irritable</p>
-      <%= f.input :patience, as: :range, input_html: { min: '1', max: '5', step: '1' }, label: false %>
-      <p class="m-2 mb-0 text-sm text-left text-gray-600">patient</p>
+      <p class="m-2 md:mx-0 mb-0 text-xs text-left text-gray-600">irritable</p>
+      <%= f.input :patience, as: :range, input_html: { min: '1', max: '5', step: '1', class:"slider" }, label: false %>
+      <p class="m-2 md:mx-0 mb-0 text-xs text-right text-gray-600">patient</p>
 
       <h3 class="feelings-title text-center text-sm mt-2 font-bold text-gray-700">Sleep Quality</h3>
-      <p class="m-2 mb-0 text-sm text-right text-gray-600">bad</p>
-      <%= f.input :sleep_quality, as: :range, input_html: { min: '1', max: '5', step: '1' }, label: false %>
-      <p class="m-2 mb-0 text-sm text-left text-gray-600">good</p>
+      <p class="m-2 md:mx-0 mb-0 text-xs text-left text-gray-600">bad</p>
+      <%= f.input :sleep_quality, as: :range, input_html: { min: '1', max: '5', step: '1', class:"slider" }, label: false %>
+      <p class="m-2 md:mx-0 mb-0 text-xs text-right text-gray-600">good</p>
     </div>
 
     <div class="form-actions">
