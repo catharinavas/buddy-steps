@@ -3,10 +3,12 @@
         <!-- IMAGE ACCORDING TO PUBLICATION TYPE -->
         <div class="lg:flex-col items-center w-full md:w-16 lg:w-1/12 mt-4 mx-1">
           <% if  publication.publication_type.name == 'News' || publication.publication_type.name == 'Question' %>
-            <% if publication.user.photo.present? %>
-              <%= cl_image_tag publication.user.photo, height: 50, width: 50, class: "publication-img md:mr-2 rounded-full float-none mx-auto border-2 border-white" %>
-            <% else %>
-              <%= image_tag "icons/avatar.png", class: "h-12 w-12 publication-img md:mr-2 rounded-full float-none mx-auto border-2 border-white object-cover" %>
+          <%= link_to user_path(publication.user) do %>
+              <% if publication.user.photo.present? %>
+                <%= cl_image_tag publication.user.photo, height: 50, width: 50, class: "publication-img md:mr-2 rounded-full float-none mx-auto border-2 border-white" %>
+              <% else %>
+                <%= image_tag "icons/avatar.png", class: "h-12 w-12 publication-img md:mr-2 rounded-full float-none mx-auto border-2 border-white object-cover" %>
+              <% end %>
             <% end %>
           <% else %>
           <div class="h-24 md:h-16">
