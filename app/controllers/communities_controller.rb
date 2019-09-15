@@ -23,8 +23,8 @@ class CommunitiesController < ApplicationController
     @type = PublicationType.where(name: ['News', 'Question'])
 
     if params[:query].present?
-      @community_publications = Publication.where(community: params[:id], publication_type: [@type[0].id, @type[1].id]).sort_by(&:created_at).reverse
-      @community_publications = @community_publications.global_search(params[:query])
+      @community_publications = Publication.where(community: params[:id], publication_type: [@type[0].id, @type[1].id])
+      @community_publications = @community_publications.global_search(params[:query]).sort_by(&:created_at).reverse
     else
       @community_publications = Publication.where(community: params[:id], publication_type: [@type[0].id, @type[1].id]).sort_by(&:created_at).reverse
     end

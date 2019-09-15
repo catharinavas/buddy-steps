@@ -1,11 +1,16 @@
 import ApexCharts from 'apexcharts';
 
+
+const graph = document.getElementById('graph');
+
 var fetchGraphData = () => {
+if (graph) {
   fetch("/dashboard.json")
     .then(response => response.json())
     .then((data) => {
       generateGraph(data.feelings);
     });
+  }
 }
 
 var generateGraph = (feelings) => {
@@ -61,5 +66,4 @@ var generateGraph = (feelings) => {
 
 
 }
-
 export { fetchGraphData };
