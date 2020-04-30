@@ -7,7 +7,7 @@
     "apexcharts": "^3.8.5",
     "flatpickr": "^4.6.2",
     "gmaps": "^0.4.24",
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.0",
     "popper.js": "^1.15.0",
     "tailwindcss": "^1.1.2"
   },
